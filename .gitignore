@@ -38,12 +38,14 @@ bower_components
 # Compiled binary addons (https://nodejs.org/api/addons.html)
 build/Release
 
-# Dependency directories
-node_modules/
+# Dependency directories (exclude node_modules in all subdirectories)
+**/node_modules/
 jspm_packages/
+web_modules/
 
 # Snowpack dependency directory (https://snowpack.dev/)
-web_modules/
+.cache
+.parcel-cache
 
 # TypeScript cache
 *.tsbuildinfo
@@ -78,10 +80,6 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
 
 # Next.js build output
 .next
@@ -128,3 +126,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# IntelliJ based IDEs
+.idea
+
+# Finder (MacOS) folder config
+.DS_Store
