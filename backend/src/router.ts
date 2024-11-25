@@ -12,9 +12,10 @@ export class RequestHandler {
     }
 
     public async listener(req: Request) {
-        const request_url = (new URL(req.url).pathname).toLowerCase();
+        const requestPath = (new URL(req.url).pathname).toLowerCase();
+        const routeName = requestPath.endsWith("/") ? requestPath.slice(0, -1) : requestPath;
 
-        const endpoint = this.endpoints.find(endpoint => endpoint.name.toLowerCase() === (request_url.endsWith("/") ? request_url.slice(0, -1) : request_url) && endpoint.type.toUpperCase() === req.method.toUpperCase());
+        const endpoint = this.endpoints.find(endpoint => endpoint.name.toLowerCase() === routeName && endpoint.type.toUpperCase() === req.method.toUpperCase());
 
         if (endpoint) {
             const file: File = await import(endpoint.route);
