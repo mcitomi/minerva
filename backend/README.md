@@ -1,18 +1,10 @@
-# backend
+This project was created using `bun init` in bun v1.1.xx. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
 
-To install dependencies:
+# Backend API 
 
-```bash
-bun install
-```
-
-To run:
-
-```bash
-bun run index.ts
-```
-
-This project was created using `bun init` in bun v1.1.34. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+| **HTTP Method**|**Path**| **Request Body**| **Headers**| **Comments**|
+|----------------|--------|-----------------|------------|-------------|
+| GET            | `/test/ping`| None  | None | Ellenőrizhetjük hogy él-e a backend |
 
 ## Szerver:
 
@@ -27,5 +19,5 @@ A http kérések kezelésére egy requesthandlert használunk, ez futtatja a meg
 
 Az src/routes mappában helyezkednek el az API elérési pontok, amik a routes mappában találhatóak metódus szerint csoportosítva.
 
-Pl.: az src/routes/get/hello.ts endpont az interneten egy get kéréssel lesz elérhető, a `http(s)://<host>/hello` linken.
+Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel lesz elérhető, a `http(s)://<host>/test/ping` linken.
 
