@@ -10,7 +10,7 @@ requesthandler.register();
 const server = Bun.serve({
     development: true,
     port: port,
-    fetch(r: Request): Response | Promise<Response> {
+    fetch(r: Request) {
         if (server.upgrade(r)) {
             return;     // ha az adott kérés ws, kilépünk ebből metódusból.
         }

@@ -11,7 +11,25 @@ export class RequestHandler {
         this.db = db;
     }
 
+    private cors(response: Response) {
+        // https://github.com/oven-sh/bun/issues/5466
+        response.headers.set('Access-Control-Allow-Origin', '*'); // Minden origin engedlyezett
+        response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH'); // Szerver által engedélyezett metódusok
+        response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin'); // Engedélyezett headerek
+        response.headers.set('Access-Control-Allow-Credentials', 'true'); // Hitelesítési adatok (cookies, authorization headers)
+        response.headers.set('Access-Control-Expose-Headers', 'Content-Length, X-Knowledge-Base'); // Kliensnek szükséges adatok
+        return response;
+    }
+
     public async listener(req: Request) {
+        if (req.method === 'OPTIONS') {     // handle options method
+            return new Response('Departed', { headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'OPTIONS, POST',
+                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+            }});
+        }
+        
         const requestPath = (new URL(req.url).pathname).toLowerCase();
         const routeName = requestPath.endsWith("/") ? requestPath.slice(0, -1) : requestPath;
 
@@ -19,11 +37,11 @@ export class RequestHandler {
 
         if (endpoint) {
             const file: File = await import(endpoint.route);
-            return await file.handleRequest(req, this.db);
+            return this.cors(await file.handleRequest(req, this.db));
         } else {
-            return Response.json({
+            return this.cors(Response.json({
                 "message" : "Invalid endpoint or wrong method"
-            }, { status: 404 });
+            }, { status: 404 }));
         }
     }
 
