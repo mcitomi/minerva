@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { privateDecrypt, constants, publicEncrypt } from "node:crypto";
+import { privateDecrypt, constants, publicEncrypt, createHmac } from "node:crypto";
+import { secret} from "../../secrets/sha_config.json";
 
 export function decryptRSA(encyrptedData: string) { // Az RSA titkosítású base64 kódolású adatból utf8 kódolású textet adunk vissza
     try {
@@ -41,4 +42,9 @@ export function encryptRSA(text: string) {  // A publikus kulccsal lekódoljuk a
         console.error(error);
         return undefined;
     }
+}
+
+export function hashHmac(text: string) {    // generál egy hasht, sha512-vel, ahhoz egy fix secret keyel. így azonos bemenet esetén, azonos a hash, és ellenőrizhető valami egyedisége az adatbázisban
+    const salt = Array.from(Buffer.from(text)).toString().replaceAll(',','');   // a megadott szövegkből készít egy sót, azonos szövegnél azonos a só, más szövegnél viszont más.
+    return createHmac("sha512", secret).update(salt + text).digest("base64");  
 }

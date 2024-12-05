@@ -25,9 +25,10 @@ Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel les
 
 ### credentials
 
-| **id**               | **userId** | **email** | **passHash** | **timeCreated** | **lastLogin** | **isActive** | **failedAttempts** | **role** | **resetToken** | **twoFaecret** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| NUMBER AUTOINCREMENT | TEXT       |   TEXT    |   TEXT       | INTEGER         |   INTEGER  | NUMERIC         | INTEGER       | TEXT  | TEXT | TEXT | 
+| **id**            | **emailHash**    | **email**     | **passHash**   | **name**  | **timeCreated**  | **isActive** | **failedAttempts** | **lastLogin** | **role**   | **resetToken** | **twofaSecret** |
+|-------------------|------------------|---------------|----------------|----------|-----------------|--------------|--------------------|---------------|-----------|----------------|-----------------|
+| INTEGER AUTOINCREMENT | TEXT UNIQUE      | TEXT          | TEXT           | TEXT     | INTEGER          | NUMERIC      | INTEGER            | INTEGER       | TEXT      | TEXT           | TEXT            |
+
 
 
 ## Tiktoksítás:

@@ -23,27 +23,21 @@ export default () => {
         passwordre: ''
     });
 
-    useEffect(() => {
-        //  api hívás, public key lekérése 
-        async function fetchPublicKey() {
-            try {
-                const response = await fetch(`${API_URL}/auth/pk`);
-                const data = await response.json();
+    async function fetchPublicKey() {
+        try {
+            const response = await fetch(`${API_URL}/auth/pk`);
+            const data = await response.json();
 
-                const decodedKey = atob(data.encodedKey); // base64 decode https://www.w3schools.com/jsref/met_win_atob.asp
-                console.log(decodedKey);
-                
-                setPublicKey(decodedKey);
-            } catch (error) {
-                console.error("API error, unable to get public key: ", error);
-            }
+            const decodedKey = atob(data.encodedKey); // base64 decode https://www.w3schools.com/jsref/met_win_atob.asp
+            setPublicKey(decodedKey);
+        } catch (error) {
+            console.error("API error, unable to get public key: ", error);
         }
+    }
 
-        if(!publicKeyPem) {
-            fetchPublicKey();
-        }
-        
-    }, []);
+    if(!publicKeyPem) {
+        fetchPublicKey();
+    }
 
     const handleChange = (e) => {   //  Mikor írunk valamit az inputba, frissül
         const { name, value } = e.target;   // kikérjük az inputból a nevet és értéket (property)
@@ -62,7 +56,7 @@ export default () => {
         }
 
         const formDataString = JSON.stringify(formData);
-        
+
         // Form titkosítása publikus kulccsal
         // Maximum 374 karakter lehet a titkosítandó szöveg hossza (RSA-3072)
         // https://developer.mozilla.org/en-US/docs/Web/API/SubtleCrypto
@@ -105,7 +99,7 @@ export default () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "encryptedData" : encryptedBase64 }), // Titkosított adat elküldése
+                body: JSON.stringify({ "encryptedData": encryptedBase64 }), // Titkosított adat elküldése
             });
 
             const result = await response.json();
