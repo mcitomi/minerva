@@ -33,14 +33,23 @@ const server = Bun.serve({
 
         return requesthandler.listener(r);
     },
-    websocket: {    // https://bun.sh/docs/api/websockets
-        open(ws) {
-            ws.send(`Welcome!`);
-        },
-        message(ws, msg) {
-            ws.send(`You said: ${msg}`);
-        }
-    }
+    // websocket: {    // https://bun.sh/docs/api/websockets
+    //     open(ws) {
+    //         ws.send(`Welcome!`);
+    //         ws.subscribe("chat1");
+    //     },
+    //     message(ws, msg) {
+    //         ws.send(`You said: ${msg}`);
+    //     },
+    //     close(ws, code, reason) {
+    //         ws.unsubscribe("chat1");
+    //         server.publish("chat1", "bro leaved")
+    //     },
+    // }
 });
+
+// setInterval(() => {
+//     server.publish("chat1", "asd")
+// }, 5000);
 
 console.info(`🌐 REST backend server started on port ${port}`);
