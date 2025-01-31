@@ -2,6 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, About, Login, Registration, Shop ,NotFound } from "./pages/router.js";
 import MainNavbar from "./components/MainNavbar.jsx";
+import SupportUs from "./components/SupportUs.jsx";
+import Footer from "./components/Footer.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default () => {
@@ -17,6 +19,8 @@ export default () => {
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
+            <SupportUs></SupportUs>
+            <Footer></Footer>
         </Router>
     );
 }

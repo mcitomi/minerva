@@ -5,21 +5,19 @@ import { Link } from "react-router-dom"
 
 export default () => {
     return (
-        <>
-            <Navbar expand="lg" className="bg-body-tertiary">
-                <Container>
-                    <Navbar.Brand as={Link} to="/">Főoldal</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/about">Rólunk</Nav.Link>
-                            <Nav.Link as={Link} to="/login">Belépés</Nav.Link>
-                            <Nav.Link as={Link} to="/registration">Regisztráció</Nav.Link>
-                            <Nav.Link as={Link} to="/shop">Vásárlás</Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
-        </>
+        <Navbar expand="lg" className="bg-body-tertiary">
+            <Container>
+                <Navbar.Brand as={Link} to="/">Főoldal</Navbar.Brand>
+                <Navbar.Toggle aria-controls="basic-navbar-nav"></Navbar.Toggle>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Nav.Link as={Link} to="/about">Rólunk</Nav.Link>
+                        <Nav.Link as={Link} to="/login">Belépés</Nav.Link>
+                        <Nav.Link as={Link} to="/registration">Regisztráció</Nav.Link>
+                        <Nav.Link as={Link} to="/shop">Vásárlás</Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
     );
 }
