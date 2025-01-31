@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, Shop ,NotFound } from "./pages/index.js"
+import { Home, About, Login, Registration, Shop ,NotFound } from "./pages/router.js"
 
 export default () => {
     return (
