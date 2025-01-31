@@ -41,3 +41,38 @@ instagram: @minerva.bob
 pinterest: MInerva03
 snapchat: supMInerva
 
+Készítők:
+Berdó Tamás
+Tomi kiváló backend programozó, akinek a weboldal készítés a kisujjában van. Modern technikákkal dolgozik, mindig naprakész.
+
+Imádja a macskákat és a programozást. Ő egy igazi „Code Cat”. :3
+
+Cicafiú 19 éves, programozó.
+
+
+Füleki József
+Józsi jó frontend programozó és kiváló rajzoló. Modern technikákkal dolgozik, mindig naprakész.
+
+Imádja az animációkat. Távol áll tőle az informatika bonyolult világa, de a szíve lelkét beleadja. ;) 
+
+Jósk 18 éves, rajzoló.
+
+
+Sartner Bettina
+Betti kiváló fotós, akinek a fényképezés a kisujjában van. Modern technikákkal dolgozik, mindig naprakész.
+
+Imádja a kutyákat és a fényképezést. A programozás bár nem erőssége, de a szíve lelkét beleadja. <3
+
+ 18 éves, fényképész.
+
+
+Konzulens:
+Molnár Máré Norbert
+
+Komédiás 1 kiváló programozó és vicces tanár. Modern technikákkal dolgozik, mindig naprakész.
+
+Imádja a programozást és a focit. Fontos számára, hogy diákjaival meg tudja szerettetni az informatikát és minél többen a szakmájukban dolgozzanak. 
+
+Máré 21 éves, tanár.
+
+
