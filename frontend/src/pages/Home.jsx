@@ -1,3 +1,7 @@
 export default () => {
-    return <h1>Főoldal</h1>;
+    return (
+        <>
+            <h2>Főoldal</h2>
+        </>
+    );
 }
