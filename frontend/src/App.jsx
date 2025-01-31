@@ -1,10 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, Shop ,NotFound } from "./pages/router.js"
+import { Home, About, Login, Registration, Shop ,NotFound } from "./pages/router.js";
+import MainNavbar from "./components/MainNavbar.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 export default () => {
     return (
         <Router>
+            <MainNavbar></MainNavbar>
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
