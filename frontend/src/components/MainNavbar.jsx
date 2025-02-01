@@ -21,8 +21,6 @@ export default () => {
 
                         <Nav.Link as={Link} to="/registration" >Regisztráció</Nav.Link>
 
-                        <Nav.Link as={Link} to="/shop" >Vásárlás</Nav.Link>
-
                     </Nav>
                 </Navbar.Collapse>
 
