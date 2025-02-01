@@ -8,6 +8,8 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         let body = JSON.parse(decryptRSA(encodedBody.encryptedData));
 
+        
+
         const passHash = await Bun.password.hash(body.password, {
             algorithm: "argon2id",  // https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#argon2id
             memoryCost: 19456,

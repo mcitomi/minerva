@@ -1,0 +1,5 @@
+.splash {
+    background-image: url("../../public/assets/images/text-bg-splash.png");
+    aspect-ratio: 1.1/1;
+    background-size: contain;
+}

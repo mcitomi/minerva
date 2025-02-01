@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Col, Row, FloatingLabel } from 'react-bootstrap';
 
-const { API_URL } = require("../config.json");
+const { API_URL } = import("../config.json");
 // az API_URL után írjuk az adott endpointot, ami a backend fogad. (Ez nem változik) Az endpointot a backend adja meg, rossz endpoint esetén 404-es státusszal visszatér.
-
-// Ez csak egy alap regisztrációs teszt, hogy tudjam tesztelni a backendet titkosítással stb...
 
 function pemToArrayBuffer(pem) {    // 
     const b64 = pem

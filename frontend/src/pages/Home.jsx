@@ -1,33 +1,33 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Carousel from "../components/Carousel";
+import { Container, Row, Col, Button, Image } from "react-bootstrap";
+
+import CarouselCompontent from "../components/Carousel";
+
+import "../styles/splash-texts.css";
 
 export default () => {
     return (
         <>
             <Container fluid>
-                <Carousel></Carousel>
+                <CarouselCompontent/>
             </Container>
             <Container>
             <Row style={{ marginTop: '80px', marginBottom: '80px' }}>
-                <Col style={{backgroundImage:"url(/assets/images/szovegh.png)", width: "500px", backgroundSize:"cover", height:"400px"}}>
+                <Col className="splash">
                     <h2>Bátor?</h2>
                     <p>Bizonyára tudod, hogy a görögök Pallasz Athénének hívják, míg a rómaiak Minervának a bölcsesség istennőjét. De tudod, hogy hogyan kapta a nevét?</p>
                 </Col>
-                <Col>
+                <Col className="splash">
                     <h2>Okos?</h2>
                     <p>A “Pallasz” jelző fegyverforgatót jelent, amit a harcok közben is igazságot szolgáltató Minervára utalt. A név köthető a szűzieségéhez és még egy nimfához is.</p>
                 </Col>
-                <Col>
+                <Col className="splash">
                     <h2>Bölcs?</h2>
                     <p>Az istennő Zeusz legkedvesebb gyermeke, hiszen az ő fejéből pattant ki. Minerva tettre készen, teljes fegyverzetben született meg. Ez aztán a nem szokványos!</p>
                 </Col>
             </Row>
             <p>Felkeltette érdeklődésedet? Tudj meg többet róla!</p>
             <Button variant="warning">Kattints ide!</Button>
-            <img src="./assets/images/video.png" alt="Videó"/>
+            <Image src="./assets/images/video.png" alt="Videó"/>
             <Row>
                 <Col>
                     <p>...mert gyors és egyszerű kezelni kicsiknek és nagyoknak egyaránt</p>
