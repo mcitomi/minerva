@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, Col, Row, FloatingLabel } from 'react-bootstrap';
 
 const { API_URL } = require("../config.json");
 // az API_URL után írjuk az adott endpointot, ami a backend fogad. (Ez nem változik) Az endpointot a backend adja meg, rossz endpoint esetén 404-es státusszal visszatér.
@@ -110,61 +110,30 @@ export default () => {
     };
 
     return (
-        <Container className="mt-5">
-            <h2>Registration Form</h2>
-            <Form onSubmit={handleSubmit}>
-                <Form.Group controlId="formName">
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Enter your name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="formEmail">
-                    <Form.Label>Email address</Form.Label>
-                    <Form.Control
-                        type="email"
-                        placeholder="Enter your email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="formPassword">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Enter your password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </Form.Group>
-
-                <Form.Group controlId="formPasswordre">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        placeholder="Enter your password"
-                        name="passwordre"
-                        value={formData.passwordre}
-                        onChange={handleChange}
-                        required
-                    />
-                </Form.Group>
-
-                <Button variant="primary" type="submit">
-                    Register
-                </Button>
-            </Form>
+        <Container>
+            <Row>
+                <Col>
+                    <img src="" alt="Dekor kép" />
+                </Col>
+                <Col>
+                    <h2>Regisztráció</h2>
+                    <Form onSubmit={handleSubmit}>
+                        <FloatingLabel controlId="floatingInput" label="Név" className="mb-3">
+                            <Form.Control type="text" placeholder="Név" name="name" value={formData.name} onChange={handleChange} required></Form.Control>
+                        </FloatingLabel>
+                        <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3">
+                            <Form.Control type="email" placeholder="Email cím" name="email" value={formData.email} onChange={handleChange} required></Form.Control>
+                        </FloatingLabel>
+                        <FloatingLabel controlId="floatingInput" label="Jelszó" className="mb-3">
+                            <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange} required></Form.Control>
+                        </FloatingLabel>
+                        <FloatingLabel  controlId="floatingInput" label="Jelszó újra" className="mb-3">
+                            <Form.Control type="password" placeholder="Jelszó újra" name="passwordre" value={formData.passwordre} onChange={handleChange} required></Form.Control>
+                        </FloatingLabel>
+                        <Button variant="warning" type="submit">Regisztráció</Button>
+                    </Form>
+                </Col>
+            </Row>
         </Container>
     );
 };

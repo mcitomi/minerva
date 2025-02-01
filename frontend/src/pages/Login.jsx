@@ -21,7 +21,7 @@ export default () => {
                         <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3">
                             <Form.Control type="password" placeholder="Jelszó"></Form.Control>
                         </FloatingLabel>
-                        <Button variant="warning">Belépés</Button>
+                        <Button variant="warning" type="submit">Belépés</Button>
                     </Form>
                 </Col>
             </Row>
