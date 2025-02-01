@@ -6,8 +6,11 @@ import Carousel from "../components/Carousel";
 
 export default () => {
     return (
-        <Container>
-            <Carousel></Carousel>
+        <>
+            <Container fluid>
+                <Carousel></Carousel>
+            </Container>
+            <Container>
             <Row>
                 <Col>
                     <h2>Bátor?</h2>
@@ -24,6 +27,7 @@ export default () => {
             </Row>
             <p>Felkeltette érdeklődésedet? Tudj meg többet róla!</p>
             <Button variant="warning">Kattints ide!</Button>
+            <img src="./assets/images/video.png" alt="Videó"/>
             <Row>
                 <Col>
                     <p>...mert gyors és egyszerű kezelni kicsiknek és nagyoknak egyaránt</p>
@@ -56,5 +60,6 @@ export default () => {
                 </Col>
             </Row>
         </Container>
+        </>
     );
 }
