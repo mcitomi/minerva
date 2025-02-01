@@ -11,8 +11,8 @@ export default () => {
                 <Carousel></Carousel>
             </Container>
             <Container>
-            <Row>
-                <Col>
+            <Row style={{ marginTop: '80px', marginBottom: '80px' }}>
+                <Col style={{backgroundImage:"url(/assets/images/szovegh.png)", width: "500px", backgroundSize:"cover", height:"400px"}}>
                     <h2>Bátor?</h2>
                     <p>Bizonyára tudod, hogy a görögök Pallasz Athénének hívják, míg a rómaiak Minervának a bölcsesség istennőjét. De tudod, hogy hogyan kapta a nevét?</p>
                 </Col>
