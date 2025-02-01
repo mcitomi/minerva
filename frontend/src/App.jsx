@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, NotFound, MyProfile } from "./pages/router.js";
+import { Home, About, Login, Registration, NotFound, MyProfile, MInerva } from "./pages/router.js";
 import MainNavbar from "./components/MainNavbar.jsx";
 import SupportUs from "./components/SupportUs.jsx";
 import Footer from "./components/Footer.jsx";
@@ -16,6 +16,7 @@ export default () => {
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/registration" element={<Registration></Registration>}></Route>
                 <Route path="/myprofile" element={<MyProfile></MyProfile>}></Route>
+                <Route path="/minerva" element={<MInerva></MInerva>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
