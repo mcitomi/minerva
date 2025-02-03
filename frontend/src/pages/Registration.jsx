@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Col, Row, FloatingLabel } from 'react-bootstrap';
 
-const { API_URL } = import("../config.json");
+import CONFIG from "../config.json";
+
 // az API_URL után írjuk az adott endpointot, ami a backend fogad. (Ez nem változik) Az endpointot a backend adja meg, rossz endpoint esetén 404-es státusszal visszatér.
 
 function pemToArrayBuffer(pem) {    // 
@@ -23,7 +24,7 @@ export default () => {
 
     async function fetchPublicKey() {
         try {
-            const response = await fetch(`${API_URL}/auth/pk`);
+            const response = await fetch(`${CONFIG.API_URL}/auth/pk`);
             const data = await response.json();
 
             const decodedKey = atob(data.encodedKey); // base64 decode https://www.w3schools.com/jsref/met_win_atob.asp
@@ -92,7 +93,7 @@ export default () => {
         }
 
         try {
-            const response = await fetch(`${API_URL}/auth/register`, {
+            const response = await fetch(`${CONFIG.API_URL}/auth/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
