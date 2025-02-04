@@ -20,6 +20,6 @@ ul {
     font-family: 'Lora', serif;
 }
 
-.kep {
-    height: 600px;
+#ikon {
+    list-style-image: url("../../public/assets/images/record.png");
 }

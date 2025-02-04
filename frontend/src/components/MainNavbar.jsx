@@ -11,7 +11,6 @@ export default () => {
 
                 <Navbar.Brand as={Link} to="/" className="link">Főoldal</Navbar.Brand>
 
-                <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
 
@@ -23,7 +22,8 @@ export default () => {
 
                     </Nav>
                 </Navbar.Collapse>
-
+                <img src="./assets/images/darklightmode.png" alt="Sötét világos mód" />
+                <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
             </Container>
         </Navbar>
     );
