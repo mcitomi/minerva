@@ -48,7 +48,7 @@ export default () => {
             </Row>
             <Row>
                 <Col className="text-center">
-                    <img src="./assets/images/earth.gif" alt="Gif" fluid />
+                    <Image src="./assets/images/earth.gif" alt="Gif" fluid />
                 </Col>
                 <Col>
                     <h2>Célunk</h2>

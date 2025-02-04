@@ -13,8 +13,8 @@ export default () => {
                 <Col>
                     <img src="" alt="Dekor kép" />
                 </Col>
-                <Col>
-                    <h2>Bejelentkezés</h2>
+                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30}}>
+                    <h2 style={{marginBottom: 30}}>Bejelentkezés</h2>
                     <Form>
                         <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3">
                             <Form.Control type="email" placeholder="Email-cím"></Form.Control>
@@ -22,7 +22,10 @@ export default () => {
                         <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3">
                             <Form.Control type="password" placeholder="Jelszó"></Form.Control>
                         </FloatingLabel>
-                        <Button variant="warning" type="submit">Belépés</Button>
+                        <div className="text-center">
+                        <Button variant="warning" type="submit" style={{marginRight: 10}}>Elfelejtettem a jelszavamat</Button>
+                        <Button variant="warning" type="submit" style={{marginLeft: 10}}>Belépés</Button>
+                        </div>
                     </Form>
                 </Col>
             </Row>

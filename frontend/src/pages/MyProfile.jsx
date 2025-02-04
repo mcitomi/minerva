@@ -4,15 +4,16 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 import "../styles/main.css";
 
 export default () => {
     return (
         <Container>
-            <h2>Fiókom</h2>
+            <h2 style={{marginBottom: 30}}>Fiókom</h2>
             <Row>
-                <Col>
-                    <h3>Adataim</h3>
+                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30}}>
+                    <h3 style={{marginBottom: 30}}>Adataim</h3>
                     <Form>
                         <Row>
                             <Col>
@@ -52,15 +53,21 @@ export default () => {
                         <FloatingLabel controlId="floatingInput" label="Cím" className="mb-3">
                             <Form.Control type="text" placeholder="Cím"></Form.Control>
                         </FloatingLabel>
-                        <Button variant="warning" type="submit">Módosítás</Button>
-                        <Button variant="warning" type="submit">Mentés</Button>
+                        <div className="text-center">
+                            <Button variant="warning" type="submit" style={{marginRight: 10}}>Módosítás</Button>
+                            <Button variant="warning" type="submit" style={{marginLeft: 10}}>Mentés</Button>
+                        </div>
                     </Form>
                 </Col>
-                <Col>
-                    <h3>Profilkép</h3>
-                    <img src="" alt="Profilkép" />
-                    <Button variant="warning" type="submit">Módosítás</Button>
-                    <Button variant="warning" type="submit">Mentés</Button>
+                <Col style={{paddingTop: 30, paddingBottom: 30}}>
+                    <h3 style={{marginBottom: 30}}>Profilkép</h3>
+                    <div className="text-center">
+                        <Image src="./assets/images/user.png" alt="Gif" fluid />
+                    </div>
+                    <div className="text-center">
+                        <Button variant="warning" type="submit" style={{marginRight: 10}}>Módosítás</Button>
+                        <Button variant="warning" type="submit" style={{marginLeft: 10}}>Mentés</Button>
+                    </div>
                 </Col>
             </Row>
         </Container>
