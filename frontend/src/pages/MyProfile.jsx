@@ -44,8 +44,8 @@ export default () => {
                                 </FloatingLabel>
                             </Col>
                             <Col>
-                                <FloatingLabel controlId="floatingInput" label="Város/falu/község" className="mb-3">
-                                    <Form.Control type="text" placeholder="Város/falu/község"></Form.Control>
+                                <FloatingLabel controlId="floatingInput" label="Település" className="mb-3">
+                                    <Form.Control type="text" placeholder="Település"></Form.Control>
                                 </FloatingLabel>
                             </Col>
                         </Row>

@@ -17,9 +17,9 @@ export default () => {
 
                         <Nav.Link as={Link} to="/about" className="link">Rólunk</Nav.Link>
 
-                        <Nav.Link as={Link} to="/login"  className="link">Belépés</Nav.Link>
-
                         <Nav.Link as={Link} to="/registration" className="link">Regisztráció</Nav.Link>
+
+                        <Nav.Link as={Link} to="/login"  className="link">Bejelentkezés</Nav.Link>
 
                     </Nav>
                 </Navbar.Collapse>

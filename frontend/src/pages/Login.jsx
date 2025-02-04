@@ -16,8 +16,8 @@ export default () => {
                 <Col>
                     <h2>Bejelentkezés</h2>
                     <Form>
-                        <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3">
-                            <Form.Control type="email" placeholder="Email cím"></Form.Control>
+                        <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3">
+                            <Form.Control type="email" placeholder="Email-cím"></Form.Control>
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3">
                             <Form.Control type="password" placeholder="Jelszó"></Form.Control>

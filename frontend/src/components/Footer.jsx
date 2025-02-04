@@ -17,7 +17,7 @@ export default () => {
                     </ul>
                 </Col>
                 <Col>
-                    <h3>Kövess minket:</h3>
+                    <h3>Kövess minket!</h3>
                     <ul className="footerList">
                         <li>facebook: MInerva - Bátor? Okos? Bölcs?</li>
                         <li>instagram: @minerva.bob</li>
