@@ -45,7 +45,7 @@ export default () => {
             </Row>
             <Row>
                 <Col>
-                    <img src="" alt="Gif" />
+                    <img src="./assets/images/earth.gif" alt="Gif" />
                 </Col>
                 <Col>
                     <h2>Célunk</h2>

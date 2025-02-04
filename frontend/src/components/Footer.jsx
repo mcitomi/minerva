@@ -9,7 +9,7 @@ export default () => {
             <Row>
                 <Col>
                     <h3>Elérhetőségeink:</h3>
-                    <ul>
+                    <ul className="footerList">
                         <li>telephely: 3047, Buják Alkotmány utca 16.</li>
                         <li>telefon: +36 30 119 2885</li>
                         <li>e-mail: minerva.bob@gmail.com</li>
@@ -18,7 +18,7 @@ export default () => {
                 </Col>
                 <Col>
                     <h3>Kövess minket:</h3>
-                    <ul>
+                    <ul className="footerList">
                         <li>facebook: MInerva - Bátor? Okos? Bölcs?</li>
                         <li>instagram: @minerva.bob</li>
                     </ul>

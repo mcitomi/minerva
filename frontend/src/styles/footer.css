@@ -3,3 +3,8 @@
     padding-top: 30px;
     padding-bottom: 30px;
 }
+
+.footerList {
+    text-align: center;
+    list-style-type: none;
+}
