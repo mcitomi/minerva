@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Col, Row, FloatingLabel } from 'react-bootstrap';
+import "../styles/main.css";
 
 import CONFIG from "../config.json";
 

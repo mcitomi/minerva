@@ -3,6 +3,7 @@ import { Container, Row, Col, Button, Image } from "react-bootstrap";
 import CarouselCompontent from "../components/Carousel";
 
 import "../styles/splash-texts.css";
+import "../styles/main.css";
 
 export default () => {
     return (
@@ -27,7 +28,7 @@ export default () => {
             </Row>
             <p>Felkeltette érdeklődésedet? Tudj meg többet róla!</p>
             <Button variant="warning">Kattints ide!</Button>
-            <Image src="./assets/images/video.png" alt="Videó"/>
+            <Image src="./assets/images/video.png" alt="Videó" className="kep"/>
             <Row>
                 <Col>
                     <p>...mert gyors és egyszerű kezelni kicsiknek és nagyoknak egyaránt</p>

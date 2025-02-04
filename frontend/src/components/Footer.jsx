@@ -1,10 +1,11 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import "../styles/footer.css";
 
 export default () => {
     return (
-        <Container>
+        <Container fluid className="hatter">
             <Row>
                 <Col>
                     <h3>Elérhetőségeink:</h3>

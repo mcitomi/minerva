@@ -6,20 +6,20 @@ import "../styles/nav.css";
 
 export default () => {
     return (
-        <Navbar expand="lg">
+        <Navbar expand="lg" sticky="top">
             <Container>
 
-                <Navbar.Brand as={Link} to="/" >Főoldal</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/" className="link">Főoldal</Navbar.Brand>
 
                 <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
 
-                        <Nav.Link as={Link} to="/about" >Rólunk</Nav.Link>
+                        <Nav.Link as={Link} to="/about" className="link">Rólunk</Nav.Link>
 
-                        <Nav.Link as={Link} to="/login"  >Belépés</Nav.Link>
+                        <Nav.Link as={Link} to="/login"  className="link">Belépés</Nav.Link>
 
-                        <Nav.Link as={Link} to="/registration" >Regisztráció</Nav.Link>
+                        <Nav.Link as={Link} to="/registration" className="link">Regisztráció</Nav.Link>
 
                     </Nav>
                 </Navbar.Collapse>

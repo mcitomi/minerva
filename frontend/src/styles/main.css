@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+h1, h2, h3, h4{
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    text-decoration: underline gold 8px;
+}
+
+.link {
+    font-family: 'Pacifico', cursive;
+}
+
+p {
+    text-align: center;
+    font-family: 'Lora', serif;
+}
+
+ul {
+    font-family: 'Lora', serif;
+}
+
+.kep {
+    height: 600px;
+}
