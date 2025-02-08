@@ -1,9 +1,5 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
-import Form from "react-bootstrap/Form";
+import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-bootstrap";
+
 import "../styles/main.css";
 
 export default () => {
@@ -11,7 +7,7 @@ export default () => {
         <Container>
             <Row>
                 <Col>
-                    <img src="" alt="Dekor kép" />
+                    <Image src="./assets/images/" alt="Dekor kép"></Image>
                 </Col>
                 <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30}}>
                     <h2 style={{marginBottom: 30}}>Bejelentkezés</h2>

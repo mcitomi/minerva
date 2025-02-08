@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form, Button, Col, Row, FloatingLabel } from 'react-bootstrap';
+import { Container, Form, Button, Col, Row, FloatingLabel, Image } from 'react-bootstrap';
 import "../styles/main.css";
 
 import CONFIG from "../config.json";
@@ -113,7 +113,7 @@ export default () => {
         <Container>
             <Row>
                 <Col>
-                    <img src="" alt="Dekor kép" />
+                    <Image src="./assets/images/" alt="Dekor kép"></Image>
                 </Col>
                 <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30}}>
                     <h2 style={{marginBottom: 30}}>Regisztráció</h2>

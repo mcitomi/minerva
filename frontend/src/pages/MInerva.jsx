@@ -1,8 +1,5 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { Container, Row, Col, Button, Form, Image } from "react-bootstrap";
+
 import "../styles/main.css";
 
 export default () => {
@@ -10,7 +7,7 @@ export default () => {
         <Container>
             <Row>
                 <Col>
-                    <img src="" alt="MInerva kép" />
+                    <Image src="./assets/images/" alt="MInerva kép"></Image>
                 </Col>
                 <Col>
                     <Form>

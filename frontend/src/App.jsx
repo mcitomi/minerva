@@ -1,9 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, About, Login, Registration, NotFound, MyProfile, MInerva } from "./pages/router.js";
+
 import MainNavbar from "./components/MainNavbar.jsx";
 import SupportUs from "./components/SupportUs.jsx";
 import Footer from "./components/Footer.jsx";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default () => {

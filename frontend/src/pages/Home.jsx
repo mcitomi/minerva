@@ -1,4 +1,5 @@
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Button, Image, Collapse } from "react-bootstrap";
+import { useState } from 'react';
 
 import CarouselCompontent from "../components/Carousel";
 
@@ -12,41 +13,44 @@ export default () => {
                 <CarouselCompontent/>
             </Container>
             <Container>
-            <Row style={{ marginTop: '80px', marginBottom: '80px' }}>
+            <Row className="mt-5 mb-5">
                 <Col className="splash">
-                    <h2 style={{marginTop: 80, marginBottom: 30}}>Bátor?</h2>
-                    <p>Bizonyára tudod, hogy a görögök Pallasz Athénének hívják, míg a rómaiak Minervának a bölcsesség istennőjét. De tudod, hogy hogyan kapta a nevét?</p>
+                    <ColData 
+                        title={"Bátor?"} 
+                        paragraph={"Bizonyára tudod, hogy a görögök Pallasz Athénének hívják, míg a rómaiak Minervának a bölcsesség istennőjét. De tudod, hogy hogyan kapta a nevét?"}></ColData>
                 </Col>
                 <Col className="splash">
-                    <h2 style={{marginTop: 80, marginBottom: 30}}>Okos?</h2>
-                    <p>A “Pallasz” jelző fegyverforgatót jelent, amit a harcok közben is igazságot szolgáltató Minervára utalt. A név köthető a szűzieségéhez és még egy nimfához is.</p>
+                    <ColData 
+                        title={"Okos?"} 
+                        paragraph={"A “Pallasz” jelző fegyverforgatót jelent, amit a harcok közben is igazságot szolgáltató Minervára utalt. A név köthető a szűzieségéhez és még egy nimfához is."}></ColData>
                 </Col>
                 <Col className="splash">
-                    <h2 style={{marginTop: 80, marginBottom: 30}}>Bölcs?</h2>
-                    <p>Az istennő Zeusz legkedvesebb gyermeke, hiszen az ő fejéből pattant ki. Minerva tettre készen, teljes fegyverzetben született meg. Ez aztán a nem szokványos!</p>
+                    <ColData 
+                        title={"Bölcs?"} 
+                        paragraph={"Az istennő Zeusz legkedvesebb gyermeke, hiszen az ő fejéből pattant ki. Minerva tettre készen, teljes fegyverzetben született meg. Ez aztán a nem szokványos!"}></ColData>
                 </Col>
             </Row>
             <p>Felkeltette érdeklődésedet? Tudj meg többet róla!</p>
             <div className="text-center" style={{marginBottom: 50}}>
-                <Button variant="warning">Kattints ide!</Button>
+                <Information></Information>
             </div>
             <Image src="./assets/images/video.png" alt="Videó" fluid />
             <h1 style={{marginTop: 50, marginBottom: 30}}>Miért válaszd a MInervát?</h1>
             <Row>
                 <Col className="splash">
-                    <p style={{marginTop: 120}}>...mert gyors és egyszerű kezelni kicsiknek és nagyoknak egyaránt</p>
+                    <Paragraph text={"...mert gyors és egyszerű kezelni kicsiknek és nagyoknak egyaránt"}></Paragraph>
                 </Col>
                 <Col className="splash">
-                    <p style={{marginTop: 120}}>...mert tanulhatsz vele mobiltelefonon, tableten és számítógépen is</p>
+                    <Paragraph text={"...mert tanulhatsz vele mobiltelefonon, tableten és számítógépen is"}></Paragraph>
                 </Col>
                 <Col className="splash">
-                    <p style={{marginTop: 120}}>...mert megismerheted a történelmi személyeket más korszakokból</p>
+                    <Paragraph text={"...mert megismerheted a történelmi személyeket más korszakokból"}></Paragraph>
                 </Col>
                 <Col className="splash">
-                    <p style={{marginTop: 120}}>...mert érettségi centrikus tanítással tanít, így garantált a siker</p>
+                    <Paragraph text={"...mert érettségi centrikus tanítással tanít, így garantált a siker"}></Paragraph>
                 </Col>
             </Row>
-            <Row>
+            <Row className="mt-3">
                 <Col className="text-center">
                     <Image src="./assets/images/earth.gif" alt="Gif" fluid />
                 </Col>
@@ -64,6 +68,37 @@ export default () => {
                 </Col>
             </Row>
         </Container>
+        </>
+    );
+}
+
+function ColData({ title, paragraph }) {
+    return (
+        <>
+            <h2 style={{marginTop: 80, marginBottom: 30}}>{title}</h2>
+            <p>{paragraph}</p>
+        </>
+    );
+}
+
+function Paragraph({ text }) {
+    return(
+        <p style={{marginTop: 120}}>{text}</p>
+    );
+}
+
+function Information() {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <>
+            <Button onClick={() => setOpen(!open)} aria-controls="information" aria-expanded={open} variant="warning">Kattints ide!</Button>
+            <Collapse in={open}>
+                <div id="information" className="mt-2">
+                    <p>Bizonyára nem tudtad, de Pallasz Athénének különböző jelképei vannak. Általában karddal, lándzsával, sisakkal és gorgósfős mellvérttel ábrázolják. Mellvértjét másképpen pajzsát Zeusz készítette Héphaisztosszal.</p>
+                    <p>Athéné szent állata a bagoly volt, amit a bölcsességgel és tudással párosítunk. Oltama alatt álltak a városok, amely közül az első Athén volt.</p>             
+                </div>
+            </Collapse>
         </>
     );
 }
