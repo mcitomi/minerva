@@ -13,7 +13,7 @@ export default () => {
                 <CarouselCompontent/>
             </Container>
             <Container>
-            <Row className="mt-5 mb-5">
+            <Row className="mt-5 mb-5" style={{color: "#212529"}}>
                 <Col className="splash">
                     <ColData 
                         title={"Bátor?"} 
@@ -36,7 +36,7 @@ export default () => {
             </div>
             <Image src="./assets/images/video.png" alt="Videó" fluid />
             <h1 style={{marginTop: 50, marginBottom: 30}}>Miért válaszd a MInervát?</h1>
-            <Row>
+            <Row style={{color: "#212529"}}>
                 <Col className="splash">
                     <Paragraph text={"...mert gyors és egyszerű kezelni kicsiknek és nagyoknak egyaránt"}></Paragraph>
                 </Col>

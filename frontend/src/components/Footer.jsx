@@ -7,8 +7,8 @@ export default () => {
         <Container fluid className="hatter">
             <Row>
                 <Col>
-                    <h3>Elérhetőségeink:</h3>
-                    <ul className="footerList">
+                    <h3 style={{color: "#212529"}}>Elérhetőségeink:</h3>
+                    <ul className="footerList" style={{color: "#212529"}}>
                         <li><Image src="./assets/images/location.svg" alt="Location" style={{width: 20}}></Image> 3047, Buják Alkotmány utca 16.</li>
                         <li><Image src="./assets/images/phone.svg" alt="Phone" style={{width: 20}}></Image> +36 30 119 2885</li>
                         <li><Image src="./assets/images/email.svg" alt="E-mail" style={{width: 20}}></Image> minerva.bob@gmail.com</li>
@@ -16,8 +16,8 @@ export default () => {
                     </ul>
                 </Col>
                 <Col>
-                    <h3>Kövess minket!</h3>
-                    <ul className="footerList">
+                    <h3 style={{color: "#212529"}}>Kövess minket!</h3>
+                    <ul className="footerList" style={{color: "#212529"}}>
                         <li><Image src="./assets/images/facebook.svg" alt="Facebook" style={{width: 20}}></Image> MInerva - Bátor? Okos? Bölcs?</li>
                         <li><Image src="./assets/images/instagram.svg" alt="Instagram" style={{width: 20}}></Image> @minerva.bob</li>
                     </ul>

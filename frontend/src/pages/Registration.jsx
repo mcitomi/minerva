@@ -115,7 +115,7 @@ export default () => {
                 <Col>
                     <Image src="./assets/images/" alt="Dekor kép"></Image>
                 </Col>
-                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30}}>
+                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h2 style={{marginBottom: 30}}>Regisztráció</h2>
                     <Form onSubmit={handleSubmit}>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3">

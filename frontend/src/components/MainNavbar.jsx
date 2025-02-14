@@ -1,10 +1,9 @@
 import { Container, Nav, Navbar, Image } from "react-bootstrap";
 import { Link } from "react-router-dom"
-//import { useState } from 'react';
 
 import "../styles/nav.css";
 
-export default () => {
+export default ({ toggleMode, isDarkMode }) => {
     return (
         <Navbar expand="lg" sticky="top">
             <Container>
@@ -16,27 +15,9 @@ export default () => {
                         <Nav.Link as={Link} to="/login"  className="link">Bejelentkezés</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Image src="./assets/images/darklightmode.png" alt="Sötét világos mód"></Image>
+                <Image src={isDarkMode ? "./assets/images/lightmode.svg" : "./assets/images/darkmode.svg"} alt="Sötét világos mód" onClick={toggleMode} style={{cursor: "pointer", width: 20}}></Image>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
             </Container>
         </Navbar>
     );
 }
-
-//Kezdetleges:
-/*
-function DarkLightMode() {
-    const [color, setColor] = useState(1);
-    function changeColor() {
-        if (color === 1) {
-            setColor(2);
-        }
-        else {
-            setColor(1);
-        }
-    }
-    return (
-        <></>
-    );
-}
-*/

@@ -7,7 +7,7 @@ export default () => {
         <Container>
             <h2 style={{marginBottom: 30}}>Fiókom</h2>
             <Row>
-                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30}}>
+                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h3 style={{marginBottom: 30}}>Adataim</h3>
                     <Form>
                         <Row>
