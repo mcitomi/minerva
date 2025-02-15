@@ -6,7 +6,7 @@ export default () => {
     return (
         <Container fluid className="hatter">
             <Row>
-                <Col>
+                <Col sx={12} md={6}>
                     <h3 style={{color: "#212529"}}>Elérhetőségeink:</h3>
                     <ul className="footerList" style={{color: "#212529"}}>
                         <li><Image src="./assets/images/location.svg" alt="Location" style={{width: 20}}></Image> 3047, Buják Alkotmány utca 16.</li>
@@ -15,7 +15,7 @@ export default () => {
                         <li><Image src="./assets/images/discord.svg" alt="Discord" style={{width: 20}}></Image> minerva.bob</li>
                     </ul>
                 </Col>
-                <Col>
+                <Col sx={12} md={6}>
                     <h3 style={{color: "#212529"}}>Kövess minket!</h3>
                     <ul className="footerList" style={{color: "#212529"}}>
                         <li><Image src="./assets/images/facebook.svg" alt="Facebook" style={{width: 20}}></Image> MInerva - Bátor? Okos? Bölcs?</li>

@@ -15,7 +15,10 @@ export default ({ toggleMode, isDarkMode }) => {
                         <Nav.Link as={Link} to="/login"  className="link">Bejelentkezés</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
-                <Image src={isDarkMode ? "./assets/images/lightmode.svg" : "./assets/images/darkmode.svg"} alt="Sötét világos mód" onClick={toggleMode} style={{cursor: "pointer", width: 20}}></Image>
+                <Image 
+                    src={isDarkMode ? "./assets/images/lightmode.svg" : "./assets/images/darkmode.svg"} 
+                    alt="Sötét világos mód" onClick={toggleMode} 
+                    style={{cursor: "pointer", width: 20}}></Image>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
             </Container>
         </Navbar>

@@ -112,10 +112,10 @@ export default () => {
     return (
         <Container>
             <Row>
-                <Col>
+                <Col sx={12} md={6}>
                     <Image src="./assets/images/" alt="Dekor kép"></Image>
                 </Col>
-                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
+                <Col sx={12} md={6} style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h2 style={{marginBottom: 30}}>Regisztráció</h2>
                     <Form onSubmit={handleSubmit}>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3">
@@ -131,7 +131,7 @@ export default () => {
                             <Form.Control type="password" placeholder="Jelszó újra" name="passwordre" value={formData.passwordre} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
                         <div className='text-center'>
-                            <Button variant="warning" type="submit">Regisztráció</Button>
+                            <Button variant="warning" type="submit" className="mt-2">Regisztráció</Button>
                         </div>
                     </Form>
                 </Col>

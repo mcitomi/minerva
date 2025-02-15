@@ -38,10 +38,10 @@ export default () => {
 function RightText({ img, name, text1, text2, text3 }) {
     return (
         <Row>
-            <Col>
+            <Col sx={12} md={6}>
                 <Image src={img} alt={name} fluid ></Image>
             </Col>
-            <Col>
+            <Col sx={12} md={6}>
                 <h3>{name}</h3>
                 <p>{text1}</p>
                 <p>{text2}</p>
@@ -54,13 +54,13 @@ function RightText({ img, name, text1, text2, text3 }) {
 function LeftText({ img, name, text1, text2, text3 }) {
     return (
         <Row>
-            <Col>
+            <Col sx={12} md={6}>
                 <h3>{name}</h3>
                 <p>{text1}</p>
                 <p>{text2}</p>
                 <p>{text3}</p>
             </Col>
-            <Col>
+            <Col sx={12} md={6}>
                 <Image src={img} alt={name} fluid></Image>
             </Col>
         </Row>

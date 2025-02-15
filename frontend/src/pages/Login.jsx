@@ -6,10 +6,10 @@ export default () => {
     return (
         <Container>
             <Row>
-                <Col>
+                <Col sx={12} md={6}>
                     <Image src="./assets/images/" alt="Dekor kép"></Image>
                 </Col>
-                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
+                <Col sx={12} md={6} style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h2 style={{marginBottom: 30}}>Bejelentkezés</h2>
                     <Form>
                         <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3">
@@ -19,8 +19,8 @@ export default () => {
                             <Form.Control type="password" placeholder="Jelszó"></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
-                        <Button variant="warning" type="submit" style={{marginRight: 10}}>Elfelejtettem a jelszavamat</Button>
-                        <Button variant="warning" type="submit" style={{marginLeft: 10}}>Belépés</Button>
+                        <Button variant="warning" type="submit" style={{marginRight: 10}} className="mt-2">Elfelejtettem a jelszavamat</Button>
+                        <Button variant="warning" type="submit" style={{marginLeft: 10}} className="mt-2">Belépés</Button>
                         </div>
                     </Form>
                 </Col>

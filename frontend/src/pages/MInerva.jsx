@@ -6,13 +6,13 @@ export default () => {
     return (
         <Container>
             <Row>
-                <Col>
+                <Col sx={12} md={4}>
                     <Image src="./assets/images/" alt="MInerva kép"></Image>
                 </Col>
-                <Col>
+                <Col sx={12} md={8}>
                     <Form>
                         <Form.Control type="text" placeholder="Kérdezz bátran Minervától..."></Form.Control>
-                        <Button variant="warning">Küldés</Button>
+                        <Button variant="warning" className="mt-2">Küldés</Button>
                     </Form>
                 </Col>
             </Row>

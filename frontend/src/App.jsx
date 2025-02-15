@@ -19,31 +19,27 @@ export default () => {
         return savedMode === "dark";
     });
 
-    //Névtelen függvény, amely módosítja a módot:
-    const toggleMode = () => {
-        setIsDarkMode((prevMode) => {
-            //Megfordítjuk a módot (pl.: sötétből világos, világosból sötét):
-            const newMode = !prevMode;
-            //Ha sötét, akkor legyen világos, ha világos, akkor legyen sötét:
-            localStorage.setItem("mode", newMode ? "dark" : "light");
-            return newMode;
-        });
+    //Function a sötét és világos mód váltására:
+    function toggleMode() {
+        //Ha sötét módban vagyunk:
+        if (isDarkMode) {
+            //Átállítjuk hamisra:
+            setIsDarkMode(false);
+            //LocalStorage-ba világos módot mentünk:
+            localStorage.setItem("mode", "light");
+            //A body-ra új osztály rakunk, mégpedig a világosat:
+            document.body.className = "light";
+        }
+        //Ha világos módban vagyunk:
+        else {
+            //Átállítjuk igazra:
+            setIsDarkMode(true);
+            //LocalStorage-ba sötét módot mentünk:
+            localStorage.setItem("mode", "dark");
+            //A body-ra új osztályt rakunk, mégpedig a sötétet:
+            document.body.className = "dark";
+        }
     };
-
-    //A body osztályát módosítjuk:
-    useEffect(() => {
-        document.body.className = isDarkMode ? "dark" : "light";
-        //Ha az isDarkMode értéke megváltozik, akkor újra lefut:
-    }, [isDarkMode]);
-
-    /*
-        Az első paraméter egy függvény, amely az effect-ket tartalmazza, míg a második paraméter egy tömb (dependency array), amelyben megadhatjuk azokat a változókat, amelyeket figyelni szeretnénk.
-        useEffect(setup, dependencies?)
-
-        Különböző effect-ek végrehajtására jó pl.: API hívások végrehajtása, osztályok eltávolítása és hozzáadása ( => Amire használtam - Joci).
-
-        Forrás: https://react.dev/reference/react/useEffect
-    */
 
     return (
         <Router>

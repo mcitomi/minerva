@@ -5,9 +5,9 @@ import "../styles/main.css";
 export default () => {
     return (
         <Container>
-            <h2 style={{marginBottom: 30}}>Fiókom</h2>
+            <h2 style={{marginBottom: 30}} className="mt-3">Fiókom</h2>
             <Row>
-                <Col style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
+                <Col sx={12} md={8} style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h3 style={{marginBottom: 30}}>Adataim</h3>
                     <Form>
                         <Row>
@@ -49,19 +49,19 @@ export default () => {
                             <Form.Control type="text" placeholder="Cím"></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
-                            <Button variant="warning" type="submit" style={{marginRight: 10}}>Módosítás</Button>
-                            <Button variant="warning" type="submit" style={{marginLeft: 10}}>Mentés</Button>
+                            <Button variant="warning" type="submit" style={{marginRight: 10}} className="mt-2">Módosítás</Button>
+                            <Button variant="warning" type="submit" style={{marginLeft: 10}} className="mt-2">Mentés</Button>
                         </div>
                     </Form>
                 </Col>
-                <Col style={{paddingTop: 30, paddingBottom: 30}}>
+                <Col sx={12} md={4} style={{paddingTop: 30, paddingBottom: 30}}>
                     <h3 style={{marginBottom: 30}}>Profilkép</h3>
                     <div className="text-center">
                         <Image src="./assets/images/user.png" alt="Gif" fluid />
                     </div>
                     <div className="text-center">
-                        <Button variant="warning" type="submit" style={{marginRight: 10}}>Módosítás</Button>
-                        <Button variant="warning" type="submit" style={{marginLeft: 10}}>Mentés</Button>
+                        <Button variant="warning" type="submit" style={{marginRight: 10}} className="mt-2">Módosítás</Button>
+                        <Button variant="warning" type="submit" style={{marginLeft: 10}} className="mt-2">Mentés</Button>
                     </div>
                 </Col>
             </Row>
