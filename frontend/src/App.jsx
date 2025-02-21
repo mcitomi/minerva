@@ -19,6 +19,14 @@ export default () => {
         return savedMode === "dark";
     });
 
+    useEffect(() => {   // futás után megvizsgáljuk a változót
+        if (isDarkMode) {
+            document.body.className = "dark";
+        } else {
+            document.body.className = "light";
+        }
+    }, [isDarkMode]); // akkor fusson le ha valtozik az isDarkMode valtozo
+
     //Function a sötét és világos mód váltására:
     function toggleMode() {
         //Ha sötét módban vagyunk:
