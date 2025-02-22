@@ -5,3 +5,6 @@ export { default as Registration } from "./Registration.jsx";
 export { default as NotFound } from "./NotFound.jsx";
 export { default as MyProfile } from "./MyProfile.jsx";
 export { default as MInerva } from "./MInerva.jsx";
+export { default as Petofi } from "./Petofi.jsx";
+export { default as Bolyai } from "./Bolyai.jsx";
+export { default as Saint } from "./Saint.jsx";

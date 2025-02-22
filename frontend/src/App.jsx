@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, NotFound, MyProfile, MInerva } from "./pages/router.js";
+import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Petofi, Bolyai, Saint } from "./pages/router.js";
 
 import MainNavbar from "./components/MainNavbar.jsx";
 import SupportUs from "./components/SupportUs.jsx";
 import Footer from "./components/Footer.jsx";
+import LoggedNavbar from "./components/LoggedNavbar.jsx";
 
 import "./styles/mode.css"
 
@@ -52,6 +53,7 @@ export default () => {
     return (
         <Router>
             <MainNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></MainNavbar>
+            {/*<LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></LoggedNavbar>*/}
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
@@ -59,6 +61,9 @@ export default () => {
                 <Route path="/registration" element={<Registration></Registration>}></Route>
                 <Route path="/myprofile" element={<MyProfile></MyProfile>}></Route>
                 <Route path="/minerva" element={<MInerva></MInerva>}></Route>
+                <Route path="/petofi" element={<Petofi></Petofi>}></Route>
+                <Route path="/bolyai" element={<Bolyai></Bolyai>}></Route>
+                <Route path="/saint" element={<Saint></Saint>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
