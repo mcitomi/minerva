@@ -17,7 +17,7 @@ export default () => {
                                 </FloatingLabel>
                             </Col>
                             <Col>
-                                <FloatingLabel controlId="floatingInput" label="Keresztknév" className="mb-3">
+                                <FloatingLabel controlId="floatingInput" label="Keresztnév" className="mb-3">
                                     <Form.Control type="name" placeholder="Keresztnév"></Form.Control>
                                 </FloatingLabel>
                             </Col>
@@ -49,8 +49,8 @@ export default () => {
                             <Form.Control type="text" placeholder="Cím"></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
-                            <Button variant="warning" type="submit" style={{marginRight: 10}} className="mt-2">Módosítás</Button>
-                            <Button variant="warning" type="submit" style={{marginLeft: 10}} className="mt-2">Mentés</Button>
+                            <Button variant="warning" type="submit" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Módosítás</Button>
+                            <Button variant="warning" type="submit" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Mentés</Button>
                         </div>
                     </Form>
                 </Col>
@@ -60,8 +60,8 @@ export default () => {
                         <Image src="./assets/images/user.png" alt="Gif" fluid />
                     </div>
                     <div className="text-center">
-                        <Button variant="warning" type="submit" style={{marginRight: 10}} className="mt-2">Módosítás</Button>
-                        <Button variant="warning" type="submit" style={{marginLeft: 10}} className="mt-2">Mentés</Button>
+                        <Button variant="warning" type="submit" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Módosítás</Button>
+                        <Button variant="warning" type="submit" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Mentés</Button>
                     </div>
                 </Col>
             </Row>
