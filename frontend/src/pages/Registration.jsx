@@ -103,6 +103,7 @@ export default () => {
             });
 
             const result = await response.json();
+            
             console.log('Response:', result);
         } catch (error) {
             console.error('Error submitting form: ', error);

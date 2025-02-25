@@ -16,7 +16,7 @@ export default ({ toggleMode, isDarkMode }) => {
                     </Nav>
                 </Navbar.Collapse>
                 <Image 
-                    src={isDarkMode ? "./assets/images/lightmode.svg" : "./assets/images/darkmode.svg"} 
+                    src={isDarkMode ? "/assets/images/lightmode.svg" : "/assets/images/darkmode.svg"} 
                     alt="Sötét világos mód" onClick={toggleMode} 
                     style={{cursor: "pointer", width: 20}}></Image>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" ></Navbar.Toggle>
