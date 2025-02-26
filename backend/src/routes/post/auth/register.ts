@@ -31,6 +31,14 @@ export const handleRequest = async (req: Request, db: Database) => {
             errorMessages.push("Passwords do not match");
         }
 
+        if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
+            errorMessages.push("Invalid email address format");
+        }
+
+        if(!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(body.password)) {
+            errorMessages.push("Weak password");
+        }
+
         if(errorMessages.length !== 0) {
             return Response.json({
                 "message": errorMessages
@@ -54,7 +62,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         return Response.json({
             "message": ["ok"]
-        });
+        }, {status: 201});
         
     } catch (error) {
         if(error.message.includes("UNIQUE constraint failed")) {
