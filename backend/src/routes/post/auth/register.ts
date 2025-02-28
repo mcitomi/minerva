@@ -18,6 +18,10 @@ export const handleRequest = async (req: Request, db: Database) => {
         if(!body.email || typeof(body.email) !== "string") {
             errorMessages.push("Invalid field: email");
         }
+        
+        if(!body.name || typeof(body.name) !== "string") {
+            errorMessages.push("Invalid field: name");
+        }
 
         if(!body.password || typeof(body.password) !== "string") {
             errorMessages.push("Invalid field: password");
@@ -53,7 +57,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         const userMgmtToken = randomUUID();     // ez lesz a kód amit kap emailben, amivel megerősíti regisztrációját
 
-        const sessionId = randomUUID() + Date.now();
+        const sessionId = Bun.randomUUIDv7("base64");
 
         const encryptedMail = encryptRSA(body.email);
         const hashedMail = hashHmac(body.email);
@@ -61,7 +65,7 @@ export const handleRequest = async (req: Request, db: Database) => {
         db.run("INSERT INTO credentials (email, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?);", [encryptedMail, hashedMail, passHash, userMgmtToken]);
 
         return Response.json({
-            "message": ["ok"]
+            "message": ["User successfully registered"]
         }, {status: 201});
         
     } catch (error) {
