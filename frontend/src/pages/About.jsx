@@ -1,4 +1,6 @@
-import { Container, Row, Col, Image } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
+import RightText from "../components/RightText";
+import LeftText from "../components/LeftText";
 
 import "../styles/main.css";
 
@@ -31,38 +33,7 @@ export default () => {
                 text1={"Komédiás 1 kiváló programozó és vicces tanár. Modern technikákkal dolgozik, mindig naprakész."} 
                 text2={"Imádja a programozást és a focit. Fontos számára, hogy diákjaival meg tudja szerettetni az informatikát és minél többen a szakmájukban dolgozzanak."} 
                 text3={"Máré 21 éves, tanár."}></LeftText>
+            <Image src="./assets/images/about/" alt="Közös kép"></Image>
         </Container>
-    );
-}
-
-function RightText({ img, name, text1, text2, text3 }) {
-    return (
-        <Row>
-            <Col sx={12} md={6}>
-                <Image src={img} alt={name} fluid ></Image>
-            </Col>
-            <Col sx={12} md={6}>
-                <h3>{name}</h3>
-                <p>{text1}</p>
-                <p>{text2}</p>
-                <p>{text3}</p>
-            </Col>
-        </Row>
-    );
-}
-
-function LeftText({ img, name, text1, text2, text3 }) {
-    return (
-        <Row>
-            <Col sx={12} md={6}>
-                <h3>{name}</h3>
-                <p>{text1}</p>
-                <p>{text2}</p>
-                <p>{text3}</p>
-            </Col>
-            <Col sx={12} md={6}>
-                <Image src={img} alt={name} fluid></Image>
-            </Col>
-        </Row>
     );
 }

@@ -1,7 +1,9 @@
-import { Container, Row, Col, Button, Image, Collapse } from "react-bootstrap";
-import { useState } from 'react';
+import { Container, Row, Col, Image } from "react-bootstrap";
 
 import Carousel from "../components/Carousel";
+import ColData from "../components/ColData";
+import Paragraph from "../components/Paragraph";
+import Information from "../components/Information";
 
 import "../styles/splash-texts.css";
 import "../styles/main.css";
@@ -68,37 +70,6 @@ export default () => {
                 </Col>
             </Row>
         </Container>
-        </>
-    );
-}
-
-function ColData({ title, paragraph }) {
-    return (
-        <>
-            <h2 style={{marginTop: 80, marginBottom: 30}}>{title}</h2>
-            <p>{paragraph}</p>
-        </>
-    );
-}
-
-function Paragraph({ text }) {
-    return(
-        <p style={{marginTop: 120}}>{text}</p>
-    );
-}
-
-function Information() {
-    const [open, setOpen] = useState(false);
-
-    return (
-        <>
-            <Button onClick={() => setOpen(!open)} aria-controls="information" aria-expanded={open} variant="warning" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Kattints ide!</Button>
-            <Collapse in={open}>
-                <div id="information" className="mt-2">
-                    <p>Bizonyára nem tudtad, de Pallasz Athénének különböző jelképei vannak. Általában karddal, lándzsával, sisakkal és gorgósfős mellvérttel ábrázolják. Mellvértjét másképpen pajzsát Zeusz készítette Héphaisztosszal.</p>
-                    <p>Athéné szent állata a bagoly volt, amit a bölcsességgel és tudással párosítunk. Oltama alatt álltak a városok, amely közül az első Athén volt.</p>             
-                </div>
-            </Collapse>
         </>
     );
 }

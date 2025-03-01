@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, Col, Row, FloatingLabel, Image } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Container, Form, Button, Col, Row, FloatingLabel, Image } from "react-bootstrap";
 import "../styles/main.css";
 
 import CONFIG from "../config.json";
