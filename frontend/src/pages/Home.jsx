@@ -4,6 +4,7 @@ import Carousel from "../components/Carousel";
 import ColData from "../components/ColData";
 import Paragraph from "../components/Paragraph";
 import Information from "../components/Information";
+import Video from "../components/Video";
 
 import "../styles/splash-texts.css";
 import "../styles/main.css";
@@ -36,7 +37,7 @@ export default () => {
             <div className="text-center" style={{marginBottom: 50}}>
                 <Information></Information>
             </div>
-            <Image src="./assets/images/video.png" alt="Videó" fluid />
+            <Video></Video>
             <h1 style={{marginTop: 50, marginBottom: 30}}>Miért válaszd a MInervát?</h1>
             <Row style={{color: "#212529"}}>
                 <Col sx={12} md={3} className="splash">
