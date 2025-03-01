@@ -7,7 +7,7 @@ export default () => {
         <Container>
             <Row>
                 <Col sx={12} md={4}>
-                    <Image src="./assets/images/kolcsey.png" alt="Kölcsey Ferenc kép" fluid></Image>
+                    <Image src="./assets/images/ai_characters/kolcsey.png" alt="Kölcsey Ferenc kép" fluid></Image>
                 </Col>
                 <Col sx={12} md={8}>
                     <Form>

@@ -1,7 +1,7 @@
 import { Container, Row, Col, Button, Image, Collapse } from "react-bootstrap";
 import { useState } from 'react';
 
-import CarouselCompontent from "../components/Carousel";
+import Carousel from "../components/Carousel";
 
 import "../styles/splash-texts.css";
 import "../styles/main.css";
@@ -9,8 +9,8 @@ import "../styles/main.css";
 export default () => {
     return (
         <>
-            <Container fluid>
-                <CarouselCompontent/>
+            <Container fluid style={{ padding: 0 }}>
+                <Carousel/>
             </Container>
             <Container>
             <Row className="mt-5 mb-5" style={{color: "#212529"}}>
