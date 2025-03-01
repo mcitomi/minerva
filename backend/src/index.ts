@@ -19,7 +19,12 @@ db.run(`CREATE TABLE IF NOT EXISTS credentials (
     twofaSecret TEXT
 );`);
 
-
+db.run(`CREATE TABLE IF NOT EXISTS sessions (
+    id TEXT PRIMARY KEY,
+    userId INTEGER NOT NULL,
+    refreshToken TEXT NOT NULL,
+    expiresAt DATETIME NOT NULL
+);`);
 
 requesthandler.register();
 

@@ -6,5 +6,8 @@ export { default as NotFound } from "./NotFound.jsx";
 export { default as MyProfile } from "./MyProfile.jsx";
 export { default as MInerva } from "./MInerva.jsx";
 export { default as Petofi } from "./Petofi.jsx";
+export { default as Kolcsey } from "./Kolcsey.jsx";
 export { default as Bolyai } from "./Bolyai.jsx";
+export { default as Neumann } from "./Neumann.jsx";
 export { default as Saint } from "./Saint.jsx";
+export { default as Szechenyi } from "./Szechenyi.jsx";

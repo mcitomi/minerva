@@ -1,7 +1,10 @@
-import { Container, Row, Col, Button, Image, Collapse } from "react-bootstrap";
-import { useState } from 'react';
+import { Container, Row, Col, Image } from "react-bootstrap";
 
-import CarouselCompontent from "../components/Carousel";
+import Carousel from "../components/Carousel";
+import ColData from "../components/ColData";
+import Paragraph from "../components/Paragraph";
+import Information from "../components/Information";
+import Video from "../components/Video";
 
 import "../styles/splash-texts.css";
 import "../styles/main.css";
@@ -9,8 +12,8 @@ import "../styles/main.css";
 export default () => {
     return (
         <>
-            <Container fluid>
-                <CarouselCompontent/>
+            <Container fluid style={{ padding: 0 }}>
+                <Carousel/>
             </Container>
             <Container>
             <Row className="mt-5 mb-5" style={{color: "#212529"}}>
@@ -34,7 +37,7 @@ export default () => {
             <div className="text-center" style={{marginBottom: 50}}>
                 <Information></Information>
             </div>
-            <Image src="./assets/images/video.png" alt="Videó" fluid />
+            <Video></Video>
             <h1 style={{marginTop: 50, marginBottom: 30}}>Miért válaszd a MInervát?</h1>
             <Row style={{color: "#212529"}}>
                 <Col sx={12} md={3} className="splash">
@@ -68,37 +71,6 @@ export default () => {
                 </Col>
             </Row>
         </Container>
-        </>
-    );
-}
-
-function ColData({ title, paragraph }) {
-    return (
-        <>
-            <h2 style={{marginTop: 80, marginBottom: 30}}>{title}</h2>
-            <p>{paragraph}</p>
-        </>
-    );
-}
-
-function Paragraph({ text }) {
-    return(
-        <p style={{marginTop: 120}}>{text}</p>
-    );
-}
-
-function Information() {
-    const [open, setOpen] = useState(false);
-
-    return (
-        <>
-            <Button onClick={() => setOpen(!open)} aria-controls="information" aria-expanded={open} variant="warning">Kattints ide!</Button>
-            <Collapse in={open}>
-                <div id="information" className="mt-2">
-                    <p>Bizonyára nem tudtad, de Pallasz Athénének különböző jelképei vannak. Általában karddal, lándzsával, sisakkal és gorgósfős mellvérttel ábrázolják. Mellvértjét másképpen pajzsát Zeusz készítette Héphaisztosszal.</p>
-                    <p>Athéné szent állata a bagoly volt, amit a bölcsességgel és tudással párosítunk. Oltama alatt álltak a városok, amely közül az első Athén volt.</p>             
-                </div>
-            </Collapse>
         </>
     );
 }

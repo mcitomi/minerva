@@ -7,10 +7,6 @@ h1, h2, h3, h4{
     text-decoration: underline gold 8px;
 }
 
-.link {
-    font-family: 'Pacifico', cursive;
-}
-
 p {
     text-align: center;
     font-family: 'Lora', serif;
@@ -22,4 +18,8 @@ ul {
 
 #ikon {
     list-style-image: url("../../public/assets/images/record.png");
+}
+
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
 }

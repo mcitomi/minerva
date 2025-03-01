@@ -7,12 +7,12 @@ export default () => {
         <Container>
             <Row>
                 <Col sx={12} md={4}>
-                    <Image src="./assets/images/minerva.png" alt="MInerva kép" fluid></Image>
+                    <Image src="./assets/images/ai_characters/minerva.png" alt="MInerva kép" fluid></Image>
                 </Col>
                 <Col sx={12} md={8}>
                     <Form>
                         <Form.Control type="text" placeholder="Kérdezz bátran Minervától..."></Form.Control>
-                        <Button variant="warning" className="mt-2">Küldés</Button>
+                        <Button variant="warning" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Küldés</Button>
                     </Form>
                 </Col>
             </Row>

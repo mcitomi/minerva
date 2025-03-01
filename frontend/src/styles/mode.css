@@ -1,9 +1,25 @@
-body.light {
+body.light, body.light .navbar .dropdown-menu {
     background-color: #f8f9fa;
     color: #212529;
 }
 
-body.dark {
+body.dark, body.dark .navbar .dropdown-menu {
     background-color: #212529;
     color: #f8f9fa;
+}
+
+body.light .navbar .dropdown-item {
+    background-color: #f8f9fa;
+}
+
+body.dark .navbar .dropdown-item {
+    background-color: #212529;
+}
+
+.navbar .dropdown-menu {
+    transition: background-color 0.3s ease;
+}
+
+body.light .navbar .dropdown-item:hover, body.dark .navbar .dropdown-item:hover {
+    color: #46789a;
 }

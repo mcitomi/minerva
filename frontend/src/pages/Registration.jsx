@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Container, Form, Button, Col, Row, FloatingLabel, Image } from 'react-bootstrap';
+import React, { useState } from "react";
+import { Container, Form, Button, Col, Row, FloatingLabel, Image } from "react-bootstrap";
 import "../styles/main.css";
 
 import CONFIG from "../config.json";
@@ -103,7 +103,10 @@ export default () => {
             });
 
             const result = await response.json();
-            console.log('Response:', result);
+            
+            // console.log('Response:', ...result.message);
+
+            alert(...result.message);
         } catch (error) {
             console.error('Error submitting form: ', error);
         }
@@ -131,7 +134,7 @@ export default () => {
                             <Form.Control type="password" placeholder="Jelszó újra" name="passwordre" value={formData.passwordre} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
                         <div className='text-center'>
-                            <Button variant="warning" type="submit" className="mt-2">Regisztráció</Button>
+                            <Button variant="warning" type="submit" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Regisztráció</Button>
                         </div>
                     </Form>
                 </Col>

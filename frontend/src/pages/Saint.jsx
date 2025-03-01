@@ -7,12 +7,12 @@ export default () => {
         <Container>
             <Row>
                 <Col sx={12} md={4}>
-                    <Image src="./assets/images/saint.png" alt="Szent István kép" fluid></Image>
+                    <Image src="./assets/images/ai_characters/saint.png" alt="Szent István kép" fluid></Image>
                 </Col>
                 <Col sx={12} md={8}>
                     <Form>
                         <Form.Control type="text" placeholder="Kérdezz bátran Szent Istvánttól..."></Form.Control>
-                        <Button variant="warning" className="mt-2">Küldés</Button>
+                        <Button variant="warning" className="mt-2" style={{fontFamily: 'Pacifico' , fontSize: "20px"}}>Küldés</Button>
                     </Form>
                 </Col>
             </Row>

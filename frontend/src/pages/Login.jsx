@@ -19,8 +19,8 @@ export default () => {
                             <Form.Control type="password" placeholder="Jelszó"></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
-                        <Button variant="warning" type="submit" style={{marginRight: 10}} className="mt-2">Elfelejtettem a jelszavamat</Button>
-                        <Button variant="warning" type="submit" style={{marginLeft: 10}} className="mt-2">Belépés</Button>
+                        <Button variant="warning" type="submit" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Elfelejtettem a jelszavamat</Button>
+                        <Button variant="warning" type="submit" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Belépés</Button>
                         </div>
                     </Form>
                 </Col>

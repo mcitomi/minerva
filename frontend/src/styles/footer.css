@@ -8,3 +8,17 @@
     text-align: center;
     list-style-type: none;
 }
+
+a {
+    text-decoration: none;
+    color: #212529;
+}
+
+.footerList a {
+    text-decoration: none;
+    color: #212529;
+}
+
+.footerList a:hover {
+    color: #ffbd59;
+}

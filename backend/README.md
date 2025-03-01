@@ -5,6 +5,8 @@ This project was created using `bun init` in bun v1.2.xx. [Bun](https://bun.sh) 
 | **HTTP Method**|**Path**| **Request Body**| **Headers**| **Comments**|
 |----------------|--------|-----------------|------------|-------------|
 | GET            | `/test/ping`| None  | None | Ellenőrizhetjük hogy él-e a backend |
+| GET            | `/auth/pk` | None | None | Publikus kulcs lekérése az RSA titkosításhoz.
+| POST           | `/auth/register`| **RSA encrypted body:** encryptedData : (name, email, password, passwordre) | None | Regisztráció RSA-OAEP-el és a public key-el titkosítva, base64 kódolású szöveget vár, benne a fent említett mezőkkel.
 
 ## Szerver:
 

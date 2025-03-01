@@ -10,7 +10,7 @@ export default () => {
                 title={"Upszi! Valami hiba történt!"} 
                 paragraph={"Keresésed során rossz végpontot adtál meg. Térj vissza a főoldalra!"}></Content>
             <div className="text-center">
-                <Button variant="warning" as={Link} to="/">Főoldal</Button>
+                <Button variant="warning" as={Link} to="/" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Főoldal</Button>
             </div>
         </Container>
     );
