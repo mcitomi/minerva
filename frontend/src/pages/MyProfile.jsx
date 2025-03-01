@@ -4,8 +4,7 @@ import "../styles/main.css";
 
 export default () => {
     return (
-        <Container>
-            <h2 style={{marginBottom: 30}} className="mt-3">Fiókom</h2>
+        <Container fluid>
             <Row>
                 <Col sx={12} md={8} style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h3 style={{marginBottom: 30}}>Adataim</h3>

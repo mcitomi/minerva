@@ -4,7 +4,7 @@ import "../styles/main.css";
 
 export default () => {
     return (
-        <Container>
+        <Container fluid>
             <Row>
                 <Col sx={12} md={6}>
                     <Image src="./assets/images/" alt="Dekor kép"></Image>

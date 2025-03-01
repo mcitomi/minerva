@@ -9,30 +9,34 @@ export default () => {
         <Container>
             <h2 className="mt-3">Készítők:</h2>
             <RightText 
-                img={"./assets/images/about/1b.JPG"} 
+                img={"./assets/images/about/berdo.JPG"} 
                 name={"Berdó Tamás"} 
-                text1={"Tomi kiváló backend programozó, akinek a weboldal készítés a kisujjában van. Modern technikákkal dolgozik, mindig naprakész."} 
-                text2={"Imádja a macskákat és a programozást. Ő egy igazi „Code Cat”. :3"} 
-                text3={"Cicafiú 19 éves, programozó."}></RightText>
+                text1={"Berdó Tamás egy kiemelkedő programozó, aki weboldalunk backend fejlesztőjeként és mesterséges intelligencia (MI) kutatójaként dolgozott. Széleskörű tapasztalatával és szakmai tudásával jelentős mértékben hozzájárult a projekt sikeréhez."} 
+                text2={"Tamás felelős volt a szerver tervezéséért és fejlesztéséért, amely a MInerva platform háttérszolgáltatásait biztosítja. Munkája során nemcsak a technikai megvalósításra, hanem a rendszer hatékonyságára is nagy hangsúlyt fektetett. Az általa létrehozott backend architektúra lehetővé tette, hogy a MInerva zökkenőmentesen működjön és képes legyen a felhasználói igények gyors kielégítésére."} 
+                text3={"Tamás MI-kutatói tevékenysége során új megoldásokat és algoritmusokat dolgozott ki, amelyek tovább növelték a platform intelligenciáját és funkcionalitását. Innovatív megközelítései révén jelentős előrelépéseket ért el a mesterséges intelligencia alkalmazásában, amelyeket a MInerva is hasznosít."}
+                text4={"Berdó Tamás munkája nemcsak technikai szempontból volt meghatározó, hanem hozzájárult a csapat szellemi fejlődéséhez is, hiszen tudását és tapasztalatait szívesen megosztotta csapattársaival. Az ő szakmai tudása nélkül a MInerva nem lenne az, ami ma."}></RightText>
             <LeftText 
-                img={"./assets/images/about/2b.JPG"} 
+                img={"./assets/images/about/fuleki.JPG"} 
                 name={"Füleki József"} 
-                text1={"Józsi jó frontend programozó és kiváló rajzoló. Modern technikákkal dolgozik, mindig naprakész."} 
-                text2={"Imádja az animációkat. Távol áll tőle az informatika bonyolult világa, de a szíve lelkét beleadja."} 
-                text3={"Jósk 18 éves, rajzoló."}></LeftText>
+                text1={"Füleki József weboldalunk frontend fejlesztőjeként, UI és UX tervezőjeként, valamint grafikusaként dolgozott, amely kulcsszerepet játszott a platform sikerében. József feladatai közé tartozott a honlap rácsának megtervezése, a vizuális megjelenés kialakítása, valamint a felhasználói élmény javítása, hogy a honlap a látogatók számára a lehető legkellemesebb és intuitívabb interakciót biztosítsa."} 
+                text2={"József kreatív látásmódja és technikai tudása lehetővé tette, hogy különböző grafikai elemeket alkalmazva egyedi és vonzó dizájnt hozzon létre. Az általa megtervezett felhasználói felület nemcsak esztétikus, hanem funkcionális is, hiszen a felhasználók könnyedén navigálhattak a weboldalon és gyorsan megtalálhatták a keresett információkat."} 
+                text3={"A projekt címe és alcíme, valamint a megjelenés is az ő keze munkáját dicséri. React Bootstrap és különböző képszerkesztő programok használatával egy modern, reszponzív weboldalt alkotott, amely minden eszközön jól működik. József szakértelme és figyelme a részletekre hozzájárult ahhoz, hogy a MInerva platform vizuálisan vonzó és felhasználóbarát legyen."}
+                text4={"Füleki József munkája nemcsak a dizájnra korlátozódott, hanem a felhasználói élmény folyamatos javítására is kiterjedt. Az ő elkötelezettsége nélkül a MInerva nem lenne az, ami ma."}></LeftText>
             <RightText 
-                img={"./assets/images/about/3b.JPG"} 
+                img={"./assets/images/about/sartner.JPG"} 
                 name={"Sartner Bettina"} 
-                text1={"Betti kiváló fotós, akinek a fényképezés a kisujjában van. Modern technikákkal dolgozik, mindig naprakész."} 
-                text2={"Imádja a kutyákat és a fényképezést. A programozás bár nem erőssége, de a szíve lelkét beleadja."} 
-                text3={"18 éves, fényképész."}></RightText>
+                text1={"Sartner Bettina weboldalunk adatmérnökeként kiemelkedő szerepet játszott a MInerva karaktereinek fejlesztésében és gazdagításában. Munkája során Bettina a karakterekhez szükséges adatokat gyűjtött és elemezett, biztosítva ezzel, hogy a platform a lehető legpontosabb és legérdekesebb információkat nyújtsa a felhasználók számára."}
+                text2={"Bettina alapos kutatómunkát végzett, amely során különböző forrásokból származó adatokat integrált, hogy a MInerva karakterei hitelesek és vonzóak legyenek. Az ő precíz és részletes megközelítése lehetővé tette, hogy a karakterek háttértörténetei, tulajdonságai és interakciói gazdagabbá váljanak."}
+                text3={"Adatmérnöki tevékenysége során Bettina nemcsak az adatok gyűjtésére és rendszerezésére összpontosított, hanem a minőségellenőrzésre is, hogy a MInerva platformon megjelenő információk mindig megbízhatóak és relevánsak legyenek, emellett ő volt a fotográfus is."}
+                text4={"Sartner Bettina munkája hozzájárult ahhoz, hogy a MInerva karakterei valóban életre keljenek, és a felhasználók számára egyedi élményt nyújtsanak. Az ő adatgyűjtése nélkül a MInerva nem lenne az, ami ma."}></RightText>
             <h2 className="mt-3">Konzulens:</h2>
             <LeftText 
-                img={"./assets/images/about/4b.JPG"} 
+                img={"./assets/images/about/molnar.JPG"} 
                 name={"Molnár Máté Norbert"} 
-                text1={"Komédiás 1 kiváló programozó és vicces tanár. Modern technikákkal dolgozik, mindig naprakész."} 
-                text2={"Imádja a programozást és a focit. Fontos számára, hogy diákjaival meg tudja szerettetni az informatikát és minél többen a szakmájukban dolgozzanak."} 
-                text3={"Máré 21 éves, tanár."}></LeftText>
+                text1={"Molnár Máté Norbert záródolgozatunk konzulenseként kiemelkedő szerepet játszott a projekt sikerében. Szakmai tapasztalata és tudása révén irányította a csapatot, segítve a célok kitűzését és a feladatok végrehajtását."} 
+                text2={"Máté nemcsak a technikai aspektusokban nyújtott támogatást, hanem a projekt megvalósítása során is aktívan részt vett. Tanácsaival és útmutatásaival hozzájárult ahhoz, hogy a csapat a legjobb megoldásokat találja meg és a vizsgaremek a lehető legmagasabb színvonalon készüljön el."} 
+                text3={"Konzulensi szerepe mellett Máté folyamatosan motiválta a csapatot, bátorítva a kreatív gondolkodást és az innovatív megoldások keresését. Az ő szakmai támogatása és elkötelezettsége nélkül a projekt nem érhette volna el a kívánt eredményeket."}
+                text4={"Molnár Máté Norbert munkája alapvető fontosságú volt a vizsgaremek sikeréhez és a csapat számára inspiráló példa a szakmai fejlődésre, valamint a közös célok elérésére."}></LeftText>
             <Image src="./assets/images/about/gang.jpg" alt="Közös kép" fluid></Image>
         </Container>
     );
