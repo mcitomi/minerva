@@ -9,18 +9,9 @@ export default () => {
                 <Col sx={12} md={8} style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h3 style={{marginBottom: 30}}>Adataim</h3>
                     <Form>
-                        <Row>
-                            <Col>
-                                <FloatingLabel controlId="floatingInput" label="Vezetéknév" className="mb-3">
-                                    <Form.Control type="name" placeholder="Vezetéknév"></Form.Control>
-                                </FloatingLabel>
-                            </Col>
-                            <Col>
-                                <FloatingLabel controlId="floatingInput" label="Keresztnév" className="mb-3">
-                                    <Form.Control type="name" placeholder="Keresztnév"></Form.Control>
-                                </FloatingLabel>
-                            </Col>
-                        </Row>
+                        <FloatingLabel controlId="floatingInput" label="Név" className="mb-3">
+                            <Form.Control type="name" placeholder="Név"></Form.Control>
+                        </FloatingLabel>
                         <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3">
                             <Form.Control type="email" placeholder="Email cím"></Form.Control>
                         </FloatingLabel>
@@ -55,8 +46,10 @@ export default () => {
                 </Col>
                 <Col sx={12} md={4} style={{paddingTop: 30, paddingBottom: 30}}>
                     <h3 style={{marginBottom: 30}}>Profilkép</h3>
-                    <div className="text-center">
-                        <Image src="./assets/images/user.png" alt="Gif" fluid />
+                    <div className="d-flex justify-content-center">
+                        <div style={{ borderRadius: "50%", overflow: "hidden", width: "400px", height: "400px", border: "#699fcb 5px solid" }} className="mt-2 mb-2">
+                            <Image src="./assets/images/user.png" alt="Profilkép" fluid style={{ height: "100%", width: "100%", objectFit: "cover" }}/>
+                        </div>
                     </div>
                     <div className="text-center">
                         <Button variant="warning" type="submit" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Módosítás</Button>

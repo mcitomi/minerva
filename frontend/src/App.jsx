@@ -6,6 +6,7 @@ import MainNavbar from "./components/MainNavbar.jsx";
 import SupportUs from "./components/SupportUs.jsx";
 import Footer from "./components/Footer.jsx";
 import LoggedNavbar from "./components/LoggedNavbar.jsx";
+import Up from "./components/Up.jsx";
 
 import "./styles/mode.css"
 
@@ -53,7 +54,8 @@ export default () => {
     return (
         <Router>
             <MainNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></MainNavbar>
-            {/*<LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></LoggedNavbar>*/}
+            <LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></LoggedNavbar>
+            <Up></Up>
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/about" element={<About></About>}></Route>

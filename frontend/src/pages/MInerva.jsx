@@ -11,7 +11,7 @@ export default () => {
                 </Col>
                 <Col sx={12} md={8}>
                     <Form>
-                        <Form.Control type="text" placeholder="Kérdezz bátran Minervától..."></Form.Control>
+                        <Form.Control type="text" placeholder="Kérdezz bátran MInervától..."></Form.Control>
                         <Button variant="warning" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Küldés</Button>
                     </Form>
                 </Col>

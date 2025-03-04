@@ -134,7 +134,7 @@ export default () => {
                             <Form.Control type="password" placeholder="Jelszó újra" name="passwordre" value={formData.passwordre} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
                         <div className='text-center'>
-                            <Button variant="warning" type="submit" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Regisztráció</Button>
+                            <Button variant="warning" type="submit" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Regisztrálás</Button>
                         </div>
                     </Form>
                 </Col>
