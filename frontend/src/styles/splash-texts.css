@@ -1,11 +1,15 @@
 body.light .splash {
     background-image: url("../../public/assets/images/mode/text_light.png");
     aspect-ratio: 1.1/1;
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 body.dark .splash {
     background-image: url("../../public/assets/images/mode/text_dark.png");
     aspect-ratio: 1.1/1;
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
