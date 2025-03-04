@@ -54,7 +54,7 @@ export default () => {
     return (
         <Router>
             <MainNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></MainNavbar>
-            <LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></LoggedNavbar>
+            {/*<LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></LoggedNavbar>*/}
             <Up></Up>
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>

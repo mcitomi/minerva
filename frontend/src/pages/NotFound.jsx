@@ -19,7 +19,9 @@ export default () => {
 function Content({ title, paragraph }) {
     return (
         <>
-            <Image src="./assets/images/" alt="Dekor kép"></Image>
+            <div className="d-flex justify-content-center">
+                <Image src="./assets/images/404.png" alt="Dekor kép" fluid></Image>
+            </div>
             <h1 style={{marginTop: 30}}>{title}</h1>
             <p>{paragraph}</p>
         </>
