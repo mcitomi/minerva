@@ -11,7 +11,7 @@ export function sendMail(targets: string[], subject: string, text: string, html:
             }
         });
     
-        transporter.sendMail({from: 'support@edu-minerva.hu', to: targets.toString(), subject: subject, text: text, html: html}, function(error, info){
+        transporter.sendMail({from: 'no-reply@edu-minerva.hu', to: targets.toString(), subject: subject, text: text, html: html}, function(error, info){
             if (error) {
               return `Error: ${error}`;
             } else {

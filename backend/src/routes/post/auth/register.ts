@@ -73,7 +73,7 @@ export const handleRequest = async (req: Request, db: Database) => {
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Verify</title>
             </head>
-            <body style="font-family: Arial, sans-serif; color: white; width: 100%;">
+            <body style="font-family: Arial, sans-serif; color: black; width: 100%;">
                 <h2>register test</h2>
             </body>
             </html>
