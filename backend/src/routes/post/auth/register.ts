@@ -2,6 +2,7 @@ import { Database } from "bun:sqlite";
 import { decryptRSA, encryptRSA, hashHmac } from "../../../modules/crypt";
 import { randomUUID } from "node:crypto";
 import { type Body } from "../../../types/register";
+import { sendMail } from "../../../modules/mail/sender";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -63,6 +64,26 @@ export const handleRequest = async (req: Request, db: Database) => {
         const hashedMail = hashHmac(body.email);
 
         db.run("INSERT INTO credentials (email, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?);", [encryptedMail, hashedMail, passHash, userMgmtToken]);
+
+        const mailResponse = sendMail([body.email], "Minerva regisztráció", "Erősítse meg email címét", `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Verify</title>
+            </head>
+            <body style="font-family: Arial, sans-serif; color: white; width: 100%;">
+                <h2>register test</h2>
+            </body>
+            </html>
+        `);
+
+        if(mailResponse?.includes("Error")){
+            return new Response(`{"message" : "${mailResponse}"}`, {
+                status: 500,
+            });
+        }
 
         return Response.json({
             "message": ["User successfully registered"]
