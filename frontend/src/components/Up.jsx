@@ -12,12 +12,12 @@ export default () => {
 
     const scrollToTop = () => {
         const scrollStep = -window.scrollY / 15;
-        const scrollInterval = setInterval(() => {
-            if (window.scrollY === 0) {
-              clearInterval(scrollInterval);
+        const scrollInterval = requestAnimationFrame(function step() {
+            if (window.scrollY > 0) {
+                window.scrollBy(0, scrollStep);
+                requestAnimationFrame(step);
             }
-            window.scrollBy(0, scrollStep);
-        }, 15);
+        });
     }
 
     useEffect(() => {

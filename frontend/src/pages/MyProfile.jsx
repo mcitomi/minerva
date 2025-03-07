@@ -6,7 +6,7 @@ export default () => {
     return (
         <Container fluid>
             <Row>
-                <Col sx={12} md={8} style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
+                <Col sx={12} md={8} style={{backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h3 style={{marginBottom: 30}}>Adataim</h3>
                     <Form>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3">

@@ -115,11 +115,11 @@ export default () => {
     return (
         <Container fluid>
             <Row>
-                <Col sx={12} md={6}>
-                    <Image src="./assets/images/" alt="Dekor kép"></Image>
+                <Col sx={12} md={6} style={{ padding: 0 }}>
+                    <Image src="./assets/images/registration.gif" alt="Dekor kép" fluid></Image>
                 </Col>
-                <Col sx={12} md={6} style={{backgroundColor: "#d3eefd", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
-                    <h2 style={{marginBottom: 30}}>Regisztráció</h2>
+                <Col sx={12} md={6} style={{backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
+                    <h2 className="mt-5 mb-5 pt-5">Regisztráció</h2>
                     <Form onSubmit={handleSubmit}>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3">
                             <Form.Control type="text" placeholder="Név" name="name" value={formData.name} onChange={handleChange} required></Form.Control>
@@ -127,12 +127,18 @@ export default () => {
                         <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3">
                             <Form.Control type="email" placeholder="Email-cím" name="email" value={formData.email} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3">
-                            <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange} required></Form.Control>
-                        </FloatingLabel>
-                        <FloatingLabel  controlId="floatingPassword" label="Jelszó újra" className="mb-3">
-                            <Form.Control type="password" placeholder="Jelszó újra" name="passwordre" value={formData.passwordre} onChange={handleChange} required></Form.Control>
-                        </FloatingLabel>
+                        <Row>
+                            <Col sx={12} md={6}>
+                                <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3">
+                                    <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange} required></Form.Control>
+                                </FloatingLabel>
+                            </Col>
+                            <Col sx={12} md={6}>
+                                <FloatingLabel  controlId="floatingPassword" label="Jelszó újra" className="mb-3">
+                                    <Form.Control type="password" placeholder="Jelszó újra" name="passwordre" value={formData.passwordre} onChange={handleChange} required></Form.Control>
+                                </FloatingLabel>
+                            </Col>
+                        </Row>
                         <div className='text-center'>
                             <Button variant="warning" type="submit" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Regisztrálás</Button>
                         </div>

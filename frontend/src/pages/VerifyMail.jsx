@@ -1,6 +1,9 @@
-import { Button } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import CONFIG from "../config.json";
 import { useState } from "react";
+
+import Content from "../components/Content.jsx";
+import "../styles/main.css";
 
 async function verify(token) {
     const response = await fetch(`${CONFIG.API_URL}/auth/verify-mail/link?mtoken=${token}`);
@@ -30,12 +33,15 @@ export default () => {
 
 
     return (
-        <>
-            
-            <h2>Megerősíti regisztrációját?</h2>
-
-            <Button onClick={() => verify(verifyToken)}>Regisztráció megerősítése</Button>
-            <Button onClick={() => deny(verifyToken)}>Regisztráció törlése</Button>
-        </>
+        <Container style={{marginBottom: 30}}>
+            <Content 
+                title={"Megerősíti regisztrációját?"} 
+                paragraph={"A regisztráció véglegesítéséhez kérem nyomjon a megerősítés gombra."}
+                img={"./assets/images/warning.png"}></Content>
+            <div className="text-center">
+                <Button variant="warning" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} onClick={() => verify(verifyToken)}>Megerősítés</Button>
+                <Button variant="warning" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} onClick={() => deny(verifyToken)}>Törlés</Button>
+            </div>
+        </Container>
     )
 }

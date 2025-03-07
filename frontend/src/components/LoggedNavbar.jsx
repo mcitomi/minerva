@@ -24,16 +24,16 @@ export default ({ toggleMode, isDarkMode }) => {
                         <Nav.Link as={Link} to="/about" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Rólunk</Nav.Link>
                         <NavDropdown title="Beszélgess!" id="basic-nav-dropdown" className="link" style={{fontSize: "20px"}}>
                             <NavDropdown title="Magyar nyelv és irodalom" className="link" style={{fontSize: "20px"}}>
-                                <NavDropdown.Item as={Link} to="/petofi" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Petőfi Sándor</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/kolcsey" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Kölcsey Ferenc</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/petofi-sandor" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Petőfi Sándor</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/kolcsey-ferenc" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Kölcsey Ferenc</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Matematika" className="link" style={{fontSize: "20px"}}>
-                                <NavDropdown.Item as={Link} to="/bolyai" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai János</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/neumann" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Neumann János</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/bolyai-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai János</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/neumann-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Neumann János</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Történelem" className="link" style={{fontSize: "20px"}}>
-                                <NavDropdown.Item as={Link} to="/saint" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Szent István</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/szechenyi" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Széchenyi István</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/szent-istvan" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Szent István</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/szechenyi-istvan" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Széchenyi István</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to="/minerva" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>MInerva</NavDropdown.Item>

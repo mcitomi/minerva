@@ -63,12 +63,12 @@ export default () => {
                 <Route path="/registration" element={<Registration></Registration>}></Route>
                 <Route path="/myprofile" element={<MyProfile></MyProfile>}></Route>
                 <Route path="/minerva" element={<MInerva></MInerva>}></Route>
-                <Route path="/petofi" element={<Petofi></Petofi>}></Route>
-                <Route path="/kolcsey" element={<Kolcsey></Kolcsey>}></Route>
-                <Route path="/bolyai" element={<Bolyai></Bolyai>}></Route>
-                <Route path="/neumann" element={<Neumann></Neumann>}></Route>
-                <Route path="/saint" element={<Saint></Saint>}></Route>
-                <Route path="/szechenyi" element={<Szechenyi></Szechenyi>}></Route>
+                <Route path="/petofi-sandor" element={<Petofi></Petofi>}></Route>
+                <Route path="/kolcsey-ferenc" element={<Kolcsey></Kolcsey>}></Route>
+                <Route path="/bolyai-janos" element={<Bolyai></Bolyai>}></Route>
+                <Route path="/neumann-janos" element={<Neumann></Neumann>}></Route>
+                <Route path="/szent-istvan" element={<Saint></Saint>}></Route>
+                <Route path="/szechenyi-istvan" element={<Szechenyi></Szechenyi>}></Route>
                 <Route path="/verify-account" element={<VerifyPage/>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
