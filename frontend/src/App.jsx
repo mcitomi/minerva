@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Petofi, Kolcsey, Bolyai, Neumann, Saint, Szechenyi } from "./pages/router.js";
+import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Petofi, Kolcsey, Bolyai, Neumann, Saint, Szechenyi, VerifyPage } from "./pages/router.js";
 
 import MainNavbar from "./components/MainNavbar.jsx";
 import SupportUs from "./components/SupportUs.jsx";
@@ -69,6 +69,7 @@ export default () => {
                 <Route path="/neumann" element={<Neumann></Neumann>}></Route>
                 <Route path="/saint" element={<Saint></Saint>}></Route>
                 <Route path="/szechenyi" element={<Szechenyi></Szechenyi>}></Route>
+                <Route path="/verify-account" element={<VerifyPage/>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>

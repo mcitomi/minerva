@@ -4,3 +4,8 @@ export type Body = {
     password: string;
     passwordre: string;
 }
+
+export type RawBody = {
+    encryptedData: string;
+    verifyUrl: string;
+}

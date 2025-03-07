@@ -1,14 +1,14 @@
 import { Database } from "bun:sqlite";
 import { decryptRSA, encryptRSA, hashHmac } from "../../../modules/crypt";
 import { randomUUID } from "node:crypto";
-import { type Body } from "../../../types/register";
+import { type Body, type RawBody } from "../../../types/register";
 import { sendMail } from "../../../modules/mail/sender";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
-        const encodedBody = await req.json();
+        const rawBody = await req.json() as RawBody;
 
-        let body = JSON.parse(decryptRSA(encodedBody.encryptedData)) as Body;
+        let body = JSON.parse(decryptRSA(rawBody.encryptedData)) as Body;
 
         const errorMessages = [];
 
@@ -40,7 +40,7 @@ export const handleRequest = async (req: Request, db: Database) => {
             errorMessages.push("Invalid email address format");
         }
 
-        if(!/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(body.password)) {
+        if(!/^(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[@$!%*?&]).{8,}$/u.test(body.password)) {
             errorMessages.push("Weak password");
         }
 
@@ -56,12 +56,13 @@ export const handleRequest = async (req: Request, db: Database) => {
             timeCost: 2
         });
 
-        const userMgmtToken = randomUUID();     // ez lesz a kód amit kap emailben, amivel megerősíti regisztrációját
-
-        const sessionId = Bun.randomUUIDv7("base64");
+        const userMgmtToken = Bun.randomUUIDv7("base64");     // ez lesz a kód amit kap emailben, amivel megerősíti regisztrációját
 
         const encryptedMail = encryptRSA(body.email);
         const hashedMail = hashHmac(body.email);
+        
+        // const verifyUrl = `http://${new URL(req.url).host}/auth/verify-mail/link?mtoken=${userMgmtToken}`;
+        const verifyUrl = `${rawBody.verifyUrl}/verify-account?mtoken=${userMgmtToken}`;
 
         db.run("INSERT INTO credentials (email, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?);", [encryptedMail, hashedMail, passHash, userMgmtToken]);
 
@@ -74,7 +75,10 @@ export const handleRequest = async (req: Request, db: Database) => {
             <title>Verify</title>
             </head>
             <body style="font-family: Arial, sans-serif; color: black; width: 100%;">
-                <h2>register test</h2>
+                <h2>Üdv ${body.name}!</h2>
+                <a href="${verifyUrl}">Regisztráció megerősítése</a>
+                <br/>
+                <small>${verifyUrl}</small>
             </body>
             </html>
         `);
@@ -90,6 +94,8 @@ export const handleRequest = async (req: Request, db: Database) => {
         }, {status: 201});
         
     } catch (error) {
+        console.log(error);
+        
         if(error.message.includes("UNIQUE constraint failed")) {
             return Response.json({
                 "message": ["Mail already registered!"]
