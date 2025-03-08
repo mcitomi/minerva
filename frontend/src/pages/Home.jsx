@@ -1,10 +1,10 @@
 import { Container, Row, Col, Image } from "react-bootstrap";
 
-import Carousel from "../components/Carousel";
-import ColData from "../components/ColData";
-import Paragraph from "../components/Paragraph";
-import Information from "../components/Information";
-import Video from "../components/Video";
+import Carousel from "../components/Carousel.jsx";
+import ColData from "../components/ColData.jsx";
+import Paragraph from "../components/Paragraph.jsx";
+import Information from "../components/Information.jsx";
+import Video from "../components/Video.jsx";
 
 import "../styles/splash-texts.css";
 import "../styles/main.css";

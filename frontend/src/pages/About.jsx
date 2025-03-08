@@ -1,6 +1,6 @@
 import { Container, Image } from "react-bootstrap";
-import RightText from "../components/RightText";
-import LeftText from "../components/LeftText";
+import RightText from "../components/RightText.jsx";
+import LeftText from "../components/LeftText.jsx";
 
 import "../styles/main.css";
 
