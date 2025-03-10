@@ -1,39 +1,33 @@
+
 [
-   {
-    "text_input": "Miért fontos a tanulás mellett a mentális jólét megőrzése?" ,
-    "output": "A mentális jólét megőrzése elengedhetetlen ahhoz, hogy a diákok kiegyensúlyozottak maradjanak, csökkentsék a stresszt és hatékonyabban tudjanak tanulni. A szakdolgozat készítői szerint a tanulás nemcsak a tudás megszerzéséről szól, hanem a lelki egyensúly fenntartásáról is."
-   },
-   {
-    "text_input": "Milyen segítséget nyújt a weboldal a diákoknak, tanároknak és szülőknek?" ,
-    "output": "A weboldal egy olyan platformot biztosít, amely segíti a diákokat a tanulásban, a tanárokat a tanításban, és a szülőket abban, hogy hatékonyan támogathassák gyermekeiket."
-   },
-   {
-    "text_input": "Milyen funkciókkal segíti a weboldal az érettségire való felkészülést?" ,
-    "output": "A weboldal elsősorban az érettségire való felkészülést támogatja, miközben interaktív és segítő funkciókkal teszi gördülékenyebbé a tanulási folyamatot."
-   },
-   {
-    "text_input": "Hogyan teszi a mesterséges intelligencia szórakoztatóbbá és hatékonyabbá a tanulást?" ,
-    "output": "A mesterséges intelligencia által „megszólaltatott” történelmi személyek (költők, írók, matematikusok) életének bemutatása érdekessé és élményszerűvé teszi a tanulást. Emellett segít a jegyzetek megírásában és a házi feladatok megoldásában is."
-   },
-   {
-    "text_input": "Milyen szerepet játszik a chatfunkció a tanulásban?" ,
-    "output": "A chatfunkció lehetőséget biztosít a felhasználóknak, hogy beszélgessenek a mesterséges intelligenciával, így kérdéseket tehetnek fel, és azonnali válaszokat kapnak a tananyagról."
-   },
-   {
-    "text_input": "Milyen módon csökkenti a weboldal a diákok tanulással járó stresszét?" ,
-    "output": "A weboldal segíti a diákokat a tanulási folyamat gördülékenyebbé tételében, így kevésbé érzik túlterheltnek magukat, és magabiztosabban haladhatnak a céljaik felé."
-   },
-   {
-    "text_input": "Hogyan segíthet a Minerva abban, hogy a diákok magabiztosabbak és kiegyensúlyozottabbak legyenek?" ,
-    "output": "A Minerva weboldal támogatást nyújt a diákoknak a tanulásban és a stresszkezelésben, így növeli az önbizalmukat és hozzájárul kiegyensúlyozottabb fejlődésükhöz."
-   },
-   {
-    "text_input": "Milyen előnyökkel jár a mesterséges intelligencia alkalmazása az oktatásban?" ,
-    "output": "A mesterséges intelligencia segít személyre szabni a tanulási folyamatot, megkönnyíti az információk feldolgozását, és interaktívabbá teszi az oktatást, ezáltal hatékonyabbá és élvezetesebbé válik a tanulás."
-   },
-   {
-    "text_input": "" ,
-    "output": ""
-   }
+   {"text": "Mi a minerva projekt? Kik fejesztik a minerva projektet?"},
+   {"text": "A MInerva projekt egy mesterséges intteligencia alapú tanulást segítő oldal, amit három fiatal hozott létre A projektet Józsi, Tamás és Betti fejleszti!"},
    
+   {"text": "Mi a minerva projekt? Mit tudsz a minerva projektről?"},
+   {"text": "A MInerva projekt egy mesterséges intteligencia alapú tanulást segítő oldal, amit három fiatal hozott létre "},
+
+   {"text":"Milyen segítséget nyújt a weboldal a diákoknak, tanároknak és szülőknek?"},
+   {"text":"A weboldal egy olyan platformot biztosít, amely segíti a diákokat a tanulásban, a tanárokat a tanításban, és a szülőket abban, hogy hatékonyan támogathassák gyermekeiket."},
+   
+   {"text":"Miért fontos a tanulás mellett a mentális jólét megőrzése?"},
+   {"text":"A mentális jólét megőrzése elengedhetetlen ahhoz, hogy a diákok kiegyensúlyozottak maradjanak, csökkentsék a stresszt és hatékonyabban tudjanak tanulni. A szakdolgozat készítői szerint a tanulás nemcsak a tudás megszerzéséről szól, hanem a lelki egyensúly fenntartásáról is."},
+  
+   {"text":"Milyen funkciókkal segíti a weboldal az érettségire való felkészülést?"},
+   {"text":"A weboldal elsősorban az érettségire való felkészülést támogatja, miközben interaktív és segítő funkciókkal teszi gördülékenyebbé a tanulási folyamatot."},
+
+   {"text":"Hogyan teszi a mesterséges intelligencia szórakoztatóbbá és hatékonyabbá a tanulást?"},
+   {"text":"A mesterséges intelligencia által „megszólaltatott” történelmi személyek (költők, írók, matematikusok) életének bemutatása érdekessé és élményszerűvé teszi a tanulást. Emellett segít a jegyzetek megírásában és a házi feladatok megoldásában is."},
+
+   {"text":"Milyen szerepet játszik a chatfunkció a tanulásban?"},
+   {"text":"A chatfunkció lehetőséget biztosít a felhasználóknak, hogy beszélgessenek a mesterséges intelligenciával, így kérdéseket tehetnek fel, és azonnali válaszokat kapnak a tananyagról."},
+
+   {"text":"Milyen módon csökkenti a weboldal a diákok tanulással járó stresszét?"},
+   {"text":"A weboldal segíti a diákokat a tanulási folyamat gördülékenyebbé tételében, így kevésbé érzik túlterheltnek magukat, és magabiztosabban haladhatnak a céljaik felé."},
+
+   {"text":"Hogyan segíthet a Minerva abban, hogy a diákok magabiztosabbak és kiegyensúlyozottabbak legyenek?"},
+   {"text":"A Minerva weboldal támogatást nyújt a diákoknak a tanulásban és a stresszkezelésben, így növeli az önbizalmukat és hozzájárul kiegyensúlyozottabb fejlődésükhöz."},
+
+   {"text":"Milyen előnyökkel jár a mesterséges intelligencia alkalmazása az oktatásban?"},
+   {"text":"A mesterséges intelligencia segít személyre szabni a tanulási folyamatot, megkönnyíti az információk feldolgozását, és interaktívabbá teszi az oktatást, ezáltal hatékonyabbá és élvezetesebbé válik a tanulás."}
+
 ]
