@@ -1,6 +1,5 @@
 import { Database } from "bun:sqlite";
 import { decryptRSA, encryptRSA, hashHmac } from "../../../modules/crypt";
-import { randomUUID } from "node:crypto";
 import { type Body, type RawBody } from "../../../types/register";
 import { sendMail } from "../../../modules/mail/sender";
 
@@ -56,13 +55,13 @@ export const handleRequest = async (req: Request, db: Database) => {
             timeCost: 2
         });
 
-        const userMgmtToken = Bun.randomUUIDv7("base64");     // ez lesz a kód amit kap emailben, amivel megerősíti regisztrációját
+        const userMgmtToken = Bun.randomUUIDv7("base64url");     // ez lesz a kód amit kap emailben, amivel megerősíti regisztrációját
 
         const encryptedMail = encryptRSA(body.email);
         const hashedMail = hashHmac(body.email);
         
-        // const verifyUrl = `http://${new URL(req.url).host}/auth/verify-mail/link?mtoken=${userMgmtToken}`;
-        const verifyUrl = `${rawBody.verifyUrl}/verify-account?mtoken=${userMgmtToken}`;
+        // const verifyUrl = `http://${new URL(req.url).host}/auth/verify-mail/link?code=${userMgmtToken}`;
+        const verifyUrl = `${rawBody.verifyUrl}/verify-account?code=${userMgmtToken}`;
 
         db.run("INSERT INTO credentials (email, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?);", [encryptedMail, hashedMail, passHash, userMgmtToken]);
 

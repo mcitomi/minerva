@@ -1,17 +1,22 @@
 import { Database } from "bun:sqlite";
 
-export const handleRequest = (req: Request, db: Database) => {
+export const handleRequest = async (req: Request, db: Database) => {
     try {
-       const verifyToken = new URLSearchParams(new URL(req.url).search).get("mtoken")
+        const verifyToken = new URLSearchParams(new URL(req.url).search).get("code")
 
-       console.log(verifyToken);
+        const query = db.query("DELETE FROM credentials WHERE mgmtToken = ?;");
 
-       console.log("remove mail");
-       
+        const deleteResults = await query.run(verifyToken);
 
-        return Response.json({
-            "message" : "delete"
-        });
+        if(deleteResults.changes == 1) {
+            return Response.json({
+                "message": "Registration successfully deleted"
+            });
+        } else {
+            return Response.json({
+                "message": "Registration already deleted"
+            }, { status: 400 });
+        }
     } catch (error) {
         return Response.json({
             "message": "Internal server error"
