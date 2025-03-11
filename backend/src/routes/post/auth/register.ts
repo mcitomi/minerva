@@ -2,6 +2,7 @@ import { Database } from "bun:sqlite";
 import { decryptRSA, encryptRSA, hashHmac } from "../../../modules/crypt";
 import { type Body, type RawBody } from "../../../types/register";
 import { sendMail } from "../../../modules/mail/sender";
+import emailConfirmation from "../../../modules/mail/pages/confirmation";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -66,27 +67,13 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         db.run("INSERT INTO credentials (email, username, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?, ?);", [encryptedMail, encryptedName, hashedMail, passHash, userMgmtToken]);
 
-        const mailResponse = sendMail([body.email], "Minerva regisztráció", "Erősítse meg email címét", `
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Verify</title>
-            </head>
-            <body style="font-family: Arial, sans-serif; color: black; width: 100%;">
-                <h2>Üdv ${body.name}!</h2>
-                <a href="${verifyUrl}">Regisztráció megerősítése</a>
-                <br/>
-                <small>${verifyUrl}</small>
-            </body>
-            </html>
-        `);
+        const mailResponse = sendMail([body.email], "Minerva regisztráció", "Erősítse meg email címét", emailConfirmation(body.name, verifyUrl));
 
         if(mailResponse?.includes("Error")){
-            return new Response(`{"message" : "${mailResponse}"}`, {
-                status: 500,
-            });
+            return Response.json({
+                    "message" : [mailResponse]
+                }, {status: 500}
+            );
         }
 
         return Response.json({
@@ -94,7 +81,7 @@ export const handleRequest = async (req: Request, db: Database) => {
         }, {status: 201});
         
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         
         if(error.message.includes("UNIQUE constraint failed")) {
             return Response.json({

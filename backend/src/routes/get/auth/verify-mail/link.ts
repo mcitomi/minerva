@@ -1,16 +1,27 @@
 import { Database } from "bun:sqlite";
+import { sendMail } from "../../../../modules/mail/sender";
+import emailSuccessful from "../../../../modules/mail/pages/successful";
+import { decryptRSA } from "../../../../modules/crypt";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
         const verifyToken = new URLSearchParams(new URL(req.url).search).get("code");
 
-        const query = db.query("UPDATE credentials SET mgmtToken = NULL, isActive = 1 WHERE mgmtToken = ?;");
+        const query = db.query("UPDATE credentials SET mgmtToken = NULL, isActive = 1 WHERE mgmtToken = ? RETURNING isActive, email, username;");
 
-        const linkQuery = await query.run(verifyToken);
+        const linkQuery = await query.get(verifyToken) as {isActive: number, email: string, username: string};
 
-        if (linkQuery.changes == 1) {
+        if (linkQuery || linkQuery?.isActive == 1) {
+            const mailResponse = sendMail([decryptRSA(linkQuery.email)], "Minerva: Sikeres regisztráció!", "Regisztrációját sikeresen véglegesítette!", emailSuccessful(decryptRSA(linkQuery.username)));
+
+            if(mailResponse?.includes("Error"))  {
+                return Response.json({
+                    "message": "Registration successful, but failed to send email"
+                }, {status: 202});
+            }
+
             return Response.json({
-                "message": "Registration successfull"
+                "message": "Registration successful"
             });
         } else {
             return Response.json({
