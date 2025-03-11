@@ -16,13 +16,14 @@ __Globális leírás a projektről, megjegyzések:__
 - `npm i` ~ feltelepíti a függőségeket
 - `npm start` ~ elindítja a react-scripts-el a frontendet
 
-Egy-két plusz ami még jó lenne ha működne:
-- Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés.
-- 
-
 ### Backend:
 - Backend mappába, futtassuk a következőket:
 - `bun i` ~ feltelepíti a függőségeket
 - `bun .` ~ elindítja a backend szervert az alapvető Bun futtatókörnyezettel
 
 **A szerver endpointok a backend mappában a readme-ben felsorolva és részletezve megtalálhatóak**
+
+
+### Egy-két plusz ami még jó lenne ha működne:
+- Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés.
+- Email kinézet, rajz stb
