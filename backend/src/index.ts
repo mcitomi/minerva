@@ -9,6 +9,7 @@ db.run(`CREATE TABLE IF NOT EXISTS credentials (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     emailHash TEXT UNIQUE,
     email TEXT,
+    username TEXT,
     passHash TEXT,
     timeCreated INTEGER DEFAULT (strftime('%s', 'now')),
     isActive NUMERIC DEFAULT FALSE,

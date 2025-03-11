@@ -58,12 +58,13 @@ export const handleRequest = async (req: Request, db: Database) => {
         const userMgmtToken = Bun.randomUUIDv7("base64url");     // ez lesz a kód amit kap emailben, amivel megerősíti regisztrációját
 
         const encryptedMail = encryptRSA(body.email);
+        const encryptedName = encryptRSA(body.name);
         const hashedMail = hashHmac(body.email);
         
         // const verifyUrl = `http://${new URL(req.url).host}/auth/verify-mail/link?code=${userMgmtToken}`;
         const verifyUrl = `${rawBody.verifyUrl}/verify-account?code=${userMgmtToken}`;
 
-        db.run("INSERT INTO credentials (email, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?);", [encryptedMail, hashedMail, passHash, userMgmtToken]);
+        db.run("INSERT INTO credentials (email, username, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?, ?);", [encryptedMail, encryptedName, hashedMail, passHash, userMgmtToken]);
 
         const mailResponse = sendMail([body.email], "Minerva regisztráció", "Erősítse meg email címét", `
             <!DOCTYPE html>
@@ -102,7 +103,7 @@ export const handleRequest = async (req: Request, db: Database) => {
         }
         
         return Response.json({
-            "message": [error.message]
+            "message": ["Internal server error"]
         }, {status: 500})
     }
 };

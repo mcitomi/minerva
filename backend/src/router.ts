@@ -12,6 +12,9 @@ export class RequestHandler {
     }
 
     private cors(response: Response) {
+        if(!response) {
+            throw new Error("Request not responsed");
+        }
         // https://github.com/oven-sh/bun/issues/5466
         response.headers.set('Access-Control-Allow-Origin', '*'); // Minden origin engedlyezett
         response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH'); // Szerver által engedélyezett metódusok

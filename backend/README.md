@@ -7,6 +7,11 @@ This project was created using `bun init` in bun v1.2.xx. [Bun](https://bun.sh) 
 | GET            | `/test/ping`| None  | None | Ellenőrizhetjük hogy él-e a backend |
 | GET            | `/auth/pk` | None | None | Publikus kulcs lekérése az RSA titkosításhoz.
 | POST           | `/auth/register`| **RSA encrypted body:** encryptedData : (name, email, password, passwordre) | None | Regisztráció RSA-OAEP-el és a public key-el titkosítva, base64 kódolású szöveget vár, benne a fent említett mezőkkel.
+| POST | `/auth/login` | Body | None | Lekérhetjük az access tokent, amivel hitelesíthetjük a felhasználót
+| GET | `/auth/verify-mail/check?code=VERIFYCODE` | None | None | Ellenőrizzük hogy az adott kód él-e még
+| GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját
+| GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait
+
 
 ## Szerver:
 

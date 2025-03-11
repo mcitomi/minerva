@@ -1,22 +1,38 @@
 import { createHmac } from "node:crypto";
+import { jwt_sec } from "../../../secrets/jwt_secret.json";
+import { type Payload } from "../../types/jwt";
 
-export function generateToken(payload, secret, expiresIn) {
+export function generateToken(payload: Payload, expiresIn: number) { 
     const header = { alg: 'HS256', typ: 'JWT' };
-    const encodedHeader = btoa(JSON.stringify(header));
-    const encodedPayload = btoa(JSON.stringify(payload));
-    const signature = createHmac("SHA256", secret).update(`${encodedHeader}.${encodedPayload}`).digest("base64");
+    const encodedHeader = Buffer.from(JSON.stringify(header)).toString("base64url");
+
+    if (expiresIn) {
+        payload.exp = Math.floor(Date.now() / 1000) + expiresIn;    // másodpercben megadva
+    }
+
+    const encodedPayload = Buffer.from(JSON.stringify(payload)).toString("base64url");
+
+    const signature = createHmac("SHA256", jwt_sec).update(`${encodedHeader}.${encodedPayload}`).digest("base64url");
+   
     return `${encodedHeader}.${encodedPayload}.${signature}`;
 }
 
-function verifyToken(token, secret) {
+export function verifyToken(token) {
     const [encodedHeader, encodedPayload, signature] = token.split('.');
-    // const expectedSignature = Bun.base64Encode(Bun.hash.hmac('sha256', secret, `${encodedHeader}.${encodedPayload}`));
-    const expectedSignature = createHmac("SHA256", secret).update(`${encodedHeader}.${encodedPayload}`).digest("base64");
+
+    const expectedSignature = createHmac("SHA256", jwt_sec).update(`${encodedHeader}.${encodedPayload}`).digest("base64url");
 
     if (signature !== expectedSignature) {
-        throw new Error('Érvénytelen token');
+        // hibás aláírás (eltérő secret vagy kódolás)
+        throw new Error('Invalid token');
     }
 
-    const payload = JSON.parse(atob(encodedPayload));
+    const payload: Payload = JSON.parse(Buffer.from(encodedPayload, "base64url").toString("utf-8"));
+
+    if(payload.exp && Math.floor(Date.now() / 1000) >= payload.exp) {
+        // a token lejart
+        throw new Error("Expired token");
+    }
+
     return payload;
 }
