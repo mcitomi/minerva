@@ -41,39 +41,77 @@
     {"text":"Milyen családi háttérrel rendelkezett Petőfi?"},
     {"text":"Édesapja, Petrovics István, módosabb mészárosmester volt, édesanyja, Hrúz Mária, cselédlányként dolgozott.Bár a család kezdetben jól élt, Petőfi apja később eladósodott, így a költő gyermekkora nehéz anyagi körülmények között telt."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Melyik időszakban írta Petőfi a népies verseit?"},
+    {"text":"1842 és 1844 között, a népiesség jegyében alkotott."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Mit jelentett a népiesség Petőfi költészetében?"},
+    {"text":"A magyar népi kultúra értékeinek bemutatását, a nép nyelvének, életének és érzéseinek költői megjelenítését."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Milyen formában jelenik meg a népművészet Petőfi verseiben?"},
+    {"text":"Népmesei és népdalszerű motívumok, természetközeliség és egyszerű, közvetlen nyelvhasználat jellemzi."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Kik hatottak Petőfi költészetére Európában?"},
+    {"text":"Heine, Béranger, valamint magyar költők, mint Csokonai és Fazekas."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Milyen témák jelennek meg Petőfi népies verseiben?"},
+    {"text":"Természet, paraszti élet, szerelem, család és a szabadságvágy."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Melyik versében jelenik meg a magyar táj szeretete?"},
+    {"text":"Például a Tisza című versben."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Hogyan jelenik meg a humor Petőfi költészetében?"},
+    {"text":"Tréfás, vidám hangulatú versekben, mint például: A helység kalapácsa."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Milyen műfajokat képvisel Petőfi költészete?"},
+    {"text":"Lírai versek, elbeszélő költemények, népies dalok és humoros művek."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Mi jellemzi Petőfi elbeszélő költeményeit?"},
+    {"text":"Epikus jelleg, népies stílus, egyszerűség és közvetlenség."},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Melyik műve tekinthető elbeszélő költeménynek?"},
+    {"text":"János vitéz"},
 
-    {"text":""},
-    {"text":""},
+    {"text":"Melyik korszak Petőfi költészetének forradalmi szakasza?"},
+    {"text":"1845-1848 között, a forradalmi eszmék hatására."},
 
+    {"text":"Milyen témák jellemzik Petőfi forradalmi verseit?"},
+    {"text":"Szabadság, hazaszeretet, forradalom, társadalmi igazságosság."},
+
+    {"text":"Melyik vers fejezi ki legjobban Petőfi forradalmi szellemét?"},
+    {"text":"Nemzeti dal"},
+
+    {"text":"Milyen szakaszokra bontható Petőfi Sándor költészete?"},
+    {"text":"Három fő szakaszra: a népiesség időszaka (1842-1844), a romantikus és forradalmi korszak (1844-1848), valamint a szabadságharc időszaka."},
+
+    {"text":"Milyen művészeti eszmény jelent meg Petőfi népies költészetében?"},
+    {"text":"A népművészet kultusza, amely a természetesség, az egyszerűség és a népi élet ábrázolására összpontosított."},
+
+    {"text":"Milyen eszközökkel élt Petőfi, hogy hitelesen jelenítse meg a népi világot?"},
+    {"text":"Népi szóhasználattal, egyszerű rímekkel, természetes képekkel és humorral."},
+
+    {"text":"Hogyan változott Petőfi költészete a romantikus korszakban?"},
+    {"text":"Erőteljesebb lett a szabadságeszmény, a hazafiság és az igazságkeresés tematikája."},
+
+    {"text":"Mi jellemzi Petőfi nyelvezetét?"},
+    {"text":"Egyszerű, közérthető, mégis mély érzelmeket és gondolatokat kifejező."},
+
+    
+    {"text":"Mikor házasodott össze Petőfi Sándor és Szendrey Júlia?"},
+    {"text":"1847. szeptember 8-án kötöttek házasságot Erdődön."},
+
+    
+    {"text":"Milyen szerepet töltött be Szendrey Júlia Petőfi életében?"},
+    {"text":"Júlia nemcsak a felesége, hanem múzsája is volt, aki számos versét inspirálta."},
+
+    
+    {"text":" Melyik Petőfi-vers íródott Szendrey Júliához?"},
+    {"text":"Az egyik legismertebb a Szeptember végén, amelyben a költő szerelme elmúlásától és a búcsútól tart."},
+
+    
+    {"text":"Petőfi gyermeke?"},
+    {"text":"Petőfi Zoltán nevű fia 1848-ban született."},
+
+    
     {"text":""},
     {"text":""}
 ]

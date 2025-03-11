@@ -6,7 +6,7 @@
     {"text":"997-ben a Veszprém melletti csatában."},
 
     {"text":"Mikor koronázták királlyá Istvánt?"},
-    {"text":"1001. január 1-jén."},
+    {"text":"1001. január 1-jén  Esztergomban."},
 
     {"text":"Hogyan számolta fel István az ellenálló törzsfőket?"},
     {"text":"Fegyverrel kényszerítette őket behódolásra."},
@@ -39,8 +39,134 @@
     {"text":"A királyi birtokok jövedelméből, vámokból, monopóliumokból és az állami adókból."},
 
     {"text":"Hogyan járult hozzá I. István a gazdasági szervezethez?"},
-    {"text":"A vármegyék létrehozásával, az adórendszer megszervezésével, és a várnépek munkájának biztosításával erősítette a gazdaságot."}
+    {"text":"A vármegyék létrehozásával, az adórendszer megszervezésével, és a várnépek munkájának biztosításával erősítette a gazdaságot."},
 
+    {"text":"Milyen politikai rendszert vezetett be I. István a törzsfők önállóságának megszüntetése után?"},
+    {"text":"I. István a feudális földbirtoklást és a királyi vármegyerendszert vezette be."},
 
+    {"text":"Miért volt fontos a tized bevezetése?"},
+    {"text":"A tized biztosította az egyház anyagi alapját, és erősítette annak szerepét a társadalomban."},
+
+    {"text":"Hogyan erősítette meg I. István a hatalmát?"},
+    {"text":"997-ben a primogenitúra (elsőszülöttségi jog) alapján örökölte a fejedelmi címet, de a hatalmát csak a szeniorátus elve ellenében, harccal tudta megszilárdítani."},
+
+    {"text":"Milyen szerepe volt Gizellának I. István uralkodásában?"},
+    {"text":"Gizella I. István felesége volt, aki bajor származásával hozzájárult a nyugati kapcsolatok erősítéséhez."},
+
+    {"text":"Hogyan támogatta I. István a szegényeket és elesetteket?"},
+    {"text":"Törvényt hozott arról, hogy a szegényeket és az árvákat segíteni kell, és az egyház feladatává tette a gondoskodást."},
+
+    {"text":"Milyen szerepet töltött be Esztergom I. István uralkodása alatt?"},
+    {"text":"Esztergom volt I. István koronázási helye és a korai magyar államszervezet egyik központja."},
+
+    {"text":" Milyen szerepe volt a vármegyéknek I. István államszervezetében?"},
+    {"text":"A vármegyék voltak a közigazgatási egységek, amelyeket az ispánok irányítottak, ők szedték be az adókat, gondoskodtak a rend fenntartásáról és a katonai védelemről."},
+
+    {"text":"Miért volt fontos I. István számára a pénzverés?"},
+    {"text":"A pénzverés hozzájárult a gazdaság fejlődéséhez, valamint erősítette a királyi hatalmat, mivel a pénzforgalom szabályozása a király kezében összpontosult."},
+
+    {"text":"Milyen büntetéseket alkalmaztak a törvények megsértőivel szemben?"},
+    {"text":"A törvények megsértőit szigorúan büntették, például azokat, akik nem tartották be a keresztény előírásokat vagy akadályozták a templomba járást."},
+
+    {"text":" Milyen szerepet töltött be a királyi várbirtok-rendszer?"},
+    {"text":"A királyi várbirtokok szolgáltatták a gazdasági alapot a királyi hatalomhoz, és ezek biztosították az állam fenntartását, valamint a hadsereg ellátását."},
+
+    {"text":"Mikor szentelték szentté I. Istvánt?"},
+    {"text":"I. Istvánt 1083-ban avatták szentté."},
+
+    {"text":"Hogyan támogatta I. István a külkapcsolatok erősítését?"},
+    {"text":"Gizellával kötött házassága révén szoros kapcsolatot alakított ki a Német-római Császársággal, valamint támogatta a külföldi lovagok letelepedését."},
+
+    {"text":"Melyik egyházi intézményt alapította István Esztergomban?"},
+    {"text":"Szent István-templomot."},
+
+    {"text":" Melyek voltak a legfontosabb egyházi központok I. István idején?"},
+    {"text":"Esztergom érseki központ volt, míg püspökségeket alapított többek között Veszprémben, Győrben, Pécsen, Egerben, Erdélyben és Kalocsán."},
+
+    {"text":"Hogyan szabályozta I. István a társadalmi rendet?"},
+    {"text":"Törvényeket hozott a vasárnapi munkaszünetről, a templomba járás kötelezettségéről, a koldulás és a lopás elleni védelemről, valamint a család és a közösség védelméről."},
+
+    {"text":"Hogyan próbálta I. István biztosítani Imre herceg trónöröklését?"},
+    {"text":"Imre herceget kijelölte utódjának, katonai és államigazgatási ismeretekre oktatta, és utasította, hogy harcoljon a kereszténység terjesztéséért."},
+
+    {"text":"Milyen veszély fenyegette István örökségét?"},
+    {"text":"Imre herceg korai halála fenyegette István örökségét és a dinasztia fennmaradását."},
+
+    {"text":"Ki volt az a személy, akit István a királyság képviseletére rendelt ki?"},
+    {"text":"Oroszló Péterre bízta a királyság irányítását."},
+
+    {"text":"Mikor szentelték fel Imre herceget?"},
+    {"text":"Imre herceget I. László kérésére szentté avatták a Székesfehérvári Szent Székben."},
+
+    {"text":"Miből álltak a vármegyék területei?"},
+    {"text":"Királyi, egyházi és magánföldesúri birtokokból."},
+
+    {"text":"Milyen feladatokat láttak el az ispánok?"},
+    {"text":"Adószedés, bíráskodás, végrehajtás és a királyi hadsereg vezetése."},
+
+    {"text":"Hogyan oszlott meg az adók beszedése?"},
+    {"text":"Az adók 1/3-át az ispán kapta, míg 2/3-át a királyi udvar."},
+
+    {"text":" Mi volt a várkatonák feladata?"},
+    {"text":"A katonáskodás."},
+
+    {"text":"Ki vezette a királyi hadsereget?"},
+    {"text":"Az ispán."},
+
+    {"text":"Milyen kolostorokat alapított István?"},
+    {"text":"Latin és görög rítusú kolostorokat."},
+    
+    {"text":"Miért volt jelentős az esztergomi érsekség létrehozása?"},
+    {"text":"Mert ezáltal a magyar egyház közvetlenül Róma fennhatósága alá került."},
+
+    {"text":"Mikor szűnt meg az erdélyi Gyula önállósága?"},
+    {"text":"1003-ban."},
+
+    {"text":"Milyen területeket szerzett meg István 1008-ban?"},
+    {"text":"A Szerémség területeit."},
+
+    {"text":"Mi jellemezte az Árpád-ház örökletes (dinasztikus) királyságát?"},
+    {"text":"A keresztény királyság megerősítése."},
+
+    
+    {"text":"Milyen minta alapján alakította ki István az államszervezetet?"},
+    {"text":"A frank minta alapján."},
+
+    
+    {"text":"Mi volt a királyi tanács feladata?"},
+    {"text":"Az ország vezetése és irányítása."},
+
+    
+    {"text":"Ki felügyelte a kincstári ügyeket?"},
+    {"text":"A kincstartó (kamara)."},
+
+    
+    {"text":"Milyen katonai hódításokat hajtott végre István 1008-ban?"},
+    {"text":"Megszerezte a Szerémség területeit."},
+
+    
+    {"text":" Mit jelentett az Árpád-ház örökléses királysága?"},
+    {"text":"Az uralkodói cím dinasztikus öröklését az Árpád-ház tagjai között."},
+
+    {"text":"Milyen forrásból származott a királyi jövedelem?"},
+    {"text":"A királyi birtokok jövedelméből, vámokból, monopóliumokból és az állami adókból."},
+
+    
+    {"text":"Miért volt fontos az ispánok szerepe az adószedésben?"},
+    {"text":"Ők voltak felelősek az adók beszedéséért, valamint a bíráskodásért és a hadsereg vezetéséért."},
+
+    {"text":"Mi volt a szeniorátus elve?"},
+    {"text":"z a szokásjogi elv, amely szerint a legidősebb férfi tag örökölte a fejedelmi címet."},
+
+    
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    
+    {"text":""},
+    {"text":""}
 
 ]
