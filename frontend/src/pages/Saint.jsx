@@ -9,6 +9,7 @@ export default () => {
             altText={"Szent István kép"}
             title={"Szent István"}
             placeholderText={"Kérdezz bátran Szent Istvántól..."}
+            personName={"szent_istvan"}
         ></AI>
     );
 }

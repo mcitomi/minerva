@@ -9,6 +9,7 @@ export default () => {
             altText={"Petőfi Sándor kép"}
             title={"Petőfi Sándor"}
             placeholderText={"Kérdezz bátran Petőfi Sándortól..."}
+            personName={"petofi_sandor"}
         ></AI>
     );
 }

@@ -9,6 +9,7 @@ export default () => {
             altText={"MInerva kép"}
             title={"MInerva"}
             placeholderText={"Kérdezz bátran MInervától..."}
+            personName={"minerva"}
         ></AI>
     );
 }

@@ -2,7 +2,7 @@ import { Container, Row, Col, Button, Form, Image, InputGroup } from "react-boot
 
 import "../styles/ai.css";
 
-export default ({ img, altText, title, placeholderText }) => {
+export default ({ img, altText, title, placeholderText, personName }) => {
     return (
         <Container>
             <Row>

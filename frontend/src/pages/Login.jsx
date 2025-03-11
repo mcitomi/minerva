@@ -114,7 +114,7 @@ export default () => {
                 </Col>
                 <Col sx={12} md={6} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529" }}>
                     <h2 className="mt-5 mb-5 pt-5">Bejelentkezés</h2>
-                    <Form  onSubmit={handleSubmit}>
+                    <Form onSubmit={handleSubmit}>
                         <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3">
                             <Form.Control type="email" placeholder="Email-cím" name="email" value={formData.email} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>

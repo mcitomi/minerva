@@ -9,6 +9,7 @@ export default () => {
             altText={"Kölcsey Ferenc kép"}
             title={"Kölcsey Ferenc"}
             placeholderText={"Kérdezz bátran Kölcsey Ferenctől..."}
+            personName={"kolcsey_ferenc"}
         ></AI>
     );
 }

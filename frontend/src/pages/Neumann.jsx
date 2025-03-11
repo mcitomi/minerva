@@ -9,6 +9,7 @@ export default () => {
             altText={"Neumann János kép"}
             title={"Neumann János"}
             placeholderText={"Kérdezz bátran Neumann Jánostól..."}
+            personName={"neumann_janos"}
         ></AI>
     );
 }
