@@ -22,3 +22,8 @@ __Globális leírás a projektről, megjegyzések:__
 - `bun .` ~ elindítja a backend szervert az alapvető Bun futtatókörnyezettel
 
 **A szerver endpointok a backend mappában a readme-ben felsorolva és részletezve megtalálhatóak**
+
+
+### Egy-két plusz ami még jó lenne ha működne:
+- Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés.
+- Email kinézet, rajz stb
