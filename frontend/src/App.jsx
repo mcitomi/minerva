@@ -61,7 +61,7 @@ export default () => {
                 <Route path="/about" element={<About></About>}></Route>
                 <Route path="/login" element={<Login></Login>}></Route>
                 <Route path="/registration" element={<Registration></Registration>}></Route>
-                <Route path="/myprofile" element={<MyProfile></MyProfile>}></Route>
+                <Route path="/my-profile" element={<MyProfile></MyProfile>}></Route>
                 <Route path="/minerva" element={<MInerva></MInerva>}></Route>
                 <Route path="/petofi-sandor" element={<Petofi></Petofi>}></Route>
                 <Route path="/kolcsey-ferenc" element={<Kolcsey></Kolcsey>}></Route>
