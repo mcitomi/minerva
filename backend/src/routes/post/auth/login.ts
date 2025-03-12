@@ -48,6 +48,8 @@ export const handleRequest = async (req: Request, db: Database) => {
         const isValidPassword = await Bun.password.verify(body.password, accountInfo.passHash);
         
         if(!isValidPassword) {
+            db.run("UPDATE credentials SET failedAttempts = COALESCE(failedAttempts, 0) + 1 WHERE id = ?;", [accountInfo.id]);
+
             return Response.json({
                 "message": ["Invalid email or password!"]
             }, {status: 401});
@@ -59,7 +61,9 @@ export const handleRequest = async (req: Request, db: Database) => {
             }, {status: 403});
         }
 
-        const token = generateToken({ _id: accountInfo.id }, 7200);
+        db.run("UPDATE credentials SET failedAttempts = 0, lastLogin = ? WHERE id = ?;", [Date.now(), accountInfo.id]);
+
+        const token = generateToken({ _id: accountInfo.id }, 172800);   // 172 800 másodperc = 2 nap (48óra)
 
         return Response.json({
             "message": ["User successfully logged in"],

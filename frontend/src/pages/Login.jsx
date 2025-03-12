@@ -106,6 +106,22 @@ export default () => {
         }
     };
 
+    async function resetPassword() {
+        const email = formData.email;
+
+        const response = await fetch(`${CONFIG.API_URL}/auth/reset-password`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ "email": email, "verifyUrl" : `${window.location.origin}` })
+        });
+
+        const result = await response.json();
+
+        alert(result.message);
+    }
+
     return (
         <Container fluid>
             <Row>
@@ -122,7 +138,7 @@ export default () => {
                             <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
-                            <Button variant="warning" type="submit" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Elfelejtettem a jelszavamat</Button>
+                            <Button variant="warning" type="button" onClick={resetPassword} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Elfelejtettem a jelszavamat</Button>
                             <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Belépés</Button>
                         </div>
                     </Form>
