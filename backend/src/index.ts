@@ -20,12 +20,23 @@ db.run(`CREATE TABLE IF NOT EXISTS credentials (
     twofaSecret TEXT
 );`);
 
-db.run(`CREATE TABLE IF NOT EXISTS sessions (
-    id TEXT PRIMARY KEY,
-    userId INTEGER NOT NULL,
-    refreshToken TEXT NOT NULL,
-    expiresAt DATETIME NOT NULL
+db.run(`CREATE TABLE IF NOT EXISTS profileDetails (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    country TEXT,
+    postCode TEXT,
+    settlement TEXT,
+    address TEXT,
+    pictureUrl TEXT,
+    credentialsId INTEGER UNIQUE,
+    FOREIGN KEY (credentialsId) REFERENCES credentials(id) ON DELETE CASCADE
 );`);
+
+// db.run(`CREATE TABLE IF NOT EXISTS sessions (    // továbbfejlesztési lehetőség: session kezelés
+//     id TEXT PRIMARY KEY,
+//     userId INTEGER NOT NULL,
+//     refreshToken TEXT NOT NULL,
+//     expiresAt DATETIME NOT NULL
+// );`);
 
 requesthandler.register();
 
