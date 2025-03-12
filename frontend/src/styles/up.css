@@ -3,5 +3,5 @@
     bottom: 20px;
     right: 20px;
     z-index: 1000;
-    transition: opacity 0.0s ease;
+    transition: opacity 0.3s ease;
 }

@@ -13,7 +13,7 @@ export default () => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'auto' //nem görget
+            behavior: "smooth" // Simább görgetés
         });
     }
 
