@@ -11,12 +11,9 @@ export default () => {
     }
 
     const scrollToTop = () => {
-        const scrollStep = -window.scrollY / 15;
-        const scrollInterval = requestAnimationFrame(function step() {
-            if (window.scrollY > 0) {
-                window.scrollBy(0, scrollStep);
-                requestAnimationFrame(step);
-            }
+        window.scrollTo({
+            top: 0,
+            behavior: 'auto' //nem görget
         });
     }
 
