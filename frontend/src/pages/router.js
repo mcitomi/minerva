@@ -11,4 +11,4 @@ export { default as Bolyai } from "./Bolyai.jsx";
 export { default as Neumann } from "./Neumann.jsx";
 export { default as Saint } from "./Saint.jsx";
 export { default as Szechenyi } from "./Szechenyi.jsx";
-export { default as VerifyPage } from "./VerifyMail.jsx"
+export { default as VerifyPage } from "./VerifyMail.jsx";
