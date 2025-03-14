@@ -29,16 +29,18 @@ Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés.
 - Navigáció megjelenítése bejelentkezett usereknek
 - JWT token kezelése frontenden
-- AI beszélgetős endpoint fetchek
 - Passwordreset page (két password input: password és password megerősítés, után elküldés backendre)
 - Profil adatok lekérése, kitöltése és feltöltése, profilkép feltöltés a /my-profile oldalon
-- Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra
+- Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra (profil oldalnál már csak)
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani. pl:
   ```
-  if((await response.json()).message.includes("Too Many Request")){
+  if((await response.json()).message.includes("Too Many Request")) {
       alert("Túl sok kérés... Próbáld újra később.");
   }
   ```
+- Fetchek: 
+    Profile oldal: POST kép, infók stb GET infók, és automata betölti őket
+      
 
 Backend:
 - AI endpointok kezelese, gemini api kezelés
