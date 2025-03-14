@@ -44,3 +44,4 @@ Backend:
 - AI endpointok kezelese, gemini api kezelés
 - Adatmodellek betöltése, külön profilba szervezés, szemelyiseg beállítás
 - password reset flow befejezése
+- /profile update, kép feltöltés, adat mentés megírása
