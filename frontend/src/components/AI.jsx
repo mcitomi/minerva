@@ -7,6 +7,7 @@ import "../styles/ai.css";
 
 export default ({ img, altText, title, placeholderText, personName }) => {
     const navigate = useNavigate();
+    const inputRef = useRef(null);
 
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -34,7 +35,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
             // const token = localStorage.getItem("token");
             const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsImV4cCI6MTc0MjExODI2N30.Lk5g96C6tjJiFunvaYC5E7LgeKY-IF0_OeqJEHrbmnI";
 
-            const question = document.getElementById("question").value;
+            const question = inputRef.current.value;
 
             if (!token) {
                 navigate("/login");
@@ -73,6 +74,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
             const resData = await response.json();
 
             updateHistory(question, resData.model);
+            inputRef.current.value = "";
              // nem csak egy választ raksz be, hanem
             // lemásolod, belerakod az új kérdést ÉS választ is, utána cserélsz
         }
@@ -114,15 +116,16 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                             })}
                         </div>
                     </div>
-                    <Form className="mt-3">
+                    <Form className="mt-3" onSubmit={fetchPersonPost}>
                         <InputGroup>
                             <Form.Control
                                 type="text"
                                 placeholder={placeholderText}
                                 id="question"
-                                onSubmit={fetchPersonPost}
+                                ref={inputRef}
+                                autoComplete="off"
                                 />
-                            <Button type="submit" variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }}>Küldés</Button>
+                            <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>
                     </Form>
                 </Col>

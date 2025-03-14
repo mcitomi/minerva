@@ -23,3 +23,19 @@ body.dark .navbar .dropdown-item {
 body.light .navbar .dropdown-item:hover, body.dark .navbar .dropdown-item:hover {
     color: #46789a;
 }
+
+body.light .user {
+    background-color: #ffbd59;
+}
+
+body.dark .user {
+    background-color: #263557;
+}
+
+body.light .ai {
+    background-color: rgb(165, 163, 163);
+}
+
+body.dark .ai {
+    background-color: grey;
+}
