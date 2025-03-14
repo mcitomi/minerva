@@ -40,7 +40,7 @@ export const handleRequest = async (req : Request,  db : Database) => {
         })
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
 
         if(error.message.includes("token")) {
             return Response.json({

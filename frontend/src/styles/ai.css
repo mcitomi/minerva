@@ -1,6 +1,6 @@
 .box {
+    background-color: #a7d5fb;
     border-radius: 20px;
-    background-color: #d3eefdc7;
     height: 600px;
     overflow: hidden;
     position: relative;
@@ -16,4 +16,24 @@
     height: 100%;
     overflow-y: auto;
     padding: 10px;
+}
+
+.user {
+    border-radius: 20px;
+    padding: 15px;
+    text-align: justify;
+    align-self: flex-end;
+    margin-bottom: 15px;
+    background-color: #ffbd59;
+    color: black;
+}
+
+.ai {
+    border-radius: 20px;
+    padding: 15px;
+    text-align: justify;
+    align-self: flex-start;
+    margin-bottom: 15px;
+    background-color: grey;
+    color: black;
 }

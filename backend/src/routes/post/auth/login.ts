@@ -68,13 +68,13 @@ export const handleRequest = async (req: Request, db: Database) => {
         return Response.json({
             "message": ["User successfully logged in"],
             "jwt" : token
-        }, {status: 201});
+        }, {status: 200});
         
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         
         return Response.json({
-            "message": [error.message]
+            "message": ["Something went wrong!"]
         }, {status: 500})
     }
 };

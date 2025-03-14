@@ -19,7 +19,7 @@ export function decryptRSA(encyrptedData: string) { // Az RSA titkosítású bas
 
         return decryptedData.toString("utf-8");     // A base64 kódolású adatot utf8 szöveggé alakírtjuk és visszatérünk vele.
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         return undefined;
     }
 }
@@ -39,7 +39,7 @@ export function encryptRSA(text: string) {  // A publikus kulccsal lekódoljuk a
 
         return encryptedData.toString("base64");
     } catch (error) {
-        console.error(error);
+        // console.error(error);
         return undefined;
     }
 }
