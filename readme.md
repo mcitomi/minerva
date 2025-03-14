@@ -24,6 +24,18 @@ __Globális leírás a projektről, megjegyzések:__
 **A szerver endpointok a backend mappában a readme-ben felsorolva és részletezve megtalálhatóak**
 
 
-### Egy-két plusz ami még jó lenne ha működne:
+### Egy-két plusz ami még jó lenne ha működne: ToDo:
+Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés.
-- Email kinézet, rajz stb
+- Navigáció megjelenítése bejelentkezett usereknek
+- JWT token kezelése frontenden
+- AI beszélgetős endpoint fetchek
+- Passwordreset page (két password input: password és password megerősítés, után elküldés backendre)
+- Profil adatok lekérése, kitöltése és feltöltése, profilkép feltöltés a /my-profile oldalon
+- Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra
+- 
+
+Backend:
+- AI endpointok kezelese, gemini api kezelés
+- Adatmodellek betöltése, külön profilba szervezés, szemelyiseg beállítás
+- password reset flow befejezése
