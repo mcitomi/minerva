@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Image, InputGroup } from "react-bootstrap";
 import CONFIG from "../config.json";
@@ -11,8 +11,23 @@ export default ({ img, altText, title, placeholderText, personName }) => {
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+
     async function fetchPersonPost(e) {
+        function updateHistory(question, answer) {
+            const newHistory = [...history];
+            newHistory.push({
+                "role": "user", 
+                "parts" : [{"text" : question}]
+            });
+            newHistory.push({
+                "role": "model", 
+                "parts" : [{"text" : answer}]
+            });
+            console.log(newHistory);
+                
+            setHistory(newHistory);
+        }
+
         e.preventDefault();
         setLoading(true);
         try {
@@ -56,14 +71,9 @@ export default ({ img, altText, title, placeholderText, personName }) => {
             }
 
             const resData = await response.json();
-            const newHistory = history.splice();
-            newHistory.push({
-                "role":"model", 
-                "parts" : [{"text" : resData.model}]
-            });
-            console.log(newHistory);
-            
-            setHistory(newHistory); // nem csak egy választ raksz be, hanem
+
+            updateHistory(question, resData.model);
+             // nem csak egy választ raksz be, hanem
             // lemásolod, belerakod az új kérdést ÉS választ is, utána cserélsz
         }
         catch (err) {
@@ -87,16 +97,21 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                     <h2 className="mt-3 mb-3">{title}</h2>
                     <div className="box">
                         <div className="chat">
-                            <div className="user">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda illo dolorem aliquam vero culpa. Assumenda, beatae? Earum exercitationem, rerum accusamus culpa dignissimos aperiam quaerat aspernatur, nesciunt recusandae, error ullam hic!
-                                Ducimus eligendi nisi quod qui. Enim quis earum necessitatibus omnis perspiciatis, ea blanditiis porro, fugit pariatur tempore sed quam reprehenderit nulla quae corporis, officia ab. Saepe laboriosam itaque porro tempore!
-                                Iusto accusantium hic nostrum iure, aliquid neque reiciendis obcaecati iste inventore sint recusandae aliquam, voluptatibus officia consequuntur deleniti. Obcaecati amet dolorem eveniet debitis harum at, voluptates assumenda repudiandae natus quaerat!
-                                Cum dolorem quo quasi laudantium vel consectetur, cupiditate voluptatum doloribus aperiam impedit perferendis delectus dolor reprehenderit eos? Quasi dolores rerum deserunt, minima labore id at animi consequuntur aliquam itaque nam?
-                                Dolorum ea impedit eos officia officiis. Dignissimos quam sequi eius neque error blanditiis expedita, modi dicta necessitatibus et eos commodi cum laborum! Asperiores nulla molestias porro deserunt illum error harum?
-                            </div>
-                            <div className="ai">
-                                Próba 2
-                            </div>
+                            {history.map((elem) => {
+                                if (elem.role == "user") {
+                                    return (
+                                        <>
+                                            <div className="user">{elem.parts[0].text}</div>
+                                        </>
+                                    );
+                                } else {
+                                    return (
+                                        <>
+                                            <div className="ai">{elem.parts[0].text}</div>
+                                        </>
+                                    );
+                                }
+                            })}
                         </div>
                     </div>
                     <Form className="mt-3">
@@ -104,8 +119,10 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                             <Form.Control
                                 type="text"
                                 placeholder={placeholderText}
-                                id="question"/>
-                            <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} onClick={fetchPersonPost}>Küldés</Button>
+                                id="question"
+                                onSubmit={fetchPersonPost}
+                                />
+                            <Button type="submit" variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }}>Küldés</Button>
                         </InputGroup>
                     </Form>
                 </Col>
