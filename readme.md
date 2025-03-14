@@ -33,7 +33,12 @@ Frontend:
 - Passwordreset page (két password input: password és password megerősítés, után elküldés backendre)
 - Profil adatok lekérése, kitöltése és feltöltése, profilkép feltöltés a /my-profile oldalon
 - Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra
-- 
+- Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani. pl:
+  ```
+  if((await response.json()).message.includes("Too Many Request")){
+      alert("Túl sok kérés... Próbáld újra később.");
+  }
+  ```
 
 Backend:
 - AI endpointok kezelese, gemini api kezelés
