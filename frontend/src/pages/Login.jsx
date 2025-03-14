@@ -1,5 +1,5 @@
 import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import CONFIG from "../config.json";
 
@@ -101,6 +101,14 @@ export default () => {
             const result = await response.json();
             
             alert(...result.message);
+
+            if (result.token) {
+                localStorage.setItem("token", result.token);
+                alert("Sikeres bejelentkezés!");
+            }
+            else {
+                alert(result.message || "Sikertelen bejelentkezés!");
+            }
         } catch (error) {
             console.error('Error submitting form: ', error);
         }
@@ -131,10 +139,10 @@ export default () => {
                 <Col sx={12} md={6} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529" }}>
                     <h2 className="mt-5 mb-5 pt-5">Bejelentkezés</h2>
                     <Form onSubmit={handleSubmit}>
-                        <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3">
+                        <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3 floating-label">
                             <Form.Control type="email" placeholder="Email-cím" name="email" value={formData.email} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3">
+                        <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3 floating-label">
                             <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">

@@ -121,20 +121,20 @@ export default () => {
                 <Col sx={12} md={6} style={{backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529"}}>
                     <h2 className="mt-5 mb-5 pt-5">Regisztráció</h2>
                     <Form onSubmit={handleSubmit}>
-                        <FloatingLabel controlId="floatingInput" label="Név" className="mb-3">
+                        <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">
                             <Form.Control type="text" placeholder="Név" name="name" value={formData.name} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3">
+                        <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3 floating-label">
                             <Form.Control type="email" placeholder="Email-cím" name="email" value={formData.email} onChange={handleChange} required></Form.Control>
                         </FloatingLabel>
                         <Row>
                             <Col sx={12} md={6}>
-                                <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3">
+                                <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3 floating-label">
                                     <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange} required></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col sx={12} md={6}>
-                                <FloatingLabel  controlId="floatingPassword" label="Jelszó újra" className="mb-3">
+                                <FloatingLabel  controlId="floatingPassword" label="Jelszó újra" className="mb-3 floating-label">
                                     <Form.Control type="password" placeholder="Jelszó újra" name="passwordre" value={formData.passwordre} onChange={handleChange} required></Form.Control>
                                 </FloatingLabel>
                             </Col>

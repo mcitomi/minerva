@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Container, Row, Col, Button, Form, Image, InputGroup } from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Image, InputGroup, FloatingLabel } from "react-bootstrap";
 import CONFIG from "../config.json";
 
 import "../styles/ai.css";
@@ -149,13 +149,14 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                     </div>
                     <Form className="mt-3" onSubmit={fetchPersonPost}>
                         <InputGroup>
-                            <Form.Control
-                                type="text"
-                                placeholder={placeholderText}
-                                id="question"
-                                ref={inputRef}
-                                autoComplete="off"
-                                />
+                            <FloatingLabel controlId="floatingInput" label={placeholderText} className="floating-label">
+                                <Form.Control
+                                    type="text"
+                                    placeholder={placeholderText}
+                                    id="question"
+                                    ref={inputRef}
+                                    autoComplete="off"/>
+                            </FloatingLabel>
                             <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>
                     </Form>
