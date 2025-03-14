@@ -59,7 +59,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         const errorMessages = [];
 
-        if(!body || typeof(body) !== "object" || Object.keys(body).length !== 2) {
+        if(!body || typeof(body) !== "object" || Object.keys(body).length !== 3) {
             errorMessages.push("Invalid body object!");
         }
 
