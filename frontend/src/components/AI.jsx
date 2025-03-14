@@ -14,6 +14,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
     const [error, setError] = useState(null);
 
     async function fetchPersonPost(e) {
+        /*
         function updateHistory(question, answer) {
             const newHistory = [...history];
             newHistory.push({
@@ -28,17 +29,35 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                 
             setHistory(newHistory);
         }
+        */
 
         e.preventDefault();
+
+        const question = inputRef.current.value;
+
+        const newHistory = [
+            ...history,
+            {
+                "role": "user",
+                "parts": [
+                    {
+                        "text": question
+                    }
+                ]
+            }
+        ];
+
+        setHistory(newHistory);
+        inputRef.current.value = "";
+
         setLoading(true);
         try {
             // const token = localStorage.getItem("token");
             const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsImV4cCI6MTc0MjExODI2N30.Lk5g96C6tjJiFunvaYC5E7LgeKY-IF0_OeqJEHrbmnI";
 
-            const question = inputRef.current.value;
-
             if (!token) {
                 navigate("/login");
+                return;
             }
 
             const response = await fetch(
@@ -52,7 +71,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                     body: JSON.stringify({
                         message: question,
                         person: personName,
-                        history: history
+                        history: newHistory
                     })
                 }
             );
@@ -73,9 +92,21 @@ export default ({ img, altText, title, placeholderText, personName }) => {
 
             const resData = await response.json();
 
-            updateHistory(question, resData.model);
-            inputRef.current.value = "";
-             // nem csak egy választ raksz be, hanem
+            setHistory(prevHistory => [
+                ...prevHistory,
+                {
+                    "role": "model",
+                    "parts": [
+                        {
+                            "text": resData.model
+                        }
+                    ]
+                }
+            ]);
+
+            //updateHistory(question, resData.model);
+            //inputRef.current.value = "";
+            // nem csak egy választ raksz be, hanem
             // lemásolod, belerakod az új kérdést ÉS választ is, utána cserélsz
         }
         catch (err) {

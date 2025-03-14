@@ -26,6 +26,7 @@
     align-self: flex-end;
     margin-bottom: 15px;
     font-family: 'Lora', serif;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .ai {
@@ -34,4 +35,5 @@
     text-align: justify;
     align-self: flex-start;
     margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
