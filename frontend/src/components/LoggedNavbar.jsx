@@ -38,7 +38,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to="/minerva" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>MInerva</NavDropdown.Item>
                         </NavDropdown>
-                        <Nav.Link as={Link} to="/myprofile" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Fiókom</Nav.Link>
+                        <Nav.Link as={Link} to="/my-profile" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Fiókom</Nav.Link>
                         <Nav.Link as={Link} to="/" className="link" style={{fontSize: "20px"}} onClick={handleLogout}>Kijelentkezés</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
