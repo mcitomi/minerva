@@ -52,8 +52,8 @@ export default ({ img, altText, title, placeholderText, personName }) => {
 
         setLoading(true);
         try {
-            // const token = localStorage.getItem("token");
-            const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsImV4cCI6MTc0MjExODI2N30.Lk5g96C6tjJiFunvaYC5E7LgeKY-IF0_OeqJEHrbmnI";
+            const token = localStorage.getItem("token");
+            // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsImV4cCI6MTc0MjExODI2N30.Lk5g96C6tjJiFunvaYC5E7LgeKY-IF0_OeqJEHrbmnI";
 
             if (!token) {
                 navigate("/login");

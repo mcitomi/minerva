@@ -13,13 +13,13 @@ function pemToArrayBuffer(pem) {    //
     return Uint8Array.from(atob(b64), (char) => char.charCodeAt(0)).buffer;
 }
 
-export default () => {
+export default ({ onLoginSuccess }) => {
     const [publicKeyPem, setPublicKey] = useState(null);
     const [formData, setFormData] = useState({
         email: '',
         password: ''
     });
-
+    
     async function fetchPublicKey() {
         try {
             const response = await fetch(`${CONFIG.API_URL}/auth/pk`);
@@ -102,13 +102,14 @@ export default () => {
             
             alert(...result.message);
 
-            if (result.token) {
-                localStorage.setItem("token", result.token);
+            if (result.jwt) {
                 alert("Sikeres bejelentkezés!");
+                onLoginSuccess(result.jwt);
             }
             else {
                 alert(result.message || "Sikertelen bejelentkezés!");
             }
+
         } catch (error) {
             console.error('Error submitting form: ', error);
         }

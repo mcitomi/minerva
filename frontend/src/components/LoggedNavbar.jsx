@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import "../styles/nav.css";
 
-export default ({ toggleMode, isDarkMode }) => {
+export default ({ toggleMode, isDarkMode, handleLogout }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleToggle = () => {
@@ -39,7 +39,7 @@ export default ({ toggleMode, isDarkMode }) => {
                             <NavDropdown.Item as={Link} to="/minerva" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>MInerva</NavDropdown.Item>
                         </NavDropdown>
                         <Nav.Link as={Link} to="/myprofile" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Fiókom</Nav.Link>
-                        <Nav.Link as={Link} to="/" className="link" style={{fontSize: "20px"}}>Kijelentkezés</Nav.Link>
+                        <Nav.Link as={Link} to="/" className="link" style={{fontSize: "20px"}} onClick={handleLogout}>Kijelentkezés</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Image 

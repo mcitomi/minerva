@@ -21,6 +21,10 @@ export default () => {
         return savedMode === "dark";
     });
 
+    const [isLogged, setIsLogged] = useState(() => {
+        return !!localStorage.getItem("token");
+    });
+
     useEffect(() => {   // futás után megvizsgáljuk a változót
         if (isDarkMode) {
             document.body.className = "dark";
@@ -51,15 +55,24 @@ export default () => {
         }
     };
 
+    const handleLoginSuccess = (token) => {
+        setIsLogged(true);
+        localStorage.setItem("token", token);
+    };
+
+    const handleLogout = () => {
+        setIsLogged(false);
+        localStorage.removeItem("token");
+    }
+    
     return (
         <Router>
-            <MainNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></MainNavbar>
-            {/*<LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></LoggedNavbar>*/}
+            {isLogged ? (<LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode} handleLogout={handleLogout}></LoggedNavbar>) : (<MainNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></MainNavbar>)}
             <Up></Up>
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
-                <Route path="/login" element={<Login></Login>}></Route>
+                <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess}></Login>}></Route>
                 <Route path="/registration" element={<Registration></Registration>}></Route>
                 <Route path="/my-profile" element={<MyProfile></MyProfile>}></Route>
                 <Route path="/minerva" element={<MInerva></MInerva>}></Route>
