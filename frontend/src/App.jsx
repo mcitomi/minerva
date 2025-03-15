@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Petofi, Kolcsey, Bolyai, Neumann, Saint, Szechenyi, VerifyPage } from "./pages/router.js";
+import { useLocation } from 'react-router-dom';
 
 import MainNavbar from "./components/MainNavbar.jsx";
 import SupportUs from "./components/SupportUs.jsx";
@@ -11,6 +12,16 @@ import Up from "./components/Up.jsx";
 import "./styles/mode.css"
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
+function Top() {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+}
 
 export default () => {
     //Állapota egy névtelen függvény:
@@ -69,6 +80,7 @@ export default () => {
         <Router>
             {isLogged ? (<LoggedNavbar toggleMode={toggleMode} isDarkMode={isDarkMode} handleLogout={handleLogout}></LoggedNavbar>) : (<MainNavbar toggleMode={toggleMode} isDarkMode={isDarkMode}></MainNavbar>)}
             <Up></Up>
+            <Top></Top>
             <Routes>
                 <Route path="/" element={<Home></Home>}></Route>
                 <Route path="/about" element={<About></About>}></Route>
