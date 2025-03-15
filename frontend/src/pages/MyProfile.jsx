@@ -48,7 +48,7 @@ export default () => {
                 }
 
                 const response = await fetch(
-                    `${CONFIG.API_URL}/profile`,
+                    `${CONFIG.API_URL}/user/profile`,
                     {
                         headers: {
                             "Content-Type": "application/json",
