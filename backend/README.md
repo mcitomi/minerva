@@ -3,8 +3,8 @@
 | **HTTP Method**|**Path**| **Request Body**| **Headers**| **Comments**|
 |----------------|--------|-----------------|------------|-------------|
 | GET            | `/auth/pk` | None | None | Publikus kulcs lekérése az RSA titkosításhoz.
-| POST           | `/auth/register`| **RSA encrypted body:** encryptedData : (name: string;, email: string;, password: string;, passwordre: string;) | None | Regisztráció RSA-OAEP-el és a public key-el titkosítva, base64 kódolású szöveget vár, benne a fent említett mezőkkel.
-| POST | `/auth/login` | encryptedData : (email: string;, password: string;) | None | Lekérhetjük az access tokent, amivel hitelesíthetjük a felhasználót
+| POST           | `/auth/register`| **RSA encrypted body:** encryptedData : (name: string;, email: string;, password: string;, passwordre: string;) | None | Regisztráció RSA-OAEP-el és a public key-el titkosítva, base64 kódolású szöveget vár, benne a fent említett mezőkkel, json formátumban.
+| POST | `/auth/login` | **RSA encrypted body:** encryptedData : (email: string;, password: string;) | None | Lekérhetjük az access tokent, amivel hitelesíthetjük a felhasználót. A kérés felépítése RSA titkosított, a /register-hez hasonlóan.
 | GET | `/auth/verify-mail/check?code=VERIFYCODE` | None | None | Ellenőrizzük hogy az adott kód él-e még
 | GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját
 | GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait
@@ -41,6 +41,8 @@ Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel les
 |--------|----------|------------|-------------|---------|------------|---------------|
 | INTEGER AUTOINCREMENT | TEXT | TEXT | TEXT | TEXT | TEXT | INTEGER UNIQUE |
 
+A két tábla között ON DELETE CASCADE kapcsolat van, a profileDetails.credentialsId kapcsolódik a credentials.id-hez.
+
 
 ## Tiktoksítás:
 
@@ -53,3 +55,4 @@ Az adatok titkosításához több eszközt használok.
 #### Notes:
 
 RSA public-priv kulcs használata frontendről érkező adatok titkosítására, frontenden titkosítjuk privát kulcssal, backenden decodeoljuk. (pl ilyen a login információk, email, password stb)
+Gemini API információk: https://ai.google.dev/gemini-api/docs/models/gemini
