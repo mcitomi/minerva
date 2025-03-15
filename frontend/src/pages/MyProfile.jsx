@@ -1,5 +1,5 @@
-import { Container, Row, Col, Form, FloatingLabel, Button, Image,  } from "react-bootstrap";
-import React, {useRef, useState} from "react";
+import { Container, Row, Col, Form, FloatingLabel, Button, Image, ThemeProvider,  } from "react-bootstrap";
+import React, {useRef, useState, useEffect} from "react";
 
 import "../styles/main.css";
 
@@ -23,6 +23,75 @@ export default () => {
             reader.readAsDataURL(file); // beolvassa a fájlt
         }
     };
+
+    const [isEdit, setIsEdit] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        password: "",
+        country: "",
+        postcode: "",
+        settlement: "",
+        address: ""
+    });
+
+
+    useEffect(() => {
+        async function fetchProfile() {
+            try {
+                const token = localStorage.getItem("token");
+
+                if (!token) {
+                    throw new Error("Engedély megtagadva.");
+                }
+
+                const response = await fetch(
+                    `${CONFIG.API_URL}/profile`,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${token}`
+                        }
+                    }
+                );
+
+                if (!response.ok) {
+                    throw new Error("Hiba az értékek lekérdezésében.");
+                }
+
+                const data = await response.json();
+
+                setFormData({
+                    name: data.name,
+                    email: data.email,
+                    password: data.password,
+                    country: data.country,
+                    postcode: data.postcode,
+                    settlement: data.city,
+                    address: data.address
+                });
+                setImage(data.image || "./assets/images/user.png");
+            } catch (err) {
+                setError(err.message);
+            }
+            setLoading(false);
+        }
+        fetchProfile();
+    }, []);
+
+    function handleInput(e) {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    }
+
+    function handleClick() {
+        setIsEdit(true);
+    }
     return (
         <Container fluid>
             <Row>
@@ -30,36 +99,36 @@ export default () => {
                     <h3 style={{marginBottom: 30}}>Adataim</h3>
                     <Form>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">
-                            <Form.Control type="name" placeholder="Név"></Form.Control>
+                            <Form.Control type="name" placeholder="Név" value={formData.name} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3 floating-label">
-                            <Form.Control type="email" placeholder="Email cím"></Form.Control>
+                            <Form.Control type="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3 floating-label">
-                            <Form.Control type="password" placeholder="Jelszó"></Form.Control>
+                            <Form.Control type="password" placeholder="Jelszó" value={formData.password} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <Row>
                             <Col>
                                 <FloatingLabel controlId="floatingInput" label="Ország" className="mb-3 floating-label">
-                                    <Form.Control type="text" placeholder="Ország"></Form.Control>
+                                    <Form.Control type="text" placeholder="Ország" value={formData.country} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col>
                                 <FloatingLabel controlId="floatingInput" label="Irányítószám" className="mb-3 floating-label">
-                                    <Form.Control type="number" placeholder="Irányítószám"></Form.Control>
+                                    <Form.Control type="number" placeholder="Irányítószám" value={formData.postcode} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col>
                                 <FloatingLabel controlId="floatingInput" label="Település" className="mb-3 floating-label">
-                                    <Form.Control type="text" placeholder="Település"></Form.Control>
+                                    <Form.Control type="text" placeholder="Település" value={formData.settlement} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                         </Row>
                         <FloatingLabel controlId="floatingInput" label="Cím" className="mb-3 floating-label">
-                            <Form.Control type="text" placeholder="Cím"></Form.Control>
+                            <Form.Control type="text" placeholder="Cím" value={formData.address} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
-                            <Button variant="warning" type="submit" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Módosítás</Button>
+                            <Button variant="warning" type="submit" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2" onClick={handleClick}>Módosítás</Button>
                             <Button variant="warning" type="submit" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Mentés</Button>
                         </div>
                     </Form>

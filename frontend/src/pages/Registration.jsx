@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Col, Row, FloatingLabel, Image } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+
 import "../styles/main.css";
 
 import CONFIG from "../config.json";
@@ -15,6 +17,7 @@ function pemToArrayBuffer(pem) {    //
 }
 
 export default () => {
+    const navigate = useNavigate();
     const [publicKeyPem, setPublicKey] = useState(null);
     const [formData, setFormData] = useState({
         name: '',
@@ -107,6 +110,10 @@ export default () => {
             // console.log('Response:', ...result.message);
 
             alert(...result.message);
+
+            if (response.ok) {
+                navigate('/login');
+            }
         } catch (error) {
             console.error('Error submitting form: ', error);
         }

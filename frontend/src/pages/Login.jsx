@@ -1,5 +1,6 @@
 import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-bootstrap";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import CONFIG from "../config.json";
 
@@ -14,6 +15,7 @@ function pemToArrayBuffer(pem) {    //
 }
 
 export default ({ onLoginSuccess }) => {
+    const navigate = useNavigate();
     const [publicKeyPem, setPublicKey] = useState(null);
     const [formData, setFormData] = useState({
         email: '',
@@ -105,6 +107,7 @@ export default ({ onLoginSuccess }) => {
             if (result.jwt) {
                 alert("Sikeres bejelentkezés!");
                 onLoginSuccess(result.jwt);
+                navigate('/');
             }
             else {
                 alert(result.message || "Sikertelen bejelentkezés!");
