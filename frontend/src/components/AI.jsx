@@ -1,18 +1,24 @@
 import React, { useRef, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Image, InputGroup, FloatingLabel } from "react-bootstrap";
 import CONFIG from "../config.json";
 
 import "../styles/ai.css";
 
 export default ({ img, altText, title, placeholderText, personName }) => {
-    const navigate = useNavigate();
+    
     const inputRef = useRef(null);
     const chatRef = useRef(null);
 
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+        window.location.href = "/login";
+        return;
+    }
 
     async function fetchPersonPost(e) {
         /*
@@ -53,14 +59,6 @@ export default ({ img, altText, title, placeholderText, personName }) => {
 
         setLoading(true);
         try {
-            const token = localStorage.getItem("token");
-            // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjEsImV4cCI6MTc0MjExODI2N30.Lk5g96C6tjJiFunvaYC5E7LgeKY-IF0_OeqJEHrbmnI";
-
-            if (!token) {
-                navigate("/login");
-                return;
-            }
-
             const response = await fetch(
                 `${CONFIG.API_URL}/gemini-models/chat`,
                 {
@@ -87,7 +85,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                     case 429:
                         throw new Error("Túl sok kérés, próbálja újra később!");
                     case 500:
-                        throw new Error("Szerveroldali hiba!");                        
+                        throw new Error("Szerveroldali hiba!");
                 }
             }
 
@@ -136,7 +134,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                 <Col sx={12} md={6}>
                     <h2 className="mt-3 mb-3">{title}</h2>
                     <div className="box">
-                        <div className="chat" ref={chatRef}> 
+                        <div className="chat" ref={chatRef}>
                             {history.map((elem) => {
                                 if (elem.role == "user") {
                                     return (
@@ -162,7 +160,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                                     placeholder={placeholderText}
                                     id="question"
                                     ref={inputRef}
-                                    autoComplete="off"/>
+                                    autoComplete="off" />
                             </FloatingLabel>
                             <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>

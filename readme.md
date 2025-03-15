@@ -26,10 +26,10 @@ __Globális leírás a projektről, megjegyzések:__
 
 ### Egy-két plusz ami még jó lenne ha működne: ToDo:
 Frontend:
-- Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés.
+- Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén.
 - Ha az oldal alján vagy, és váltasz egy másik oldalra, annak is az alját fogja megjeleníteni és nem ugrik felülre
 - Passwordreset page (két password input: password és password megerősítés, után elküldés backendre)
-- Profil adatok lekérése, kitöltése és feltöltése, profilkép feltöltés a /my-profile oldalon
+- Profil adatok lekérése, kitöltése és feltöltése, profilkép feltöltés a /my-profile oldalon. 
 - Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra (profil oldalnál már csak)
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani. pl:
   ```
@@ -37,11 +37,9 @@ Frontend:
       alert("Túl sok kérés... Próbáld újra később.");
   }
   ```
-- Fetchek: 
-    Profile oldal: POST kép, infók stb GET infók, és automata betölti őket
-      
+- Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (window.location.href = "/login"), és így kap egy új érvényes tokent.
 
 Backend:
-- Adatmodellek betöltése, külön profilba szervezés, szemelyiseg beállítás
 - password reset flow befejezése
 - /profile update, kép feltöltés, adat mentés megírása
+- HA nincs aktiválva a profil, és loginnál rányom az elfelejtettem a jelszavam gombra, akkor azzal az emaillel egyben be is aktiválja a fiókot / megerősiti a reg-et.
