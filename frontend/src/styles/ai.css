@@ -17,12 +17,11 @@
     overflow-y: auto;
     padding: 10px;
     font-family: 'Lora', serif;
-    max-height: "400px";
     overflow-y: "auto";
 }
 
 .user {
-    border-radius: 20px;
+    border-radius: 20px;    
     padding: 15px;
     text-align: justify;
     align-self: flex-end;
