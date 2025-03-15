@@ -27,7 +27,6 @@ __Globális leírás a projektről, megjegyzések:__
 ### Egy-két plusz ami még jó lenne ha működne: ToDo:
 Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén.
-- Ha az oldal alján vagy, és váltasz egy másik oldalra, annak is az alját fogja megjeleníteni és nem ugrik felülre
 - Passwordreset page (két password input: password és password megerősítés, után elküldés backendre)
 - Profil adatok lekérése, kitöltése és feltöltése, profilkép feltöltés a /my-profile oldalon. 
 - Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra (profil oldalnál már csak)
