@@ -3,13 +3,6 @@ __Globális leírás a projektről, megjegyzések:__
 
 - A frontendhez hozzáadtam egy `config.json` fájlt, ami tartalmazza a backend linkjét. Ez azért fontos, mert fejlesztői környezetben, localhoston más a link mint éles domainen. **Ha bármilyen kérést akarunk intézni a backend felé, azt olyan módon kell megtenni, ahogy a `Registration.jsx` fájlba** írtam példaként. 
 
-- Későbbi config adatokat is írjuk bele a config.json-be, ilyen például a port, esetleg egyéb érzékeny adatok.
-
-- **Adatok / elemek amiket le kell kérni majd a backendről:**
-    - Navigációs menü elemei, accounttól / bejelentkezéstől függ majd milyen menüpontok jelenhetnek meg, ezért ezeket le kell majd kérni és úgy megjeleníteni.
-    - Felhasználó neve, profilképe, adatai, személyes beállításai (pl sötétmód) , chatjei, előzményei, barát/osztály lista stb, *(hitelesítés minden kérésnél/weboldal megnyitáskor- ezt megcsinálom ~Tomi)*.
-    - Egyéb ötletekre írok még endpointot.
-
 ## Project futtatása
 ### Frontend:
 - Frontend mappába navigálva, futtassuk a következőket:
@@ -41,6 +34,16 @@ Frontend:
 - Bug: A bejelentkezett Navbar lenyíló menüje sötét módban összeolvad a szöveggel, mert a felirat is szürke/sötét mint a háttér
 - Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
 - Dizájn ötlet 2: Sima javascript alertek helyett felugró bootstrap modal komponens letrehozasa, es abban megjeleniteni az adatokat (a komponensnek átadjuk az adatokat amiket meg kell jelenitsen) ---> ne modal legyen, van jobb ötletem!
+ #### Teszterek amiket észrevettek:
+- Telefonon nem reszponziv, főleg a rólunk rész
+- text area lehetne a chateknél
+- legördülő beszélgess fülön belül az emberek nevei bx el van csúszva
+- támogass gomb valahova vezessen - revolut link https://www.revolut.me/mcitomi/
+- linkek lent (dc, insta stb)
+- email -> support@edu-minerva.hu
+- fiók adatok (a forráskódban hagytam commentet rá)
+- szendvics menű színe legyen más, nem látható telefonon
+- jobb visszajelzés reg, login stb után
 
 Backend:
 - password reset flow befejezése
