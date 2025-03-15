@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Form, Image, InputGroup, FloatingLabel } from "react-bootstrap";
 import CONFIG from "../config.json";
@@ -8,6 +8,7 @@ import "../styles/ai.css";
 export default ({ img, altText, title, placeholderText, personName }) => {
     const navigate = useNavigate();
     const inputRef = useRef(null);
+    const chatRef = useRef(null);
 
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -115,6 +116,12 @@ export default ({ img, altText, title, placeholderText, personName }) => {
         setLoading(false);
     }
 
+    useEffect(() => {
+        if (chatRef.current) {
+            chatRef.current.scrollTop = chatRef.current.scrollHeight;
+        }
+    }, [history]);
+
     // useState: előző kérdéseknek, válaszok [{"question": ..., "answer": ...}, ....]
     // kiírás: messages.map((msg) => {
     //  - kiírod a kérdést (msg.question)
@@ -129,7 +136,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                 <Col sx={12} md={6}>
                     <h2 className="mt-3 mb-3">{title}</h2>
                     <div className="box">
-                        <div className="chat">
+                        <div className="chat" ref={chatRef}> 
                             {history.map((elem) => {
                                 if (elem.role == "user") {
                                     return (

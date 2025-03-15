@@ -100,7 +100,7 @@ export default ({ onLoginSuccess }) => {
 
             const result = await response.json();
             
-            alert(...result.message);
+            // alert(...result.message);
 
             if (result.jwt) {
                 alert("Sikeres bejelentkezés!");

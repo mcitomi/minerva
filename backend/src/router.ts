@@ -66,7 +66,7 @@ export class RequestHandler {
                         fs.readdirSync(join(path, item)).map((file: string) => {
                             scanSubFolders(file, join(path, item), method, endpoints);
                         });
-                    } else if (stats.isFile()) {
+                    } else if (stats.isFile() && item.endsWith(".ts")) {
                         const route = join(path, item);
                         const name = route.slice(route.indexOf(method) + method.length).split('.')[0].replaceAll('\\', "/");
                         const type = method;

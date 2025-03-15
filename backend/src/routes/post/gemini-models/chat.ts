@@ -1,10 +1,33 @@
 import { Database } from "bun:sqlite";
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, type Content } from "@google/generative-ai";
 
 import { verifyToken } from "../../../modules/auth/jwt";
 import { type Payload } from "../../../types/jwt";
 import { decryptRSA } from "../../../modules/crypt";
 import { gemini_api_key } from "../../../../config.json";
+
+import { systeminstructions } from "./system-instructions.json";
+
+import PETOFI from "./persons/petofi.json";
+import BOLYAI from "./persons/bolyai.json";
+import KOLCSEY from "./persons/kolcsey.json";
+import MINERVA from "./persons/minerva.json";
+import NEUMANN from "./persons/neumann.json";
+import SAINT from "./persons/saint.json";
+import SZECSHENYI from "./persons/szechenyi.json";
+// továbbfejlesztési lehetőség:
+// írni egy modult ami scanneli a persons mappát json fájlokat kutatva, és a json fájlokba megadni a person nevét enum helyett, és eből a modulból ki exportáljuk
+// az emberek neveit, és egy adott kérésnél már mindig az előre betöltött és megkeresett infókkal szolgálunk
+
+enum Persons {
+    Petofi = "petofi_sandor",
+    Bolyai = "bolyai_janos",
+    Kolcsey = "kolcsey_ferenc",
+    Minerva = "minerva",
+    Neumann = "neumann_janos",
+    Saint = "szent_istvan",
+    Szecshenyi = "szechenyi_istvan"
+}
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -18,16 +41,62 @@ export const handleRequest = async (req: Request, db: Database) => {
             responseMimeType: "text/plain",
         };
 
-        const model = genAI.getGenerativeModel({
-            model: "gemini-2.0-flash-lite",
+        const model = genAI.getGenerativeModel({    // https://ai.google.dev/gemini-api/docs/models/gemini#gemini-2.0-flash-lite
+            // model: "gemini-2.0-flash-lite",  // 30 RPM, de "lite"- nem használ internetet
+            model: "gemini-2.0-flash",  // 15RPM, de tud keresni és pontosabb 
         });
 
-        async function callGemini(message: string) {
+        async function callGemini(message: string, history: Content[], person: string) {
+            let tune: Content[], identity: string;
+
+            switch (person) {
+                case Persons.Petofi:
+                    tune = PETOFI.tune;
+                    identity = PETOFI.identity;
+                    break;
+
+                case Persons.Bolyai:
+                    tune = BOLYAI.tune;
+                    identity = BOLYAI.identity;
+                    break;
+
+                case Persons.Kolcsey:
+                    tune = KOLCSEY.tune;
+                    identity = KOLCSEY.identity;
+                    break;
+                case Persons.Minerva:
+                    tune = MINERVA.tune;
+                    identity = MINERVA.identity;
+                    break;
+
+                case Persons.Neumann:
+                    tune = NEUMANN.tune;
+                    identity = NEUMANN.identity;
+                    break;
+
+                case Persons.Saint:
+                    tune = SAINT.tune;
+                    identity = SAINT.identity;
+                    break;
+
+                case Persons.Szecshenyi:
+                    tune = SZECSHENYI.tune;
+                    identity = SZECSHENYI.identity;
+                    break;
+
+                default:
+                    tune = MINERVA.tune;
+                    identity = MINERVA.identity;
+                    break;
+            }
+
             const chatSession = model.startChat({
                 generationConfig,
-                history: [
-
-                ],
+                history: [...tune, ...history.slice(0, -1)],
+                systemInstruction: {
+                    role: "system",
+                    parts: [{ "text": `${identity} ${systeminstructions}` }]
+                }
             });
 
             const result = await chatSession.sendMessage(message);
@@ -55,36 +124,36 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         //#endregion
 
-        const body = await req.json() as {message: string, history: string[], person: string};
+        const body = await req.json() as { message: string, history: Content[], person: string };
 
         const errorMessages = [];
 
-        if(!body || typeof(body) !== "object" || Object.keys(body).length !== 3) {
+        if (!body || typeof (body) !== "object" || Object.keys(body).length !== 3) {
             errorMessages.push("Invalid body object!");
         }
 
-        if(!body.message || typeof(body.message) !== "string") {
+        if (!body.message || typeof (body.message) !== "string") {
             errorMessages.push("Invalid field: message");
         }
 
-        if(!body.person || typeof(body.person) !== "string") {
+        if (!body.person || typeof (body.person) !== "string") {
             errorMessages.push("Invalid field: person");
         }
 
-        if(!body.history || typeof(body.history) !== "object") {
+        if (!body.history || typeof (body.history) !== "object") {
             errorMessages.push("Invalid field: history");
         }
-        
-        if(errorMessages.length !== 0) {
+
+        if (errorMessages.length !== 0) {
             return Response.json({
                 "message": errorMessages
-            }, {status: 400})
+            }, { status: 400 })
         }
 
-        const geminiResponse = await callGemini(body.message);
+        const geminiResponse = await callGemini(body.message, body.history, body.person);
 
         return Response.json({
-            "model" : `${geminiResponse}`
+            "model": `${geminiResponse}`
         });
 
     } catch (error) {

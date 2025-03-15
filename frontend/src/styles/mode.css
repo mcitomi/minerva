@@ -39,3 +39,7 @@ body.light .ai {
 body.dark .ai {
     background-color: grey;
 }
+
+body.dark .floating-label {
+    color: black;
+}
