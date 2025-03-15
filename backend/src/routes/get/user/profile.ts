@@ -2,6 +2,7 @@ import { Database } from "bun:sqlite";
 import { verifyToken } from "../../../modules/auth/jwt";
 import { type Payload } from "../../../types/jwt";
 import { decryptRSA } from "../../../modules/crypt";
+import { type UserInfo } from "../../../types/profile";
 
 export const handleRequest = async (req : Request,  db : Database) => {
     try {
@@ -22,9 +23,14 @@ export const handleRequest = async (req : Request,  db : Database) => {
 
         const jwtPayload: Payload = verifyToken(jwToken);
         
-        const userQuery = db.query("SELECT email, username FROM credentials WHERE id = ?;");
-        const userInfo = await userQuery.get(jwtPayload._id) as { email: string; username: string };
-
+        const userQuery = db.query(`
+            SELECT email, username, timeCreated, failedAttempts, lastLogin, role, country, postCode, settlement, address, pictureUrl FROM credentials 
+            LEFT JOIN profileDetails ON profileDetails.credentialsId = credentials.id
+            WHERE credentials.id = ?;`
+        );
+        
+        const userInfo = await userQuery.get(jwtPayload._id) as UserInfo;   
+        
         if(!userInfo || !userInfo.email) {
             return Response.json({
                 "message": "User not found"
@@ -35,7 +41,16 @@ export const handleRequest = async (req : Request,  db : Database) => {
             "message": "Success",
             "user" : {
                 "name" : decryptRSA(userInfo.username),
-                "email" : decryptRSA(userInfo.email)
+                "email" : decryptRSA(userInfo.email),
+                "timeCreated" : userInfo.timeCreated,
+                "failedAttempts" : userInfo.failedAttempts,
+                "lastLogin" : userInfo.lastLogin,
+                "role" : userInfo.role,
+                "country" : userInfo.country ? decryptRSA(userInfo.country) : null,
+                "postCode" : userInfo.postCode ? decryptRSA(userInfo.postCode) : null,
+                "settlement" : userInfo.settlement ? decryptRSA(userInfo.settlement) : null,
+                "address" : userInfo.address ? decryptRSA(userInfo.address) : null,
+                "pictureUrl" : userInfo.pictureUrl
             }
         })
 

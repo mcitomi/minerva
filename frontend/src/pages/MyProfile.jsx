@@ -1,6 +1,8 @@
 import { Container, Row, Col, Form, FloatingLabel, Button, Image, ThemeProvider,  } from "react-bootstrap";
 import React, {useRef, useState, useEffect} from "react";
 
+import CONFIG from "../config.json";
+
 import "../styles/main.css";
 
 export default () => {
@@ -46,7 +48,7 @@ export default () => {
                 if (!token) {
                     throw new Error("Engedély megtagadva.");
                 }
-
+                
                 const response = await fetch(
                     `${CONFIG.API_URL}/user/profile`,
                     {
@@ -56,23 +58,23 @@ export default () => {
                         }
                     }
                 );
-
+                
                 if (!response.ok) {
                     throw new Error("Hiba az értékek lekérdezésében.");
                 }
-
+                
                 const data = await response.json();
 
                 setFormData({
-                    name: data.name,
-                    email: data.email,
-                    password: data.password,
-                    country: data.country,
-                    postcode: data.postcode,
-                    settlement: data.city,
-                    address: data.address
+                    name: data.user.name,
+                    email: data.user.email,
+                    password: data.password,    // fun fact: a jelszót nem tárolhatod adatbázisban olyan formában, ami visszafejthető, ezért nem jeleníthető meg
+                    country: data.user.country, // illetve ha nincs még beállítva pl az ország, akkor null értéket ad vissza az api, ezt is le kell kezelni
+                    postcode: data.user.postCode,
+                    settlement: data.user.settlement,
+                    address: data.user.address
                 });
-                setImage(data.image || "./assets/images/user.png");
+                setImage(data.user.pictureUrl || "./assets/images/user.png");
             } catch (err) {
                 setError(err.message);
             }

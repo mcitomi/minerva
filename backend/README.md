@@ -1,17 +1,16 @@
-This project was created using `bun init` in bun v1.2.xx. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
-
 # Backend API 
 
 | **HTTP Method**|**Path**| **Request Body**| **Headers**| **Comments**|
 |----------------|--------|-----------------|------------|-------------|
-| GET            | `/test/ping`| None  | None | Ellenőrizhetjük hogy él-e a backend |
 | GET            | `/auth/pk` | None | None | Publikus kulcs lekérése az RSA titkosításhoz.
-| POST           | `/auth/register`| **RSA encrypted body:** encryptedData : (name, email, password, passwordre) | None | Regisztráció RSA-OAEP-el és a public key-el titkosítva, base64 kódolású szöveget vár, benne a fent említett mezőkkel.
-| POST | `/auth/login` | Body | None | Lekérhetjük az access tokent, amivel hitelesíthetjük a felhasználót
+| POST           | `/auth/register`| **RSA encrypted body:** encryptedData : (name: string;, email: string;, password: string;, passwordre: string;) | None | Regisztráció RSA-OAEP-el és a public key-el titkosítva, base64 kódolású szöveget vár, benne a fent említett mezőkkel.
+| POST | `/auth/login` | encryptedData : (email: string;, password: string;) | None | Lekérhetjük az access tokent, amivel hitelesíthetjük a felhasználót
 | GET | `/auth/verify-mail/check?code=VERIFYCODE` | None | None | Ellenőrizzük hogy az adott kód él-e még
 | GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját
 | GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait
-
+| GET | `/user/profile` | None | Authorization: Bearer <token> | Lekérhetjük a felhasználó profil adatait
+| POST | `/gemini-models/chat` | message: string;, person: string;, history: string[]; | Authorization: Bearer <token> | Kérdezhetünk az AI profiloktól.
+| POST | `/auth/reset-password` | email: string;, verifyUrl: string; | None | Felhasználó jelszó visszaállítása. 
 
 ## Szerver:
 
@@ -30,12 +29,17 @@ Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel les
 
 ## Adatbázis felépítése
 
-### credentials
+### `credentials` tábla
 
-| **id**            | **emailHash**    | **email**     | **passHash**   | **name**  | **timeCreated**  | **isActive** | **failedAttempts** | **lastLogin** | **role**   | **resetToken** | **twofaSecret** |
-|-------------------|------------------|---------------|----------------|----------|-----------------|--------------|--------------------|---------------|-----------|----------------|-----------------|
-| INTEGER AUTOINCREMENT | TEXT UNIQUE      | TEXT          | TEXT           | TEXT     | INTEGER          | NUMERIC      | INTEGER            | INTEGER       | TEXT      | TEXT           | TEXT            |
+| **id** | **emailHash** | **email** | **username** | **passHash** | **timeCreated** | **isActive** | **failedAttempts** | **lastLogin** | **role** | **mgmtToken** | **twofaSecret** |
+|--------|--------------|-----------|--------------|--------------|----------------|-------------|------------------|------------|------|------------|-------------|
+| INTEGER AUTOINCREMENT | TEXT UNIQUE | TEXT | TEXT | TEXT | INTEGER (strftime('%s', 'now')) | NUMERIC DEFAULT FALSE | INTEGER DEFAULT 0 | INTEGER | TEXT DEFAULT 'user' | TEXT | TEXT |
 
+### `profileDetails` tábla
+
+| **id** | **county** | **postCode** | **settlement** | **address** | **pictureUrl** | **credentialsId** |
+|--------|----------|------------|-------------|---------|------------|---------------|
+| INTEGER AUTOINCREMENT | TEXT | TEXT | TEXT | TEXT | TEXT | INTEGER UNIQUE |
 
 
 ## Tiktoksítás:
@@ -44,12 +48,8 @@ Az adatok titkosításához több eszközt használok.
 - RSA kulcsok. Az RSA alapú titkosítást arra használjuk, hogy frontenden titkosítjuk az adatot, majd backenden feldolgozzuk és eltároljuk a titkosított adatot. RSA-3072 kulcsokat használunk a projekthez SHA-512 algoritmussal.
 (A githubra feltett kulcsok teszt kulcsok és értékek)
 
-- AES titkosítást használunk adatbázisba, olyan adatok titkosítására mint uuid, refreshtoken stb
-
 - A jelszavak titkosítására Argon2 hash metódust használunk, ez jelenleg az egyik legmodernebb megoldás, és jelenlegpraktikus is, mert a Bun beépítetten támogatja.
 
 #### Notes:
 
 RSA public-priv kulcs használata frontendről érkező adatok titkosítására, frontenden titkosítjuk privát kulcssal, backenden decodeoljuk. (pl ilyen a login információk, email, password stb)
-
-AES: refresh_token, uuid tárolása adatbázisban (olyan adatok, amiket csak backend használ pl adatbázisba tárol)

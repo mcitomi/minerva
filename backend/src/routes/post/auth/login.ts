@@ -61,7 +61,7 @@ export const handleRequest = async (req: Request, db: Database) => {
             }, {status: 403});
         }
 
-        db.run("UPDATE credentials SET failedAttempts = 0, lastLogin = ? WHERE id = ?;", [Date.now(), accountInfo.id]);
+        db.run("UPDATE credentials SET failedAttempts = 0, lastLogin = ? WHERE id = ?;", [Math.floor(Date.now() / 1000), accountInfo.id]);
 
         const token = generateToken({ _id: accountInfo.id }, 172800);   // 172 800 másodperc = 2 nap (48óra)
 
