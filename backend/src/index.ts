@@ -1,12 +1,17 @@
-import { RequestHandler } from "./router";
+// Külső modulok
 import { Database } from "bun:sqlite";
+
+//konfigurációs fájl, saját modulok
 import { port } from "../config.json";
 
+import { RequestHandler } from "./router";
 import { modelLoader } from "./modules/model-tuning/loader";
 
+// Modulok, Adatbázis deklarálás
 const db: Database = new Database("database.sqlite", { create: true });
 const requesthandler: RequestHandler = new RequestHandler(db);
 
+// Adatbázis táblák létrehozása
 db.run(`CREATE TABLE IF NOT EXISTS credentials (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     emailHash TEXT UNIQUE,
@@ -40,10 +45,11 @@ db.run(`CREATE TABLE IF NOT EXISTS profileDetails (
 //     expiresAt DATETIME NOT NULL
 // );`);
 
+// Modulok futtatása, elemek betöltése
 requesthandler.register();
-
 modelLoader();
 
+// Bun szerver létrehozása
 Bun.serve({
     development: true,
     port: port,
@@ -51,6 +57,5 @@ Bun.serve({
         return requesthandler.listener(r);
     }
 });
-
 
 console.info(`🌐 REST backend server started on port ${port}`);

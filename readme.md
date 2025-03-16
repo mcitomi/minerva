@@ -34,7 +34,6 @@ Frontend:
 - Bug: A bejelentkezett Navbar lenyíló menüje sötét módban összeolvad a szöveggel, mert a felirat is szürke/sötét mint a háttér
 - Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
 - Dizájn ötlet 2: Sima javascript alertek helyett felugró bootstrap modal komponens letrehozasa, es abban megjeleniteni az adatokat (a komponensnek átadjuk az adatokat amiket meg kell jelenitsen) ---> ne modal legyen, van jobb ötletem!
-- Bettina: Szerezz információt: Ady Endre, Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Erdős Pál, Lovász László, Pólya György, Szemerédi Endre, Túrán Pál, Horthy Miklós, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós + amik még hiányoznak: Bolyai János, Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 - Fórum oldal kinézet (ugyan az mint a chat kb, csak itt az emberek egymás írását látják)
 - Bankkártya gomb helyett inkább támogatás, és átirányít https://buymeacoffee.com/eduminerva (a közös emailre van csinálva)
   
@@ -52,8 +51,10 @@ Frontend:
 Backend:
 - password reset flow befejezése -> HA nincs aktiválva a profil, és loginnál rányom az elfelejtettem a jelszavam gombra, akkor azzal az emaillel egyben be is aktiválja a fiókot / megerősiti a reg-et.
 - /profile update, kép feltöltés, adat mentés megírása
-- Új MI-k vannak, dolgozd ki <3 -> ai module loader
 - Fórum GET messages (utosó 100 mondjuk) POST új üzenet
+
+AI:
+- új emberek megírása: Ady Endre, Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Erdős Pál, Lovász László, Pólya György, Szemerédi Endre, Túrán Pál, Horthy Miklós, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós + amik még hiányoznak: Bolyai János, Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
