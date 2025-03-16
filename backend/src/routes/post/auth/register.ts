@@ -12,6 +12,14 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         const errorMessages = [];
 
+        if(!rawBody || typeof(rawBody) !== "object" || Object.keys(rawBody).length !== 2) {
+            errorMessages.push("Invalid rawBody object!");
+        }
+
+        if(!rawBody.verifyUrl || typeof(rawBody.verifyUrl ) !== "string") {
+            errorMessages.push("Invalid field in rawBody: verifyUrl");
+        }
+
         if(!body || typeof(body) !== "object" || Object.keys(body).length !== 4) {
             errorMessages.push("Invalid body object!");
         }
@@ -42,6 +50,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         if(!/^(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[@$!%*?&]).{8,}$/u.test(body.password)) {
             errorMessages.push("Weak password");
+            errorMessages.push("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)");
         }
 
         if(errorMessages.length !== 0) {
@@ -62,12 +71,11 @@ export const handleRequest = async (req: Request, db: Database) => {
         const encryptedName = encryptRSA(body.name);
         const hashedMail = hashHmac(body.email);
         
-        // const verifyUrl = `http://${new URL(req.url).host}/auth/verify-mail/link?code=${userMgmtToken}`;
         const verifyUrl = `${rawBody.verifyUrl}/verify-account?code=${userMgmtToken}`;
 
         db.run("INSERT INTO credentials (email, username, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?, ?);", [encryptedMail, encryptedName, hashedMail, passHash, userMgmtToken]);
 
-        const mailResponse = sendMail([body.email], "Minerva regisztráció", "Erősítse meg email címét", emailConfirmation(body.name, verifyUrl));
+        const mailResponse = sendMail([body.email], "Minerva regisztráció", `Erősítse meg email címét a következő linken: ${verifyUrl}`, emailConfirmation(body.name, verifyUrl));
 
         if(mailResponse?.includes("Error")){
             return Response.json({

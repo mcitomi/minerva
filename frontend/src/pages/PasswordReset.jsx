@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import CONFIG from "../config.json";
 
-
 // PEM kulcs => ArrayBuffer
 function pemToArrayBuffer(pem) {
     const b64 = pem.replace(/-----BEGIN PUBLIC KEY-----/, "")
@@ -13,7 +12,7 @@ function pemToArrayBuffer(pem) {
     return Uint8Array.from(atob(b64), (char) => char.charCodeAt(0)).buffer;
 }
 
-export default ({ onLoginSuccess }) => {
+export default () => {
     const navigate = useNavigate();
     const [publicKeyPem, setPublicKey] = useState(null);
     const [formData, setFormData] = useState({
@@ -83,42 +82,31 @@ export default ({ onLoginSuccess }) => {
 
         const encryptedPasswordBase64 = btoa(String.fromCharCode(...new Uint8Array(encrypted)));
 
+        if (!encryptedPasswordBase64) {
+            console.error('Encryption failed.');
+            return;
+        }
+
         try {
-            const response = await fetch(`${CONFIG.API_URL}/auth/save-password`, {
+            const response = await fetch(`${CONFIG.API_URL}/auth/password-reset`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ password: encryptedPasswordBase64 }),
+                body: JSON.stringify({ "password" : encryptedPasswordBase64, "code" : new URLSearchParams(window.location.search).get("code") }),
             });
-
+    
             const result = await response.json();
 
-            if (result.success) {
-                alert("Jelszó sikeresen elmentve!");
+            alert(result.message);
+
+            if(response.ok) {
                 navigate("/login");
-            } else {
-                alert(result.message || "Hiba történt a jelszó mentésekor.");
             }
         } catch (error) {
             console.error("Error saving password: ", error);
         }
     };
-
-    // Jelszó visszaállítás
-    async function resetPassword() {
-        const email = formData.email;
-        const response = await fetch(`${CONFIG.API_URL}/auth/reset-password`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, verifyUrl: `${window.location.origin}` }),
-        });
-
-        const result = await response.json();
-        alert(result.message);
-    }
 
     return (
         <Container fluid className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>

@@ -20,7 +20,6 @@ __Globális leírás a projektről, megjegyzések:__
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
-- !! -> Betti: Passwordreset page (két password input: password és password megerősítés, után elküldés backendre)
 - Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, profilkép feltöltés a /my-profile oldalon. ---> félig kész
 - !! -> Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra (profil oldalnál már csak) (window.location.href = "/login").
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani. pl: (régebbi useless alerteket kommenteld ki)
@@ -49,7 +48,6 @@ Frontend:
 - jobb visszajelzés reg, login stb után
 
 Backend:
-- password reset flow befejezése -> HA nincs aktiválva a profil, és loginnál rányom az elfelejtettem a jelszavam gombra, akkor azzal az emaillel egyben be is aktiválja a fiókot / megerősiti a reg-et.
 - /profile update, kép feltöltés, adat mentés megírása
 - Fórum GET messages (utosó 100 mondjuk) POST új üzenet
 

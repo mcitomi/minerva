@@ -121,7 +121,7 @@ export default ({ onLoginSuccess }) => {
     async function resetPassword() {
         const email = formData.email;
 
-        const response = await fetch(`${CONFIG.API_URL}/auth/reset-password`, {
+        const response = await fetch(`${CONFIG.API_URL}/auth/password-request`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -131,7 +131,7 @@ export default ({ onLoginSuccess }) => {
 
         const result = await response.json();
 
-        alert(result.message);
+        alert(...result.message);
     }
 
     return (

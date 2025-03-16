@@ -25,26 +25,32 @@ export class RequestHandler {
     }
 
     public async listener(req: Request) {
-        if (req.method === 'OPTIONS') {     // handle options method
-            return new Response('Departed', { headers: {
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Methods': 'OPTIONS, POST',
-                'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-            }});
-        }
-        
-        const requestPath = (new URL(req.url).pathname).toLowerCase();
-        const routeName = requestPath.endsWith("/") ? requestPath.slice(0, -1) : requestPath;
-
-        const endpoint = this.endpoints.find(endpoint => endpoint.name.toLowerCase() === routeName && endpoint.type.toUpperCase() === req.method.toUpperCase());
-
-        if (endpoint) {
-            const file: File = await import(endpoint.route);
-            return this.cors(await file.handleRequest(req, this.db));
-        } else {
+        try {
+            if (req.method === 'OPTIONS') {     // handle options method
+                return new Response('Departed', { headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'OPTIONS, POST',
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+                }});
+            }
+            
+            const requestPath = (new URL(req.url).pathname).toLowerCase();
+            const routeName = requestPath.endsWith("/") ? requestPath.slice(0, -1) : requestPath;
+    
+            const endpoint = this.endpoints.find(endpoint => endpoint.name.toLowerCase() === routeName && endpoint.type.toUpperCase() === req.method.toUpperCase());
+    
+            if (endpoint) {
+                const file: File = await import(endpoint.route);
+                return this.cors(await file.handleRequest(req, this.db));
+            } else {
+                return this.cors(Response.json({
+                    "message" : "Invalid endpoint or wrong method"
+                }, { status: 404 }));
+            }
+        } catch (error) {
             return this.cors(Response.json({
-                "message" : "Invalid endpoint or wrong method"
-            }, { status: 404 }));
+                "message" : "Server error: Endpoint not responded"
+            }, { status: 500 }));
         }
     }
 
