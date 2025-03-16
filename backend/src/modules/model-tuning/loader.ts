@@ -20,7 +20,7 @@ export async function modelLoader() {
                     throw new Error("Identity not found!");
                 }
                 modelTunings.push({name: model.name, path: modelPath});
-                console.info(`${!model.tune.length ? "⚠️ " : "🤖"} ModelFile: ${model.name} loaded${!model.tune.length ? " But tune is empty" : ""}!`);
+                console.info(`${!model.tune.length ? "⚠️ " : "🤖"} ModelFile: ${file} (${model.name}) loaded${!model.tune.length ? " But tune is empty" : " successfully"}!`);
             } catch (error) {
                 console.error(`🛑 Unable to load model: ${file}:`, error.message);
             }

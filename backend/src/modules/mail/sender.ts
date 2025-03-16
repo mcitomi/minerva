@@ -2,6 +2,7 @@ import { mail_application_password } from "../../../config.json";
 import { createTransport } from "nodemailer";
 
 export function sendMail(targets: string[], subject: string, text: string, html: string) {
+    // mail antispam: email hash alapján, max perceknként lehessen pl emilt küldeni
     try {
         var transporter = createTransport({
             service: 'gmail',

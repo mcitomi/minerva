@@ -21,6 +21,7 @@ __Globális leírás a projektről, megjegyzések:__
 Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
 - Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, profilkép feltöltés a /my-profile oldalon. ---> félig kész
+- Profil adatoknál felvehető hogy milyen intézménybe / iskolába jár az ember egy legördülő menübe. (https://kretaglobalapi.e-kreta.hu/intezmenyek/kreta/publikus)jelszó input helyett: egy lenyitható search menü, ahonnan kiválasztható a krétás intézmény. (kb semmi nehezet nem kell hozzá frontenden írni azon kívül hogy kicserélni az input boxot, de nagyot dob az oldalon ithink). Pl a lakcím, város felvétele is useless.. Ország, nyelv, iskola, osztály felvétele tán hasznosabb
 - !! -> Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra (profil oldalnál már csak) (window.location.href = "/login").
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani. pl: (régebbi useless alerteket kommenteld ki)
   ```
@@ -36,7 +37,7 @@ Frontend:
 - Fórum oldal kinézet (ugyan az mint a chat kb, csak itt az emberek egymás írását látják)
 - Bankkártya gomb helyett inkább támogatás, és átirányít https://buymeacoffee.com/eduminerva (a közös emailre van csinálva)
   
- #### Teszterek amiket észrevettek:
+#### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
 - text area lehetne a chateknél
 - legördülő beszélgess fülön belül az emberek nevei bx el van csúszva ---> ennek színei folyamatban
@@ -48,7 +49,7 @@ Frontend:
 - jobb visszajelzés reg, login stb után
 
 Backend:
-- /profile update, kép feltöltés, adat mentés megírása
+- /profile update, kép feltöltés, adat mentés megírása - adatbázis módosítás, kréta intézmény mentésre.
 - Fórum GET messages (utosó 100 mondjuk) POST új üzenet
 
 AI:
@@ -58,3 +59,4 @@ Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
 - Pontgyűjtési rendszer vagy jutalmak beépítése a tanulási folyamat ösztönzésére
 - Partnerségek iskolákkal és egyetemekkel (krétával)
+- Email spam elleni védelem, egy féle timeout rendszer, pl ha az ember 2x gyorsan kattint egy gombra, ne lehessen új emailt lekérni, pl csak fél perc múlva

@@ -32,7 +32,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         if (!isValidToken) {
             return Response.json({
-                "message": ["Your code is invalid"]
+                "message": ["Your code is invalid", "Request a new mail!"]
             }, { status: 400 });
         }
 
