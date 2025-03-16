@@ -24,16 +24,34 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                         <Nav.Link as={Link} to="/about" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Rólunk</Nav.Link>
                         <NavDropdown title="Beszélgess!" id="basic-nav-dropdown" className="link" style={{fontSize: "20px"}}>
                             <NavDropdown title="Magyar nyelv és irodalom" className="link" style={{fontSize: "20px"}}>
-                                <NavDropdown.Item as={Link} to="/petofi-sandor" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Petőfi Sándor</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/ady-endre" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Ady Endre</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/arany-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Arany János</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/babits-mihaly" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Babits Mihály</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/jozsef-attila" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>József Attila</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/kosztolanyi-dezso" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Kosztolányi Dezső</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/kolcsey-ferenc" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Kölcsey Ferenc</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/madach-imre" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Madách Imre</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/petofi-sandor" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Petőfi Sándor</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Matematika" className="link" style={{fontSize: "20px"}}>
+                                <NavDropdown.Item as={Link} to="/bolyai-farkas" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai Farkas</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/bolyai-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai János</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/erdos-pal" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Erdős Pál</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/lovasz-laszlo" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Lovász László</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/neumann-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Neumann János</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/polya-gyorgy" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Pólya György</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/szemeredi-endre" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Szemerédi Endre</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/turan-pal" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Turán Pál</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Történelem" className="link" style={{fontSize: "20px"}}>
-                                <NavDropdown.Item as={Link} to="/szent-istvan" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Szent István</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/horthy-miklos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Horthy Miklós</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/hunyadi-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Hunyadi János</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/kossuth-lajos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Kossuth Lajos</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/matyas-kiraly" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Mátyás király</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/rakoczi-ferenc" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Rákóczi Ferenc</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/szechenyi-istvan" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Széchenyi István</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/szent-istvan" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Szent István</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/zrinyi-miklos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Zrínyi Miklós</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to="/minerva" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>MInerva</NavDropdown.Item>

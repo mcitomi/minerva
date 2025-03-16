@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Petofi, Kolcsey, Bolyai, Neumann, Saint, Szechenyi, VerifyPage } from "./pages/router.js";
+import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Ady, Arany, Babits, Jozsef, Kosztolanyi, Kolcsey, Madach, Petofi, BolyaiFarkas, BolyaiJanos, Erdos, Lovasz, Neumann, Polya, Szemeredi, Turan, Horthy, Hunyadi, Kossuth, Matyas, Rakoczi, Szechenyi, Saint, Zrinyi, VerifyPage } from "./pages/router.js";
 import { useLocation } from 'react-router-dom';
 
 import MainNavbar from "./components/MainNavbar.jsx";
@@ -88,12 +88,30 @@ export default () => {
                 <Route path="/registration" element={<Registration></Registration>}></Route>
                 <Route path="/my-profile" element={<MyProfile></MyProfile>}></Route>
                 <Route path="/minerva" element={<MInerva></MInerva>}></Route>
-                <Route path="/petofi-sandor" element={<Petofi></Petofi>}></Route>
+                <Route path="/ady-endre" element={<Ady></Ady>}></Route>
+                <Route path="/arany-janos" element={<Arany></Arany>}></Route>
+                <Route path="/babits-mihaly" element={<Babits></Babits>}></Route>
+                <Route path="/jozsef-attila" element={<Jozsef></Jozsef>}></Route>
+                <Route path="/kosztolanyi-dezso" element={<Kosztolanyi></Kosztolanyi>}></Route>
                 <Route path="/kolcsey-ferenc" element={<Kolcsey></Kolcsey>}></Route>
-                <Route path="/bolyai-janos" element={<Bolyai></Bolyai>}></Route>
+                <Route path="/madach-imre" element={<Madach></Madach>}></Route>
+                <Route path="/petofi-sandor" element={<Petofi></Petofi>}></Route>
+                <Route path="/bolyai-farkas" element={<BolyaiFarkas></BolyaiFarkas>}></Route>
+                <Route path="/bolyai-janos" element={<BolyaiJanos></BolyaiJanos>}></Route>
+                <Route path="/erdos-pal" element={<Erdos></Erdos>}></Route>
+                <Route path="/lovasz-laszlo" element={<Lovasz></Lovasz>}></Route>
                 <Route path="/neumann-janos" element={<Neumann></Neumann>}></Route>
-                <Route path="/szent-istvan" element={<Saint></Saint>}></Route>
+                <Route path="/polya-gyorgy" element={<Polya></Polya>}></Route>
+                <Route path="/szemeredi-endre" element={<Szemeredi></Szemeredi>}></Route>
+                <Route path="/turan-pal" element={<Turan></Turan>}></Route>
+                <Route path="/horthy-miklos" element={<Horthy></Horthy>}></Route>
+                <Route path="/hunyadi-janos" element={<Hunyadi></Hunyadi>}></Route>
+                <Route path="/kossuth-lajos" element={<Kossuth></Kossuth>}></Route>
+                <Route path="/matyas-kiraly" element={<Matyas></Matyas>}></Route>
+                <Route path="/rakoczi-ferenc" element={<Rakoczi></Rakoczi>}></Route>
                 <Route path="/szechenyi-istvan" element={<Szechenyi></Szechenyi>}></Route>
+                <Route path="/szent-istvan" element={<Saint></Saint>}></Route>
+                <Route path="/zrinyi-miklos" element={<Zrinyi></Zrinyi>}></Route>
                 <Route path="/verify-account" element={<VerifyPage/>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>

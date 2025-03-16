@@ -10,10 +10,12 @@ body.dark, body.dark .navbar .dropdown-menu {
 
 body.light .navbar .dropdown-item {
     background-color: #f8f9fa;
+    color: #212529;
 }
 
 body.dark .navbar .dropdown-item {
     background-color: #212529;
+    color: #f8f9fa;
 }
 
 .navbar .dropdown-menu {

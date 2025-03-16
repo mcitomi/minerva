@@ -91,7 +91,8 @@ export default () => {
         }));
     }
 
-    function handleClick() {
+    function handleClick(e) {
+        e.preventDefault();
         setIsEdit(true);
     }
     return (
@@ -130,8 +131,8 @@ export default () => {
                             <Form.Control type="text" placeholder="Cím" value={formData.address} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
-                            <Button variant="warning" type="submit" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2" onClick={handleClick}>Módosítás</Button>
-                            <Button variant="warning" type="submit" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Mentés</Button>
+                            <Button variant="warning" type="button" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2" onClick={handleClick}>Módosítás</Button>
+                            <Button variant="warning" type="button" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} className="mt-2">Mentés</Button>
                         </div>
                     </Form>
                 </Col>
