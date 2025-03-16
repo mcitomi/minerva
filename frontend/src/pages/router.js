@@ -1,6 +1,7 @@
 export { default as Home } from "./Home.jsx";
 export { default as About } from "./About.jsx";
 export { default as Login } from "./Login.jsx";
+export { default as ResetPassword } from "./PasswordReset.jsx";
 export { default as Registration } from "./Registration.jsx";
 export { default as NotFound } from "./NotFound.jsx";
 export { default as MyProfile } from "./MyProfile.jsx";

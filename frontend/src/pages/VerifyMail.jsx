@@ -56,7 +56,7 @@ export default () => {
             <Content 
                 title={"Megerősíti regisztrációját?"} 
                 paragraph={isCodeValid ? "A regisztráció véglegesítéséhez kérem nyomjon a megerősítés gombra." : "Ezt a regiszrációs kódot már megerősítették vagy törölték!"}
-                img={"./assets/images/warning.png"}></Content>
+                img={"./assets/images/warning.png "}></Content>
             <div className="text-center">
                 {isCodeValid 
                 ? 

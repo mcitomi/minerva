@@ -12,6 +12,7 @@ import Up from "./components/Up.jsx";
 import "./styles/mode.css"
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import PasswordReset from "./pages/PasswordReset.jsx";
 
 function Top() {
     const { pathname } = useLocation();
@@ -113,6 +114,7 @@ export default () => {
                 <Route path="/szent-istvan" element={<Saint></Saint>}></Route>
                 <Route path="/zrinyi-miklos" element={<Zrinyi></Zrinyi>}></Route>
                 <Route path="/verify-account" element={<VerifyPage/>}></Route>
+                <Route path="/reset-password" element={<PasswordReset/>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
