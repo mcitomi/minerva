@@ -9,7 +9,7 @@
 | GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját
 | GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait
 | GET | `/user/profile` | None | Authorization: Bearer <token> | Lekérhetjük a felhasználó profil adatait
-| POST | `/gemini-models/chat` | message: string;, person: string;, history: string[]; | Authorization: Bearer <token> | Kérdezhetünk az AI profiloktól.
+| POST | `/gemini-models/chat` | message: string;, person: string;, history: Content[]; | Authorization: Bearer <token> | Kérdezhetünk az AI profiloktól.
 | POST | `/auth/reset-password` | email: string;, verifyUrl: string; | None | Felhasználó jelszó visszaállítása. 
 
 ## Szerver:
