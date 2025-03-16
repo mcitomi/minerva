@@ -1,33 +1,16 @@
+// Külső modulok
 import { Database } from "bun:sqlite";
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold, type Content } from "@google/generative-ai";
 
+// jwt hitelesítéshez sükséges saját modulok, fájlok
 import { verifyToken } from "../../../modules/auth/jwt";
 import { type Payload } from "../../../types/jwt";
-import { decryptRSA } from "../../../modules/crypt";
+
+// gemini ai-hoz szükséges saját modulok, fájlok
 import { gemini_api_key } from "../../../../config.json";
-
 import { systeminstructions } from "./system-instructions.json";
-
-import PETOFI from "./persons/petofi.json";
-import BOLYAI from "./persons/bolyai.json";
-import KOLCSEY from "./persons/kolcsey.json";
-import MINERVA from "./persons/minerva.json";
-import NEUMANN from "./persons/neumann.json";
-import SAINT from "./persons/saint.json";
-import SZECSHENYI from "./persons/szechenyi.json";
-// továbbfejlesztési lehetőség:
-// írni egy modult ami scanneli a persons mappát json fájlokat kutatva, és a json fájlokba megadni a person nevét enum helyett, és eből a modulból ki exportáljuk
-// az emberek neveit, és egy adott kérésnél már mindig az előre betöltött és megkeresett infókkal szolgálunk
-
-enum Persons {
-    Petofi = "petofi_sandor",
-    Bolyai = "bolyai_janos",
-    Kolcsey = "kolcsey_ferenc",
-    Minerva = "minerva",
-    Neumann = "neumann_janos",
-    Saint = "szent_istvan",
-    Szecshenyi = "szechenyi_istvan"
-}
+import { modelTunings } from "../../../modules/model-tuning/loader";
+import { type ModelJson } from "../../../types/model";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -46,50 +29,19 @@ export const handleRequest = async (req: Request, db: Database) => {
             model: "gemini-2.0-flash",  // 15RPM, de tud keresni és pontosabb 
         });
 
-        async function callGemini(message: string, history: Content[], person: string) {
+        async function callGemini(message: string, history: Content[], personName: string) {
             let tune: Content[], identity: string;
 
-            switch (person) {
-                case Persons.Petofi:
-                    tune = PETOFI.tune;
-                    identity = PETOFI.identity;
-                    break;
-
-                case Persons.Bolyai:
-                    tune = BOLYAI.tune;
-                    identity = BOLYAI.identity;
-                    break;
-
-                case Persons.Kolcsey:
-                    tune = KOLCSEY.tune;
-                    identity = KOLCSEY.identity;
-                    break;
-                case Persons.Minerva:
-                    tune = MINERVA.tune;
-                    identity = MINERVA.identity;
-                    break;
-
-                case Persons.Neumann:
-                    tune = NEUMANN.tune;
-                    identity = NEUMANN.identity;
-                    break;
-
-                case Persons.Saint:
-                    tune = SAINT.tune;
-                    identity = SAINT.identity;
-                    break;
-
-                case Persons.Szecshenyi:
-                    tune = SZECSHENYI.tune;
-                    identity = SZECSHENYI.identity;
-                    break;
-
-                default:
-                    tune = MINERVA.tune;
-                    identity = MINERVA.identity;
-                    break;
+            const requestedModel = modelTunings.find(person => person.name == personName);
+            
+            if(!requestedModel || !requestedModel.path) {
+                throw new Error("person not found in modelTunings");
             }
 
+            const modelTune = await import(requestedModel.path) as ModelJson;
+            tune = modelTune.tune;
+            identity = modelTune.identity;
+            
             const chatSession = model.startChat({
                 generationConfig,
                 history: [...tune, ...history.slice(0, -1)],
@@ -157,7 +109,7 @@ export const handleRequest = async (req: Request, db: Database) => {
         });
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
 
         if (error.message.includes("token")) {
             return Response.json({
@@ -169,6 +121,12 @@ export const handleRequest = async (req: Request, db: Database) => {
             return Response.json({
                 "message": ["Too Many Requests", "Try again later"]
             }, { status: 429 })
+        }
+
+        if(error.message.includes("person not found")) {
+            return Response.json({
+                "message": ["Person not found!", "Acceptable person names:", modelTunings.map(x => x.name)]
+            }, { status: 404 })
         }
 
         return Response.json({
