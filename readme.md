@@ -34,10 +34,11 @@ Frontend:
 - Bug: A bejelentkezett Navbar lenyíló menüje sötét módban összeolvad a szöveggel, mert a felirat is szürke/sötét mint a háttér
 - Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
 - Dizájn ötlet 2: Sima javascript alertek helyett felugró bootstrap modal komponens letrehozasa, es abban megjeleniteni az adatokat (a komponensnek átadjuk az adatokat amiket meg kell jelenitsen) ---> ne modal legyen, van jobb ötletem!
+- Bettina: Szerezz információt: Ady Endre, Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Erdős Pál, Lovász László, Pólya György, Szemerédi Endre, Túrán Pál, Horthy Miklós, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós
  #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
 - text area lehetne a chateknél
-- legördülő beszélgess fülön belül az emberek nevei bx el van csúszva
+- legördülő beszélgess fülön belül az emberek nevei bx el van csúszva ---> ennek színei folyamatban
 - támogass gomb valahova vezessen - revolut link https://www.revolut.me/mcitomi/
 - linkek lent (dc, insta stb)
 - email -> support@edu-minerva.hu
@@ -49,3 +50,4 @@ Backend:
 - password reset flow befejezése
 - /profile update, kép feltöltés, adat mentés megírása
 - HA nincs aktiválva a profil, és loginnál rányom az elfelejtettem a jelszavam gombra, akkor azzal az emaillel egyben be is aktiválja a fiókot / megerősiti a reg-et.
+- Új MI-k vannak, dolgozd ki <3
