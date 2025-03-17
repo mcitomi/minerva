@@ -36,6 +36,7 @@ Frontend:
 - Dizájn ötlet 2: Sima javascript alertek helyett felugró bootstrap modal komponens letrehozasa, es abban megjeleniteni az adatokat (a komponensnek átadjuk az adatokat amiket meg kell jelenitsen) ---> ne modal legyen, van jobb ötletem!
 - Fórum oldal kinézet (ugyan az mint a chat kb, csak itt az emberek egymás írását látják)
 - Bankkártya gomb helyett inkább támogatás, és átirányít https://buymeacoffee.com/eduminerva (a közös emailre van csinálva)
+- Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
   
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
@@ -47,6 +48,7 @@ Frontend:
 - fiók adatok (a forráskódban hagytam commentet rá)
 - szendvics menű színe legyen más, nem látható telefonon
 - jobb visszajelzés reg, login stb után
+- Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 
 Backend:
 - /profile update, kép feltöltés, adat mentés megírása - adatbázis módosítás, kréta intézmény mentésre.
@@ -60,3 +62,6 @@ Továbbfejlesztési lehetőség:
 - Pontgyűjtési rendszer vagy jutalmak beépítése a tanulási folyamat ösztönzésére
 - Partnerségek iskolákkal és egyetemekkel (krétával)
 - Email spam elleni védelem, egy féle timeout rendszer, pl ha az ember 2x gyorsan kattint egy gombra, ne lehessen új emailt lekérni, pl csak fél perc múlva
+- Discord integráció, fórum chat discord-web crossplatform
+- Discord profil hozzákötése a webes fiókhoz (well csináltam mar ilyet, iagazbol ctrlc ctrlv meg van írva)
+- RSS feed, posztokat facebookrol, instárol innen onnan összegzi egy oldalon
