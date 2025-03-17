@@ -36,11 +36,11 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                             <NavDropdown title="Matematika" className="link" style={{fontSize: "20px"}}>
                                 <NavDropdown.Item as={Link} to="/bolyai-farkas" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai Farkas</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/bolyai-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai János</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/eotvos-lorand" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Eötvös Lóránd</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/erdos-pal" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Erdős Pál</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/lovasz-laszlo" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Lovász László</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/klein-gyula" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Klein Gyula</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/neumann-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Neumann János</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/polya-gyorgy" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Pólya György</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/szemeredi-endre" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Szemerédi Endre</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/turan-pal" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Turán Pál</NavDropdown.Item>
                             </NavDropdown>
                             <NavDropdown title="Történelem" className="link" style={{fontSize: "20px"}}>

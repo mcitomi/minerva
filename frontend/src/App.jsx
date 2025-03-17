@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Ady, Arany, Babits, Jozsef, Kosztolanyi, Kolcsey, Madach, Petofi, BolyaiFarkas, BolyaiJanos, Erdos, Lovasz, Neumann, Polya, Szemeredi, Turan, Horthy, Hunyadi, Kossuth, Matyas, Rakoczi, Szechenyi, Saint, Zrinyi, VerifyPage } from "./pages/router.js";
+import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Ady, Arany, Babits, Jozsef, Kosztolanyi, Kolcsey, Madach, Petofi, BolyaiFarkas, BolyaiJanos, Eotvos, Erdos, Klein, Neumann, Polya, Turan, Horthy, Hunyadi, Kossuth, Matyas, Rakoczi, Szechenyi, Saint, Zrinyi, VerifyPage } from "./pages/router.js";
 import { useLocation } from 'react-router-dom';
 
 import MainNavbar from "./components/MainNavbar.jsx";
@@ -99,11 +99,11 @@ export default () => {
                 <Route path="/petofi-sandor" element={<Petofi></Petofi>}></Route>
                 <Route path="/bolyai-farkas" element={<BolyaiFarkas></BolyaiFarkas>}></Route>
                 <Route path="/bolyai-janos" element={<BolyaiJanos></BolyaiJanos>}></Route>
+                <Route path="/eotvos-lorand" element={<Eotvos></Eotvos>}></Route>
                 <Route path="/erdos-pal" element={<Erdos></Erdos>}></Route>
-                <Route path="/lovasz-laszlo" element={<Lovasz></Lovasz>}></Route>
+                <Route path="/klein-gyula" element={<Klein></Klein>}></Route>
                 <Route path="/neumann-janos" element={<Neumann></Neumann>}></Route>
                 <Route path="/polya-gyorgy" element={<Polya></Polya>}></Route>
-                <Route path="/szemeredi-endre" element={<Szemeredi></Szemeredi>}></Route>
                 <Route path="/turan-pal" element={<Turan></Turan>}></Route>
                 <Route path="/horthy-miklos" element={<Horthy></Horthy>}></Route>
                 <Route path="/hunyadi-janos" element={<Hunyadi></Hunyadi>}></Route>
