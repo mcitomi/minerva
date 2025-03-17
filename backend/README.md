@@ -5,12 +5,13 @@
 | GET            | `/auth/pk` | None | None | Publikus kulcs lekérése az RSA titkosításhoz.
 | POST           | `/auth/register`| **RSA encrypted body:** encryptedData : (name: string;, email: string;, password: string;, passwordre: string;) | None | Regisztráció RSA-OAEP-el és a public key-el titkosítva, base64 kódolású szöveget vár, benne a fent említett mezőkkel, json formátumban.
 | POST | `/auth/login` | **RSA encrypted body:** encryptedData : (email: string;, password: string;) | None | Lekérhetjük az access tokent, amivel hitelesíthetjük a felhasználót. A kérés felépítése RSA titkosított, a /register-hez hasonlóan.
-| GET | `/auth/verify-mail/check?code=VERIFYCODE` | None | None | Ellenőrizzük hogy az adott kód él-e még
-| GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját
-| GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait
-| GET | `/user/profile` | None | Authorization: Bearer <token> | Lekérhetjük a felhasználó profil adatait
+| GET | `/auth/verify-mail/check?code=VERIFYCODE` | None | None | Ellenőrizzük hogy az adott kód él-e még.
+| GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját.
+| GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait.
+| GET | `/user/profile` | None | Authorization: Bearer <token> | Lekérhetjük a felhasználó profil adatait.
 | POST | `/gemini-models/chat` | message: string;, person: string;, history: Content[]; | Authorization: Bearer <token> | Kérdezhetünk az AI profiloktól.
-| POST | `/auth/reset-password` | email: string;, verifyUrl: string; | None | Felhasználó jelszó visszaállítása. 
+| POST | `/auth/password-reset` | password: string;, code: string; | None | Felhasználó jelszó visszaállítása.
+| POST | `/auth/password-request` | email: string;, verifyUrl: string; | None | Felhasználó jelszó visszaállítási email kérése az adott címre. 
 
 ## Szerver:
 
@@ -37,9 +38,9 @@ Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel les
 
 ### `profileDetails` tábla
 
-| **id** | **county** | **postCode** | **settlement** | **address** | **pictureUrl** | **credentialsId** |
-|--------|----------|------------|-------------|---------|------------|---------------|
-| INTEGER AUTOINCREMENT | TEXT | TEXT | TEXT | TEXT | TEXT | INTEGER UNIQUE |
+| **id** | **county** | **postCode** | **settlement** | **address** | **pictureUrl** | **lang** | **institute** | **class** | **credentialsId** |
+|--------|----------|------------|-------------|---------|------------|---------------| --- | --- | -- |
+| INTEGER AUTOINCREMENT | TEXT | TEXT | TEXT | TEXT | TEXT | TEXT | TEXT | TEXT | INTEGER UNIQUE |
 
 A két tábla között ON DELETE CASCADE kapcsolat van, a profileDetails.credentialsId kapcsolódik a credentials.id-hez.
 

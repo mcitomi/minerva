@@ -34,6 +34,9 @@ db.run(`CREATE TABLE IF NOT EXISTS profileDetails (
     settlement TEXT,
     address TEXT,
     pictureUrl TEXT,
+    lang TEXT,
+    institute TEXT,
+    class TEXT
     credentialsId INTEGER UNIQUE,
     FOREIGN KEY (credentialsId) REFERENCES credentials(id) ON DELETE CASCADE
 );`);
