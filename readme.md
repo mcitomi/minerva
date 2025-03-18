@@ -31,20 +31,11 @@ Frontend:
 - !! -> Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (window.location.href = "/login"), és így kap egy új érvényes tokent.
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
 - Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
-- Fórum oldal kinézet (ugyan az mint a chat kb, csak itt az emberek egymás írását látják)
-- Bankkártya gomb helyett inkább támogatás, és átirányít https://buymeacoffee.com/eduminerva (a közös emailre van csinálva)
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
   
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
-- text area lehetne a chateknél
-- legördülő beszélgess fülön belül az emberek nevei bx el van csúszva ---> ennek színei folyamatban
-- támogass gomb valahova vezessen - https://buymeacoffee.com/eduminerva
-- linkek lent (dc, insta stb) -> Custom discord link: https://dc.edu-minerva.hu/
-- email -> support@edu-minerva.hu
 - fiók adatok kezelése a /my-profile oldalon (a forráskódban hagytam commentet rá)
-- szendvics menű színe legyen más, nem látható telefonon -> fehér legyen mindig
-- jobb visszajelzés reg, login stb után - alerts (folyamatban)
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 
 Backend:
