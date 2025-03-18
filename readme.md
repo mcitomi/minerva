@@ -22,7 +22,7 @@ Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
 - Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, profilkép feltöltés a /my-profile oldalon. ---> félig kész
 - Profil adatoknál felvehető hogy milyen intézménybe / iskolába jár az ember egy legördülő menübe. (https://kretaglobalapi.e-kreta.hu/intezmenyek/kreta/publikus) jelszó input helyett: egy lenyitható search menü, ahonnan kiválasztható a krétás intézmény. (kb semmi nehezet nem kell hozzá frontenden írni azon kívül hogy kicserélni az input boxot, de nagyot dob az oldalon ithink). Pl a lakcím, város felvétele is useless.. Ország, nyelv, iskola, osztály felvétele tán hasznosabb. Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet
-- Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)
+- Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
   ```
   if((await response.json()).message.includes("Too Many Request")) {
       alert("Túl sok kérés... Próbáld újra később.");
@@ -30,9 +30,7 @@ Frontend:
   ```
 - !! -> Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (window.location.href = "/login"), és így kap egy új érvényes tokent.
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
-- Bug: A bejelentkezett Navbar lenyíló menüje sötét módban összeolvad a szöveggel, mert a felirat is szürke/sötét mint a háttér
 - Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
-- Dizájn ötlet 2: Sima javascript alertek helyett felugró bootstrap modal komponens letrehozasa, es abban megjeleniteni az adatokat (a komponensnek átadjuk az adatokat amiket meg kell jelenitsen) ---> ne modal legyen, van jobb ötletem!
 - Fórum oldal kinézet (ugyan az mint a chat kb, csak itt az emberek egymás írását látják)
 - Bankkártya gomb helyett inkább támogatás, és átirányít https://buymeacoffee.com/eduminerva (a közös emailre van csinálva)
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
