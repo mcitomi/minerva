@@ -23,7 +23,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/about" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Rólunk</Nav.Link>
                         <NavDropdown title="Beszélgess!" id="basic-nav-dropdown" className="link" style={{fontSize: "20px"}}>
-                            <NavDropdown title="Magyar nyelv és irodalom" className="link" style={{fontSize: "20px"}}>
+                            <NavDropdown title={<span style={{ color: isDarkMode ? "#c7c7c7" : "#53595f" }}>Magyar nyelv és irodalom</span>} className="link" style={{fontSize: "20px"}}>
                                 <NavDropdown.Item as={Link} to="/ady-endre" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Ady Endre</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/arany-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Arany János</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/babits-mihaly" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Babits Mihály</NavDropdown.Item>
@@ -33,7 +33,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                                 <NavDropdown.Item as={Link} to="/madach-imre" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Madách Imre</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/petofi-sandor" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Petőfi Sándor</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Matematika" className="link" style={{fontSize: "20px"}}>
+                            <NavDropdown title={<span style={{ color: isDarkMode ? "#c7c7c7" : "#53595f" }}>Matematika</span>} className="link" style={{fontSize: "20px"}}>
                                 <NavDropdown.Item as={Link} to="/bolyai-farkas" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai Farkas</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/bolyai-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bolyai János</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/eotvos-lorand" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Eötvös Lóránd</NavDropdown.Item>
@@ -43,7 +43,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                                 <NavDropdown.Item as={Link} to="/polya-gyorgy" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Pólya György</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/turan-pal" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Turán Pál</NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Történelem" className="link" style={{fontSize: "20px"}}>
+                            <NavDropdown title={<span style={{ color: isDarkMode ? "#c7c7c7" : "#53595f" }}>Történelem</span>} className="link" style={{fontSize: "20px"}}>
                                 <NavDropdown.Item as={Link} to="/horthy-miklos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Horthy Miklós</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/hunyadi-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Hunyadi János</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/kossuth-lajos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Kossuth Lajos</NavDropdown.Item>

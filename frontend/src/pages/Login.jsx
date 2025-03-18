@@ -1,10 +1,7 @@
 import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SuccessAlert from "../components/SuccessAlert.jsx";
 import ErrorAlert from "../components/ErrorAlert.jsx";
-import WarningAlert from "../components/WarningAlert.jsx";
-
 
 import CONFIG from "../config.json";
 
@@ -25,6 +22,9 @@ export default ({ onLoginSuccess }) => {
         email: '',
         password: ''
     });
+
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
     
     async function fetchPublicKey() {
         try {
@@ -109,16 +109,19 @@ export default ({ onLoginSuccess }) => {
             // alert(...result.message);
 
             if (result.jwt) {
-                <SuccessAlert title={"Sikeres bejelentkezés!"} text={"Bejelentkezésed sikeresen megtörtént!"}></SuccessAlert>
                 onLoginSuccess(result.jwt);
                 navigate('/');
             }
             else {
-                alert(result.message || "Sikertelen bejelentkezés!");
+                setErrorMessage(result.message || "Sikertelen bejelentkezés!");
+                setShowErrorAlert(true);
+                //alert(result.message || "Sikertelen bejelentkezés!");
             }
 
         } catch (error) {
             console.error('Error submitting form: ', error);
+            setErrorMessage("Hiba történt a bejelentkezés során!");
+            setShowErrorAlert(true);
         }
     };
 
@@ -157,6 +160,7 @@ export default ({ onLoginSuccess }) => {
                             <Button variant="warning" type="button" onClick={resetPassword} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Elfelejtettem a jelszavamat</Button>
                             <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Belépés</Button>
                         </div>
+                        {showErrorAlert && <ErrorAlert title={"Sikertelen bejelentkezés!"} text={errorMessage} />}
                     </Form>
                 </Col>
             </Row>

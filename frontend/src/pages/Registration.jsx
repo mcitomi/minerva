@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Container, Form, Button, Col, Row, FloatingLabel, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import SuccessAlert from "../components/SuccessAlert.jsx";
+import ErrorAlert from "../components/ErrorAlert.jsx";
 
 import "../styles/main.css";
 
@@ -25,6 +27,11 @@ export default () => {
         password: '',
         passwordre: ''
     });
+
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
     async function fetchPublicKey() {
         try {
@@ -111,11 +118,18 @@ export default () => {
 
             alert(...result.message);
 
-            if (response.ok) {
+            if (!response.ok) {
+                setErrorMessage(result.message || "Sikertelen regisztráció!");
+                setShowErrorAlert(true);
+            } else {
+                setSuccessMessage("Sikeres regisztráció!");
+                setShowSuccessAlert(true);
                 navigate('/login');
             }
         } catch (error) {
             console.error('Error submitting form: ', error);
+            setErrorMessage("Hiba történt a regisztráció során!");
+            setShowErrorAlert(true);
         }
     };
 
@@ -149,6 +163,8 @@ export default () => {
                         <div className='text-center'>
                             <Button variant="warning" type="submit" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Regisztrálás</Button>
                         </div>
+                        {showErrorAlert && <ErrorAlert title={"Sikertelen regisztráció!"} text={errorMessage} />}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres regisztráció!"} text={successMessage} />}
                     </Form>
                 </Col>
             </Row>
