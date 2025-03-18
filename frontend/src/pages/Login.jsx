@@ -1,6 +1,10 @@
 import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SuccessAlert from "../components/SuccessAlert.jsx";
+import ErrorAlert from "../components/ErrorAlert.jsx";
+import WarningAlert from "../components/WarningAlert.jsx";
+
 
 import CONFIG from "../config.json";
 
@@ -105,7 +109,7 @@ export default ({ onLoginSuccess }) => {
             // alert(...result.message);
 
             if (result.jwt) {
-                alert("Sikeres bejelentkezés!");
+                <SuccessAlert title={"Sikeres bejelentkezés!"} text={"Bejelentkezésed sikeresen megtörtént!"}></SuccessAlert>
                 onLoginSuccess(result.jwt);
                 navigate('/');
             }
