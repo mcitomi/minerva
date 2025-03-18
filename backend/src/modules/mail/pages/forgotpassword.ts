@@ -77,7 +77,7 @@ export default (username: string, link: string) => {
             <p>Az új jelszó generálásáért kérjük, kattintson az alábbi gombra:</p>
             <a href="${link}" class="button">Új jelszó</a>
             <p>Kérjük, hogy a bejelentkezés után ne felejtse el megváltoztatni a jelszavát!</p>
-            <p class="us">Üdvözlettel,<br>A Minerva csapata</p>
+            <p class="us">Üdvözlettel,<br>A MInerva csapata</p>
             <div class="footer">
                 <p>Ez az e-mail egy automatikus üzenet, ezért kérjük, ne válaszoljon rá! Kérdéseivel keressen minket a weboldalon feltüntetett e-mail címen!</p>
             </div>

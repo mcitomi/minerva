@@ -75,7 +75,7 @@ export default (username: string) => {
             <h1>Sikeres regisztráció!</h1>
             <h3>Kedves ${username}!</h3>
             <p>Örömmel értesítjük, hogy regisztrációját sikeresen véglegesítette! Jó szórakozást és eredményes tanulást kívánunk!</p>
-            <p class="us">Üdvözlettel,<br>A Minerva csapata</p>
+            <p class="us">Üdvözlettel,<br>A MInerva csapata</p>
             <div class="footer">
                 <p>Ez az e-mail egy automatikus üzenet, ezért kérjük, ne válaszoljon rá! Kérdéseivel keressen minket a weboldalon feltüntetett e-mail címen!</p>
             </div>

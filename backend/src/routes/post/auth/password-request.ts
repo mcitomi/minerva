@@ -44,7 +44,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         db.run("UPDATE credentials SET mgmtToken = ? WHERE id = ?;", [mgmtToken, userValues.id]);
 
-        const mailResponse = sendMail([decryptRSA(userValues.email)], "Minerva - Jelszó visszaállítás", `Visszaállító link ${verifyUrl}`, emailForgotpass(decryptRSA(userValues.username), verifyUrl));
+        const mailResponse = sendMail([decryptRSA(userValues.email)], "MInerva - Jelszó visszaállítás", `Visszaállító link ${verifyUrl}`, emailForgotpass(decryptRSA(userValues.username), verifyUrl));
 
         if(mailResponse?.includes("Error")){
             return Response.json({

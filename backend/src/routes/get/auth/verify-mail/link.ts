@@ -12,7 +12,7 @@ export const handleRequest = async (req: Request, db: Database) => {
         const linkQuery = await query.get(verifyToken) as {isActive: number, email: string, username: string};
 
         if (linkQuery || linkQuery?.isActive == 1) {
-            const mailResponse = sendMail([decryptRSA(linkQuery.email)], "Minerva: Sikeres regisztráció!", "Regisztrációját sikeresen véglegesítette!", emailSuccessful(decryptRSA(linkQuery.username)));
+            const mailResponse = sendMail([decryptRSA(linkQuery.email)], "MInerva: Sikeres regisztráció!", "Regisztrációját sikeresen véglegesítette!", emailSuccessful(decryptRSA(linkQuery.username)));
 
             if(mailResponse?.includes("Error"))  {
                 return Response.json({

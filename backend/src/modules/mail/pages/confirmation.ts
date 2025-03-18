@@ -77,7 +77,7 @@ export default (username: string, url: string) => {
             <p>Köszönjük a regisztrációját! A regisztráció megerősítéséhez kérjük, kattintson az alábbi gombra:</p>
             <a href="${url}" class="button">Megerősítés</a>
             <p>A rendszer ezután elnavigálja önt a megfelelő platformra, ahol véglegesítheti regisztrációját.</p>
-            <p class="us">Üdvözlettel,<br>A Minerva csapata</p>
+            <p class="us">Üdvözlettel,<br>A MInerva csapata</p>
             <div class="footer">
                 <p>Ez az e-mail egy automatikus üzenet, ezért kérjük, ne válaszoljon rá! Kérdéseivel keressen minket a weboldalon feltüntetett e-mail címen!</p>
             </div>

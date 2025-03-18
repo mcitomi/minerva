@@ -75,7 +75,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         db.run("INSERT INTO credentials (email, username, emailHash, passHash, mgmtToken) VALUES (?, ?, ?, ?, ?);", [encryptedMail, encryptedName, hashedMail, passHash, userMgmtToken]);
 
-        const mailResponse = sendMail([body.email], "Minerva regisztráció", `Erősítse meg email címét a következő linken: ${verifyUrl}`, emailConfirmation(body.name, verifyUrl));
+        const mailResponse = sendMail([body.email], "MInerva regisztráció", `Erősítse meg email címét a következő linken: ${verifyUrl}`, emailConfirmation(body.name, verifyUrl));
 
         if(mailResponse?.includes("Error")){
             return Response.json({
