@@ -21,8 +21,8 @@ __Globális leírás a projektről, megjegyzések:__
 Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
 - Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, profilkép feltöltés a /my-profile oldalon. ---> félig kész
-- Profil adatoknál felvehető hogy milyen intézménybe / iskolába jár az ember egy legördülő menübe. (https://kretaglobalapi.e-kreta.hu/intezmenyek/kreta/publikus) jelszó input helyett: egy lenyitható search menü, ahonnan kiválasztható a krétás intézmény. (kb semmi nehezet nem kell hozzá frontenden írni azon kívül hogy kicserélni az input boxot, de nagyot dob az oldalon ithink). Pl a lakcím, város felvétele is useless.. Ország, nyelv, iskola, osztály felvétele tán hasznosabb
-- Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani. pl: (régebbi useless alerteket kommenteld ki)
+- Profil adatoknál felvehető hogy milyen intézménybe / iskolába jár az ember egy legördülő menübe. (https://kretaglobalapi.e-kreta.hu/intezmenyek/kreta/publikus) jelszó input helyett: egy lenyitható search menü, ahonnan kiválasztható a krétás intézmény. (kb semmi nehezet nem kell hozzá frontenden írni azon kívül hogy kicserélni az input boxot, de nagyot dob az oldalon ithink). Pl a lakcím, város felvétele is useless.. Ország, nyelv, iskola, osztály felvétele tán hasznosabb. Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet
+- Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)
   ```
   if((await response.json()).message.includes("Too Many Request")) {
       alert("Túl sok kérés... Próbáld újra később.");
@@ -41,12 +41,12 @@ Frontend:
 - Telefonon nem reszponziv, főleg a rólunk rész
 - text area lehetne a chateknél
 - legördülő beszélgess fülön belül az emberek nevei bx el van csúszva ---> ennek színei folyamatban
-- támogass gomb valahova vezessen - revolut link https://www.revolut.me/mcitomi/
+- támogass gomb valahova vezessen - https://buymeacoffee.com/eduminerva
 - linkek lent (dc, insta stb) -> Custom discord link: https://dc.edu-minerva.hu/
 - email -> support@edu-minerva.hu
-- fiók adatok (a forráskódban hagytam commentet rá)
-- szendvics menű színe legyen más, nem látható telefonon
-- jobb visszajelzés reg, login stb után
+- fiók adatok kezelése a /my-profile oldalon (a forráskódban hagytam commentet rá)
+- szendvics menű színe legyen más, nem látható telefonon -> fehér legyen mindig
+- jobb visszajelzés reg, login stb után - alerts (folyamatban)
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 
 Backend:
@@ -64,3 +64,4 @@ Továbbfejlesztési lehetőség:
 - Discord integráció, fórum chat discord-web crossplatform
 - Discord profil hozzákötése a webes fiókhoz (well csináltam mar ilyet, iagazbol ctrlc ctrlv meg van írva)
 - RSS feed, posztokat facebookrol, instárol innen onnan összegzi egy oldalon
+- Chat beszélgetések mentése localsotrage vagy adatbázisba, onnan lekérdezni a chat "topic"okat
