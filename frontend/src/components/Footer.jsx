@@ -12,7 +12,7 @@ export default () => {
                         <li><Image src="./assets/images/footer/location.svg" alt="Location" style={{width: 20}}></Image> 2170, Aszód Hatvani út 3.</li>
                         <li><Image src="./assets/images/footer/phone.svg" alt="Phone" style={{width: 20}}></Image> +36 70 123 4567</li>
                         <li><Image src="./assets/images/footer/email.svg" alt="E-mail" style={{width: 20}}></Image> support@edu-minerva.hu</li>
-                        <li><a href="https://dc.edu-minerva.hu/" target="_blank"><Image src="./assets/images/footer/discord.svg" alt="Discord" style={{width: 20}}></Image> eduminerva.bob</a></li>
+                        <li><a href="https://dc.edu-minerva.hu/" target="_blank"><Image src="./assets/images/footer/discord.svg" alt="Discord" style={{width: 20}}></Image> EduMInerva</a></li>
                     </ul>
                 </Col>
                 <Col sx={12} md={6}>

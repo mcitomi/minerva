@@ -39,13 +39,13 @@ export default () => {
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        password: "",
+        institution: "",
         country: "",
-        postcode: "",
-        settlement: "",
-        address: ""
+        language: "",
+        classroom: ""
     });
 
+    const [schools, setSchools] = useState([]);
 
     useEffect(() => {
         async function fetchProfile() {
@@ -81,11 +81,11 @@ export default () => {
                 setFormData({
                     name: data.user.name,
                     email: data.user.email,
-                    password: data.password,    // fun fact: a jelszót nem tárolhatod adatbázisban olyan formában, ami visszafejthető, ezért nem jeleníthető meg
+                    institution: "",
+                    // fun fact: a jelszót nem tárolhatod adatbázisban olyan formában, ami visszafejthető, ezért nem jeleníthető meg
                     country: data.user.country, // illetve ha nincs még beállítva pl az ország, akkor null értéket ad vissza az api, ezt is le kell kezelni
-                    postcode: data.user.postCode,
-                    settlement: data.user.settlement,
-                    address: data.user.address
+                    language: data.user.language,
+                    classroom: data.user.classroom,
                 });
                 setImage(data.user.pictureUrl || "./assets/images/user.png");
             } catch (err) {
@@ -93,7 +93,24 @@ export default () => {
             }
             setLoading(false);
         }
+
+        async function fetchSchools() {
+            try {
+                const response = await fetch("https://kretaglobalapi.e-kreta.hu/intezmenyek/kreta/publikus");
+                
+                if (!response.ok) {
+                    throw new Error("Hiba az iskolák lekérdezésében!");
+                }
+
+                const data = await response.json();
+                setSchools(data.map(school => school.nev));
+            } catch (err) {
+                setError(err.message);
+            }
+        }
+
         fetchProfile();
+        fetchSchools();
     }, []);
 
     function handleInput(e) {
@@ -120,8 +137,13 @@ export default () => {
                         <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3 floating-label">
                             <Form.Control type="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingPassword" label="Jelszó" className="mb-3 floating-label">
-                            <Form.Control type="password" placeholder="Jelszó" value={formData.password} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                        <FloatingLabel controlId="floatingInstitution" label="Intézmény" className="mb-3 floating-label">
+                            <Form.Select placeholder="Intézmény" value={formData.institution} onChange={handleInput} disabled={!isEdit}>
+                                <option value="">Válasszon egy intézményt</option>
+                                {schools.map((school, index) => (
+                                    <option key={index} value={school}>{school}</option>
+                                ))}
+                            </Form.Select>
                         </FloatingLabel>
                         <Row>
                             <Col>
@@ -130,19 +152,16 @@ export default () => {
                                 </FloatingLabel>
                             </Col>
                             <Col>
-                                <FloatingLabel controlId="floatingInput" label="Irányítószám" className="mb-3 floating-label">
-                                    <Form.Control type="number" placeholder="Irányítószám" value={formData.postcode} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                                <FloatingLabel controlId="floatingInput" label="Nyelv" className="mb-3 floating-label">
+                                    <Form.Control type="number" placeholder="Nyelv" value={formData.language} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col>
-                                <FloatingLabel controlId="floatingInput" label="Település" className="mb-3 floating-label">
-                                    <Form.Control type="text" placeholder="Település" value={formData.settlement} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                                <FloatingLabel controlId="floatingInput" label="Osztály" className="mb-3 floating-label">
+                                    <Form.Control type="text" placeholder="Osztály" value={formData.classroom} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                         </Row>
-                        <FloatingLabel controlId="floatingInput" label="Cím" className="mb-3 floating-label">
-                            <Form.Control type="text" placeholder="Cím" value={formData.address} onChange={handleInput} disabled={!isEdit}></Form.Control>
-                        </FloatingLabel>
                         <div className="text-center">
                             <Button variant="warning" type="button" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={handleClick}>Módosítás</Button>
                             <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>

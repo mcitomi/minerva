@@ -65,7 +65,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                     src={isDarkMode ? "./assets/images/mode/lightmode.svg" : "./assets/images/mode/darkmode.svg"} 
                     alt="Sötét világos mód" onClick={toggleMode} 
                     style={{cursor: "pointer", width: 20}}></Image>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle}></Navbar.Toggle>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} className="navbar-dark"></Navbar.Toggle>
             </Container>
         </Navbar>
     );

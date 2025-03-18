@@ -36,7 +36,7 @@ export default () => {
                 text1={"Molnár Máté Norbert záródolgozatunk konzulenseként kiemelkedő szerepet játszott a projekt sikerében. Szakmai tapasztalata és tudása révén irányította a csapatot, segítve a célok kitűzését és a feladatok végrehajtását."} 
                 text2={"Máté nemcsak a technikai aspektusokban nyújtott támogatást, hanem a projekt megvalósítása során is aktívan részt vett. Tanácsaival és útmutatásaival hozzájárult ahhoz, hogy a csapat a legjobb megoldásokat találja meg és a vizsgaremek a lehető legmagasabb színvonalon készüljön el."} 
                 text3={"Konzulensi szerepe mellett Máté folyamatosan motiválta a csapatot, bátorítva a kreatív gondolkodást és az innovatív megoldások keresését. Az ő szakmai támogatása és elkötelezettsége nélkül a projekt nem érhette volna el a kívánt eredményeket."}
-                text4={"Molnár Máté Norbert munkája alapvető fontosságú volt a vizsgaremek sikeréhez és a csapat számára inspiráló példa a szakmai fejlődésre, valamint a közös célok elérésére."}></LeftText>
+                text4={"Molnár Máté Norbert munkája alapvető fontosságú volt a vizsgaremek sikeréhez és a csapat számára inspiráló példa a szakmai fejlődésre, valamint a közös célok elérésére. Az ő tanácsai nélkül a MInerva nem lenne az, ami ma."}></LeftText>
             <Image src="./assets/images/about/gang.jpg" alt="Közös kép" fluid></Image>
         </Container>
     );
