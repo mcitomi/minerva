@@ -24,7 +24,7 @@ export const handleRequest = async (req : Request,  db : Database) => {
         const jwtPayload: Payload = verifyToken(jwToken);
         
         const userQuery = db.query(`
-            SELECT email, username, timeCreated, failedAttempts, lastLogin, role, country, postCode, settlement, address, pictureUrl FROM credentials 
+            SELECT email, username, timeCreated, failedAttempts, lastLogin, role, country, institution, lang, class, pictureUrl FROM credentials 
             LEFT JOIN profileDetails ON profileDetails.credentialsId = credentials.id
             WHERE credentials.id = ?;`
         );
@@ -55,7 +55,7 @@ export const handleRequest = async (req : Request,  db : Database) => {
         });
 
     } catch (error) {
-        // console.log(error);
+    //  console.log(error);
 
         if(error.message.includes("token")) {
             return Response.json({

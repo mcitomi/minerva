@@ -24,15 +24,26 @@ Frontend:
 - Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
   ```
+  // react states:
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [showErrorAlert, setShowErrorAlert] = useState(false);
+
+  // ellenőrzések, minden esetre üzenetre külön (backendről jövő üzenetek)
   if((await response.json()).message.includes("Too Many Request")) {
-      alert("Túl sok kérés... Próbáld újra később.");
+      setErrorMessage("Túl sok kérés... Próbáld újra később.");
+      setShowErrorAlert(true);
   }
+
+  // beszúrás az oldalba
+  {showErrorAlert && <ErrorAlert title={"Sikertelen bejelentkezés!"} text={errorMessage} />}
   ```
 - !! -> Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (window.location.href = "/login"), és így kap egy új érvényes tokent.
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
 - Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
+- Alert, figyelemfelhhívás hogy "ai generált tartalom" vagy stb
+- Figyelemfelhívás, hogy pl "ha a fórumon chatelsz a felhasználóneved és profilképed mások is láthatják" ilyesmik
   
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
@@ -40,8 +51,8 @@ Frontend:
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 
 Backend:
-- /profile update, kép feltöltés, adat mentés megírása - ✅ adatbázis módosítás, kréta intézmény mentésre.
-- Fórum GET messages (utosó 100 mondjuk) POST új üzenet
+- /profile update, kép feltöltés, adat mentés megírása 
+- Fórum GET messages (utosó 100 mondjuk) POST új üzenet {name, message, timestamp, pfpurl}
 
 AI:
 - új emberek megírása: Ady Endre, Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Erdős Pál, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula,  + amik még hiányoznak: Bolyai János, Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
