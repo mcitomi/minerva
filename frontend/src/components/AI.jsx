@@ -5,7 +5,6 @@ import CONFIG from "../config.json";
 import "../styles/ai.css";
 
 export default ({ img, altText, title, placeholderText, personName }) => {
-    
     const inputRef = useRef(null);
     const chatRef = useRef(null);
 
@@ -56,6 +55,7 @@ export default ({ img, altText, title, placeholderText, personName }) => {
 
         setHistory(newHistory);
         inputRef.current.value = "";
+        inputRef.current.style.height = "20px";
 
         setLoading(true);
         try {
@@ -114,6 +114,20 @@ export default ({ img, altText, title, placeholderText, personName }) => {
         setLoading(false);
     }
 
+    function handleInputChange() {
+        const textarea = inputRef.current;
+        textarea.style.height = "20px";
+        textarea.style.height = `${textarea.scrollHeight}px`;
+    };
+
+    function handleKeyDown(e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            fetchPersonPost(e);
+            inputRef.current.style.height = "20px";
+        }
+    };
+
     useEffect(() => {
         if (chatRef.current) {
             chatRef.current.scrollTop = chatRef.current.scrollHeight;
@@ -156,11 +170,14 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                         <InputGroup>
                             <FloatingLabel controlId="floatingInput" label={placeholderText} className="floating-label">
                                 <Form.Control
-                                    type="text"
+                                    as="textarea"
                                     placeholder={placeholderText}
                                     id="question"
                                     ref={inputRef}
-                                    autoComplete="off" />
+                                    autoComplete="off"
+                                    onInput={handleInputChange}
+                                    onKeyDown={handleKeyDown}
+                                    style={{ overflow: "hidden" }} />
                             </FloatingLabel>
                             <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>

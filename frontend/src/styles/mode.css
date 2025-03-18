@@ -26,19 +26,19 @@ body.light .navbar .dropdown-item:hover, body.dark .navbar .dropdown-item:hover 
     color: #46789a;
 }
 
-body.light .user {
+body.light .user, body.light .forumUser {
     background-color: #ffbd59;
 }
 
-body.dark .user {
+body.dark .user, body.dark .forumUser {
     background-color: #263557;
 }
 
-body.light .ai {
+body.light .ai, body.light .forumAnotherUser {
     background-color: rgb(165, 163, 163);
 }
 
-body.dark .ai {
+body.dark .ai, body.dark .forumAnotherUser {
     background-color: grey;
 }
 

@@ -8,7 +8,9 @@ export default () => {
                 text1={"A támogatásokból befolyt összeg 80%-a jótékony célra fordítjuk, míg a 20%-át az oldal üzemeltetésére."} 
                 text2={"Köszönjük!"}></Content>
             <div className="text-center" style={{marginBottom: 30}}>
-                <Button variant="warning" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Bankkártya</Button>
+                <a href="https://buymeacoffee.com/eduminerva" target="_blank">
+                    <Button variant="warning" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Támogatás</Button>
+                </a>
             </div>
         </Container>
     );

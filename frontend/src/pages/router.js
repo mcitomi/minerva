@@ -30,3 +30,4 @@ export { default as Szechenyi } from "./AI/Szechenyi.jsx";
 export { default as Saint } from "./AI/Saint.jsx";
 export { default as Zrinyi } from "./AI/Zrinyi.jsx";
 export { default as VerifyPage } from "./VerifyMail.jsx";
+export { default as Forum } from "./Forum.jsx";
