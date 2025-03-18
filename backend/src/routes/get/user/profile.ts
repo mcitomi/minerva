@@ -46,13 +46,13 @@ export const handleRequest = async (req : Request,  db : Database) => {
                 "failedAttempts" : userInfo.failedAttempts,
                 "lastLogin" : userInfo.lastLogin,
                 "role" : userInfo.role,
-                "country" : userInfo.country ? decryptRSA(userInfo.country) : null,
-                "postCode" : userInfo.postCode ? decryptRSA(userInfo.postCode) : null,
-                "settlement" : userInfo.settlement ? decryptRSA(userInfo.settlement) : null,
-                "address" : userInfo.address ? decryptRSA(userInfo.address) : null,
-                "pictureUrl" : userInfo.pictureUrl
+                "country" : userInfo.country,
+                "pictureUrl" : userInfo.pictureUrl,
+                "institution" : userInfo.institution ? decryptRSA(userInfo.institution) : null,
+                "language" : userInfo.language,
+                "classroom" : userInfo.classroom
             }
-        })
+        });
 
     } catch (error) {
         // console.log(error);

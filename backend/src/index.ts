@@ -30,13 +30,10 @@ db.run(`CREATE TABLE IF NOT EXISTS credentials (
 db.run(`CREATE TABLE IF NOT EXISTS profileDetails (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     country TEXT,
-    postCode TEXT,
-    settlement TEXT,
-    address TEXT,
     pictureUrl TEXT,
     lang TEXT,
-    institute TEXT,
-    class TEXT
+    institution TEXT,
+    class TEXT,
     credentialsId INTEGER UNIQUE,
     FOREIGN KEY (credentialsId) REFERENCES credentials(id) ON DELETE CASCADE
 );`);

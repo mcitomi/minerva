@@ -6,9 +6,8 @@ export type UserInfo = {
     lastLogin: number;
     role: string;
     country: string | null;
-    postCode: string | null;
-    settlement: string | null;
-    address: string | null;
+    institution: string | null;
+    language: string | null;
+    classroom: string | null;
     pictureUrl: string | null;
-}   
-// Az email, username, postCode, settlement, address RSA titkosított. (A postCode ezért string)
+}

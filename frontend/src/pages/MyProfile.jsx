@@ -81,7 +81,7 @@ export default () => {
                 setFormData({
                     name: data.user.name,
                     email: data.user.email,
-                    institution: "",
+                    institution: data.user.institution,
                     // fun fact: a jelszót nem tárolhatod adatbázisban olyan formában, ami visszafejthető, ezért nem jeleníthető meg
                     country: data.user.country, // illetve ha nincs még beállítva pl az ország, akkor null értéket ad vissza az api, ezt is le kell kezelni
                     language: data.user.language,
@@ -96,14 +96,15 @@ export default () => {
 
         async function fetchSchools() {
             try {
-                const response = await fetch("https://kretaglobalapi.e-kreta.hu/intezmenyek/kreta/publikus");
-                
+                const response = await fetch(`${CONFIG.API_URL}/user/kreta/institutions`);
+
                 if (!response.ok) {
                     throw new Error("Hiba az iskolák lekérdezésében!");
                 }
 
                 const data = await response.json();
-                setSchools(data.map(school => school.nev));
+                
+                setSchools(data.map(school => (`${school.nev}, ${school.telepules}`)));
             } catch (err) {
                 setError(err.message);
             }

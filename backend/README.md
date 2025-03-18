@@ -9,6 +9,7 @@
 | GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját.
 | GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait.
 | GET | `/user/profile` | None | Authorization: Bearer <token> | Lekérhetjük a felhasználó profil adatait.
+| GET | `/user/kreta/institutions` | None | None | Kréta intzmények lekérése a hivatalos kréta APIról.
 | POST | `/gemini-models/chat` | message: string;, person: string;, history: Content[]; | Authorization: Bearer <token> | Kérdezhetünk az AI profiloktól.
 | POST | `/auth/password-reset` | password: string;, code: string; | None | Felhasználó jelszó visszaállítása.
 | POST | `/auth/password-request` | email: string;, verifyUrl: string; | None | Felhasználó jelszó visszaállítási email kérése az adott címre. 
