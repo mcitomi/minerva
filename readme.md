@@ -22,7 +22,6 @@ Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
 - Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, profilkép feltöltés a /my-profile oldalon. ---> félig kész
 - Profil adatoknál felvehető hogy milyen intézménybe / iskolába jár az ember egy legördülő menübe. (https://kretaglobalapi.e-kreta.hu/intezmenyek/kreta/publikus) jelszó input helyett: egy lenyitható search menü, ahonnan kiválasztható a krétás intézmény. (kb semmi nehezet nem kell hozzá frontenden írni azon kívül hogy kicserélni az input boxot, de nagyot dob az oldalon ithink). Pl a lakcím, város felvétele is useless.. Ország, nyelv, iskola, osztály felvétele tán hasznosabb
-- !! -> Endpointok levédése legalább annyival, hogy ha nincs valid token akkor visszadob a login oldalra (profil oldalnál már csak) (window.location.href = "/login").
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani. pl: (régebbi useless alerteket kommenteld ki)
   ```
   if((await response.json()).message.includes("Too Many Request")) {
