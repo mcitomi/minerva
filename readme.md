@@ -49,6 +49,7 @@ Frontend:
 - Telefonon nem reszponziv, főleg a rólunk rész
 - fiók adatok kezelése a /my-profile oldalon (a forráskódban hagytam commentet rá)
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
+- tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS)
 
 Backend:
 - /profile update, kép feltöltés, adat mentés megírása 
