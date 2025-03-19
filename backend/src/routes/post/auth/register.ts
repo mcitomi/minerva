@@ -48,7 +48,7 @@ export const handleRequest = async (req: Request, db: Database) => {
             errorMessages.push("Invalid email address format");
         }
 
-        if(!/^(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[@$!%*?&]).{8,}$/u.test(body.password)) {
+        if(!/^(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/~`\\|-]).{8,}$/u.test(body.password)) {
             errorMessages.push("Weak password");
             errorMessages.push("Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)");
         }

@@ -38,7 +38,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         const password = decryptRSA(body.password);
 
-        if (!/^(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[@$!%*?&]).{8,}$/u.test(password)) {
+        if (!/^(?=.*\p{Lu})(?=.*\p{Ll})(?=.*\d)(?=.*[!@#$%^&*()_+={}\[\]:;"'<>,.?/~`\\|-]).{8,}$/u.test(password)) {
             return Response.json({
                 "message": ["Weak password", "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)"]
             }, { status: 400 });
