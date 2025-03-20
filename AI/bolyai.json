@@ -1,0 +1,162 @@
+[
+    {"text":"Ki volt Bolyai János édesapja?"},
+    {"text":"Bolyai Farkas, aki szintén matematikus volt."},
+
+    {"text":"Hogyan hatott Bolyai János munkássága Einstein elméletére?"},
+    {"text":"A nem-euklideszi geometria később az általános relativitáselmélet alapját képezte."},
+
+    {"text":"Milyen katonai rangot töltött be Bolyai János?"},
+    {"text":"A császári hadsereg mérnökkaránál szolgált."},
+
+    {"text":"Kapott-e Bolyai János életében jelentős elismerést a munkájáért?"},
+    {"text":" Nem igazán, élete végén visszavonultan, szinte elfeledve élt."},
+
+    {"text":"Miért próbálta az édesapja lebeszélni a párhuzamosok problémájának kutatásáról?"},
+    {"text":"Azt mondta, hogy ez a probléma megtébolyítja az embert."},
+
+    {"text":" Melyik tudományterülethez járult hozzá Bolyai János munkássága a matematikán kívül?"},
+    {"text":"A fizikához, különösen az Einstein-féle relativitáselméleten keresztül."},
+
+    {"text":"Mi történt Bolyai János kézirataival?"},
+    {"text":"Sok kézirata máig feldolgozatlan, és egyesek szerint még további nagy felfedezéseket is tartalmazhatnak."},
+
+    {"text":"Ki volt Bolyai János édesapja, és miért volt fontos az életében?"},
+    {"text":"Apja, Bolyai Farkas maga is híres matematikus volt, és ő tanította fiát a matematika alapjaira."},
+
+    {"text":"Milyen különleges képessége volt már gyerekként?"},
+    {"text":"Ötévesen már fejben tudott számolni és különleges térbeli elképzelései voltak."},
+
+    {"text":"Hol tanult Bolyai János?"},
+    {"text":"A bécsi Műszaki Akadémián (Theresianum) tanult, ahol kimagasló matematikai tehetséget mutatott"},
+
+    {"text":"Miért kapta a „csodagyerek” jelzőt?"},
+    {"text":"Mert már fiatalon kiemelkedett a matematikában, és bonyolult problémákat oldott meg."},
+
+    {"text":"Melyik tudományterületen alkotott forradalmi elméletet?"},
+    {"text":"A geometriában, ahol megalkotta a nem-euklideszi geometriát."},
+
+    {"text":"Mit mondott apjának az elméletéről?"},
+    {"text":"Egy híres levelében ezt írta: „A semmiből egy új világot teremtettem!”"},
+
+    {"text":"Elfogadta-e a tudományos világ azonnal Bolyai felfedezését?"},
+    {"text":"Nem, kortársai kezdetben figyelmen kívül hagyták, és csak később, Gauss és más matematikusok ismerték el jelentőségét."},
+
+    {"text":"Miért nem lett világhírű életében?"},
+    {"text":"Mert bár Gauss elismerte munkáját, nem támogatta nyíltan, és sokan nem értették meg a jelentőségét."},
+
+    {"text":"Milyen ember volt Bolyai János?"},
+    {"text":"Zárkózott, különc és rendkívül okos, de nehezen boldogult a mindennapi életben."},
+
+    {"text":"Hogyan befolyásolta a katonaság az életét?"},
+    {"text":"Mérnökként szolgált az osztrák hadseregben, de nem találta meg a helyét a katonai életben."},
+
+    {"text":"olt-e felesége vagy családja?"},
+    {"text":"Nem házasodott meg, és magányosan élt."},
+
+    {"text":"Miért távolodott el apjától?"},
+    {"text":"ár Bolyai Farkas tanította és támogatta, később sok konfliktusuk volt, mert János nem tartotta apja munkáját elég innovatívnak."},
+
+    {"text":"Mi volt Bolyai János egyik különös szokása?"},
+    {"text":"Gyakran egyedül barangolt az erdőben, mert így tudott a matematikán gondolkodni."},
+
+    {"text":"Mi volt a legfontosabb műve?"},
+    {"text":"A „Tentamen”, amelyben apjával közösen dolgozott, de a legjelentősebb felfedezését egy függelékben írta le."},
+
+    {"text":"Melyik másik matematikus dolgozott hasonló elveken Bolyai idejében?"},
+    {"text":"Az orosz Nyikolaj Lobacsevszkij, aki szintén a nem-euklideszi geometriával foglalkozott."},
+
+    {"text":"iért halt meg szegényen és elfeledve?"},
+    {"text":"Mert munkáját nem ismerték el életében, és nem kapott támogatást."},
+
+    {"text":"Mikor vált világhírűvé?"},
+    {"text":"Halála után, amikor munkáját a 19. század végén újra felfedezték, és a modern matematika egyik alapkövévé vált."},
+
+    {"text":"Mi volt Bolyai János legfontosabb matematikai felfedezése?"},
+    {"text":"A nem-euklideszi geometria megalkotása, amelyben kimutatta, hogy az euklideszi párhuzamossági axióma nélkül is lehet következetes geometriát építeni."},
+
+    {"text":"Hogyan fogalmazta meg Bolyai János a saját felfedezését?"},
+    {"text":"Egy levelében így írta apjának: „A semmiből egy új, más világot teremtettem.”"},
+
+    {"text":"Melyik művében publikálta a nem-euklideszi geometriát?"},
+    {"text":"A „Tentamen” című munkában, amelyet apja, Bolyai Farkas írt, és amelyhez János egy függeléket (Appendix) csatolt, amely tartalmazza a nem-euklideszi geometria alapjait."},
+
+    {"text":"Mit jelent a „Tentamen” című mű címe?"},
+    {"text":"Latinul azt jelenti: „Kísérlet”, és célja az volt, hogy egy új matematikai rendszert építsen fel."},
+
+    {"text":"Milyen más matematikai területeken dolgozott Bolyai?"},
+    {"text":"Foglalkozott valószínűségszámítással, számelmélettel, algebrai egyenletekkel és vektoranalízissel is."},
+
+    {"text":"Melyik fontos matematikai eszközt fedezte fel Bolyai János?"},
+    {"text":"A komplex számok geometriai értelmezését, amely elősegítette a vektoranalízis fejlődését."},
+
+    {"text":"Hány publikációja jelent meg életében?"},
+    {"text":"Csak egyetlen nagyobb publikációja volt, a „Tentamen”, de több kézirata is fennmaradt."},
+
+    {"text":"Milyen tudományos elismerést kapott halála után?"},
+    {"text":"A nem-euklideszi geometriát ma Bolyai-Lobacsevszkij-geometriának is nevezik, és a Bolyai-díjat is róla nevezték el."},
+
+    {"text":"Hogyan kapcsolódik a Bolyai-geometria a modern tudományhoz?"},
+    {"text":"A kvantummechanika, a kozmológia és a relativitáselmélet egyes elméletei is nem-euklideszi geometriát használnak."},
+
+    {"text":"Miért szokták együtt említeni Bolyai Jánost és Lobacsevszkijt?"},
+    {"text":"Mert mindketten függetlenül dolgoztak ki egy nem-euklideszi geometriai rendszert, bár Lobacsevszkij kissé korábban publikálta eredményeit."},
+
+    {"text":"Miért nem tudott Bolyai János a Lobacsevszkij-féle eredményekről?"},
+    {"text":"Mert az orosz tudományos publikációk nehezen jutottak el Magyarországra, így Bolyai függetlenül jutott ugyanarra az eredményre."},
+
+    {"text":"Hogyan használják a Bolyai-geometriát az általános relativitáselméletben?"},
+    {"text":"Einstein elmélete szerint a gravitáció meggörbíti a teret, és ezt nem-euklideszi geometriával lehet leírni."},
+
+    {"text":"Hány matematikai kéziratot hagyott hátra Bolyai János?"},
+    {"text":"Több mint 20 000 oldalt írt különböző matematikai és filozófiai témákban, amelyek közül sokat soha nem publikáltak."},
+
+    {"text":"Miért nem publikálta Bolyai János több munkáját?"},
+    {"text":"Mert élete végére megtört és kiábrándult, és úgy érezte, hogy a világ nem érti meg felfedezéseinek jelentőségét."},
+
+    {"text":"Mit gondolt saját munkájáról Bolyai János élete végén?"},
+    {"text":"Úgy érezte, hogy méltatlanul mellőzték, és sok felfedezését nem tudta teljes mértékben bemutatni a világnak."},
+
+    {"text":"Miért hagyta abba a matematikával való aktív foglalkozást?"},
+    {"text":"Mert csalódott az elismerés hiányában, és egyre inkább visszavonult a tudományos élettől."},
+
+    {"text":"Milyen kapcsolatban állt Bolyai Farkas és Gauss?"},
+    {"text":"Bolyai Farkas és Gauss fiatal korukban barátok voltak, de később eltávolodtak egymástól. Farkas bízott abban, hogy Gauss segít majd János felfedezését elismertetni, de ez nem történt meg."},
+
+    {"text":"Milyen filozófiai kérdésekkel foglalkozott Bolyai?"},
+    {"text":"Olyan kérdésekkel, mint a valóság és a matematika kapcsolata, valamint az, hogy mennyire függetlenek az emberi gondolkodástól a matematikai törvények."},
+
+    {"text":"Mit gondolt Bolyai az idő és tér kapcsolatáról?"},
+    {"text":"Bár nem dolgozott ki teljes elméletet, felvetette, hogy a tér szerkezete nem lehet abszolút, hanem a matematikai modelljeinktől függhet."},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""},
+
+    {"text":""},
+    {"text":""}
+]
+
+
