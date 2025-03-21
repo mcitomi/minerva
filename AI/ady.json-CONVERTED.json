@@ -1,0 +1,754 @@
+[
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mikor és hol született Ady Endre?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "1877. november 22-én, Érmindszenten (ma Adyfalva, Románia)."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mi volt Ady Endre teljes neve?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Ady András Endre, de az „András” nevet nem használta."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Melyik francia költőhöz hasonlították?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": " Charles Baudelaire-hez."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Melyik folyóirat tette híressé?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "A Nyugat, amely 1908-ban indult."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen fontos témák jelennek meg verseiben?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Szerelem, halál, Istenkeresés, magyar nemzet sorsa, pénz és hatalom."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Melyik versében bírálja a magyar társadalmat?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "A magyar Ugaron."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért volt forradalmi Ady költészete?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert új képeket, modern kifejezésmódot és merész témákat használt, amelyek eltértek a hagyományos magyar lírától."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Ki volt Léda?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Diósy Ödönné Brüll Adél, egy férjezett, gazdag úriasszony, Ady nagy szerelme."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen hatással volt Léda Ady költészetére?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Szerelmük ihlette a szenvedélyes Léda-verseket, például Héja-nász az avaron és Őrizem a szemed."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mikor szakított Ady és Léda?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "1912-ben végleg elváltak útjaik."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért ment Ady többször Párizsba?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Párizsban találkozott a modern művészettel és irodalommal, amely nagy hatással volt költészetére."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": " Ki volt Ady második nagy szerelme?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Boncza Berta, vagyis Csinszka, aki 20 évvel fiatalabb volt nála."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen politikai nézeteket vallott Ady?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": " Haladó, radikális nézeteket képviselt, ellenezte a magyar társadalmi és politikai elmaradottságot."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért támadták sokan a versei miatt?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert túl modernnek és radikálisnak tartották a stílusát és nézeteit."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mit jelent az „Ugar” szimbólum a verseiben?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "A magyar társadalom elmaradottságát, fejlődésképtelenségét."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Melyik újságnál dolgozott fiatalon?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "A Nagyváradi Naplónál."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen betegsége volt Ady Endrének?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Szifiliszt kapott fiatalon, amely fokozatosan tönkretette egészségét."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Melyik káros szenvedélye rontotta tovább az állapotát?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Az alkoholizmus."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen híres költőt hívott halála előtt?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Babits Mihályt, aki korábban irodalmi riválisa volt."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mikor és hol halt meg?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "1919. január 27-én, Budapesten."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Hol temették el?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "A Kerepesi temetőben, hatalmas tömeg kísérte utolsó útjára."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mit mondott Krúdy Gyula Ady Endréről?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Hogy szerette a macskákat, és gyakran volt egy kóbor cica a közelében"
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért volt fontos a pénz és hatalom témája Ady költészetében?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert szegény sorból származott, de később is anyagi gondjai voltak, és bírálta a pénz hatalmát."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Melyik híres magyar folyóirat segítette Ady sikerét?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "A Nyugat."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Hány évesen halt meg Ady Endre?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "41 évesen."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért számított forradalminak a költészete?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert modern, szokatlan képeket, merész szóhasználatot és radikális társadalomkritikát vitt a magyar irodalomba."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen fontos szimbólumokat használt verseiben?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Pénz, Isten, Ugar, halál, szerelem, magyarság, város és vidék ellentéte."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért akarta Ady édesanyja, hogy pap legyen?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert mélyen vallásos volt, és azt szerette volna, ha fia református lelkész lesz."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen szakmát szántak neki a szülei?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Jogásznak akarták küldeni, de ő az újságírás és költészet felé fordult."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért féltek tőle a fogorvosai?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert nagyon rossz fogai voltak, és ivás vagy fájdalom miatt gyakran agresszívan viselkedett a rendelőben."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért szökött meg egy szanatóriumból?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Hogy részt vehessen a saját eljegyzésén Csinszkával"
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mit jósolt meg Ady saját magának?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Hogy fiatalon fog meghalni - és valóban, 41 évesen hunyt el."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért utazott vissza időnként vidékre, ha nem szerette azt?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert nyugalmat keresett Érmindszenten és Csucsán, bár verseiben bírálta a vidéki életet."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Hogyan viszonyult Léda férje Adyhoz?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Tudott a viszonyukról, és nem akadályozta - sőt, állítólag anyagilag is segítette Adyt."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Hogyan kötődött Ady a szabadkőművesekhez?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Támogatta a haladó eszméiket, de hivatalosan nem lett tagja."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen különc divatszokása volt Adynak?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mindig egy hosszú sálat viselt, amit lazán a nyaka köré csavart."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Hol lakott egy ideig Budapesten?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "A New York Kávéházban, ahol a Nyugat írói gyakran találkoztak."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért nem szeretett autózni?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert egyszer egy utazás során annyira megijedt, hogy soha többé nem akart autóba ülni."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Miért akarta egy kecskeméti gazda örökbe fogadni Adyt?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Mert annyira rajongott a verseiért, hogy gondoskodni akart róla"
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mi inspirálta a „Párizsban járt az ősz” című verset?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Egy gesztenye lehullása egy párizsi utcán."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Hogyan reagáltak az iskolák Ady verseire?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Több helyen betiltották, mert túl merésznek tartották őket."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Kivel voltak híres vitái a Nyugatban?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Babits Mihállyal, bár halála előtt mégis Babitsot kérte maga mellé."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Milyen volt Ady zenei tehetsége?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Nagyon szerette a zenét, de botfülű volt, és nem tudott énekelni."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mi történt vele egy párizsi mulatóban?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Részegen majdnem kidobták, de egy ismerőse megmentette, mert elmondta, hogy híres költő."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mit gondolt az iskolai rendszerről?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Úgy vélte, hogy a poroszos oktatás megöli a költészetet a gyerekekben."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Hogyan alakult Csinszkával való házassága?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Bár Csinszka gondoskodott róla, a kapcsolatuk tele volt feszültségekkel és veszekedésekkel."
+            }
+        ]
+    },
+    {
+        "role": "user",
+        "parts": [
+            {
+                "text": "Mit tett Csinszka Ady halála után?"
+            }
+        ]
+    },
+    {
+        "role": "model",
+        "parts": [
+            {
+                "text": "Maga is verseket kezdett írni, többek között Adyról."
+            }
+        ]
+    }
+]

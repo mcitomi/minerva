@@ -57,7 +57,7 @@ Backend:
 - CDN szerver a profil képeknek, backendre feltöltött fájloknak, külön porton futva (serve -s [mappa neve] -l <port>), [cdn link]/profiles/uuid.png, cdn link mentve lesz frontend configba, mint a backend link
 
 AI:
-- új emberek megírása: Ady Endre, Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Erdős Pál, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula,  + amik még hiányoznak: Bolyai János, Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
+- új emberek megírása: Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Erdős Pál, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula,  + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
