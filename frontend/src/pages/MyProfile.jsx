@@ -159,6 +159,31 @@ export default () => {
         e.preventDefault();
         setIsEdit(true);
     }
+
+    async function saveUserDetails(e) {
+        e.preventDefault();
+        setIsEdit(false);
+
+        try {
+            const response = await fetch(`${CONFIG.API_URL}/user/details`, {
+                method: "post",
+                headers: {
+                    "Content-Type" : "application/json",
+                    "Authorization" : `Bearer ${token}`
+                }, 
+                body: JSON.stringify(formData)
+            });
+
+            if (!response.ok) {
+                throw new Error("Hiba az adatok mentése!");
+            } else {
+                alert("Sikeresen feltöltve!");
+            }
+        } catch (err) {
+            setError(err.message);
+        }
+
+    }
     return (
         <Container fluid>
             <Row>
@@ -166,13 +191,13 @@ export default () => {
                     <h3 style={{ marginBottom: 30 }}>Adataim</h3>
                     <Form>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">
-                            <Form.Control type="name" placeholder="Név" value={formData.name} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                            <Form.Control type="name" name="name" placeholder="Név" value={formData.name} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3 floating-label">
-                            <Form.Control type="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                            <Form.Control type="email" name="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingInstitution" label="Intézmény" className="mb-3 floating-label">
-                            <Form.Select placeholder="Intézmény" value={formData.institution} onChange={handleInput} disabled={!isEdit}>
+                            <Form.Select placeholder="Intézmény" name="institution" value={formData.institution} onChange={handleInput} disabled={!isEdit}>
                                 <option value="">Válasszon egy intézményt</option>
                                 {schools.map((school, index) => (
                                     <option key={index} value={school}>{school}</option>
@@ -182,23 +207,23 @@ export default () => {
                         <Row>
                             <Col>
                                 <FloatingLabel controlId="floatingInput" label="Ország" className="mb-3 floating-label">
-                                    <Form.Control type="text" placeholder="Ország" value={formData.country} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                                    <Form.Control type="text" name="country" placeholder="Ország" value={formData.country} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col>
                                 <FloatingLabel controlId="floatingInput" label="Nyelv" className="mb-3 floating-label">
-                                    <Form.Control type="number" placeholder="Nyelv" value={formData.language} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                                    <Form.Control type="number" name="language" placeholder="Nyelv" value={formData.language} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col>
                                 <FloatingLabel controlId="floatingInput" label="Osztály" className="mb-3 floating-label">
-                                    <Form.Control type="text" placeholder="Osztály" value={formData.classroom} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                                    <Form.Control type="text" name="classroom" placeholder="Osztály" value={formData.classroom} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                         </Row>
                         <div className="text-center">
                             <Button variant="warning" type="button" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={handleClick}>Módosítás</Button>
-                            <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
+                            <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails}>Mentés</Button>
                         </div>
                     </Form>
                 </Col>

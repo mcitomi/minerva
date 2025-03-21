@@ -44,7 +44,7 @@ Frontend:
 - Videó, amikor jó az idő!!!
 - Alert, figyelemfelhhívás hogy "ai generált tartalom" vagy stb
 - Figyelemfelhívás, hogy pl "ha a fórumon chatelsz a felhasználóneved és profilképed mások is láthatják" ilyesmik
-- Adatvédelmi tájékoztató oldal. + szöveg (chatgpt)
+- Adatvédelmi tájékoztató oldal. + szöveg (chatgpt) - máté adta példa: https://t3.chat/privacy-policy
   
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
