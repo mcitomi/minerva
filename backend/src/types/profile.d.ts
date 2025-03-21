@@ -9,5 +9,5 @@ export type UserInfo = {
     institution: string | null;
     language: string | null;
     classroom: string | null;
-    pictureUrl: string | null;
+    pictureBase64Url: string | null;
 }

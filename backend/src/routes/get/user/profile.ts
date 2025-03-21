@@ -24,11 +24,11 @@ export const handleRequest = async (req : Request,  db : Database) => {
         const jwtPayload: Payload = verifyToken(jwToken);
         
         const userQuery = db.query(`
-            SELECT email, username, timeCreated, failedAttempts, lastLogin, role, country, institution, lang, class, pictureUrl FROM credentials 
+            SELECT email, username, timeCreated, failedAttempts, lastLogin, role, country, institution, lang, class, profileDetails.pictureBase64Url FROM credentials 
             LEFT JOIN profileDetails ON profileDetails.credentialsId = credentials.id
             WHERE credentials.id = ?;`
         );
-        
+
         const userInfo = await userQuery.get(jwtPayload._id) as UserInfo;   
         
         if(!userInfo || !userInfo.email) {
@@ -47,7 +47,7 @@ export const handleRequest = async (req : Request,  db : Database) => {
                 "lastLogin" : userInfo.lastLogin,
                 "role" : userInfo.role,
                 "country" : userInfo.country,
-                "pictureUrl" : userInfo.pictureUrl,
+                "pictureUrl" : userInfo.pictureBase64Url,
                 "institution" : userInfo.institution ? decryptRSA(userInfo.institution) : null,
                 "language" : userInfo.language,
                 "classroom" : userInfo.classroom

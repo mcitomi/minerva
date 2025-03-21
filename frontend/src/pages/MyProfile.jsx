@@ -7,7 +7,8 @@ import "../styles/main.css";
 
 export default () => {
     const fileInputRef = useRef(null);
-    const [image, setImage] = useState("./assets/images/user.png");
+    const defaultPfpUrl = "./assets/images/user.png";
+    const [image, setImage] = useState(defaultPfpUrl);
 
     const token = localStorage.getItem("token");
 
@@ -24,6 +25,13 @@ export default () => {
     //kép frissítés
     const handleImageChange = (event) => {
         const file = event.target.files[0];
+        if(!file) return;
+
+        if (file.size > 6 * 1024 * 1024) {
+            alert("A fájl mérete nem lehet nagyobb 6 MB-nál!");
+            return;
+        }
+
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -32,6 +40,31 @@ export default () => {
             reader.readAsDataURL(file); // beolvassa a fájlt
         }
     };
+
+    const savePfp = async () => {
+        console.log(image == defaultPfpUrl);
+        
+        try {
+            const response = await fetch(`${CONFIG.API_URL}/user/pfp`, {
+                method: "post",
+                headers: {
+                    "Content-Type" : "application/json",
+                    "Authorization" : `Bearer ${token}`
+                }, 
+                body: JSON.stringify({
+                    "pfpBase64" : image == defaultPfpUrl ? null : image
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Hiba a profilkép betöltés közben!");
+            } else {
+                alert("Sikeresen feltöltve!");
+            }
+        } catch (err) {
+            setError(err.message);
+        }
+    }
 
     const [isEdit, setIsEdit] = useState(false);
     const [loading, setLoading] = useState(true);
@@ -87,7 +120,7 @@ export default () => {
                     language: data.user.language,
                     classroom: data.user.classroom,
                 });
-                setImage(data.user.pictureUrl || "./assets/images/user.png");
+                setImage(data.user.pictureUrl || defaultPfpUrl);
             } catch (err) {
                 setError(err.message);
             }
@@ -103,7 +136,7 @@ export default () => {
                 }
 
                 const data = await response.json();
-                
+
                 setSchools(data.map(school => (`${school.nev}, ${school.telepules}`)));
             } catch (err) {
                 setError(err.message);
@@ -178,8 +211,8 @@ export default () => {
                     </div>
                     <div className="text-center">
                         <Button variant="warning" type="submit" onClick={handleFileSelect} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Módosítás</Button>
-                        <Button variant="warning" type="submit" style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Törlés</Button>
-                        <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
+                        <Button variant="warning" type="submit" onClick={() => { setImage(defaultPfpUrl) }} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Törlés</Button>
+                        <Button variant="warning" type="submit" onClick={savePfp} style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
                     </div>
                 </Col>
             </Row>

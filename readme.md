@@ -20,7 +20,7 @@ __Globális leírás a projektről, megjegyzések:__
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
-- Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, profilkép feltöltés a /my-profile oldalon. ---> félig kész
+- Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, a /my-profile oldalon. ---> félig kész
 - Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
   ```
@@ -44,6 +44,7 @@ Frontend:
 - Videó, amikor jó az idő!!!
 - Alert, figyelemfelhhívás hogy "ai generált tartalom" vagy stb
 - Figyelemfelhívás, hogy pl "ha a fórumon chatelsz a felhasználóneved és profilképed mások is láthatják" ilyesmik
+- Adatvédelmi tájékoztató oldal. + szöveg (chatgpt)
   
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
