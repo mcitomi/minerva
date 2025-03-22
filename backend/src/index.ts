@@ -38,6 +38,14 @@ db.run(`CREATE TABLE IF NOT EXISTS profileDetails (
     FOREIGN KEY (credentialsId) REFERENCES credentials(id) ON DELETE CASCADE
 );`);
 
+db.run(`CREATE TABLE IF NOT EXISTS forumMessages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message TEXT,
+    timeSent INTEGER,
+    credentialsId INTEGER UNIQUE,
+    FOREIGN KEY (credentialsId) REFERENCES credentials(id)
+);`);
+
 // db.run(`CREATE TABLE IF NOT EXISTS sessions (    // továbbfejlesztési lehetőség: session kezelés
 //     id TEXT PRIMARY KEY,
 //     userId INTEGER NOT NULL,

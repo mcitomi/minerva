@@ -49,8 +49,8 @@ export const handleRequest = async (req : Request,  db : Database) => {
                 "country" : userInfo.country,
                 "pictureUrl" : userInfo.pictureBase64Url,
                 "institution" : userInfo.institution ? decryptRSA(userInfo.institution) : null,
-                "language" : userInfo.language,
-                "classroom" : userInfo.classroom
+                "language" : userInfo.lang,
+                "classroom" : userInfo.class
             }
         });
 

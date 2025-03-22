@@ -29,7 +29,7 @@ export class RequestHandler {
             if (req.method === 'OPTIONS') {     // handle options method
                 return new Response('Departed', { headers: {
                     'Access-Control-Allow-Origin': '*',
-                    'Access-Control-Allow-Methods': 'OPTIONS, POST',
+                    'Access-Control-Allow-Methods': '*',
                     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
                 }});
             }

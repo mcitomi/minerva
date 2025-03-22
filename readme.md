@@ -21,7 +21,7 @@ __Globális leírás a projektről, megjegyzések:__
 Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
 - Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, a /my-profile oldalon. ---> félig kész
-- Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet
+- Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet. Fiók deaktiválásra szintén.
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
   ```
   // react states:
@@ -45,7 +45,8 @@ Frontend:
 - Alert, figyelemfelhhívás hogy "ai generált tartalom" vagy stb
 - Figyelemfelhívás, hogy pl "ha a fórumon chatelsz a felhasználóneved és profilképed mások is láthatják" ilyesmik
 - Adatvédelmi tájékoztató oldal. + szöveg (chatgpt) - máté adta példa: https://t3.chat/privacy-policy
-  
+- cookie popup figyelmeztetés
+
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
 - fiók adatok kezelése a /my-profile oldalon (a forráskódban hagytam commentet rá)
@@ -53,12 +54,12 @@ Frontend:
 - tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS)
 
 Backend:
-- /profile update, kép feltöltés, adat mentés megírása 
+- /profile update, adat mentés megírása 
 - Fórum GET messages (utosó 100 mondjuk) POST új üzenet {name, message, timestamp, pfpurl}
-- CDN szerver a profil képeknek, backendre feltöltött fájloknak, külön porton futva (serve -s [mappa neve] -l <port>), [cdn link]/profiles/uuid.png, cdn link mentve lesz frontend configba, mint a backend link
+- profile deaktiválás endpoint
 
 AI:
-- új emberek megírása: Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Erdős Pál, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula,  + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
+- új emberek megírása: Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula,  + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
@@ -69,3 +70,4 @@ Továbbfejlesztési lehetőség:
 - Discord profil hozzákötése a webes fiókhoz (well csináltam mar ilyet, iagazbol ctrlc ctrlv meg van írva)
 - RSS feed, posztokat facebookrol, instárol innen onnan összegzi egy oldalon
 - Chat beszélgetések mentése localsotrage vagy adatbázisba, onnan lekérdezni a chat "topic"okat
+- Email cím csere rendszer. (cím váltás esetén szükséges megerősítő email, addig várakozó státuszba kell rakni stb..)

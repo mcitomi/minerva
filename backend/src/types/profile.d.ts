@@ -7,7 +7,7 @@ export type UserInfo = {
     role: string;
     country: string | null;
     institution: string | null;
-    language: string | null;
-    classroom: string | null;
+    lang: string | null;
+    class: string | null;
     pictureBase64Url: string | null;
 }

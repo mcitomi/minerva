@@ -1,5 +1,6 @@
 import { Container, Row, Col, Form, FloatingLabel, Button, Image, ThemeProvider, } from "react-bootstrap";
 import React, { useRef, useState, useEffect } from "react";
+import AsyncSelect from "react-select/async";
 
 import CONFIG from "../config.json";
 
@@ -25,7 +26,7 @@ export default () => {
     //kép frissítés
     const handleImageChange = (event) => {
         const file = event.target.files[0];
-        if(!file) return;
+        if (!file) return;
 
         if (file.size > 6 * 1024 * 1024) {
             alert("A fájl mérete nem lehet nagyobb 6 MB-nál!");
@@ -43,16 +44,16 @@ export default () => {
 
     const savePfp = async () => {
         console.log(image == defaultPfpUrl);
-        
+
         try {
             const response = await fetch(`${CONFIG.API_URL}/user/pfp`, {
                 method: "post",
                 headers: {
-                    "Content-Type" : "application/json",
-                    "Authorization" : `Bearer ${token}`
-                }, 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify({
-                    "pfpBase64" : image == defaultPfpUrl ? null : image
+                    "pfpBase64": image == defaultPfpUrl ? null : image
                 })
             });
 
@@ -116,7 +117,8 @@ export default () => {
                     email: data.user.email,
                     institution: data.user.institution,
                     // fun fact: a jelszót nem tárolhatod adatbázisban olyan formában, ami visszafejthető, ezért nem jeleníthető meg
-                    country: data.user.country, // illetve ha nincs még beállítva pl az ország, akkor null értéket ad vissza az api, ezt is le kell kezelni
+                    // illetve ha nincs még beállítva pl az ország, akkor null értéket ad vissza az api, ezt is le kell kezelni
+                    country: data.user.country,
                     language: data.user.language,
                     classroom: data.user.classroom,
                 });
@@ -166,11 +168,11 @@ export default () => {
 
         try {
             const response = await fetch(`${CONFIG.API_URL}/user/details`, {
-                method: "post",
+                method: "patch",
                 headers: {
-                    "Content-Type" : "application/json",
-                    "Authorization" : `Bearer ${token}`
-                }, 
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
                 body: JSON.stringify(formData)
             });
 
@@ -194,29 +196,48 @@ export default () => {
                             <Form.Control type="name" name="name" placeholder="Név" value={formData.name} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3 floating-label">
-                            <Form.Control type="email" name="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                            <Form.Control type="email" name="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={true}></Form.Control>
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingInstitution" label="Intézmény" className="mb-3 floating-label">
-                            <Form.Select placeholder="Intézmény" name="institution" value={formData.institution} onChange={handleInput} disabled={!isEdit}>
-                                <option value="">Válasszon egy intézményt</option>
-                                {schools.map((school, index) => (
-                                    <option key={index} value={school}>{school}</option>
-                                ))}
-                            </Form.Select>
-                        </FloatingLabel>
+                        {/* <FloatingLabel controlId="floatingInstitution" label="Intézmény" className="mb-3 floating-label"> */}
+                            <AsyncSelect
+                                className="mb-3 z-1"
+                                placeholder="Válasszon egy intézményt"
+                                name="institution"
+                                value={
+                                    formData.institution
+                                        ? { value: formData.institution, label: formData.institution }
+                                        : null
+                                }
+                                loadOptions={(inputValue, callback) => {
+                                    const filtered = schools
+                                        .filter((school) =>
+                                            school.toLowerCase().includes(inputValue.toLowerCase())
+                                        )
+                                        .map((school) => ({ value: school, label: school }));
+                                    callback(filtered);
+                                }}
+                                onChange={(selectedOption) =>
+                                    handleInput({
+                                        target: { name: "institution", value: selectedOption?.value || "" },
+                                    })
+                                }
+                                isDisabled={!isEdit}
+                                isClearable
+                            />
+                        {/* </FloatingLabel> */}
                         <Row>
                             <Col>
-                                <FloatingLabel controlId="floatingInput" label="Ország" className="mb-3 floating-label">
+                                <FloatingLabel controlId="floatingInput" label="Ország" className="mb-3 floating-label z-0">
                                     <Form.Control type="text" name="country" placeholder="Ország" value={formData.country} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col>
-                                <FloatingLabel controlId="floatingInput" label="Nyelv" className="mb-3 floating-label">
-                                    <Form.Control type="number" name="language" placeholder="Nyelv" value={formData.language} onChange={handleInput} disabled={!isEdit}></Form.Control>
+                                <FloatingLabel controlId="floatingInput" label="Nyelv" className="mb-3 floating-label z-0">
+                                    <Form.Control type="text" name="language" placeholder="Nyelv" value={formData.language} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>
                             <Col>
-                                <FloatingLabel controlId="floatingInput" label="Osztály" className="mb-3 floating-label">
+                                <FloatingLabel controlId="floatingInput" label="Osztály" className="mb-3 floating-label z-0">
                                     <Form.Control type="text" name="classroom" placeholder="Osztály" value={formData.classroom} onChange={handleInput} disabled={!isEdit}></Form.Control>
                                 </FloatingLabel>
                             </Col>

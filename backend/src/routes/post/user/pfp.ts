@@ -58,18 +58,19 @@ export const handleRequest = async (req: Request, db: Database) => {
             }, {status: 400});
         }
 
-        if(isFileSizeOver6MB(body.pfpBase64)) {
-            return Response.json({
-                "message": ["The file is over 6MB!"]
-            }, {status: 400});
+        if(body.pfpBase64) {
+            if(isFileSizeOver6MB(body.pfpBase64)) {
+                return Response.json({
+                    "message": ["The file is over 6MB!"]
+                }, {status: 400});
+            }
+    
+            if(!getMimeType(body.pfpBase64).startsWith("image")) {
+                return Response.json({
+                    "message": ["The file not a image!"]
+                }, {status: 400});
+            }
         }
-
-        if(!getMimeType(body.pfpBase64).startsWith("image")) {
-            return Response.json({
-                "message": ["The file not a image!"]
-            }, {status: 400});
-        }
-        
 
         db.run("INSERT INTO profileDetails (credentialsId, pictureBase64Url) VALUES (?, ?) ON CONFLICT(credentialsId) DO UPDATE SET pictureBase64Url = excluded.pictureBase64Url;", [jwtPayload._id, body.pfpBase64]);
         
