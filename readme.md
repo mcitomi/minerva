@@ -20,7 +20,6 @@ __Globális leírás a projektről, megjegyzések:__
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
 - Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
-- Profil adatok lekérése és megjelenítése mikor betölt az oldal, kitöltése módosítás gomb után és feltöltése, a /my-profile oldalon. ---> félig kész
 - Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet. Fiók deaktiválásra szintén.
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
   ```
@@ -49,12 +48,10 @@ Frontend:
 
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész
-- fiók adatok kezelése a /my-profile oldalon (a forráskódban hagytam commentet rá)
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 - tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS)
 
 Backend:
-- /profile update, adat mentés megírása 
 - Fórum GET messages (utosó 100 mondjuk) POST új üzenet {name, message, timestamp, pfpurl}
 - profile deaktiválás endpoint
 

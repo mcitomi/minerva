@@ -13,6 +13,8 @@
 | POST | `/gemini-models/chat` | message: string;, person: string;, history: Content[]; | Authorization: Bearer <token> | Kérdezhetünk az AI profiloktól.
 | POST | `/auth/password-reset` | password: string;, code: string; | None | Felhasználó jelszó visszaállítása.
 | POST | `/auth/password-request` | email: string;, verifyUrl: string; | None | Felhasználó jelszó visszaállítási email kérése az adott címre. 
+| POST | `/user/pfp` | pfpBase64: string; | Authorization: Bearer <token> | Felhasználó profilképének base64 kódolású blob-ja, vagy null.
+| PATCH | `/user/details` | name: string; email: string; institution: string vagy null; country: string vagy null; language: string vagy null; classroom: string vagy null; | Authorization: Bearer <token> | Profil adatok frissítése.
 
 ## Szerver:
 
@@ -45,6 +47,12 @@ Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel les
 
 A két tábla között ON DELETE CASCADE kapcsolat van, a profileDetails.credentialsId kapcsolódik a credentials.id-hez.
 
+### `forumMessages` tábla
+| **id** | **message** | **timeSent** | **credentialsId** |
+|--------|----------|------------|-------------|
+| INTEGER AUTOINCREMENT | TEXT | INTEGER | INTEGER UNIQUE |
+
+A forumMessages.credentialsId kapcsolódik a credentials.id-hez.
 
 ## Tiktoksítás:
 
