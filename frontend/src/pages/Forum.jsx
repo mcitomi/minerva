@@ -147,6 +147,8 @@ export default () => {
 
             waitNewMessage(); // a végén újra meghívjuk hogy folyamatosan figyelje az üzeneteket
         } catch (err) {
+            console.log("A Timeout Occurred - Network error");
+            waitNewMessage();
             console.error(err);
         }
     }
@@ -194,7 +196,7 @@ export default () => {
                                     return <div key={i} className={message.yourMessage ? "forumUser" : "forumAnotherUser"}>
                                         <Row>
                                             <Col xs={2}>
-                                                <Image src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
+                                                <Image style={{width: "5vh", height: "5vh"}} src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
                                             </Col>
                                             <Col xs={10}>
                                                 <small>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"} [{new Date(message.timeSent * 1000).toLocaleString("hu-HU")}]</small>
