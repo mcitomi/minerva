@@ -61,6 +61,7 @@ modelLoader();
 Bun.serve({
     development: true,
     port: port,
+    idleTimeout: 255,   // másodperc, miután szakítjuk a kapcsolatot (polling beállítás) 255 a max (4.25 perc)
     fetch(r: Request) {
         return requesthandler.listener(r);
     }

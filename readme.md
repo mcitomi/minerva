@@ -52,7 +52,6 @@ Frontend:
 - tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS)
 
 Backend:
-- Frontend + fórum fetch fixek
 - profile deaktiválás endpoint
 
 AI:
@@ -71,3 +70,4 @@ Továbbfejlesztési lehetőség:
 - Email cím csere rendszer. (cím váltás esetén szükséges megerősítő email, addig várakozó státuszba kell rakni stb..)
 - Jobb UI a fórumnak
 - Backend blacklist a fórumra (csúnya szavakat ne engedjen ki) - HTTP/1.1 406 Not Acceptable
+- Server side slowmode (/profil)

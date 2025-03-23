@@ -5,6 +5,8 @@ import "../styles/forum.css";
 
 import CONFIG from "../config.json";
 
+var profileIdsInChat = [];
+
 export default () => {
     const defaultPfpUrl = "./assets/images/user.png";
 
@@ -16,6 +18,10 @@ export default () => {
 
     const profileIds = [...new Set(messages.map(x => x.userId))];   // A Set minden duplikált elemet ignorál és nem rak bele a tömbe
 
+    if (profileIds.find(x => !profileIdsInChat.includes(x))) { // csak akkor frissítsül a profilesInChat tömböt, ha vannak uj resztvevők a chatbe
+        profileIdsInChat = profileIds;
+    }
+
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -23,9 +29,11 @@ export default () => {
     }
 
     const sendMessage = async (e) => {
-        e.preventDefault();
         try {
+            e.preventDefault();
+
             if (!chatRef.current.value || chatRef.current.value == "") return;
+            chatRef.current.disabled = true;
 
             const response = await fetch(`${CONFIG.API_URL}/forum/send`, {
                 method: "post",
@@ -44,8 +52,10 @@ export default () => {
                 throw new Error("Hiba a küldés közben");
             }
 
-            fetchMessages();
-
+            setTimeout(() => {
+                chatRef.current.disabled = false;
+                chatRef.current.focus();
+            }, 5000);   // 5 másodperces slowmode van a fórumon, hogy ne lehessen spamelni a kliensről
         } catch (err) {
             throw new Error("Hiba történt az üzenet küldése közben");
         }
@@ -89,7 +99,7 @@ export default () => {
                     "Authorization": `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    "profileIds": profileIds
+                    "profileIds": profileIdsInChat
                 })
             });
 
@@ -111,21 +121,42 @@ export default () => {
         }
     }
 
+    const waitNewMessage = async () => {
+        try {
+            const response = await fetch(`${CONFIG.API_URL}/forum/new`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Hiba az üzenet lekérdezésében!");
+            }
+
+            if(response.status == 200) {
+                const data = await response.json();
+                setMessages((messages) => [...messages, data]);
+            }
+
+            waitNewMessage(); // a végén újra meghívjuk hogy folyamatosan figyelje az üzeneteket
+        } catch (err) {
+            throw new Error("Hiba történt az üzenet lekérése közben.");
+        }
+    }
+
     useEffect(() => {
         fetchMessages();
-
-        // const fetchMessagesTo = setInterval(() => {
-        //     fetchMessages();
-        // }, 4000);
-        // meg kell oldani hogy csak akkor fetchelje újra ha van új üznet, vagy valami módon
-
-        return () => clearInterval(fetchMessagesTo);
-    }, [])
+        waitNewMessage();
+    }, []);
 
     useEffect(() => {
         fetchProfiles();
-        forumChatRef.current?.scrollTo(0, forumChatRef.current.scrollHeight);
-    }, [messages])
+    }, [profileIdsInChat]); // ha vannak uj chatelők akkor kérjük le azok profilját
+
+    useEffect(() => {
+        forumChatRef.current?.scrollTo(0, forumChatRef.current.scrollHeight); // mindig legörget a chat aljára
+    }, [messages]);
 
     function handleInputChange() {
         const textarea = chatRef.current;
@@ -133,7 +164,7 @@ export default () => {
         textarea.style.height = `${textarea.scrollHeight}px`;
     };
 
-    function handleKeyDown(e) {
+    function handleKeyDown(e) { // Enterre is elküldi az üzenetet (mint az AI oldalakon)
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             sendMessage(e);
@@ -156,7 +187,7 @@ export default () => {
                                                 <Image src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
                                             </Col>
                                             <Col xs={10}>
-                                                <small>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"} [{new Date(message.timeSent * 1000).toLocaleString()}]</small>
+                                                <small>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"} [{new Date(message.timeSent * 1000).toLocaleString("hu-HU")}]</small>
                                                 <p>{message.message}</p>
                                             </Col>
                                         </Row>

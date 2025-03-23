@@ -1,6 +1,9 @@
 import { Database } from "bun:sqlite";
+// jwt
 import { verifyToken } from "../../../modules/auth/jwt";
 import { type Payload } from "../../../types/jwt";
+// long polling-hoz "event" meghívó
+import { messageTriggers } from "../../get/forum/new";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -41,14 +44,19 @@ export const handleRequest = async (req: Request, db: Database) => {
             }, {status: 400});
         }
 
-        db.run("INSERT INTO forumMessages (message, timeSent, credentialsId) VALUES (?, ?, ?);", [body.message, Math.floor(Date.now() / 1000), jwtPayload._id]);
+        const timeSent = Math.floor(Date.now() / 1000);
+        db.run("INSERT INTO forumMessages (message, timeSent, credentialsId) VALUES (?, ?, ?);", [body.message, timeSent, jwtPayload._id]);
+
+        messageTriggers.forEach(callback => callback(jwtPayload._id, body.message, timeSent));
+
+        messageTriggers.length = 0; // töröljük a tömb elemeit, triggereket
 
         return Response.json({
             "message" : ["Sent!"]
         });
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         
         if (error.message.includes("token")) {
             return Response.json({
