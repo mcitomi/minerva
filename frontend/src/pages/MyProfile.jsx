@@ -43,8 +43,6 @@ export default () => {
     };
 
     const savePfp = async () => {
-        console.log(image == defaultPfpUrl);
-
         try {
             const response = await fetch(`${CONFIG.API_URL}/user/pfp`, {
                 method: "post",

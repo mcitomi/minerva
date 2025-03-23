@@ -36,7 +36,7 @@ Frontend:
   // beszúrás az oldalba
   {showErrorAlert && <ErrorAlert title={"Sikertelen bejelentkezés!"} text={errorMessage} />}
   ```
-- !! -> Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (window.location.href = "/login"), és így kap egy új érvényes tokent.
+- !! -> Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (navigate react router modul), és így kap egy új érvényes tokent. pl fórumon, profilon
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
 - Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
@@ -52,7 +52,7 @@ Frontend:
 - tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS)
 
 Backend:
-- Fórum GET messages (utosó 100 mondjuk) POST új üzenet {name, message, timestamp, pfpurl}
+- Frontend + fórum fetch fixek
 - profile deaktiválás endpoint
 
 AI:
@@ -68,3 +68,5 @@ Továbbfejlesztési lehetőség:
 - RSS feed, posztokat facebookrol, instárol innen onnan összegzi egy oldalon
 - Chat beszélgetések mentése localsotrage vagy adatbázisba, onnan lekérdezni a chat "topic"okat
 - Email cím csere rendszer. (cím váltás esetén szükséges megerősítő email, addig várakozó státuszba kell rakni stb..)
+- Jobb UI a fórumnak
+- Backend blacklist a fórumra (csúnya szavakat ne engedjen ki) - HTTP/1.1 406 Not Acceptable

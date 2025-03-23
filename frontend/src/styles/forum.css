@@ -38,3 +38,8 @@
     margin-bottom: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+.pfp {
+    width: 5vh;
+    border-radius: 50%;
+}

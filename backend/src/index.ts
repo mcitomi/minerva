@@ -42,7 +42,7 @@ db.run(`CREATE TABLE IF NOT EXISTS forumMessages (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     message TEXT,
     timeSent INTEGER,
-    credentialsId INTEGER UNIQUE,
+    credentialsId INTEGER,
     FOREIGN KEY (credentialsId) REFERENCES credentials(id)
 );`);
 
