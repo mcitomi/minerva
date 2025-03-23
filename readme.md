@@ -47,28 +47,30 @@ Frontend:
 - cookie popup figyelmeztetés
 
 #### Teszterek amiket észrevettek:
-- Telefonon nem reszponziv, főleg a rólunk rész
+- Telefonon nem reszponziv, főleg a rólunk rész - padding vagy valami
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
-- tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS)
+- tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS) <- állítólag van valami viewpont, ilyen oldaltörés szerű dolog ahova oda klippel pl a telefon kijelzője?
 - Regisztrációkor kiírni mi kell a jelszóba (Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&))
+- "Célunk" pont alatt a főoldalon a kis ikonok el vannak csúszva
+- Jobb alert felület (ki van írva meg meg van írva csak át kell alakitani az oldalt ) <-- Betti?
 
 Backend:
 - profile deaktiválás endpoint
 
 AI:
 - RÁKÓCZI FERENCBŐL A MÁSODIK KELL!!! (II. Rákóczi Ferenc)
-- új emberek megírása: Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula,  + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
+- új emberek megírása: Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
 - Pontgyűjtési rendszer vagy jutalmak beépítése a tanulási folyamat ösztönzésére
 - Partnerségek iskolákkal és egyetemekkel (krétával)
-- ✅ Email spam elleni védelem, egy féle timeout rendszer, pl ha az ember 2x gyorsan kattint egy gombra, ne lehessen új emailt lekérni, pl csak fél perc múlva - DONE
 - Discord integráció, fórum chat discord-web crossplatform
 - Discord profil hozzákötése a webes fiókhoz (well csináltam mar ilyet, iagazbol ctrlc ctrlv meg van írva)
 - RSS feed, posztokat facebookrol, instárol innen onnan összegzi egy oldalon
 - Chat beszélgetések mentése localsotrage vagy adatbázisba, onnan lekérdezni a chat "topic"okat
 - Email cím csere rendszer. (cím váltás esetén szükséges megerősítő email, addig várakozó státuszba kell rakni stb..)
-- Jobb UI a fórumnak
 - Backend blacklist a fórumra (csúnya szavakat ne engedjen ki) - HTTP/1.1 406 Not Acceptable
 - Server side slowmode (/profil)
+
+- ✅ Email spam elleni védelem, egy féle timeout rendszer, pl ha az ember 2x gyorsan kattint egy gombra, ne lehessen új emailt lekérni, pl csak fél perc múlva - DONE

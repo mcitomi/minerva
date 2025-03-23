@@ -39,3 +39,13 @@ const response = await fetch(
 );
 ```
 Így mindig elérhetjük az aktuálisan válaszotott backendet.
+
+### Frontend build kiszolgálása
+
+Indítás:
+
+```cli
+serve -s build -l 5000 -C
+serve -s [mappa neve] -l [port száma] -C
+```
+-C flag: CORS policy

@@ -148,7 +148,6 @@ export default () => {
             waitNewMessage(); // a végén újra meghívjuk hogy folyamatosan figyelje az üzeneteket
         } catch (err) {
             console.log("A Timeout Occurred - Network error");
-            waitNewMessage();
             console.error(err);
         }
     }
