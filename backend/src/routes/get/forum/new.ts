@@ -34,11 +34,11 @@ export const handleRequest = async (req: Request, db: Database) => {
 
             messageTriggers.push(callback); // hozzáadjuk a kliens "kérelmét" a várolistához
 
-            setTimeout(() => {  // Ha 250 másodperc után nincs új üzenet, visszatérünk egy 204-es kóddal (no content) - mert a Bun js engine maximum várakozási ideje 255 másodperc
+            setTimeout(() => {  // Ha 90 másodperc után nincs új üzenet, visszatérünk egy 204-es kóddal (no content) - mert a Cloudflare maximum várakozási ideje 100 másodperc, Bun js enginé pedig 255 másodperc
                 const index = messageTriggers.indexOf(callback);
                 if (index !== -1) messageTriggers.splice(index, 1);
                 resolve(Response.json({ "message": ["No new messages"] }, { status: 204 }));
-            }, 250000); 
+            }, 90000); 
         });
 
     } catch (error) {
