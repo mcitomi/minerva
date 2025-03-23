@@ -53,9 +53,13 @@ export default () => {
             }
 
             setTimeout(() => {
-                chatRef.current.disabled = false;
+                try {
+                    chatRef.current.disabled = false;
                 chatRef.current.focus();
-            }, 5000);   // 5 másodperces slowmode van a fórumon, hogy ne lehessen spamelni a kliensről
+                } catch (error) {
+                    return;
+                }
+            }, 3000);   // 3 másodperces slowmode
         } catch (err) {
             throw new Error("Hiba történt az üzenet küldése közben");
         }
