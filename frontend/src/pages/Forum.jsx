@@ -9,6 +9,7 @@ var profileIdsInChat = [];
 
 export default () => {
     const defaultPfpUrl = "./assets/images/user.png";
+    const controller = new AbortController(); 
 
     const [messages, setMessages] = useState([]);
     const [profiles, setProfiles] = useState([]);
@@ -131,7 +132,8 @@ export default () => {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${token}`
-                }
+                },
+                signal: controller.signal
             });
 
             if (!response.ok) {
@@ -145,13 +147,17 @@ export default () => {
 
             waitNewMessage(); // a végén újra meghívjuk hogy folyamatosan figyelje az üzeneteket
         } catch (err) {
-            throw new Error("Hiba történt az üzenet lekérése közben.");
+            console.error(err);
         }
     }
 
     useEffect(() => {
         fetchMessages();
         waitNewMessage();
+
+        return () => {
+            controller.abort();  // az oldal elhagyásakor megszakítjuk a pending kéréseket
+        };
     }, []);
 
     useEffect(() => {
