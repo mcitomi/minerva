@@ -162,14 +162,19 @@ export default () => {
 
     async function saveUserDetails(e) {
         e.preventDefault();
+
+        if(!isEdit) {
+            return;
+        }
+
         setIsEdit(false);
 
         try {
             const response = await fetch(`${CONFIG.API_URL}/user/details`, {
-                method: "patch",
+                method: "post",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
+                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify(formData)
             });

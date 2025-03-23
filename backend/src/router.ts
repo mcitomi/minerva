@@ -12,12 +12,12 @@ export class RequestHandler {
     }
 
     private cors(response: Response) {
-        if(!response) {
+        if (!response) {
             throw new Error("Request not responsed");
         }
         // https://github.com/oven-sh/bun/issues/5466
         response.headers.set('Access-Control-Allow-Origin', '*'); // Minden origin engedlyezett
-        response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS, PATCH'); // Szerver által engedélyezett metódusok
+        response.headers.set('Access-Control-Allow-Methods', '*'); // Szerver által engedélyezett metódusok
         response.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Requested-With, Accept, Origin'); // Engedélyezett headerek
         response.headers.set('Access-Control-Allow-Credentials', 'true'); // Hitelesítési adatok (cookies, authorization headers)
         response.headers.set('Access-Control-Expose-Headers', 'Content-Length, X-Knowledge-Base'); // Kliensnek szükséges adatok
@@ -26,31 +26,34 @@ export class RequestHandler {
 
     public async listener(req: Request) {
         try {
-            if (req.method === 'OPTIONS') {     // handle options method
-                return new Response('Departed', { headers: {
+            if (req.method === 'OPTIONS') {
+                return this.cors(new Response('Departed', { headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Access-Control-Allow-Methods': '*',
-                    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-                }});
+                    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With, Accept, Origin',
+                    'Access-Control-Allow-Credentials': 'true'
+                }}));
             }
-            
+
             const requestPath = (new URL(req.url).pathname).toLowerCase();
             const routeName = requestPath.endsWith("/") ? requestPath.slice(0, -1) : requestPath;
-    
-            const endpoint = this.endpoints.find(endpoint => endpoint.name.toLowerCase() === routeName && endpoint.type.toUpperCase() === req.method.toUpperCase());
-    
+
+            const endpoint = this.endpoints.find(
+                endpoint => endpoint.name.toLowerCase() === routeName && endpoint.type.toUpperCase() === req.method.toUpperCase()
+            );
+
             if (endpoint) {
                 const file: File = await import(endpoint.route);
-                return this.cors(await file.handleRequest(req, this.db));
+                return this.cors(await file.handleRequest(req, this.db));  // Helyes CORS alkalmazás a válaszban
             } else {
-                return this.cors(Response.json({
-                    "message" : "Invalid endpoint or wrong method"
-                }, { status: 404 }));
+                return this.cors(
+                    Response.json({ "message": "Invalid endpoint or wrong method" }, { status: 404 })
+                );
             }
         } catch (error) {
-            return this.cors(Response.json({
-                "message" : "Server error: Endpoint not responded"
-            }, { status: 500 }));
+            return this.cors(
+                Response.json({ "message": "Server error: Endpoint not responded" }, { status: 500 })
+            );
         }
     }
 
