@@ -31,6 +31,7 @@ db.run(`CREATE TABLE IF NOT EXISTS profileDetails (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     country TEXT,
     pictureBase64Url TEXT,
+    pfpBase64Urlx128 TEXT,
     lang TEXT,
     institution TEXT,
     class TEXT,

@@ -6,6 +6,27 @@ import { type Payload } from "../../../types/jwt";
 
 import { decryptRSA } from "../../../modules/crypt";
 
+type UserObject = {
+    isActive: number;
+    userId: number;
+    pictureBase64Url: string | null;
+    pfpBase64Urlx128: string | null;
+    username: string;
+}
+
+async function generateAnOptimalizedPfp(userObject: UserObject, db: Database) {
+    const imageBuffer = Buffer.from(userObject.pictureBase64Url.split(",")[1], "base64");
+
+    const resizedPictureBase64 = "data:image/gif;base64," + (await sharp(imageBuffer, { animated: true })
+    // a base64 headert manuálisan visszarakjuk, mert valamiért a sharp nem ismeri fel magától a mime formátumot
+        .resize(128, 128)
+        .toFormat("gif")    // minden képet gif-ben konvertálunk, mert az mindent tud kezelni
+        .toBuffer())
+        .toString("base64");
+
+    db.run("UPDATE profileDetails SET pfpBase64Urlx128 = ? WHERE credentialsId = ?", [resizedPictureBase64, userObject.userId]);
+}
+
 export const handleRequest = async (req: Request, db: Database) => {
     try {
         const authHeader = req.headers.get("authorization");
@@ -48,57 +69,41 @@ export const handleRequest = async (req: Request, db: Database) => {
         const placeholders = body.profileIds.map(() => '?').join(',');  // annyi ?-et illeszt a lekérdezésbe, ahány adatot kapunk frontendről.
 
         const query = db.query(`
-            SELECT credentials.id AS userId, pictureBase64Url, isActive, username FROM credentials
+            SELECT credentials.id AS userId, pictureBase64Url, pfpBase64Urlx128, isActive, username FROM credentials
             LEFT JOIN profileDetails ON profileDetails.credentialsId = credentials.id
             WHERE credentials.id IN (${placeholders});`
         );
 
-        const rawUsers = query.all(...body.profileIds) as {
-            isActive: number;
-            userId: number;
-            pictureBase64Url: string | null;
-            username: string;
-        }[];
+        const rawUsers = query.all(...body.profileIds) as UserObject[];
 
         // kis kérés optimalizálás: minden képet 128x128as felbontásban küldünk ki mint a dc.
+        // -> túl sok idő mire át konvertálunk mindig minden képet.
         return Response.json(
-            await Promise.all(  // a Promise.all megvár minden promise-t a blokkon belül, mert a .map nem várja meg az await dolgokat valamiért 
-                rawUsers.map(async userObject => {
-                    if (userObject.isActive == 1 && userObject.pictureBase64Url) {
-                        try {
-                            const imageBuffer = Buffer.from(userObject.pictureBase64Url.split(",")[1], "base64");
+            rawUsers.map(userObject => {
+                if (userObject.isActive == 1 && userObject.pfpBase64Urlx128) {  // ha van optimalizált változat, azt küldjük ki
+                    return {
+                        userId: userObject.userId,
+                        username: decryptRSA(userObject.username),
+                        pictureBase64Url: userObject.pfpBase64Urlx128
+                    };
+                }
 
-                            // const imageFormatFromBase64MIME = userObject.pictureBase64Url.split(";")[0].split("/")[1];
-
-                            const resizedPictureBase64 = (await sharp(imageBuffer, { animated: true })
-                                .resize(128, 128)
-                                .toFormat("gif")    // minden képet gif-ben konvertálunk, mert az mindent tud kezelni
-                                .toBuffer())
-                                .toString("base64");
-
-                            return {
-                                userId: userObject.userId,
-                                username: decryptRSA(userObject.username),
-                                pictureBase64Url: "data:image/gif;base64," + resizedPictureBase64   
-                                // a base64 headert manuálisan visszarakjuk, mert valamiért a sharp nem ismeri fel magától a mime formátumot
-                            };
-
-                        } catch (e) {
-                            return {
-                                userId: userObject.userId,
-                                username: decryptRSA(userObject.username),
-                                pictureBase64Url: userObject.pictureBase64Url
-                            };
-                        }
-                    }
+                if (userObject.isActive == 1 && userObject.pictureBase64Url) {  // ha nincs optimalizált, de van nagy kép, akkor azt küldjük ki
+                    generateAnOptimalizedPfp(userObject, db);                       // és készítünk egy optimalizált képet, hogy legközelebb már azt küldjük ki
 
                     return {
-                        userId: userObject.isActive == 1 ? userObject.userId : null,
-                        username: userObject.isActive == 1 ? decryptRSA(userObject.username) : null,
-                        pictureBase64Url: null
+                        userId: userObject.userId,
+                        username: decryptRSA(userObject.username),
+                        pictureBase64Url: userObject.pictureBase64Url
                     };
-                })
-            )
+                }
+
+                return {
+                    userId: userObject.isActive == 1 ? userObject.userId : null,
+                    username: userObject.isActive == 1 ? decryptRSA(userObject.username) : null,
+                    pictureBase64Url: null
+                };
+            })
         );
     } catch (error) {
         if (error.message.includes("token")) {
