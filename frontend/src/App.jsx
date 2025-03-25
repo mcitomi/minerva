@@ -87,7 +87,7 @@ export default () => {
                 <Route path="/about" element={<About></About>}></Route>
                 <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess}></Login>}></Route>
                 <Route path="/registration" element={<Registration></Registration>}></Route>
-                <Route path="/my-profile" element={<MyProfile></MyProfile>}></Route>
+                <Route path="/my-profile" element={<MyProfile handleLogout={handleLogout}></MyProfile>}></Route>
                 <Route path="/minerva" element={<MInerva></MInerva>}></Route>
                 <Route path="/ady-endre" element={<Ady></Ady>}></Route>
                 <Route path="/arany-janos" element={<Arany></Arany>}></Route>

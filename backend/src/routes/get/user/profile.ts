@@ -28,7 +28,7 @@ export const handleRequest = async (req : Request,  db : Database) => {
             LEFT JOIN profileDetails ON profileDetails.credentialsId = credentials.id
             WHERE credentials.id = ?;`
         );
-
+        
         const userInfo = await userQuery.get(jwtPayload._id) as UserInfo;   
         
         if(!userInfo || !userInfo.email) {

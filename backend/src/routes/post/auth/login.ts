@@ -1,7 +1,9 @@
 import { Database } from "bun:sqlite";
-import { decryptRSA, encryptRSA, hashHmac } from "../../../modules/crypt";
+import { decryptRSA, hashHmac } from "../../../modules/crypt";
 import { generateToken } from "../../../modules/auth/jwt";
 import { type Body, type RawBody, type AccountQuery } from "../../../types/login";
+import { sendMail } from "../../../modules/mail/sender";
+import emailReactivate from "../../../modules/mail/pages/reactivate";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -35,7 +37,7 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         const hashedMail = hashHmac(body.email);
 
-        const accountQuery = db.query("SELECT id, passHash, isActive FROM credentials WHERE emailHash = ?");
+        const accountQuery = db.query("SELECT id, passHash, isActive, username, mgmtToken FROM credentials WHERE emailHash = ?");
 
         const accountInfo = await accountQuery.get(hashedMail) as AccountQuery;
 
@@ -56,6 +58,10 @@ export const handleRequest = async (req: Request, db: Database) => {
         }
 
         if(accountInfo.isActive !== 1) {
+            if(accountInfo.isActive == 2 && accountInfo.mgmtToken != null) {
+                const verifyUrl = `${new URL(req.url).origin}/user/reactivate?code=${accountInfo.mgmtToken}&redirect=${btoa(rawBody.verifyUrl)}`;
+                sendMail([body.email], "MInerva fiók aktiválás", `Erősítse meg email címét a következő linken: ${verifyUrl}`, emailReactivate(decryptRSA(accountInfo.username), verifyUrl));
+            }
             return Response.json({
                 "message": ["Your account is inactive! Please verify your email."]
             }, {status: 403});

@@ -6,7 +6,7 @@ import CONFIG from "../config.json";
 
 import "../styles/main.css";
 
-export default () => {
+export default ({handleLogout}) => {
     const fileInputRef = useRef(null);
     const defaultPfpUrl = "./assets/images/user.png";
     const [image, setImage] = useState(defaultPfpUrl);
@@ -41,6 +41,26 @@ export default () => {
             reader.readAsDataURL(file); // beolvassa a fájlt
         }
     };
+
+    const deactivate = async () => {
+        try {
+            if(confirm("Biztos deaktiválod a fiókodat? Ez autómatikusan kijelentkeztet a fiókodból.")) {
+                const response = await fetch(`${CONFIG.API_URL}/user/deactivate`, {
+                    method: "post",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+
+                if(response.ok) {
+                    handleLogout();
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     const savePfp = async () => {
         try {
@@ -248,6 +268,7 @@ export default () => {
                         <div className="text-center">
                             <Button variant="warning" type="button" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={handleClick}>Módosítás</Button>
                             <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails}>Mentés</Button>
+                            <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={deactivate}>Deaktiválás</Button>
                         </div>
                     </Form>
                 </Col>

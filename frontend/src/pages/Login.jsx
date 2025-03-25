@@ -101,7 +101,7 @@ export default ({ onLoginSuccess }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "encryptedData": encryptedBase64 }), // Titkosított adat elküldése
+                body: JSON.stringify({ "encryptedData": encryptedBase64, "verifyUrl" : `${window.location.origin}` }), // Titkosított adat elküldése
             });
 
             const result = await response.json();
