@@ -19,7 +19,8 @@
 | POST | `/forum/send` | message: string; | Authorization: Bearer [token] | Üzenet küldése a fórumra.
 | GET | `/forum/messages` | None | Authorization: Bearer [token] | Üzenetelőzmények lekérése.
 | GET | `/forum/new` | None | Authorization: Bearer [token] | Új üzenet lekérése. *Long polling request:* Amennyiben új üzenet érkezik, azt ezen a végponton kérhetjük le, amíg nem érkezik üzenet, a kérés *polling* állapotban lesz, egészen 90 másodpercig, majd ez után 204 HTTP kóddal visszatér. Ekkor új kérést intézhetünk a végpont felé.
-
+| POST | `/user/deactivate` | None | Authorization: Bearer [token] | A tokenhez kapcsolódó felhasználói fiók deaktiválása.
+| GET | `/user/reactivate?code=VERIFYCODE&redirect=TARGET_SITE` | None | None | Az emilben kapott linkkel újra aktiválhatja a fiókját. A link tartalmazza a fiók egyedi megerősítőkódját, és a cél oldal linkjét.
 ## Szerver:
 
 A Bun futtatókörnyezetbe épített `Bun.Serve` funkciót hasznátam egy gyors és egyszerű HTTP szerver létrehozásához.
