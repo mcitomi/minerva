@@ -1,12 +1,14 @@
 import { Container, Row, Col, Form, FloatingLabel, Button, Image, ThemeProvider, } from "react-bootstrap";
 import React, { useRef, useState, useEffect } from "react";
 import AsyncSelect from "react-select/async";
+import SuccessAlert from "../components/SuccessAlert.jsx";
+import ErrorAlert from "../components/ErrorAlert.jsx";
 
 import CONFIG from "../config.json";
 
 import "../styles/main.css";
 
-export default ({handleLogout}) => {
+export default ({ handleLogout }) => {
     const fileInputRef = useRef(null);
     const defaultPfpUrl = "./assets/images/user.png";
     const [image, setImage] = useState(defaultPfpUrl);
@@ -17,6 +19,11 @@ export default ({handleLogout}) => {
         window.location.href = "/login";
         return;
     }
+
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
     // fájl kiválasztást kezeli
     const handleFileSelect = () => {
@@ -29,7 +36,8 @@ export default ({handleLogout}) => {
         if (!file) return;
 
         if (file.size > 6 * 1024 * 1024) {
-            alert("A fájl mérete nem lehet nagyobb 6 MB-nál!");
+            setErrorMessage("A fájl mérete nem lehet nagyobb 6MB-nál.");
+            setShowErrorAlert(true);
             return;
         }
 
@@ -44,7 +52,7 @@ export default ({handleLogout}) => {
 
     const deactivate = async () => {
         try {
-            if(confirm("Biztos deaktiválod a fiókodat? Ez autómatikusan kijelentkeztet a fiókodból.")) {
+            if (confirm("Biztos deaktiválod a fiókodat? Ez autómatikusan kijelentkeztet a fiókodból.")) {
                 const response = await fetch(`${CONFIG.API_URL}/user/deactivate`, {
                     method: "post",
                     headers: {
@@ -53,7 +61,7 @@ export default ({handleLogout}) => {
                     }
                 });
 
-                if(response.ok) {
+                if (response.ok) {
                     handleLogout();
                 }
             }
@@ -76,9 +84,11 @@ export default ({handleLogout}) => {
             });
 
             if (!response.ok) {
-                throw new Error("Hiba a profilkép betöltés közben!");
+                setErrorMessage("Hiba a profilkép feltöltése közben.");
+                setShowErrorAlert(true);
             } else {
-                alert("Sikeresen feltöltve!");
+                setSuccessMessage("Sikeres feltöltés.");
+                setShowSuccessAlert(true);
             }
         } catch (err) {
             setError(err.message);
@@ -119,7 +129,8 @@ export default ({handleLogout}) => {
                 );
 
                 if (response.status == 401 || response.status == 403) {
-                    alert("Lejárt munkamenet, jelentkezzen be újra!")
+                    setErrorMessage("Lejárt a munkamenet. Jelentkezzen be újra.");
+                    setShowErrorAlert(true);
                     window.location.href = "/login";
                     return;
                 }
@@ -183,7 +194,7 @@ export default ({handleLogout}) => {
     async function saveUserDetails(e) {
         e.preventDefault();
 
-        if(!isEdit) {
+        if (!isEdit) {
             return;
         }
 
@@ -200,9 +211,11 @@ export default ({handleLogout}) => {
             });
 
             if (!response.ok) {
-                throw new Error("Hiba az adatok mentése!");
+               setErrorMessage("Hiba az adatok mentése közben.")
+               setShowErrorAlert(true);
             } else {
-                alert("Sikeresen feltöltve!");
+                setSuccessMessage("Sikeresen feltöltve!");
+                setShowSuccessAlert(true);
             }
         } catch (err) {
             setError(err.message);
@@ -222,31 +235,31 @@ export default ({handleLogout}) => {
                             <Form.Control type="email" name="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={true}></Form.Control>
                         </FloatingLabel>
                         {/* <FloatingLabel controlId="floatingInstitution" label="Intézmény" className="mb-3 floating-label"> */}
-                            <AsyncSelect
-                                className="mb-3 z-1"
-                                placeholder="Válasszon egy intézményt"
-                                name="institution"
-                                value={
-                                    formData.institution
-                                        ? { value: formData.institution, label: formData.institution }
-                                        : null
-                                }
-                                loadOptions={(inputValue, callback) => {
-                                    const filtered = schools
-                                        .filter((school) =>
-                                            school.toLowerCase().includes(inputValue.toLowerCase())
-                                        )
-                                        .map((school) => ({ value: school, label: school }));
-                                    callback(filtered);
-                                }}
-                                onChange={(selectedOption) =>
-                                    handleInput({
-                                        target: { name: "institution", value: selectedOption?.value || "" },
-                                    })
-                                }
-                                isDisabled={!isEdit}
-                                isClearable
-                            />
+                        <AsyncSelect
+                            className="mb-3 z-1"
+                            placeholder="Válasszon egy intézményt"
+                            name="institution"
+                            value={
+                                formData.institution
+                                    ? { value: formData.institution, label: formData.institution }
+                                    : null
+                            }
+                            loadOptions={(inputValue, callback) => {
+                                const filtered = schools
+                                    .filter((school) =>
+                                        school.toLowerCase().includes(inputValue.toLowerCase())
+                                    )
+                                    .map((school) => ({ value: school, label: school }));
+                                callback(filtered);
+                            }}
+                            onChange={(selectedOption) =>
+                                handleInput({
+                                    target: { name: "institution", value: selectedOption?.value || "" },
+                                })
+                            }
+                            isDisabled={!isEdit}
+                            isClearable
+                        />
                         {/* </FloatingLabel> */}
                         <Row>
                             <Col>
@@ -270,6 +283,8 @@ export default ({handleLogout}) => {
                             <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails}>Mentés</Button>
                             <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={deactivate}>Deaktiválás</Button>
                         </div>
+                        {showErrorAlert && <ErrorAlert title={"Sikertelen regisztráció!"} text={errorMessage} />}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres regisztráció!"} text={successMessage} />}
                     </Form>
                 </Col>
                 <Col sx={12} md={4} style={{ paddingTop: 30, paddingBottom: 30 }}>

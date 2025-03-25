@@ -32,6 +32,7 @@ export default () => {
     const [showErrorAlert, setShowErrorAlert] = useState(false);
     const [successMessage, setSuccessMessage] = useState(null);
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    
 
     async function fetchPublicKey() {
         try {
@@ -115,11 +116,13 @@ export default () => {
             const result = await response.json();
             
             // console.log('Response:', ...result.message);
+        
 
-            alert(...result.message);
+           // alert(...result.message);
+            
 
             if (!response.ok) {
-                setErrorMessage(result.message || "Sikertelen regisztráció!");
+                setErrorMessage(...result.message || "Sikertelen regisztráció!");
                 setShowErrorAlert(true);
             } else {
                 setSuccessMessage("Sikeres regisztráció!");
@@ -165,6 +168,8 @@ export default () => {
                         </div>
                         {showErrorAlert && <ErrorAlert title={"Sikertelen regisztráció!"} text={errorMessage} />}
                         {showSuccessAlert && <SuccessAlert title={"Sikeres regisztráció!"} text={successMessage} />}
+                        
+
                     </Form>
                 </Col>
             </Row>

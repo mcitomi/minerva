@@ -2,6 +2,8 @@ import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-b
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ErrorAlert from "../components/ErrorAlert.jsx";
+import SuccessAlert from "../components/SuccessAlert.jsx";
+import ErrorAlert from "../components/ErrorAlert.jsx";
 
 import CONFIG from "../config.json";
 
@@ -25,7 +27,9 @@ export default ({ onLoginSuccess }) => {
 
     const [errorMessage, setErrorMessage] = useState(null);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
-    
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+
     async function fetchPublicKey() {
         try {
             const response = await fetch(`${CONFIG.API_URL}/auth/pk`);
@@ -38,7 +42,7 @@ export default ({ onLoginSuccess }) => {
         }
     }
 
-    if(!publicKeyPem) {
+    if (!publicKeyPem) {
         fetchPublicKey();
     }
 
@@ -101,11 +105,11 @@ export default ({ onLoginSuccess }) => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "encryptedData": encryptedBase64, "verifyUrl" : `${window.location.origin}` }), // Titkosított adat elküldése
+                body: JSON.stringify({ "encryptedData": encryptedBase64, "verifyUrl": `${window.location.origin}` }), // Titkosított adat elküldése
             });
 
             const result = await response.json();
-            
+
             // alert(...result.message);
 
             if (result.jwt) {
@@ -133,12 +137,14 @@ export default ({ onLoginSuccess }) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ "email": email, "verifyUrl" : `${window.location.origin}` })
+            body: JSON.stringify({ "email": email, "verifyUrl": `${window.location.origin}` })
         });
 
         const result = await response.json();
 
-        alert(...result.message);
+        // alert(...result.message);
+        setSuccessMessage(...result.message);
+        setShowSuccessAlert(true);
     }
 
     return (
@@ -161,6 +167,7 @@ export default ({ onLoginSuccess }) => {
                             <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Belépés</Button>
                         </div>
                         {showErrorAlert && <ErrorAlert title={"Sikertelen bejelentkezés!"} text={errorMessage} />}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres bejelentkezés!"} text={successMessage} />}
                     </Form>
                 </Col>
             </Row>
