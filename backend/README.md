@@ -8,13 +8,17 @@
 | GET | `/auth/verify-mail/check?code=VERIFYCODE` | None | None | Ellenőrizzük hogy az adott kód él-e még.
 | GET | `/auth/verify-mail/link?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva vissza igazolhatjuk az adott kódhoz tartozó account regisztrációját.
 | GET | `/auth/verify-mail/remove?code=VERIFYCODE` | None | None | Ezt a végpointot meghívva törölhetjük az adott kódhoz tartozó regisztráció adatait.
-| GET | `/user/profile` | None | Authorization: Bearer <token> | Lekérhetjük a felhasználó profil adatait.
+| GET | `/user/profile` | None | Authorization: Bearer [token] | Lekérhetjük a felhasználó profil adatait.
 | GET | `/user/kreta/institutions` | None | None | Kréta intzmények lekérése a hivatalos kréta APIról.
-| POST | `/gemini-models/chat` | message: string;, person: string;, history: Content[]; | Authorization: Bearer <token> | Kérdezhetünk az AI profiloktól.
+| POST | `/gemini-models/chat` | message: string;, person: string;, history: Content[]; | Authorization: Bearer [token] | Kérdezhetünk az AI profiloktól.
 | POST | `/auth/password-reset` | password: string;, code: string; | None | Felhasználó jelszó visszaállítása.
 | POST | `/auth/password-request` | email: string;, verifyUrl: string; | None | Felhasználó jelszó visszaállítási email kérése az adott címre. 
-| POST | `/user/pfp` | pfpBase64: string; | Authorization: Bearer <token> | Felhasználó profilképének base64 kódolású blob-ja, vagy null.
-| PATCH | `/user/details` | name: string; email: string; institution: string vagy null; country: string vagy null; language: string vagy null; classroom: string vagy null; | Authorization: Bearer <token> | Profil adatok frissítése.
+| POST | `/user/pfp` | pfpBase64: string; | Authorization: Bearer [token] | Felhasználó profilképének base64 kódolású blob-ja, vagy null.
+| POST | `/user/details` | name: string; email: string; institution: string vagy null; country: string vagy null; language: string vagy null; classroom: string vagy null; | Authorization: Bearer [token] | Profil adatok frissítése.
+| POST | `/forum/profiles` | profileIds: number[]; | Authorization: Bearer [token] | A body-ban átadott profilok nevének és profilképének lekérése.
+| POST | `/forum/send` | message: string; | Authorization: Bearer [token] | Üzenet küldése a fórumra.
+| GET | `/forum/messages` | None | Authorization: Bearer [token] | Üzenetelőzmények lekérése.
+| GET | `/forum/new` | None | Authorization: Bearer [token] | Új üzenet lekérése. *Long polling request:* Amennyiben új üzenet érkezik, azt ezen a végponton kérhetjük le, amíg nem érkezik üzenet, a kérés *polling* állapotban lesz, egészen 90 másodpercig, majd ez után 204 HTTP kóddal visszatér. Ekkor új kérést intézhetünk a végpont felé.
 
 ## Szerver:
 
@@ -41,9 +45,9 @@ Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel les
 
 ### `profileDetails` tábla
 
-| **id** | **county** | **postCode** | **settlement** | **address** | **pictureUrl** | **lang** | **institute** | **class** | **credentialsId** |
-|--------|----------|------------|-------------|---------|------------|---------------| --- | --- | -- |
-| INTEGER AUTOINCREMENT | TEXT | TEXT | TEXT | TEXT | TEXT | TEXT | TEXT | TEXT | INTEGER UNIQUE |
+| **id** | **country** | **pictureBase64Url** | **pfpBase64Urlx128** | **lang** | **institution** | **class** | **credentialsId** |
+|--- | --- | --- | --- | --- | --- | --- | --- |
+| INTEGER AUTOINCREMENT | TEXT | TEXT | TEXT | TEXT | TEXT | TEXT | INTEGER UNIQUE |
 
 A két tábla között ON DELETE CASCADE kapcsolat van, a profileDetails.credentialsId kapcsolódik a credentials.id-hez.
 
