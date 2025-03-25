@@ -1,4 +1,5 @@
-import { Container, Row, Col, Form, FloatingLabel, Button, Image, ThemeProvider, } from "react-bootstrap";
+import { Container, Row, Col, Form, FloatingLabel, Button, Image, Modal, } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import React, { useRef, useState, useEffect } from "react";
 import AsyncSelect from "react-select/async";
 import SuccessAlert from "../components/SuccessAlert.jsx";
@@ -13,17 +14,43 @@ export default ({ handleLogout }) => {
     const defaultPfpUrl = "./assets/images/user.png";
     const [image, setImage] = useState(defaultPfpUrl);
 
+    const navigate = useNavigate();
     const token = localStorage.getItem("token");
 
-    if (!token) {
-        window.location.href = "/login";
-        return;
-    }
+    useEffect(() => {
+        if (!token) {
+            navigate("/login");
+            return;
+        }
+    }, [token, navigate]);
 
     const [errorMessage, setErrorMessage] = useState(null);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
     const [successMessage, setSuccessMessage] = useState(null);
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
+    const [showDeactivateModal, setDeactivateModal] = useState(false);
+
+    function DeactivateModalAlert() {
+        return (
+            <Modal show={showDeactivateModal} onHide={() => setDeactivateModal(false)} style={{color: "black"}}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Biztos deaktiválja fiókját?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Ez a művelet automatikusan kijelentkeztet a fiókodból.</p>
+                    <p>A legközelebbi bejelentkezési kísérletkor kapni fog egy emailt, amivel újra aktiválhatja a fiókját.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={() => setDeactivateModal(false)}>
+                    Mégsem
+                    </Button>
+                    <Button variant="danger" onClick={deactivate}>
+                    Biztos vagyok benne!
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
 
     // fájl kiválasztást kezeli
     const handleFileSelect = () => {
@@ -52,18 +79,16 @@ export default ({ handleLogout }) => {
 
     const deactivate = async () => {
         try {
-            if (confirm("Biztos deaktiválod a fiókodat? Ez autómatikusan kijelentkeztet a fiókodból.")) {
-                const response = await fetch(`${CONFIG.API_URL}/user/deactivate`, {
-                    method: "post",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    }
-                });
-
-                if (response.ok) {
-                    handleLogout();
+            const response = await fetch(`${CONFIG.API_URL}/user/deactivate`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
                 }
+            });
+
+            if (response.ok) {
+                handleLogout();
             }
         } catch (error) {
             console.log(error);
@@ -131,7 +156,7 @@ export default ({ handleLogout }) => {
                 if (response.status == 401 || response.status == 403) {
                     setErrorMessage("Lejárt a munkamenet. Jelentkezzen be újra.");
                     setShowErrorAlert(true);
-                    window.location.href = "/login";
+                    navigate("/login");
                     return;
                 }
 
@@ -211,8 +236,8 @@ export default ({ handleLogout }) => {
             });
 
             if (!response.ok) {
-               setErrorMessage("Hiba az adatok mentése közben.")
-               setShowErrorAlert(true);
+                setErrorMessage("Hiba az adatok mentése közben.")
+                setShowErrorAlert(true);
             } else {
                 setSuccessMessage("Sikeresen feltöltve!");
                 setShowSuccessAlert(true);
@@ -224,6 +249,7 @@ export default ({ handleLogout }) => {
     }
     return (
         <Container fluid>
+            {showDeactivateModal && <DeactivateModalAlert />}
             <Row>
                 <Col sx={12} md={8} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529" }}>
                     <h3 style={{ marginBottom: 30 }}>Adataim</h3>
@@ -279,12 +305,12 @@ export default ({ handleLogout }) => {
                             </Col>
                         </Row>
                         <div className="text-center">
-                            <Button variant="warning" type="button" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={handleClick}>Módosítás</Button>
-                            <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails}>Mentés</Button>
-                            <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={deactivate}>Deaktiválás</Button>
+                            <Button variant="warning" type="button" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={handleClick} disabled={isEdit}>Módosítás</Button>
+                            <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails} disabled={!isEdit}>Mentés</Button>
+                            <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={() => setDeactivateModal(true)}>Deaktiválás</Button>
                         </div>
-                        {showErrorAlert && <ErrorAlert title={"Sikertelen regisztráció!"} text={errorMessage} />}
-                        {showSuccessAlert && <SuccessAlert title={"Sikeres regisztráció!"} text={successMessage} />}
+                        {showErrorAlert && <ErrorAlert title={"Sikertelen mentés!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres mentés!"} text={successMessage} setOriginStatus={setShowSuccessAlert} />}
                     </Form>
                 </Col>
                 <Col sx={12} md={4} style={{ paddingTop: 30, paddingBottom: 30 }}>

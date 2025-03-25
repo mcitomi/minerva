@@ -1,5 +1,6 @@
 import { Container, Row, Col, Form, InputGroup, Button, FloatingLabel, Image } from "react-bootstrap";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/forum.css";
 
@@ -8,6 +9,8 @@ import CONFIG from "../config.json";
 var profileIdsInChat = [];
 
 export default () => {
+    const navigate = useNavigate();
+
     const defaultPfpUrl = "./assets/images/user.png";
     const controller = new AbortController(); 
 
@@ -16,6 +19,7 @@ export default () => {
 
     const chatRef = useRef(null);
     const forumChatRef = useRef(null);
+    const sendBtnRef = useRef(null);
 
     const profileIds = [...new Set(messages.map(x => x.userId))];   // A Set minden duplikált elemet ignorál és nem rak bele a tömbe
 
@@ -25,9 +29,12 @@ export default () => {
 
     const token = localStorage.getItem("token");
 
-    if (!token) {
-        throw new Error("Engedély megtagadva.");
-    }
+    useEffect(() => {
+        if (!token) {
+            navigate("/login");
+            return;
+        }
+    }, [token, navigate]);
 
     const sendMessage = async (e) => {
         try {
@@ -35,6 +42,7 @@ export default () => {
 
             if (!chatRef.current.value || chatRef.current.value == "") return;
             chatRef.current.disabled = true;
+            sendBtnRef.current.disabled = true;
 
             const response = await fetch(`${CONFIG.API_URL}/forum/send`, {
                 method: "post",
@@ -51,12 +59,13 @@ export default () => {
 
             if (!response.ok) {
                 throw new Error("Hiba a küldés közben");
-            }
-
+            } 
+            
             setTimeout(() => {
                 try {
                     chatRef.current.disabled = false;
-                chatRef.current.focus();
+                    chatRef.current.focus();
+                    sendBtnRef.current.disabled = false;
                 } catch (error) {
                     return;
                 }
@@ -219,7 +228,7 @@ export default () => {
                                     onKeyDown={handleKeyDown}
                                     style={{ overflow: "hidden" }} />
                             </FloatingLabel>
-                            <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
+                            <Button ref={sendBtnRef} variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>
                     </Form>
                 </Col>

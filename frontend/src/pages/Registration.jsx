@@ -166,8 +166,8 @@ export default () => {
                         <div className='text-center'>
                             <Button variant="warning" type="submit" className="mt-2" style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Regisztrálás</Button>
                         </div>
-                        {showErrorAlert && <ErrorAlert title={"Sikertelen regisztráció!"} text={errorMessage} />}
-                        {showSuccessAlert && <SuccessAlert title={"Sikeres regisztráció!"} text={successMessage} />}
+                        {showErrorAlert && <ErrorAlert title={"Sikertelen regisztráció!"} text={errorMessage} setOriginStatus={setShowErrorAlert}/>}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres regisztráció!"} text={successMessage} setOriginStatus={setShowSuccessAlert}/>}
                         
 
                     </Form>

@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ErrorAlert from "../components/ErrorAlert.jsx";
 import SuccessAlert from "../components/SuccessAlert.jsx";
-import ErrorAlert from "../components/ErrorAlert.jsx";
 
 import CONFIG from "../config.json";
 
@@ -166,8 +165,8 @@ export default ({ onLoginSuccess }) => {
                             <Button variant="warning" type="button" onClick={resetPassword} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Elfelejtettem a jelszavamat</Button>
                             <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Belépés</Button>
                         </div>
-                        {showErrorAlert && <ErrorAlert title={"Sikertelen bejelentkezés!"} text={errorMessage} />}
-                        {showSuccessAlert && <SuccessAlert title={"Sikeres bejelentkezés!"} text={successMessage} />}
+                        {showErrorAlert && <ErrorAlert title={"Sikertelen bejelentkezés!"} text={errorMessage} setOriginStatus={setShowErrorAlert}/>}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres bejelentkezés!"} text={successMessage} setOriginStatus={setShowSuccessAlert}/>}
                     </Form>
                 </Col>
             </Row>

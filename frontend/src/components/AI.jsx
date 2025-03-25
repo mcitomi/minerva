@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form, Image, InputGroup, FloatingLabel } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import CONFIG from "../config.json";
 
 import "../styles/ai.css";
@@ -12,12 +13,16 @@ export default ({ img, altText, title, placeholderText, personName }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const navigate = useNavigate();
+
     const token = localStorage.getItem("token");
 
-    if (!token) {
-        window.location.href = "/login";
-        return;
-    }
+    useEffect(() => {
+        if (!token) {
+            navigate("/login");
+            return;
+        }
+    }, [token, navigate]);
 
     async function fetchPersonPost(e) {
         /*

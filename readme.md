@@ -19,8 +19,7 @@ __Globális leírás a projektről, megjegyzések:__
 ## ToDo:
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
-- Mikor regisztrál a felhasználó történjen valami, legalább írja mit kell tenni, változzon a kijelző stb valami visszajelés, loginnál szintén nem történik semmi. -> Tájékoztatni az usert hogy nézze meg az emaileket stb!! ---> oldal váltás van jelenleg
-- Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet. Fiók deaktiválásra szintén.
+- Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet.
 - Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
   ```
   // react states:
@@ -38,13 +37,14 @@ Frontend:
   ```
 - !! -> Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (navigate react router modul), és így kap egy új érvényes tokent. pl fórumon, profilon
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
-- Dizájn ötlet: A bejelentkezés/register/adataim formokat kicsit lekerekíteni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
+- Dizájn ötlet: A bejelentkezés/register/adataim formokat, képeket kicsit lekerekíteni, marginozni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
 - Alert, figyelemfelhhívás hogy "ai generált tartalom" vagy stb
-- Figyelemfelhívás, hogy pl "ha a fórumon chatelsz a felhasználóneved és profilképed mások is láthatják" ilyesmik
+- Figyelemfelhívás, (modal?) hogy pl "ha a fórumon először chatelsz a felhasználóneved és profilképed mások is láthatják" ilyesmik (localstorageba mentés hogy új vagy sem azon a gépen)
 - Adatvédelmi tájékoztató oldal. + szöveg (chatgpt) - máté adta példa: https://t3.chat/privacy-policy
-- cookie popup figyelmeztetés
+- "cookie" popup figyelmeztetés - mentés localstorage-ban
+- Forum és ai errorok és üzenetek kezelése
 
 #### Teszterek amiket észrevettek:
 - Telefonon nem reszponziv, főleg a rólunk rész - padding vagy valami
@@ -52,10 +52,10 @@ Frontend:
 - tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS) <- állítólag van valami viewpont, ilyen oldaltörés szerű dolog ahova oda klippel pl a telefon kijelzője?
 - Regisztrációkor kiírni mi kell a jelszóba (Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&))
 - "Célunk" pont alatt a főoldalon a kis ikonok el vannak csúszva
-- Jobb alert felület (ki van írva meg meg van írva csak át kell alakitani az oldalt ) <-- Betti?
+- /verify-account oldalon HATALMAS a háromszög, legyen már kisebb xd. A felugró értesítés lehetne szebb. (succcessalert pl vagy modal)
 
 Backend:
-- profile deaktiválás endpoint
+- o.O
 
 AI:
 - RÁKÓCZI FERENCBŐL A MÁSODIK KELL!!! (II. Rákóczi Ferenc)
