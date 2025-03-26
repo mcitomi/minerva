@@ -19,8 +19,7 @@ __Globális leírás a projektről, megjegyzések:__
 ## ToDo:
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
-- Jelszó change-re csak egy gomb, ami elküld a backendnek egy jelszó-visszaállítás requestet.
-- Betti: Login, Register és AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
+- Betti: AI oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. pl: (régebbi useless alerteket kommenteld ki)!!!
   ```
   // react states:
   const [errorMessage, setErrorMessage] = useState(null);
@@ -37,7 +36,6 @@ Frontend:
   ```
 - !! -> Ha valamelyik authorizationt igénylő fetch 401 vagy 403-as státusz kóddal tér vissza (azaz invalid a token) irányítsa át az embert a /login fülre (navigate react router modul), és így kap egy új érvényes tokent. pl fórumon, profilon
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
-- Dizájn ötlet: A bejelentkezés/register/adataim formokat, képeket kicsit lekerekíteni, marginozni, kicsit bután néz ki sötét módban (https://imgur.com/42UVX60) ---> ???
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
 - Alert, figyelemfelhhívás hogy "ai generált tartalom" vagy stb

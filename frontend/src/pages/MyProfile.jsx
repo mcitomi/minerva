@@ -29,6 +29,7 @@ export default ({ handleLogout }) => {
     const [successMessage, setSuccessMessage] = useState(null);
     const [showSuccessAlert, setShowSuccessAlert] = useState(false);
     const [showDeactivateModal, setDeactivateModal] = useState(false);
+    const [showPasschangeModal, setPasschangeModal]= useState(false);
 
     function DeactivateModalAlert() {
         return (
@@ -51,6 +52,28 @@ export default ({ handleLogout }) => {
             </Modal>
         );
     }
+
+    function PasschangeModalAlert() {
+        return (
+            <Modal show={showPasschangeModal} onHide={() => setPasschangeModal(false)} style={{color: "black"}}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Biztos megváltoztatja a jelszavát?</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <p>Ha igen, az emailben lévő gombra kattintva megteheti.</p>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="primary" onClick={() => setPasschangeModal(false)}>
+                    Mégsem
+                    </Button>
+                    <Button variant="danger" onClick={(changepass, () => setPasschangeModal(false))}>
+                    Biztos vagyok benne!
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
+
 
     // fájl kiválasztást kezeli
     const handleFileSelect = () => {
@@ -90,6 +113,31 @@ export default ({ handleLogout }) => {
             if (response.ok) {
                 handleLogout();
             }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const changepass = async () => {
+        try {
+            const response = await fetch(`${CONFIG.API_URL}/auth/password-request`, {
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                } ,
+                body: JSON.stringify({email: formData.email, verifyUrl: `${window.location.origin}`})
+            });
+
+            if(response.ok){
+                setSuccessMessage("Ellenőrizze az email fiókját.");
+                setShowSuccessAlert(true);
+            }
+            else{
+                setErrorMessage("Nem sikerült.");
+                setShowErrorAlert(true);
+            }
+
         } catch (error) {
             console.log(error);
         }
@@ -250,6 +298,7 @@ export default ({ handleLogout }) => {
     return (
         <Container fluid>
             {showDeactivateModal && <DeactivateModalAlert />}
+            {showPasschangeModal && <PasschangeModalAlert/>}
             <Row style={{padding: 20}}>
                 <Col sx={12} md={8} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", borderRadius:"30px"}}>
                     <h3 style={{ marginBottom: 30 }}>Adataim</h3>
@@ -306,8 +355,9 @@ export default ({ handleLogout }) => {
                         </Row>
                         <div className="text-center">
                             <Button variant="warning" type="button" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={handleClick} disabled={isEdit}>Módosítás</Button>
-                            <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails} disabled={!isEdit}>Mentés</Button>
-                            <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={() => setDeactivateModal(true)}>Deaktiválás</Button>
+                            <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails} disabled={!isEdit}>Mentés</Button><br></br>
+                            <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={() => setDeactivateModal(true)}>Deaktiválás</Button> 
+                            <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={() => setPasschangeModal(true)}>Jelszó megváltoztatása</Button>
                         </div>
                         {showErrorAlert && <ErrorAlert title={"Sikertelen mentés!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
                         {showSuccessAlert && <SuccessAlert title={"Sikeres mentés!"} text={successMessage} setOriginStatus={setShowSuccessAlert} />}
