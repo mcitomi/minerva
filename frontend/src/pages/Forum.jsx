@@ -207,7 +207,7 @@ export default () => {
                                                 <Image style={{width: "5vh", height: "5vh"}} src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
                                             </Col>
                                             <Col xs={10}>
-                                                <small>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"} [{new Date(message.timeSent * 1000).toLocaleString("hu-HU")}]</small>
+                                                <small style={{paddingLeft: 10}}>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"} [{new Date(message.timeSent * 1000).toLocaleString("hu-HU")}]</small>
                                                 <p>{message.message}</p>
                                             </Col>
                                         </Row>

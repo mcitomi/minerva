@@ -46,7 +46,6 @@ Frontend:
 
 #### Teszterek amiket észrevettek:
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
-- tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS) <- állítólag van valami viewpont, ilyen oldaltörés szerű dolog ahova oda klippel pl a telefon kijelzője?
 - Regisztrációkor kiírni mi kell a jelszóba (Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&))
 - "Célunk" pont alatt a főoldalon a kis ikonok el vannak csúszva
 - /verify-account oldalon A felugró értesítés lehetne szebb. (succcessalert pl vagy modal)

@@ -66,7 +66,10 @@ export default ({ handleLogout }) => {
                     <Button variant="primary" onClick={() => setPasschangeModal(false)}>
                     Mégsem
                     </Button>
-                    <Button variant="danger" onClick={(changepass, () => setPasschangeModal(false))}>
+                    <Button variant="danger" onClick={() => {
+                        changepass(), 
+                        setPasschangeModal(false)
+                    }}>
                     Biztos vagyok benne!
                     </Button>
                 </Modal.Footer>
@@ -134,7 +137,7 @@ export default ({ handleLogout }) => {
                 setShowSuccessAlert(true);
             }
             else{
-                setErrorMessage("Nem sikerült.");
+                setErrorMessage("Próbálja újra később.");
                 setShowErrorAlert(true);
             }
 
