@@ -150,9 +150,9 @@ export default ({ onLoginSuccess }) => {
         <Container fluid>
             <Row>
                 <Col sx={12} md={6} style={{ padding: 0 }}>
-                    <Image src="./assets/images/login.gif" alt="Dekor kép" fluid></Image>
+                    <Image src="./assets/images/login.gif" alt="Dekor kép" style={{borderRadius:"30px", margin:"40px"}} fluid></Image>
                 </Col>
-                <Col sx={12} md={6} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529" }}>
+                <Col sx={12} md={6} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", borderRadius:"30px" }}>
                     <h2 className="mt-5 mb-5 pt-5">Bejelentkezés</h2>
                     <Form onSubmit={handleSubmit}>
                         <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3 floating-label">
