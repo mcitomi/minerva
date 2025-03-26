@@ -47,19 +47,18 @@ Frontend:
 - Forum és ai errorok és üzenetek kezelése
 
 #### Teszterek amiket észrevettek:
-- Telefonon nem reszponziv, főleg a rólunk rész - padding vagy valami
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 - tenyleg nem reszponzív a chat része, kilóg a képből vagy az input, vagy az új üzenet (https://imgur.com/IbvhioS) <- állítólag van valami viewpont, ilyen oldaltörés szerű dolog ahova oda klippel pl a telefon kijelzője?
 - Regisztrációkor kiírni mi kell a jelszóba (Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&))
 - "Célunk" pont alatt a főoldalon a kis ikonok el vannak csúszva
-- /verify-account oldalon HATALMAS a háromszög, legyen már kisebb xd. A felugró értesítés lehetne szebb. (succcessalert pl vagy modal)
+- /verify-account oldalon A felugró értesítés lehetne szebb. (succcessalert pl vagy modal)
 
 Backend:
 - o.O
 
 AI:
 - RÁKÓCZI FERENCBŐL A MÁSODIK KELL!!! (II. Rákóczi Ferenc)
-- új emberek megírása: Arany János, Babits Mihály, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Túrán Pál, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
+- új emberek megírása: Arany János, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)

@@ -8,7 +8,7 @@ export default () => {
     return (
         <Container>
             <h2 className="mt-3">Készítők:</h2>
-            <RightText 
+            <RightText
                 img={"./assets/images/about/berdo.JPG"} 
                 name={"Berdó Tamás"} 
                 text1={"Berdó Tamás egy kiemelkedő programozó, aki weboldalunk backend fejlesztőjeként és mesterséges intelligencia (MI) kutatójaként dolgozott. Széleskörű tapasztalatával és szakmai tudásával jelentős mértékben hozzájárult a projekt sikeréhez."} 

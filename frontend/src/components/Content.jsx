@@ -4,7 +4,7 @@ export default ({title, paragraph, img}) => {
     return (
         <>
             <div className="d-flex justify-content-center">
-                <Image src={img} alt="Dekor kép" fluid></Image>
+                <Image src={img} alt="Dekor kép" fluid style={{maxWidth:"20vh"}}></Image>
             </div>
             <h1 style={{marginTop: 30}}>{title}</h1>
             <p>{paragraph}</p>

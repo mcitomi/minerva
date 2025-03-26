@@ -12,10 +12,10 @@ export default ({ img, name, text1, text2, text3, text4 }) => {
             </Col>
             <Col sx={12} md={6} className="splash">
                 <h3 className="mb-3">{name}</h3>
-                <p style={{textAlign: "justify", textIndent: "20px"}}>{text1}</p>
-                <p style={{textAlign: "justify", textIndent: "20px"}}>{text2}</p>
-                <p style={{textAlign: "justify", textIndent: "20px"}}>{text3}</p>
-                <p style={{textAlign: "justify", textIndent: "20px"}}>{text4}</p>
+                <p style={{textAlign: "justify", textIndent: "20px", paddingLeft: "20px", paddingRight:"20px"}}>{text1}</p>
+                <p style={{textAlign: "justify", textIndent: "20px",paddingLeft: "20px",paddingRight:"20px"}}>{text2}</p>
+                <p style={{textAlign: "justify", textIndent: "20px",paddingLeft: "20px", paddingRight:"20px"}}>{text3}</p>
+                <p style={{textAlign: "justify", textIndent: "20px",paddingLeft: "20px", paddingRight:"20px"}}>{text4}</p>
             </Col>
         </Row>
     );
