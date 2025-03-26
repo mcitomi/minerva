@@ -250,10 +250,10 @@ export default ({ handleLogout }) => {
     return (
         <Container fluid>
             {showDeactivateModal && <DeactivateModalAlert />}
-            <Row>
-                <Col sx={12} md={8} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529" }}>
+            <Row style={{padding: 20}}>
+                <Col sx={12} md={8} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", borderRadius:"30px"}}>
                     <h3 style={{ marginBottom: 30 }}>Adataim</h3>
-                    <Form>
+                    <Form style={{borderRadius:"30px"}}>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">
                             <Form.Control type="name" name="name" placeholder="Név" value={formData.name} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
