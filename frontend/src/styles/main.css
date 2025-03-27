@@ -17,7 +17,18 @@ ul {
 }
 
 #ikon {
-    list-style-image: url("../../public/assets/images/record.png");
+    list-style: none;
+    padding-left: 0;
+}
+
+#ikon li {
+    background-image: url("../../public/assets/images/record.png");
+    background-size: 25px; 
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left: 30px;
+    margin-top: 14px;
+    font-size: large;
 }
 
 body {

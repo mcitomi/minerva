@@ -47,7 +47,6 @@ Frontend:
 #### Teszterek amiket észrevettek:
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 - Regisztrációkor kiírni mi kell a jelszóba (Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&))
-- "Célunk" pont alatt a főoldalon a kis ikonok el vannak csúszva
 - /verify-account oldalon A felugró értesítés lehetne szebb. (succcessalert pl vagy modal)
 
 Backend:
@@ -55,7 +54,7 @@ Backend:
 
 AI:
 - RÁKÓCZI FERENCBŐL A MÁSODIK KELL!!! (II. Rákóczi Ferenc)
-- új emberek megírása: Arany János, József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
+- új emberek megírása: József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
