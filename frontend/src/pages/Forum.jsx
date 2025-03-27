@@ -61,7 +61,21 @@ export default ({handleLogout, isLogged}) => {
             chatRef.current.value = "";
 
             if (!response.ok) {
-                throw new Error("Hiba a küldés közben");
+                if(response.status == 400) {
+                    // hibás üzenet 
+                } else if(response.status == 403 || response.status == 401) {
+                    if(isLogged) {
+                        handleLogout();
+                    }
+                    navigate("/login");
+                    return;
+                } else if (response.status == 406) {
+                    // csúnya szó!
+                } else if (response.status == 500) {
+                    // szerver hiba
+                } else {
+                    // bármi más
+                }
             } 
             
             setTimeout(() => {
@@ -74,7 +88,7 @@ export default ({handleLogout, isLogged}) => {
                 }
             }, 3000);   // 3 másodperces slowmode
         } catch (err) {
-            throw new Error("Hiba történt az üzenet küldése közben");
+            throw new Error("Hiba történt az üzenet küldése közben"); // hiba ide is 
         }
     }
 

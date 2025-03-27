@@ -5,6 +5,9 @@ import { type Payload } from "../../../types/jwt";
 // long polling-hoz "event" meghívó
 import { messageTriggers } from "../../get/forum/new";
 
+// DirtyWords
+import { dirtywords } from "./blacklist.json";
+
 export const handleRequest = async (req: Request, db: Database) => {
     try {
         const authHeader = req.headers.get("authorization");
@@ -42,6 +45,12 @@ export const handleRequest = async (req: Request, db: Database) => {
             return Response.json({
                 "message": errorMessages
             }, {status: 400});
+        }
+
+        if(dirtywords.some(word => body.message.toLowerCase().includes(word.toLowerCase()))) {
+            return Response.json({
+                "message": ["Do not use dirty words!"]
+            }, {status: 406});
         }
 
         const timeSent = Math.floor(Date.now() / 1000);
