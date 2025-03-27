@@ -48,7 +48,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                                 <NavDropdown.Item as={Link} to="/hunyadi-janos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Hunyadi János</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/kossuth-lajos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Kossuth Lajos</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/matyas-kiraly" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Mátyás király</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/rakoczi-ferenc" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Rákóczi Ferenc</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/rakoczi-ferenc" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>II. Rákóczi Ferenc</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/szechenyi-istvan" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Széchenyi István</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/szent-istvan" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Szent István</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/zrinyi-miklos" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Zrínyi Miklós</NavDropdown.Item>
