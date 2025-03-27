@@ -326,8 +326,8 @@ export default ({ handleLogout, isLogged }) => {
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">
                             <Form.Control type="name" name="name" placeholder="Név" value={formData.name} onChange={handleInput} disabled={!isEdit}></Form.Control>
                         </FloatingLabel>
-                        <FloatingLabel controlId="floatingInput" label="Email cím" className="mb-3 floating-label">
-                            <Form.Control type="email" name="email" placeholder="Email cím" value={formData.email} onChange={handleInput} disabled={true}></Form.Control>
+                        <FloatingLabel controlId="floatingInput" label="Email-cím" className="mb-3 floating-label">
+                            <Form.Control type="email" name="email" placeholder="Email-cím" value={formData.email} onChange={handleInput} disabled={true}></Form.Control>
                         </FloatingLabel>
                         {/* <FloatingLabel controlId="floatingInstitution" label="Intézmény" className="mb-3 floating-label"> */}
                         <AsyncSelect
