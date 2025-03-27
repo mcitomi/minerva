@@ -194,7 +194,11 @@ export default ({ handleLogout, isLogged }) => {
                 const token = localStorage.getItem("token");
 
                 if (!token) {
-                    throw new Error("Engedély megtagadva.");
+                    if(isLogged) {
+                        handleLogout();
+                    }
+                    navigate("/login");
+                    return;
                 }
 
                 const response = await fetch(
@@ -218,7 +222,9 @@ export default ({ handleLogout, isLogged }) => {
                 }
 
                 if (!response.ok) {
-                    throw new Error("Hiba az értékek lekérdezésében.");
+                    setErrorMessage("Hiba az adatok lekérése közben!");
+                    setShowErrorAlert(true);
+                    return;
                 }
 
                 const data = await response.json();
@@ -245,7 +251,9 @@ export default ({ handleLogout, isLogged }) => {
                 const response = await fetch(`${CONFIG.API_URL}/user/kreta/institutions`);
 
                 if (!response.ok) {
-                    throw new Error("Hiba az iskolák lekérdezésében!");
+                    setErrorMessage("Hiba az iskolák lekérdezésében!");
+                    setShowErrorAlert(true);
+                    return;
                 }
 
                 const data = await response.json();
@@ -381,7 +389,7 @@ export default ({ handleLogout, isLogged }) => {
                     </div>
                     <div className="text-center">
                         <Button variant="warning" type="submit" onClick={handleFileSelect} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Módosítás</Button>
-                        <Button variant="warning" type="submit" onClick={() => { setImage(defaultPfpUrl) }} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Törlés</Button>
+                        <Button variant="danger" type="submit" onClick={() => { setImage(defaultPfpUrl) }} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Törlés</Button>
                         <Button variant="warning" type="submit" onClick={savePfp} style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
                     </div>
                 </Col>

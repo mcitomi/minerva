@@ -113,16 +113,22 @@ export default ({ onLoginSuccess }) => {
 
             if(!response.ok) {
                 if(response.status == 400) {
-                    // hibás üzenet 
+                    setErrorMessage("Hiba történt.");
+                    setShowErrorAlert(true);
                 } else if(response.status == 401) {
-                    // hibás email vagy jelszó kombo
+                    setErrorMessage("Hibás email vagy jelszó!");
+                     setShowErrorAlert(true);
                 } else if (response.status == 403) {
-                    // inaktiv az acc. erősitse meg az emailt
+                    setErrorMessage("Erősítse meg az emailt!");
+                    setShowErrorAlert(true);
                 } else if (response.status == 500) {
-                    // szerver hiba
+                    setErrorMessage("Szerverhiba történt.");
+                    setShowErrorAlert(true);
                 } else {
-                    // bármi más
+                    setErrorMessage("Hiba történt!");
+                    setShowErrorAlert(true);
                 }
+                return;
             }
 
             if (result.jwt) {
