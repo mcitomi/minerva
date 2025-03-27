@@ -72,7 +72,7 @@ export const handleRequest = async (req: Request, db: Database) => {
             }
         }
 
-        db.run("INSERT INTO profileDetails (credentialsId, pictureBase64Url) VALUES (?, ?) ON CONFLICT(credentialsId) DO UPDATE SET pictureBase64Url = excluded.pictureBase64Url;", [jwtPayload._id, body.pfpBase64]);
+        db.run("INSERT INTO profileDetails (credentialsId, pictureBase64Url) VALUES (?, ?) ON CONFLICT(credentialsId) DO UPDATE SET pictureBase64Url = excluded.pictureBase64Url, pfpBase64Urlx128 = null;", [jwtPayload._id, body.pfpBase64]);
         
         return Response.json({
             "message" : ["Successful upload"]
