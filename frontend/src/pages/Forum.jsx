@@ -5,17 +5,20 @@ import { useNavigate } from "react-router-dom";
 import "../styles/forum.css";
 
 import CONFIG from "../config.json";
+import ForumAlert from "../components/ForumAlert";
 
 var profileIdsInChat = [];
 
-export default ({handleLogout, isLogged}) => {
+export default ({ handleLogout, isLogged }) => {
     const navigate = useNavigate();
 
     const defaultPfpUrl = "./assets/images/user.png";
-    const controller = new AbortController(); 
+    const controller = new AbortController();
 
     const [messages, setMessages] = useState([]);
     const [profiles, setProfiles] = useState([]);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
 
     const chatRef = useRef(null);
     const forumChatRef = useRef(null);
@@ -31,7 +34,7 @@ export default ({handleLogout, isLogged}) => {
 
     useEffect(() => {
         if (!token) {
-            if(isLogged) {
+            if (isLogged) {
                 handleLogout();
             }
             navigate("/login");
@@ -61,23 +64,27 @@ export default ({handleLogout, isLogged}) => {
             chatRef.current.value = "";
 
             if (!response.ok) {
-                if(response.status == 400) {
-                    // hibás üzenet 
-                } else if(response.status == 403 || response.status == 401) {
-                    if(isLogged) {
+                if (response.status == 400) {
+                    setErrorMessage("Hiba történt!");
+                    setShowErrorAlert(true);
+                } else if (response.status == 403 || response.status == 401) {
+                    if (isLogged) {
                         handleLogout();
                     }
                     navigate("/login");
                     return;
                 } else if (response.status == 406) {
-                    // csúnya szó!
+                    setErrorMessage("Ne használj ilyen szavakat!");
+                    setShowErrorAlert(true);
                 } else if (response.status == 500) {
-                    // szerver hiba
+                    setErrorMessage("Szerverhiba történt!");
+                    setShowErrorAlert(true);
                 } else {
-                    // bármi más
+                    setErrorMessage("Ismeretlen történt!");
+                    setShowErrorAlert(true);
                 }
-            } 
-            
+            }
+
             setTimeout(() => {
                 try {
                     chatRef.current.disabled = false;
@@ -88,7 +95,9 @@ export default ({handleLogout, isLogged}) => {
                 }
             }, 3000);   // 3 másodperces slowmode
         } catch (err) {
-            throw new Error("Hiba történt az üzenet küldése közben"); // hiba ide is 
+            // throw new Error("Hiba történt az üzenet küldése közben"); // hiba ide is 
+            setErrorMessage("Hiba történt az üzenet küldése közben!");
+            setShowErrorAlert(true);
         }
     }
 
@@ -101,8 +110,8 @@ export default ({handleLogout, isLogged}) => {
                 }
             });
 
-            if(response.status == 401 || response.status == 403) {
-                if(isLogged) {
+            if (response.status == 401 || response.status == 403) {
+                if (isLogged) {
                     handleLogout();
                 }
                 navigate("/login");
@@ -110,7 +119,9 @@ export default ({handleLogout, isLogged}) => {
             }
 
             if (!response.ok) {
-                throw new Error("Hiba az üzenetek lekérdezésében!");
+                // throw new Error("Hiba az üzenetek lekérdezésében!");
+                setErrorMessage("Hiba az üzenetek lekérdezésében!");
+                setShowErrorAlert(true);
             }
 
             const data = await response.json();
@@ -125,7 +136,9 @@ export default ({handleLogout, isLogged}) => {
             }));
 
         } catch (err) {
-            throw new Error("Hiba történt az üzenetek lekérése közben.");
+            
+            setErrorMessage("Hiba történt az üzenetek lekérése közben!");
+             setShowErrorAlert(true);
         }
     }
 
@@ -143,7 +156,8 @@ export default ({handleLogout, isLogged}) => {
             });
 
             if (!response.ok) {
-                // throw new Error("Hiba a profilok lekérdezésében!");
+                setErrorMessage("Hiba történt a profilok lekérése közben!");
+                setShowErrorAlert(true);
                 return;
             }
 
@@ -157,7 +171,8 @@ export default ({handleLogout, isLogged}) => {
                 }
             }));
         } catch (err) {
-            // throw new Error("Hiba történt a profilok lekérése közben.");
+            setErrorMessage("Hiba történt a profilok lekérése közben!");
+            setShowErrorAlert(true);
             return;
         }
     }
@@ -173,10 +188,13 @@ export default ({handleLogout, isLogged}) => {
             });
 
             if (!response.ok) {
-                throw new Error("Hiba az üzenet lekérdezésében!");
+               
+                setErrorMessage("Nem sikerült üzenetet fogadni!");
+                setShowErrorAlert(true);
+                return;
             }
 
-            if(response.status == 200) {
+            if (response.status == 200) {
                 const data = await response.json();
                 setMessages((messages) => [...messages, data]);
             }
@@ -231,10 +249,10 @@ export default ({handleLogout, isLogged}) => {
                                     return <div key={i} className={message.yourMessage ? "forumUser" : "forumAnotherUser"}>
                                         <Row>
                                             <Col xs={2}>
-                                                <Image style={{width: "5vh", height: "5vh"}} src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
+                                                <Image style={{ width: "5vh", height: "5vh" }} src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
                                             </Col>
                                             <Col xs={10}>
-                                                <small style={{paddingLeft: 10}}>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"} [{new Date(message.timeSent * 1000).toLocaleString("hu-HU")}]</small>
+                                                <small style={{ paddingLeft: 10 }}>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"} [{new Date(message.timeSent * 1000).toLocaleString("hu-HU")}]</small>
                                                 <p>{message.message}</p>
                                             </Col>
                                         </Row>
@@ -258,8 +276,10 @@ export default ({handleLogout, isLogged}) => {
                             <Button ref={sendBtnRef} variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>
                     </Form>
+                    {showErrorAlert && <ErrorAlert title={"Hoppá!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
                 </Col>
             </Row>
+            <ForumAlert></ForumAlert>
         </Container>
     );
 }

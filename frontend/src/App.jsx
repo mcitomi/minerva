@@ -8,7 +8,7 @@ import SupportUs from "./components/SupportUs.jsx";
 import Footer from "./components/Footer.jsx";
 import LoggedNavbar from "./components/LoggedNavbar.jsx";
 import Up from "./components/Up.jsx";
-
+import Cookie from "./components/Cookie.jsx";
 
 import "./styles/mode.css"
 
@@ -121,6 +121,7 @@ export default () => {
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
+            <Cookie></Cookie>
             <SupportUs></SupportUs>
             <Footer></Footer>
         </Router>

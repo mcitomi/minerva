@@ -19,17 +19,12 @@ __Globális leírás a projektről, megjegyzések:__
 ## ToDo:
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
-- Betti: AI, login, reg oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. - else if ág adott
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
-- Alert, figyelemfelhhívás hogy "ai generált tartalom" vagy stb
-- Figyelemfelhívás, (modal?) hogy pl "ha a fórumon először chatelsz a felhasználóneved és profilképed mások is láthatják" ilyesmik (localstorageba mentés hogy új vagy sem azon a gépen)
-- "cookie" popup figyelmeztetés - mentés localstorage-ban
 
 #### Teszterek amiket észrevettek:
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
-- Regisztrációkor kiírni mi kell a jelszóba (Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&))
 - /verify-account oldalon A felugró értesítés lehetne szebb. (succcessalert pl vagy modal)
 
 Backend:

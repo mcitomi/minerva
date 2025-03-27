@@ -140,8 +140,6 @@ export default () => {
                     setErrorMessage("Hiba történt!");
                     setShowErrorAlert(true);
                 }
-                setErrorMessage(result.message[1] || "Sikertelen regisztráció!"); //"Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)"
-                setShowErrorAlert(true);
             } else {
                 setSuccessMessage("Sikeres regisztráció!");
                 setShowSuccessAlert(true);
