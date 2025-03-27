@@ -9,7 +9,7 @@
     list-style-type: none;
 }
 
-a {
+a, #privacy > h4 {
     text-decoration: none;
     color: #212529;
 }
@@ -19,6 +19,6 @@ a {
     color: #212529;
 }
 
-.footerList a:hover {
+.footerList a:hover, #privacy > h4:hover {
     color: #ffbd59;
 }

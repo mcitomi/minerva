@@ -22,7 +22,7 @@ export default () => {
                         <li><a href="https://www.facebook.com/" target="_blank"><Image src="./assets/images/footer/facebook.svg" alt="Facebook" style={{ width: 20 }}></Image> MInerva - Bátor? Okos? Bölcs?</a></li>
                         <li><a href="https://www.instagram.com/" target="_blank"><Image src="./assets/images/footer/instagram.svg" alt="Instagram" style={{ width: 20 }}></Image> @eduminerva.bob</a></li>
                     </ul>
-                    <Link to="/privacy" style={{ textDecoration: 'none', color: 'inherit' }}><h4> Adatvédelmi tájékoztató</h4></Link>
+                    <Link id="privacy" to="/privacy" style={{ textDecoration: 'none', color: 'inherit' }}><h4> Adatvédelmi tájékoztató</h4></Link>
             </Col>
 
         </Row>
