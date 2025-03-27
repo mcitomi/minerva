@@ -384,7 +384,7 @@ export default ({ handleLogout, isLogged }) => {
                     </Form>
                 </Col>
                 <Col sx={12} md={4} style={{ paddingTop: 30, paddingBottom: 30 }}>
-                    <h3 style={{ marginBottom: 30 }}>Profilkép</h3>
+                    <h3 style={{ marginBottom: 30 }}>Profilképem</h3>
                     <div className="d-flex justify-content-center">
                         <div style={{ borderRadius: "50%", overflow: "hidden", width: "400px", height: "400px", border: "#699fcb 5px solid" }} className="mt-2 mb-2">
                             <Image src={image} alt="Profilkép" fluid style={{ height: "100%", width: "100%", objectFit: "cover" }} />
