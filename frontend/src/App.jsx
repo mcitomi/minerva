@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Ady, Arany, Babits, Jozsef, Kosztolanyi, Kolcsey, Madach, Petofi, BolyaiFarkas, BolyaiJanos, Eotvos, Erdos, Klein, Neumann, Polya, Turan, Horthy, Hunyadi, Kossuth, Matyas, Rakoczi, Szechenyi, Saint, Zrinyi, VerifyPage, Forum } from "./pages/router.js";
+import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Ady, Arany, Babits, Jozsef, Kosztolanyi, Kolcsey, Madach, Petofi, BolyaiFarkas, BolyaiJanos, Eotvos, Erdos, Klein, Neumann, Polya, Turan, Horthy, Hunyadi, Kossuth, Matyas, Rakoczi, Szechenyi, Saint, Zrinyi, VerifyPage, Forum, Privacy } from "./pages/router.js";
 import { useLocation } from 'react-router-dom';
 
 import MainNavbar from "./components/MainNavbar.jsx";
@@ -8,6 +8,7 @@ import SupportUs from "./components/SupportUs.jsx";
 import Footer from "./components/Footer.jsx";
 import LoggedNavbar from "./components/LoggedNavbar.jsx";
 import Up from "./components/Up.jsx";
+
 
 import "./styles/mode.css"
 
@@ -116,6 +117,7 @@ export default () => {
                 <Route path="/verify-account" element={<VerifyPage/>}></Route>
                 <Route path="/reset-password" element={<PasswordReset/>}></Route>
                 <Route path="/forum" element={<Forum></Forum>}></Route>
+                <Route path="/privacy" element={<Privacy></Privacy>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>
             </Routes>
