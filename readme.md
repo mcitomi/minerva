@@ -19,7 +19,7 @@ __Globális leírás a projektről, megjegyzések:__
 ## ToDo:
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
-- Betti: AI, login, reg oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg.
+- Betti: AI, login, reg oldalakon a kapott hibaüzeneteket lemagyarosítani frontenden, és alertben jelenjenek meg. - else if ág adott
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
@@ -48,7 +48,7 @@ Továbbfejlesztési lehetőség:
 - RSS feed, posztokat facebookrol, instárol innen onnan összegzi egy oldalon
 - Chat beszélgetések mentése localsotrage vagy adatbázisba, onnan lekérdezni a chat "topic"okat
 - Email cím csere rendszer. (cím váltás esetén szükséges megerősítő email, addig várakozó státuszba kell rakni stb..)
-- Backend blacklist a fórumra (csúnya szavakat ne engedjen ki) - HTTP/1.1 406 Not Acceptable
 - Server side slowmode (/forum -> message)
 
+- ✅ Backend blacklist a fórumra (csúnya szavakat ne engedjen ki) - HTTP/1.1 406 Not Acceptable
 - ✅ Email spam elleni védelem, egy féle timeout rendszer, pl ha az ember 2x gyorsan kattint egy gombra, ne lehessen új emailt lekérni, pl csak fél perc múlva - DONE

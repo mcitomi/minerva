@@ -115,13 +115,24 @@ export default () => {
 
             const result = await response.json();
             
-            // console.log('Response:', ...result.message);
-        
-
-           // alert(...result.message);
-            
-
             if (!response.ok) {
+                if(response.status == 400) {
+                    if(result.message[0].includes("Weak")) {
+                        // gyenge jelszó Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)
+                    } else if (result.message[0].includes("do not match")) {
+                        // Nem egyezik a jelszó
+                    } else if (result.message[0].includes("format")) {
+                        // email hiba
+                    } else {
+                        // hibás bementi adat, rosszul megadott infók
+                    }
+                } else if(response.status == 409) {
+                    // ezzel az email címmel már regisztráltak
+                } else if (response.status == 500) {
+                    // szerver hiba
+                } else {
+                    // bármi más
+                }
                 setErrorMessage(result.message[1] || "Sikertelen regisztráció!"); //"Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)"
                 setShowErrorAlert(true);
             } else {

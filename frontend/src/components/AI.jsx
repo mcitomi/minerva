@@ -86,16 +86,17 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
             if (!response.ok) {
                 switch (response.status) {
                     case 400:
-                        throw new Error("Hiba a lekérésben!");
-                    case 401:
-                    case 403:
+                        // hiba, próbálja újra
+                    case 404:   // rossz model
+                    case 401: // ezekkel nem kell semmi
+                    case 403: // ezekkel nem kell semmi
                         if(isLogged) {
                             handleLogout();
                         }
                         navigate("/login");
                         return;
                         throw new Error("Lejárt a munkamenet, jelentkezz be újra!");
-                    case 429:
+                    case 429:   // 
                         throw new Error("Túl sok kérés, próbálja újra később!");
                     case 500:
                         throw new Error("Szerveroldali hiba!");

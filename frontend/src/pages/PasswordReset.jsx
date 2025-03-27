@@ -55,7 +55,7 @@ export default () => {
         }
 
         if (formData.password !== formData.confirmPassword) {
-            alert("A jelszavak nem egyeznek!");
+            alert("A jelszavak nem egyeznek!"); // alertesiteni
             return;
         }
 

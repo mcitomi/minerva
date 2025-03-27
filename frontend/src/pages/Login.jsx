@@ -111,6 +111,20 @@ export default ({ onLoginSuccess }) => {
 
             // alert(...result.message);
 
+            if(!response.ok) {
+                if(response.status == 400) {
+                    // hibás üzenet 
+                } else if(response.status == 401) {
+                    // hibás email vagy jelszó kombo
+                } else if (response.status == 403) {
+                    // inaktiv az acc. erősitse meg az emailt
+                } else if (response.status == 500) {
+                    // szerver hiba
+                } else {
+                    // bármi más
+                }
+            }
+
             if (result.jwt) {
                 onLoginSuccess(result.jwt);
                 navigate('/');
