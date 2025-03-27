@@ -6,9 +6,9 @@ export default ({handleLogout, isLogged}) => {
     return (
         <AI
             img={"./assets/images/ai_characters/rakoczi.png"}
-            altText={"Rákóczi Ferenc kép"}
-            title={"Rákóczi Ferenc"}
-            placeholderText={"Kérdezz bátran Rákóczi Ferenctől..."}
+            altText={"II. Rákóczi Ferenc kép"}
+            title={"II. Rákóczi Ferenc"}
+            placeholderText={"Kérdezz bátran II. Rákóczi Ferenctől..."}
             personName={"rakoczi_ferenc"}
             handleLogout={handleLogout} 
             isLogged={isLogged}
