@@ -2,7 +2,7 @@ import AI from "../../components/AI.jsx";
 
 import "../../styles/main.css";
 
-export default () => {
+export default ({handleLogout, isLogged}) => {
     return (
         <AI
             img={"./assets/images/ai_characters/arany.png"}
@@ -10,6 +10,8 @@ export default () => {
             title={"Arany János"}
             placeholderText={"Kérdezz bátran Arany Jánostól..."}
             personName={"arany_janos"}
+            handleLogout={handleLogout} 
+            isLogged={isLogged}
         ></AI>
     );
 }

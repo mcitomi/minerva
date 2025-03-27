@@ -88,35 +88,35 @@ export default () => {
                 <Route path="/about" element={<About></About>}></Route>
                 <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess}></Login>}></Route>
                 <Route path="/registration" element={<Registration></Registration>}></Route>
-                <Route path="/my-profile" element={<MyProfile handleLogout={handleLogout}></MyProfile>}></Route>
-                <Route path="/minerva" element={<MInerva></MInerva>}></Route>
-                <Route path="/ady-endre" element={<Ady></Ady>}></Route>
-                <Route path="/arany-janos" element={<Arany></Arany>}></Route>
-                <Route path="/babits-mihaly" element={<Babits></Babits>}></Route>
-                <Route path="/jozsef-attila" element={<Jozsef></Jozsef>}></Route>
-                <Route path="/kosztolanyi-dezso" element={<Kosztolanyi></Kosztolanyi>}></Route>
-                <Route path="/kolcsey-ferenc" element={<Kolcsey></Kolcsey>}></Route>
-                <Route path="/madach-imre" element={<Madach></Madach>}></Route>
-                <Route path="/petofi-sandor" element={<Petofi></Petofi>}></Route>
-                <Route path="/bolyai-farkas" element={<BolyaiFarkas></BolyaiFarkas>}></Route>
-                <Route path="/bolyai-janos" element={<BolyaiJanos></BolyaiJanos>}></Route>
-                <Route path="/eotvos-lorand" element={<Eotvos></Eotvos>}></Route>
-                <Route path="/erdos-pal" element={<Erdos></Erdos>}></Route>
-                <Route path="/klein-gyula" element={<Klein></Klein>}></Route>
-                <Route path="/neumann-janos" element={<Neumann></Neumann>}></Route>
-                <Route path="/polya-gyorgy" element={<Polya></Polya>}></Route>
-                <Route path="/turan-pal" element={<Turan></Turan>}></Route>
-                <Route path="/horthy-miklos" element={<Horthy></Horthy>}></Route>
-                <Route path="/hunyadi-janos" element={<Hunyadi></Hunyadi>}></Route>
-                <Route path="/kossuth-lajos" element={<Kossuth></Kossuth>}></Route>
-                <Route path="/matyas-kiraly" element={<Matyas></Matyas>}></Route>
-                <Route path="/rakoczi-ferenc" element={<Rakoczi></Rakoczi>}></Route>
-                <Route path="/szechenyi-istvan" element={<Szechenyi></Szechenyi>}></Route>
-                <Route path="/szent-istvan" element={<Saint></Saint>}></Route>
-                <Route path="/zrinyi-miklos" element={<Zrinyi></Zrinyi>}></Route>
+                <Route path="/my-profile" element={<MyProfile handleLogout={handleLogout} isLogged={isLogged}></MyProfile>}></Route>
+                <Route path="/minerva" element={<MInerva handleLogout={handleLogout} isLogged={isLogged}></MInerva>}></Route>
+                <Route path="/ady-endre" element={<Ady handleLogout={handleLogout} isLogged={isLogged}></Ady>}></Route>
+                <Route path="/arany-janos" element={<Arany handleLogout={handleLogout} isLogged={isLogged}></Arany>}></Route>
+                <Route path="/babits-mihaly" element={<Babits handleLogout={handleLogout} isLogged={isLogged}></Babits>}></Route>
+                <Route path="/jozsef-attila" element={<Jozsef handleLogout={handleLogout} isLogged={isLogged}></Jozsef>}></Route>
+                <Route path="/kosztolanyi-dezso" element={<Kosztolanyi handleLogout={handleLogout} isLogged={isLogged}></Kosztolanyi>}></Route>
+                <Route path="/kolcsey-ferenc" element={<Kolcsey handleLogout={handleLogout} isLogged={isLogged}></Kolcsey>}></Route>
+                <Route path="/madach-imre" element={<Madach handleLogout={handleLogout} isLogged={isLogged}></Madach>}></Route>
+                <Route path="/petofi-sandor" element={<Petofi handleLogout={handleLogout} isLogged={isLogged}></Petofi>}></Route>
+                <Route path="/bolyai-farkas" element={<BolyaiFarkas handleLogout={handleLogout} isLogged={isLogged}></BolyaiFarkas>}></Route>
+                <Route path="/bolyai-janos" element={<BolyaiJanos handleLogout={handleLogout} isLogged={isLogged}></BolyaiJanos>}></Route>
+                <Route path="/eotvos-lorand" element={<Eotvos handleLogout={handleLogout} isLogged={isLogged}></Eotvos>}></Route>
+                <Route path="/erdos-pal" element={<Erdos handleLogout={handleLogout} isLogged={isLogged}></Erdos>}></Route>
+                <Route path="/klein-gyula" element={<Klein handleLogout={handleLogout} isLogged={isLogged}></Klein>}></Route>
+                <Route path="/neumann-janos" element={<Neumann handleLogout={handleLogout} isLogged={isLogged}></Neumann>}></Route>
+                <Route path="/polya-gyorgy" element={<Polya handleLogout={handleLogout} isLogged={isLogged}></Polya>}></Route>
+                <Route path="/turan-pal" element={<Turan handleLogout={handleLogout} isLogged={isLogged}></Turan>}></Route>
+                <Route path="/horthy-miklos" element={<Horthy handleLogout={handleLogout} isLogged={isLogged}></Horthy>}></Route>
+                <Route path="/hunyadi-janos" element={<Hunyadi handleLogout={handleLogout} isLogged={isLogged}></Hunyadi>}></Route>
+                <Route path="/kossuth-lajos" element={<Kossuth handleLogout={handleLogout} isLogged={isLogged}></Kossuth>}></Route>
+                <Route path="/matyas-kiraly" element={<Matyas handleLogout={handleLogout} isLogged={isLogged}></Matyas>}></Route>
+                <Route path="/rakoczi-ferenc" element={<Rakoczi handleLogout={handleLogout} isLogged={isLogged}></Rakoczi>}></Route>
+                <Route path="/szechenyi-istvan" element={<Szechenyi handleLogout={handleLogout} isLogged={isLogged}></Szechenyi>}></Route>
+                <Route path="/szent-istvan" element={<Saint handleLogout={handleLogout} isLogged={isLogged}></Saint>}></Route>
+                <Route path="/zrinyi-miklos" element={<Zrinyi handleLogout={handleLogout} isLogged={isLogged}></Zrinyi>}></Route>
                 <Route path="/verify-account" element={<VerifyPage/>}></Route>
                 <Route path="/reset-password" element={<PasswordReset/>}></Route>
-                <Route path="/forum" element={<Forum></Forum>}></Route>
+                <Route path="/forum" element={<Forum handleLogout={handleLogout} isLogged={isLogged}></Forum>}></Route>
                 <Route path="/privacy" element={<Privacy></Privacy>}></Route>
                 {/* Ide a többi oldalt */}
                 <Route path="*" element={<NotFound></NotFound>}></Route>

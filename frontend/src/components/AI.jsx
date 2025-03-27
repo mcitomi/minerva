@@ -5,7 +5,7 @@ import CONFIG from "../config.json";
 
 import "../styles/ai.css";
 
-export default ({ img, altText, title, placeholderText, personName }) => {
+export default ({ img, altText, title, placeholderText, personName, handleLogout, isLogged }) => {
     const inputRef = useRef(null);
     const chatRef = useRef(null);
 
@@ -19,6 +19,9 @@ export default ({ img, altText, title, placeholderText, personName }) => {
 
     useEffect(() => {
         if (!token) {
+            if(isLogged) {
+                handleLogout();
+            }
             navigate("/login");
             return;
         }
@@ -86,6 +89,11 @@ export default ({ img, altText, title, placeholderText, personName }) => {
                         throw new Error("Hiba a lekérésben!");
                     case 401:
                     case 403:
+                        if(isLogged) {
+                            handleLogout();
+                        }
+                        navigate("/login");
+                        return;
                         throw new Error("Lejárt a munkamenet, jelentkezz be újra!");
                     case 429:
                         throw new Error("Túl sok kérés, próbálja újra később!");

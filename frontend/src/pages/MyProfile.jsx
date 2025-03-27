@@ -9,7 +9,7 @@ import CONFIG from "../config.json";
 
 import "../styles/main.css";
 
-export default ({ handleLogout }) => {
+export default ({ handleLogout, isLogged }) => {
     const fileInputRef = useRef(null);
     const defaultPfpUrl = "./assets/images/user.png";
     const [image, setImage] = useState(defaultPfpUrl);
@@ -19,6 +19,9 @@ export default ({ handleLogout }) => {
 
     useEffect(() => {
         if (!token) {
+            if(isLogged) {
+                handleLogout();
+            }
             navigate("/login");
             return;
         }
@@ -207,6 +210,9 @@ export default ({ handleLogout }) => {
                 if (response.status == 401 || response.status == 403) {
                     setErrorMessage("Lejárt a munkamenet. Jelentkezzen be újra.");
                     setShowErrorAlert(true);
+                    if(isLogged) {
+                        handleLogout();
+                    }
                     navigate("/login");
                     return;
                 }

@@ -8,7 +8,7 @@ import CONFIG from "../config.json";
 
 var profileIdsInChat = [];
 
-export default () => {
+export default ({handleLogout, isLogged}) => {
     const navigate = useNavigate();
 
     const defaultPfpUrl = "./assets/images/user.png";
@@ -31,6 +31,9 @@ export default () => {
 
     useEffect(() => {
         if (!token) {
+            if(isLogged) {
+                handleLogout();
+            }
             navigate("/login");
             return;
         }
@@ -84,6 +87,14 @@ export default () => {
                 }
             });
 
+            if(response.status == 401 || response.status == 403) {
+                if(isLogged) {
+                    handleLogout();
+                }
+                navigate("/login");
+                return;
+            }
+
             if (!response.ok) {
                 throw new Error("Hiba az üzenetek lekérdezésében!");
             }
@@ -118,7 +129,8 @@ export default () => {
             });
 
             if (!response.ok) {
-                throw new Error("Hiba a profilok lekérdezésében!");
+                // throw new Error("Hiba a profilok lekérdezésében!");
+                return;
             }
 
             const data = await response.json();
@@ -131,7 +143,8 @@ export default () => {
                 }
             }));
         } catch (err) {
-            throw new Error("Hiba történt a profilok lekérése közben.");
+            // throw new Error("Hiba történt a profilok lekérése közben.");
+            return;
         }
     }
 

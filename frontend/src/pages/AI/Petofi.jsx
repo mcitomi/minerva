@@ -2,7 +2,7 @@ import AI from "../../components/AI.jsx";
 
 import "../../styles/main.css";
 
-export default () => {
+export default ({handleLogout, isLogged}) => {
     return (
         <AI
             img={"./assets/images/ai_characters/petofi.png"}
@@ -10,6 +10,8 @@ export default () => {
             title={"Petőfi Sándor"}
             placeholderText={"Kérdezz bátran Petőfi Sándortól..."}
             personName={"petofi_sandor"}
+            handleLogout={handleLogout} 
+            isLogged={isLogged}
         ></AI>
     );
 }
