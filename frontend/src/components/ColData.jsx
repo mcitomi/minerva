@@ -1,8 +1,10 @@
 export default ({ title, paragraph }) => {
     return (
         <>
-            <h2 style={{marginTop: 80, marginBottom: 30}}>{title}</h2>
-            <p>{paragraph}</p>
+            <div>
+                <h2 style={{marginBottom: 30}}>{title}</h2>
+                <p style={{paddingLeft: 10, paddingRight: 10}}>{paragraph}</p>
+            </div>
         </>
     );
 }

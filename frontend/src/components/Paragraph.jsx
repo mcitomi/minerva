@@ -1,5 +1,5 @@
 export default ({ text }) => {
     return(
-        <p style={{marginTop: 120}}>{text}</p>
+        <p style={{paddingLeft: 10, paddingRight: 10}}>{text}</p>
     );
 }
