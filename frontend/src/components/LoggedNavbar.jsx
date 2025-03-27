@@ -58,7 +58,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                         </NavDropdown>
                         <Nav.Link as={Link} to="/my-profile" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Fiókom</Nav.Link>
                         <Nav.Link as={Link} to="/forum" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Fórum</Nav.Link>
-                        <Nav.Link as={Link} to="/" className="link" style={{fontSize: "20px"}} onClick={handleLogout}>Kijelentkezés</Nav.Link>
+                        <Nav.Link as={Link} to="/" className="link" style={{fontSize: "20px"}} onClick={handleLogout} id="logout">Kijelentkezés</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Image 
