@@ -4,6 +4,7 @@ body.light .splash {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    max-width: 400px;
 }
 
 body.dark .splash {
@@ -12,4 +13,5 @@ body.dark .splash {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
+    max-width: 400px;
 }
