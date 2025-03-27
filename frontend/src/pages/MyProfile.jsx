@@ -364,8 +364,8 @@ export default ({ handleLogout, isLogged }) => {
                         </Row>
                         <div className="text-center">
                             <Button variant="warning" type="button" style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={handleClick} disabled={isEdit}>Módosítás</Button>
-                            <Button variant="warning" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2" onClick={saveUserDetails} disabled={!isEdit}>Mentés</Button><br></br>
-                            <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2" onClick={() => setDeactivateModal(true)}>Deaktiválás</Button> 
+                            <Button variant="success" type="button" style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2" onClick={saveUserDetails} disabled={!isEdit}>Mentés</Button>
+                            <Button variant="danger" type="button" style={{ marginRight: 10, marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2" onClick={() => setDeactivateModal(true)}>Deaktiválás</Button> 
                             <Button variant="danger" type="button" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2" onClick={() => setPasschangeModal(true)}>Jelszó megváltoztatása</Button>
                         </div>
                         {showErrorAlert && <ErrorAlert title={"Sikertelen mentés!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
@@ -381,8 +381,8 @@ export default ({ handleLogout, isLogged }) => {
                     </div>
                     <div className="text-center">
                         <Button variant="warning" type="submit" onClick={handleFileSelect} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Módosítás</Button>
+                        <Button variant="success" type="submit" onClick={savePfp} style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2">Mentés</Button>
                         <Button variant="danger" type="submit" onClick={() => { setImage(defaultPfpUrl) }} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2">Törlés</Button>
-                        <Button variant="warning" type="submit" onClick={savePfp} style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
                     </div>
                 </Col>
             </Row>

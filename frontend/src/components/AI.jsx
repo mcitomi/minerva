@@ -196,7 +196,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                             <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>
                     </Form>
-                    <p className="mt-2" style={{opacity: "0.5", fontStyle: "italic"}}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} már nem él, így a jelenkorral kapcsolatos információi nem pontosak, illetve kitaláltak.</p>
+                    {title === "MInerva" ? <p className="mt-2" style={{opacity: "0.5", fontStyle: "italic"}}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} egy fiktív karakter.</p> : <p className="mt-2" style={{opacity: "0.5", fontStyle: "italic"}}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} már nem él, így a jelenkorral kapcsolatos információi nem pontosak, illetve kitaláltak.</p>}
                 </Col>
             </Row>
         </Container>
