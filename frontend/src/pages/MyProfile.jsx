@@ -392,8 +392,8 @@ export default ({ handleLogout, isLogged }) => {
                     </div>
                     <div className="text-center">
                         <Button variant="warning" type="submit" onClick={handleFileSelect} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Módosítás</Button>
+                        <Button variant="success" type="submit" disabled={isImageSaved} onClick={savePfp} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
                         <Button variant="danger" type="submit" onClick={() => { setImage(defaultPfpUrl), setImageSaved(false) }} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2">Törlés</Button>
-                        <Button variant="warning" type="submit" disabled={isImageSaved} onClick={savePfp} style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
                     </div>
                 </Col>
             </Row>
