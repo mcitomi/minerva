@@ -36,7 +36,7 @@ export default function CookiePopup() {
         }}
       >
         <p style={{ margin: 0 }}>Ez a weboldal sütiket használ a jobb felhasználói élmény érdekében, az oldal további használatával ezt automatikusan elfogadja.</p>
-        <Button variant="warning" onClick={acceptCookies} >Elfogadom</Button>
+        <Button variant="warning" onClick={acceptCookies} style={{ fontFamily: 'Pacifico', fontSize: "20px" }}>Elfogadom</Button>
       </div>
     )
   );
