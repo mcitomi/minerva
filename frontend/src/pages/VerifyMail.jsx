@@ -62,7 +62,7 @@ export default () => {
                 ? 
                 <>
                 <Button variant="warning" style={{marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px"}} onClick={() => verify(verifyToken)}>Megerősítés</Button>
-                <Button variant="warning" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px"}} onClick={() => deny(verifyToken)}>Törlés</Button>
+                <Button variant="warning" style={{marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black"}} onClick={() => deny(verifyToken)}>Törlés</Button>
                 </>
                 : ""
                 }
