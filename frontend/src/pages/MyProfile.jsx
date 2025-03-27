@@ -13,6 +13,7 @@ export default ({ handleLogout, isLogged }) => {
     const fileInputRef = useRef(null);
     const defaultPfpUrl = "./assets/images/user.png";
     const [image, setImage] = useState(defaultPfpUrl);
+    const [isImageSaved, setImageSaved] = useState(true);
 
     const navigate = useNavigate();
     const token = localStorage.getItem("token");
@@ -103,6 +104,7 @@ export default ({ handleLogout, isLogged }) => {
                 setImage(reader.result);
             };
             reader.readAsDataURL(file); // beolvassa a fájlt
+            setImageSaved(false);
         }
     };
 
@@ -168,6 +170,7 @@ export default ({ handleLogout, isLogged }) => {
             } else {
                 setSuccessMessage("Sikeres feltöltés.");
                 setShowSuccessAlert(true);
+                setImageSaved(true);
             }
         } catch (err) {
             setError(err.message);
@@ -194,7 +197,11 @@ export default ({ handleLogout, isLogged }) => {
                 const token = localStorage.getItem("token");
 
                 if (!token) {
-                    throw new Error("Engedély megtagadva.");
+                    if(isLogged) {
+                        handleLogout();
+                    }
+                    navigate("/login");
+                    return;
                 }
 
                 const response = await fetch(
@@ -218,7 +225,9 @@ export default ({ handleLogout, isLogged }) => {
                 }
 
                 if (!response.ok) {
-                    throw new Error("Hiba az értékek lekérdezésében.");
+                    setErrorMessage("Hiba az adatok lekérése közben!");
+                    setShowErrorAlert(true);
+                    return;
                 }
 
                 const data = await response.json();
@@ -245,7 +254,9 @@ export default ({ handleLogout, isLogged }) => {
                 const response = await fetch(`${CONFIG.API_URL}/user/kreta/institutions`);
 
                 if (!response.ok) {
-                    throw new Error("Hiba az iskolák lekérdezésében!");
+                    setErrorMessage("Hiba az iskolák lekérdezésében!");
+                    setShowErrorAlert(true);
+                    return;
                 }
 
                 const data = await response.json();
@@ -381,8 +392,8 @@ export default ({ handleLogout, isLogged }) => {
                     </div>
                     <div className="text-center">
                         <Button variant="warning" type="submit" onClick={handleFileSelect} style={{ marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Módosítás</Button>
-                        <Button variant="success" type="submit" onClick={savePfp} style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2">Mentés</Button>
-                        <Button variant="danger" type="submit" onClick={() => { setImage(defaultPfpUrl) }} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2">Törlés</Button>
+                        <Button variant="danger" type="submit" onClick={() => { setImage(defaultPfpUrl), setImageSaved(false) }} style={{ marginLeft: 10, marginRight: 10, fontFamily: 'Pacifico', fontSize: "20px", color: "black" }} className="mt-2">Törlés</Button>
+                        <Button variant="warning" type="submit" disabled={isImageSaved} onClick={savePfp} style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Mentés</Button>
                     </div>
                 </Col>
             </Row>

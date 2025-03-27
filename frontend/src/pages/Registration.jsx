@@ -118,20 +118,27 @@ export default () => {
             if (!response.ok) {
                 if(response.status == 400) {
                     if(result.message[0].includes("Weak")) {
-                        // gyenge jelszó Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)
+                        setErrorMessage("A jelszónak legalább 8 karakter hosszúnak kell lennie, és tartalmaznia kell legalább egy nagybetűt, egy kisbetűt, egy számot és egy speciális karaktert (@$!%?&).")
+                        setShowErrorAlert(true);
                     } else if (result.message[0].includes("do not match")) {
-                        // Nem egyezik a jelszó
+                        setErrorMessage("A jelszavak nem egyeznek!");
+                        setShowErrorAlert(true);
                     } else if (result.message[0].includes("format")) {
-                        // email hiba
+                        setErrorMessage("Hibás email adat!");
+                        setShowErrorAlert(true);
                     } else {
-                        // hibás bementi adat, rosszul megadott infók
+                        setErrorMessage("Hibás bemeneti adat!");
+                        setShowErrorAlert(true);
                     }
                 } else if(response.status == 409) {
-                    // ezzel az email címmel már regisztráltak
+                    setErrorMessage("Ezzel az email címmel már regisztráltak!");
+                    setShowErrorAlert(true);
                 } else if (response.status == 500) {
-                    // szerver hiba
+                    setErrorMessage("Szerverhiba történt!");
+                    setShowErrorAlert(true);
                 } else {
-                    // bármi más
+                    setErrorMessage("Hiba történt!");
+                    setShowErrorAlert(true);
                 }
                 setErrorMessage(result.message[1] || "Sikertelen regisztráció!"); //"Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character (@$!%?&)"
                 setShowErrorAlert(true);
