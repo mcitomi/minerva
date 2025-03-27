@@ -17,17 +17,17 @@ export default () => {
             </Container>
             <Container>
                 <Row className="mt-5 mb-5 d-flex justify-content-center align-items-center text-center">
-                    <Col xs={12} md={4} className="splash d-flex align-items-center justify-content-center text-center">
+                    <Col xs={12} md={4} className="splash d-flex align-items-center justify-content-center text-center" style={{maxWidth: 400}}>
                         <ColData
                             title={"Bátor?"}
                             paragraph={"Bizonyára tudod, hogy a görögök Pallasz Athénének hívják, míg a rómaiak Minervának a bölcsesség istennőjét. De tudod, hogy hogyan kapta a nevét?"}></ColData>
                     </Col>
-                    <Col xs={12} md={4} className="splash d-flex align-items-center justify-content-center text-center">
+                    <Col xs={12} md={4} className="splash d-flex align-items-center justify-content-center text-center" style={{maxWidth: 400}}>
                         <ColData
                             title={"Okos?"}
                             paragraph={"A “Pallasz” jelző fegyverforgatót jelent, amit a harcok közben is igazságot szolgáltató Minervára utalt. A név köthető a szűzieségéhez és még egy nimfához is."}></ColData>
                     </Col>
-                    <Col xs={12} md={4} className="splash d-flex align-items-center justify-content-center text-center">
+                    <Col xs={12} md={4} className="splash d-flex align-items-center justify-content-center text-center" style={{maxWidth: 400}}>
                         <ColData
                             title={"Bölcs?"}
                             paragraph={"Az istennő Zeusz legkedvesebb gyermeke, hiszen az ő fejéből pattant ki. Minerva tettre készen, teljes fegyverzetben született meg. Ez aztán a nem szokványos!"}></ColData>
@@ -40,16 +40,16 @@ export default () => {
                 <Video></Video>
                 <h1 style={{ marginTop: 50, marginBottom: 30 }}>Miért válaszd a MInervát?</h1>
                 <Row className="d-flex justify-content-center align-items-center text-center">
-                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center">
+                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center" style={{maxWidth: 400}}>
                         <Paragraph text={"...mert gyors és egyszerű kezelni kicsiknek és nagyoknak egyaránt"}></Paragraph>
                     </Col>
-                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center">
+                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center" style={{maxWidth: 400}}>
                         <Paragraph text={"...mert tanulhatsz vele mobiltelefonon, tableten és számítógépen is"}></Paragraph>
                     </Col>
-                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center">
+                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center" style={{maxWidth: 400}}>
                         <Paragraph text={"...mert megismerheted a történelmi személyeket más korszakokból"}></Paragraph>
                     </Col>
-                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center">
+                    <Col xs={12} md={3} className="splash d-flex align-items-center justify-content-center text-center" style={{maxWidth: 400}}>
                         <Paragraph text={"...mert érettségi centrikus tanítással tanít, így garantált a siker"}></Paragraph>
                     </Col>
                 </Row>
