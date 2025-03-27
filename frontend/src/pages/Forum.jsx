@@ -6,6 +6,7 @@ import "../styles/forum.css";
 
 import CONFIG from "../config.json";
 import ForumAlert from "../components/ForumAlert";
+import ErrorAlert from "../components/ErrorAlert";
 
 var profileIdsInChat = [];
 
