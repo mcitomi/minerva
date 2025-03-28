@@ -35,13 +35,14 @@ AI:
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
 - Pontgyűjtési rendszer vagy jutalmak beépítése a tanulási folyamat ösztönzésére
-- Partnerségek iskolákkal és egyetemekkel (krétával)
-- Discord integráció, fórum chat discord-web crossplatform
-- Discord profil hozzákötése a webes fiókhoz (well csináltam mar ilyet, iagazbol ctrlc ctrlv meg van írva)
+- Discord profil hozzákötése a webes fiókhoz.
 - RSS feed, posztokat facebookrol, instárol innen onnan összegzi egy oldalon
 - Chat beszélgetések mentése localsotrage vagy adatbázisba, onnan lekérdezni a chat "topic"okat
 - Email cím csere rendszer. (cím váltás esetén szükséges megerősítő email, addig várakozó státuszba kell rakni stb..)
 - Server side slowmode (/forum -> message)
 
+- 🟨 Partnerségek iskolákkal és egyetemekkel (krétával)
+
+- ✅ Discord integráció, fórum chat discord-web crossplatform
 - ✅ Backend blacklist a fórumra (csúnya szavakat ne engedjen ki) - HTTP/1.1 406 Not Acceptable
 - ✅ Email spam elleni védelem, egy féle timeout rendszer, pl ha az ember 2x gyorsan kattint egy gombra, ne lehessen új emailt lekérni, pl csak fél perc múlva - DONE

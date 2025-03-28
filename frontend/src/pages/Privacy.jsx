@@ -26,7 +26,7 @@ export default () => {
                         <Col xs={12} md={6}>
                             <h4>Automatikusan gyűjtött információk</h4>
                             <ul id="ikon" style={{textAlign: "justify"}}>
-                                <li><strong>Profilkép:</strong> Az Ön által feltöltött profilképet base64 kódolással tároljuk.</li>
+                                <li><strong>Profilkép:</strong> Az Ön által feltöltött profilkép publikus, így megjelenhet a fórumon, a Minerva Discord szerverén, valamint API-n keresztül az ön felhasználói azonosítója alapján.</li>
                                 <li><strong>Nyelvi beállítások:</strong> Az Ön által preferált nyelvet rögzítjük a jobb felhasználói élmény érdekében.</li>
                                 <li><strong>Ország:</strong> Az Ön által megadott ország nevét tároljuk.</li>
                             </ul>
