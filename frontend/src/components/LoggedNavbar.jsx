@@ -21,8 +21,6 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                 <Navbar.Brand as={Link} to="/" className="mainLink" style={{ fontSize: "25px" }}>Főoldal</Navbar.Brand>
                 <Navbar.Collapse id="basic-navbar-nav" in={isOpen}>
                     <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/forum" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Fórum</Nav.Link>
-
                         <NavDropdown title="Beszélgess!" id="basic-nav-dropdown" className="link" style={{ fontSize: "20px" }}>
                             <NavDropdown title={<span style={{ color: isDarkMode ? "#c7c7c7" : "#53595f" }}>Magyar nyelv és irodalom</span>} className="link" style={{ fontSize: "20px" }}>
                                 <NavDropdown.Item as={Link} to="/ady-endre" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Ady Endre</NavDropdown.Item>
@@ -57,10 +55,10 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                             <NavDropdown.Divider />
                             <NavDropdown.Item as={Link} to="/minerva" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>MInerva</NavDropdown.Item>
                         </NavDropdown>
-
-                        <Nav.Link as={Link} to="/my-profile" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Fiókom</Nav.Link>
+                        <Nav.Link as={Link} to="/forum" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Fórum</Nav.Link>
                         <Nav.Link as={Link} to="/about" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Rólunk</Nav.Link>
-                        <Nav.Link as={Link} to="/" className="link" style={{ fontSize: "20px" }} onClick={handleLogout} id="logout">Kijelentkezés</Nav.Link>
+                        <Nav.Link as={Link} to="/my-profile" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Fiókom</Nav.Link>
+                       <Nav.Link as={Link} to="/" className="link" style={{ fontSize: "20px" }} onClick={handleLogout} id="logout">Kijelentkezés</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Image

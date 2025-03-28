@@ -67,7 +67,7 @@ export const handleRequest = async (req: Request, db: Database) => {
             }, {status: 403});
         }
 
-        db.run("UPDATE credentials SET failedAttempts = 0, lastLogin = ? WHERE id = ?;", [Math.floor(Date.now() / 1000), accountInfo.id]);
+        db.run("UPDATE credentials SET failedAttempts = 0, lastLogin = ?, mgmtToken = null WHERE id = ?;", [Math.floor(Date.now() / 1000), accountInfo.id]);
 
         const token = generateToken({ _id: accountInfo.id }, 7776000);   // 172800 mp. = 2 nap, 7776000 mp. = 90 nap
 
