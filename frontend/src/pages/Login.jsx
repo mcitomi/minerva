@@ -159,11 +159,15 @@ export default ({ onLoginSuccess }) => {
             body: JSON.stringify({ "email": email, "verifyUrl": `${window.location.origin}` })
         });
 
-        const result = await response.json();
+        // const result = await response.json();
 
-        // alert(...result.message);
-        setSuccessMessage(...result.message);
-        setShowSuccessAlert(true);
+        if(response.ok) {
+            setSuccessMessage("Jelszava visszaállításához kattintson az emailben található linkre!");
+            setShowSuccessAlert(true);
+        } else {
+            setErrorMessage("Nem sikerült elküldenünk az emailt! Próbálja újra később...");
+            setShowSuccessAlert(true);
+        }
     }
 
     return (
@@ -186,7 +190,7 @@ export default ({ onLoginSuccess }) => {
                             <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">Belépés</Button>
                         </div>
                         {showErrorAlert && <ErrorAlert title={"Sikertelen bejelentkezés!"} text={errorMessage} setOriginStatus={setShowErrorAlert}/>}
-                        {showSuccessAlert && <SuccessAlert title={"Sikeres bejelentkezés!"} text={successMessage} setOriginStatus={setShowSuccessAlert}/>}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres művelet!"} text={successMessage} setOriginStatus={setShowSuccessAlert}/>}
                     </Form>
                 </Col>
             </Row>
