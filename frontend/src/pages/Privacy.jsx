@@ -19,16 +19,17 @@ export default () => {
                         <Col xs={12} md={6}>
                             <h4>Ön által megadott információk</h4>
                             <ul id="ikon" style={{textAlign: "justify"}}>
-                                <li><strong>Fiókadatok:</strong> Regisztráció során olyan információkat kérünk Öntől, mint név, e-mail cím, telefonszám, opcionálisan iskolájának neve.</li>
+                                <li><strong>Fiókadatok:</strong> Regisztráció során olyan információkat kérünk Öntől, mint név, e-mail cím, profilkép, opcionálisan iskolájának neve.</li>
                                 <li><strong>Felhasználói tartalom:</strong> Az Ön által a fórumon közzétett publikus üzenetek és egyéb tartalmak, amelyek a Minerva Discord szerverén is megjelenhetnek a "fórum" csatornában.</li>
+                                <li><strong>Regionális beállítások:</strong> Az Ön által preferált nyelvetés országot rögzítjük a jobb felhasználói élmény és továbbfejlesztési lehetőségek érdekében, amennyiben megadja azt.</li>
                             </ul>
                         </Col>
                         <Col xs={12} md={6}>
                             <h4>Automatikusan gyűjtött információk</h4>
                             <ul id="ikon" style={{textAlign: "justify"}}>
                                 <li><strong>Profilkép:</strong> Az Ön által feltöltött profilkép publikus, így megjelenhet a fórumon, a Minerva Discord szerverén, valamint API-n keresztül az ön felhasználói azonosítója alapján.</li>
-                                <li><strong>Nyelvi beállítások:</strong> Az Ön által preferált nyelvet rögzítjük a jobb felhasználói élmény érdekében.</li>
-                                <li><strong>Ország:</strong> Az Ön által megadott ország nevét tároljuk.</li>
+                                <li><strong>Regisztráció és belépés:</strong> Rögzítjük a fiók létrehozásának és utolsó aktivitásának dátumát, amelyet belső elemzéshez és azonosítási célokra használunk.</li>
+                                <li><strong>Elhibázott belépések száma:</strong> Biztonsági okokból naplózzuk a sikertelen bejelentkezési kísérletek számát a visszaélések és illetéktelen hozzáférések megelőzése érdekében.</li>
                             </ul>
                         </Col>
                     </Row>
