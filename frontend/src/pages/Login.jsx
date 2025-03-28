@@ -151,6 +151,11 @@ export default ({ onLoginSuccess }) => {
     async function resetPassword() {
         const email = formData.email;
 
+        if(!email || email == "") {
+            setErrorMessage("Adjon meg egy érvényes email címet!");
+            setShowErrorAlert(true);
+        }
+
         const response = await fetch(`${CONFIG.API_URL}/auth/password-request`, {
             method: 'POST',
             headers: {
@@ -166,7 +171,7 @@ export default ({ onLoginSuccess }) => {
             setShowSuccessAlert(true);
         } else {
             setErrorMessage("Nem sikerült elküldenünk az emailt! Próbálja újra később...");
-            setShowSuccessAlert(true);
+            setShowErrorAlert(true);
         }
     }
 
