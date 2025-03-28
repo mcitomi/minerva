@@ -47,8 +47,8 @@ export default ({ handleLogout, isLogged }) => {
         try {
             e.preventDefault();
 
-            if (!chatRef.current.value || chatRef.current.value == "") return;
-            chatRef.current.disabled = true;
+            if (!chatRef.current.value || chatRef.current.value == "" || sendBtnRef.current.disabled) return;
+            
             sendBtnRef.current.disabled = true;
 
             const response = await fetch(`${CONFIG.API_URL}/forum/send`, {
@@ -88,8 +88,6 @@ export default ({ handleLogout, isLogged }) => {
 
             setTimeout(() => {
                 try {
-                    chatRef.current.disabled = false;
-                    chatRef.current.focus();
                     sendBtnRef.current.disabled = false;
                 } catch (error) {
                     return;
