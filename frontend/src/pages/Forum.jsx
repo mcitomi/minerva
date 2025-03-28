@@ -247,7 +247,7 @@ export default ({ handleLogout, isLogged }) => {
                                 messages.map((message, i) => {
                                     return <div key={i} className={message.yourMessage ? "forumUser" : "forumAnotherUser"}>
                                         <Row>
-                                            <Col xs={2}>
+                                            <Col xs={2} style={{maxWidth: "50px"}}>
                                                 <Image style={{ width: "5vh", height: "5vh" }} src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
                                             </Col>
                                             <Col xs={10}>
@@ -262,10 +262,10 @@ export default ({ handleLogout, isLogged }) => {
                     </div>
                     <Form className="mt-3" onSubmit={sendMessage}>
                         <InputGroup>
-                            <FloatingLabel controlId="floatingInput" label="Ide írja üzenetét..." className="floating-label">
+                            <FloatingLabel controlId="floatingInput" label="Ide írd az üzeneted..." className="floating-label">
                                 <Form.Control
                                     as="textarea"
-                                    placeholder="Ide írja üzenetét"
+                                    placeholder="Ide írd az üzeneted..."
                                     autoComplete="off"
                                     ref={chatRef}
                                     onInput={handleInputChange}
