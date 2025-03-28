@@ -22,7 +22,6 @@ Frontend:
 - !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
-- AI komponensbe hiba kezelés alertek 😵‍💫😵‍💫
 
 #### Teszterek amiket észrevettek:
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.

@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form, Image, InputGroup, FloatingLabel } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CONFIG from "../config.json";
+import ErrorAlert from "./ErrorAlert";
 
 import "../styles/ai.css";
 
@@ -12,6 +13,8 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
 
     const navigate = useNavigate();
 
@@ -86,20 +89,28 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
             if (!response.ok) {
                 switch (response.status) {
                     case 400:
-                        // hiba, próbálja újra
-                    case 404:   // rossz model
+                        setErrorMessage("Probáld újra később!");
+                        setShowErrorAlert(true);
+                        break;
+                    case 404:  
+                        setErrorMessage("Ez a modell nem működik!");
+                        setShowErrorAlert(true); 
+                        break;
                     case 401: // ezekkel nem kell semmi
                     case 403: // ezekkel nem kell semmi
                         if(isLogged) {
                             handleLogout();
                         }
                         navigate("/login");
-                        return;
-                        throw new Error("Lejárt a munkamenet, jelentkezz be újra!");
+                        break;
                     case 429:   // 
-                        throw new Error("Túl sok kérés, próbálja újra később!");
+                        setErrorMessage("Túl sok kérés, próbálja újra később!");
+                        setShowErrorAlert(true);
+                        break;
                     case 500:
-                        throw new Error("Szerveroldali hiba!");
+                        setErrorMessage("Szerveroldali hiba!");
+                        setShowErrorAlert(true);
+                        break;
                 }
             }
 
@@ -196,6 +207,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                             <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
                         </InputGroup>
                     </Form>
+                    {showErrorAlert && <ErrorAlert title={"Sikertelen művelet!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
                     {title === "MInerva" ? <p className="mt-2" style={{opacity: "0.5", fontStyle: "italic"}}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} egy fiktív karakter.</p> : <p className="mt-2" style={{opacity: "0.5", fontStyle: "italic"}}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} már elhunyt, így a jelenkorral kapcsolatos információi nem pontosak, illetve kitaláltak.</p>}
                 </Col>
             </Row>
