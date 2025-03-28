@@ -36,7 +36,7 @@ export default function ForumAlert() {
         }}
       >
         <p style={{ margin: 0 }}>Psszt..! A fórumon minden felhasználó láthatja a felhasználóneved, profilképed és az üzeneted, csevegj tudatosan.</p>
-        <Button variant="warning" onClick={acceptForum} >Elfogadom</Button>
+        <Button variant="warning" onClick={acceptForum} style={{fontFamily: 'Pacifico', fontSize: "20px"}}>Elfogadom</Button>
       </div>
     )
   );
