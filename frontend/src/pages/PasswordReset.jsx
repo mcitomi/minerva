@@ -1,4 +1,4 @@
-import { Container, Row, Col, Button, FloatingLabel, Form } from "react-bootstrap";
+import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -109,6 +109,7 @@ export default () => {
     };
 
     return (
+        /*
         <Container fluid className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
             <Row className="w-100 justify-content-center">
                 <Col sx={12} md={6} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529" }}>
@@ -118,6 +119,29 @@ export default () => {
                         </FloatingLabel>
                         <FloatingLabel controlId="floatingConfirmPassword" label="Jelszó megint" className="mb-3 floating-label">
                             <Form.Control type="password" placeholder="Jelszó" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} required />
+                        </FloatingLabel>
+                        <div className="text-center">
+                            <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">
+                                Jelszó mentése
+                            </Button>
+                        </div>
+                    </Form>
+                </Col>
+            </Row>
+        </Container>*/
+        <Container fluid>
+            <Row style={{ paddingRight: "20px", paddingLeft: "20px"}}>
+                <Col xs={12} md={6} style={{ paddingTop: 20 }}>
+                    <Image src="./assets/images/ressetpassword.png" alt="Dekor kép" style={{borderRadius:"30px"}} fluid></Image>
+                </Col>
+                <Col xs={12} md={6} style={{backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", marginTop: "20px", borderRadius:"30px"}}>
+                    <h2 className="mt-5 mb-5 pt-5">Jelszó módosítás</h2>
+                    <Form onSubmit={handleSubmit}>
+                        <FloatingLabel label="Jelszó" className="mb-3 floating-label">
+                            <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange}></Form.Control>
+                        </FloatingLabel>
+                        <FloatingLabel label="Jelszó újra" className="mb-3 floating-label">
+                            <Form.Control type="password" placeholder="Jelszó újra" name="password" value={formData.confirmPassword} onChange={handleChange}></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
                             <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">
