@@ -1,10 +1,17 @@
 .forumBox {
-    background-color: #a7d5fb;
     border-radius: 20px;
     height: 600px;
     overflow: hidden;
     position: relative;
     width: 100%;
+}
+
+body.dark .forumBox {
+    background-color: #46789a;
+}
+
+body.light .forumBox {
+    background-color: #a7d5fb;
 }
 
 .forumChat {

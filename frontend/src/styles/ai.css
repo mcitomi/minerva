@@ -1,11 +1,19 @@
 .box {
-    background-color: #a7d5fb;
     border-radius: 20px;
     height: 600px;
     overflow: hidden;
     position: relative;
     width: 100%;
 }
+
+body.dark .box {
+    background-color: #46789a !important;
+}
+
+body.light .box {
+    background-color: #a7d5fb;
+}
+
 
 .chat {
     display: flex;

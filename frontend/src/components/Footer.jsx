@@ -23,7 +23,7 @@ export default () => {
                         <li><a href="https://www.instagram.com/" target="_blank"><Image src="./assets/images/footer/instagram.svg" alt="Instagram" style={{ width: 20 }}></Image> @eduminerva.bob</a></li>
                     </ul>
                     <Link id="privacy" to="/privacy" style={{ textDecoration: 'none', color: 'inherit' }}><h4> Adatvédelmi tájékoztató</h4></Link>
-                    <p style={{fontSize: 12}}> {(new Date).getFullYear()} &copy; Minden jog fenntartva</p>
+                    <p style={{fontSize: 12, color: "black"}}> {(new Date).getFullYear()} &copy; Minden jog fenntartva</p>
             </Col>
         </Row>
         </Container >

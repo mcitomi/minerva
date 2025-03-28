@@ -82,7 +82,7 @@ export default () => {
                         <Col xs={12} md={6}>
                             <h3>A szabályzat módosításai</h3>
                             <p style={{textAlign: "justify"}}>Fenntartjuk a jogot jelen Adatvédelmi Szabályzat módosítására. A változásokról megfelelő időben értesítjük felhasználóinkat.</p>
-                            <p style={{textAlign: "justify"}}><strong>Utolsó frissítés:</strong> 2025. március 27.</p>
+                            <p style={{textAlign: "justify"}}><strong>Utolsó frissítés:</strong> 2025. március 28.</p>
                         </Col>
                     </Row>
                 </Col>
