@@ -321,7 +321,7 @@ export default ({ handleLogout, isLogged }) => {
             {showDeactivateModal && <DeactivateModalAlert />}
             {showPasschangeModal && <PasschangeModalAlert/>}
             <Row style={{padding: 20}}>
-                <Col sx={12} md={8} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", borderRadius:"30px", backgroundColor: "#a7d5fb"}}>
+                <Col xs={12} md={8} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", borderRadius:"30px", backgroundColor: "#a7d5fb"}}>
                     <h3 style={{ marginBottom: 30 }}>Adataim</h3>
                     <Form style={{borderRadius:"30px"}}>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">
@@ -384,7 +384,7 @@ export default ({ handleLogout, isLogged }) => {
                         {showSuccessAlert && <SuccessAlert title={"Sikeres mentés!"} text={successMessage} setOriginStatus={setShowSuccessAlert} />}
                     </Form>
                 </Col>
-                <Col sx={12} md={4} style={{ paddingTop: 30, paddingBottom: 30 }}>
+                <Col xs={12} md={4} style={{ paddingTop: 30, paddingBottom: 30 }}>
                     <h3 style={{ marginBottom: 30 }}>Profilképem</h3>
                     <div className="d-flex justify-content-center">
                         <div style={{ borderRadius: "50%", overflow: "hidden", width: "400px", height: "400px", border: "#699fcb 5px solid" }} className="mt-2 mb-2">
