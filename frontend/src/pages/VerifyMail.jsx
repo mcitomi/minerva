@@ -23,14 +23,14 @@ export default () => {
         const response = await fetch(`${CONFIG.API_URL}/auth/verify-mail/link?code=${token}`);
     
         if(response.ok) {
-            successMessage("Sikeres megerősítés! 5 másodperc múlva átirányítjuk...");
-            showSuccessAlert(true);
+            setSuccessMessage("Sikeres megerősítés! 5 másodperc múlva átirányítjuk...");
+            setShowSuccessAlert(true);
             setTimeout(() => {
                 navigate("/login");
             }, 3000);
         } else {
-            errorMessage("Sikertelen megerősítés!")
-            showErrorAlert(true);
+            setErrorMessage("Sikertelen megerősítés!")
+            setShowErrorAlert(true);
         }
     }
     
@@ -38,14 +38,14 @@ export default () => {
         const response = await fetch(`${CONFIG.API_URL}/auth/verify-mail/remove?code=${token}`);
     
         if(response.ok) {
-            successMessage("Sikeres törlés! 5 másodperc múlva átirányítjuk...")
-            showSuccessAlert(true);
+            setSuccessMessage("Sikeres törlés! 5 másodperc múlva átirányítjuk...")
+            setShowSuccessAlert(true);
             setTimeout(() => {
                 navigate("/");
             }, 5000);
         } else {
-            errorMessage("Sikertelen törlés!")
-            showErrorAlert(true);
+            setErrorMessage("Sikertelen törlés!")
+            setShowErrorAlert(true);
         }
     }
 
