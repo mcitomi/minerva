@@ -2,6 +2,8 @@ import { Container, Button } from "react-bootstrap";
 import CONFIG from "../config.json";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import SuccessAlert from "../components/SuccessAlert.jsx";
+import ErrorAlert from "../components/ErrorAlert.jsx";
 
 import Content from "../components/Content.jsx";
 import "../styles/main.css";
@@ -12,17 +14,23 @@ export default () => {
     const navigate = useNavigate();
 
     const [isCodeValid, setPageStatus] = useState(true);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
     async function verify(token) {
         const response = await fetch(`${CONFIG.API_URL}/auth/verify-mail/link?code=${token}`);
     
         if(response.ok) {
-            alert("Sikeres megerősítés! 5 másodperc múlva átirányítjuk...");
+            successMessage("Sikeres megerősítés! 5 másodperc múlva átirányítjuk...");
+            showSuccessAlert(true);
             setTimeout(() => {
                 navigate("/login");
             }, 3000);
         } else {
-            alert((await response.json()).message);
+            errorMessage("Sikertelen megerősítés!")
+            showErrorAlert(true);
         }
     }
     
@@ -30,12 +38,14 @@ export default () => {
         const response = await fetch(`${CONFIG.API_URL}/auth/verify-mail/remove?code=${token}`);
     
         if(response.ok) {
-            alert("Sikeres törlés! 5 másodperc múlva átirányítjuk...");
+            successMessage("Sikeres törlés! 5 másodperc múlva átirányítjuk...")
+            showSuccessAlert(true);
             setTimeout(() => {
                 navigate("/");
             }, 5000);
         } else {
-            alert((await response.json()).message);
+            errorMessage("Sikertelen törlés!")
+            showErrorAlert(true);
         }
     }
 
@@ -66,7 +76,8 @@ export default () => {
                 </>
                 : ""
                 }
-                
+                {showErrorAlert && <ErrorAlert title={"Sikertelen mentés!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
+                {showSuccessAlert && <SuccessAlert title={"Sikeres mentés!"} text={successMessage} setOriginStatus={setShowSuccessAlert} />}
             </div>
         </Container>
     )

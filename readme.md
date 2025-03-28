@@ -25,7 +25,6 @@ Frontend:
 
 #### Teszterek amiket észrevettek:
 - Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
-- /verify-account oldalon A felugró értesítés lehetne szebb. (succcessalert pl vagy modal)
 
 Backend:
 - o.O
