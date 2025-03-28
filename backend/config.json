@@ -1,5 +1,6 @@
 {
     "port" : 3030,
     "mail_application_password" : "https://myaccount.google.com/u/1/apppasswords",
-    "gemini_api_key" : "https://aistudio.google.com/app/apikey"
+    "gemini_api_key" : "https://aistudio.google.com/app/apikey",
+    "discord_webhook_link" : "<link>"
 }

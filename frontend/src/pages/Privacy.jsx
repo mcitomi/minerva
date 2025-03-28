@@ -20,7 +20,7 @@ export default () => {
                             <h4>Ön által megadott információk</h4>
                             <ul id="ikon" style={{textAlign: "justify"}}>
                                 <li><strong>Fiókadatok:</strong> Regisztráció során olyan információkat kérünk Öntől, mint név, e-mail cím, telefonszám, opcionálisan iskolájának neve.</li>
-                                <li><strong>Felhasználói tartalom:</strong> Az Ön által a fórumon közzétett publikus üzenetek és egyéb tartalmak.</li>
+                                <li><strong>Felhasználói tartalom:</strong> Az Ön által a fórumon közzétett publikus üzenetek és egyéb tartalmak, amelyek a Minerva Discord szerverén is megjelenhetnek a "fórum" csatornában.</li>
                             </ul>
                         </Col>
                         <Col xs={12} md={6}>
@@ -46,11 +46,11 @@ export default () => {
                     <Row className="mt-5 mb-5">
                         <Col xs={12} md={4}>
                             <h3>Az információk megosztása</h3>
-                            <p style={{textAlign: "justify"}}>Személyes adatait nem adjuk ki harmadik feleknek. Minden adatot saját, Oracle Cloud VPS-en tárolunk, és kizárólag a MInerva belső működéséhez használjuk fel.</p>
+                            <p style={{textAlign: "justify"}}>Személyes adatait nem adjuk ki harmadik feleknek. Minden adatot saját, Oracle Cloud VPS-en tárolunk, és kizárólag a MInerva belső működéséhez használjuk fel. A fórumon közzétett üzenetek azonban elérhetőek a Minerva Discord szerverén a "fórum" csatornában.</p>
                         </Col>
                         <Col xs={12} md={4}>
                             <h3>Adatmegőrzés és inaktiválás</h3>
-                            <p style={{textAlign: "justify"}}>Személyes adatait mindaddig megőrizzük, amíg fiókja aktív. Lehetősége van fiókja inaktiválására, melynek során adatai elérhetetlenné válnak más felhasználók számára, kivéve a fórumon közzétett publikus üzeneteit, amelyek továbbra is láthatóak maradnak.</p>
+                            <p style={{textAlign: "justify"}}>Személyes adatait mindaddig megőrizzük, amíg fiókja aktív. Lehetősége van fiókja inaktiválására, melynek során adatai elérhetetlenné válnak más felhasználók számára, kivéve a fórumon közzétett publikus üzeneteit, amelyek továbbra is láthatóak maradnak a weboldalon és a Minerva Discord szerverén az ön nevével együtt.</p>
                         </Col>
                         <Col xs={12} md={4}>
                             <h3>Adatbiztonság</h3>

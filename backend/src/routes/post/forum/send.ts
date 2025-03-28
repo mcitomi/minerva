@@ -2,11 +2,14 @@ import { Database } from "bun:sqlite";
 // jwt
 import { verifyToken } from "../../../modules/auth/jwt";
 import { type Payload } from "../../../types/jwt";
+//titkosítás
+import { decryptRSA } from "../../../modules/crypt";
 // long polling-hoz "event" meghívó
 import { messageTriggers } from "../../get/forum/new";
-
 // DirtyWords
 import { dirtywords } from "./blacklist.json";
+// webhhook link
+import { discord_webhook_link } from "../../../../config.json";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -59,6 +62,24 @@ export const handleRequest = async (req: Request, db: Database) => {
         messageTriggers.forEach(callback => callback(jwtPayload._id, body.message, timeSent));
 
         messageTriggers.length = 0; // töröljük a tömb elemeit, triggereket
+
+        const usrQuery = db.query("SELECT username FROM credentials WHERE id = ?;").get(jwtPayload._id) as { username: string };
+
+        try {
+            fetch(discord_webhook_link, {
+                method: "post",
+                headers: {
+                    "Content-Type" : "application/json"
+                },
+                body: JSON.stringify({
+                    "content" : body.message,
+                    "username" : decryptRSA(usrQuery.username),
+                    "avatar_url" : `https://api.edu-minerva.hu/user/pfp?u=${jwtPayload._id}`
+                })
+            });
+        } catch (error) {
+            console.error("Discord link error");
+        }
 
         return Response.json({
             "message" : ["Sent!"]
