@@ -67,6 +67,14 @@ Az adatok titkosításához több eszközt használok.
 
 - A jelszavak titkosítására Argon2 hash metódust használunk, ez jelenleg az egyik legmodernebb megoldás, és jelenlegpraktikus is, mert a Bun beépítetten támogatja.
 
+RSA kulcs generálása:
+```cli
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:3072
+```
+Publikus kulcs kinyerése a generált ssh privát kulcsból:
+```cli
+openssl rsa -pubout -in private_key.pem -out public_key.pem
+```
 #### Notes:
 
 RSA public-priv kulcs használata frontendről érkező adatok titkosítására, frontenden titkosítjuk privát kulcssal, backenden decodeoljuk. (pl ilyen a login információk, email, password stb)

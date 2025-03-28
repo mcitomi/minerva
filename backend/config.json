@@ -1,5 +1,5 @@
 {
     "port" : 3030,
-    "mail_application_password" : "bydu xiuo mydy fgqu",
-    "gemini_api_key" : "AIzaSyBaprlU6gk1k06sx0VjFSytonO6Ft--BRQ"
+    "mail_application_password" : "https://myaccount.google.com/u/1/apppasswords",
+    "gemini_api_key" : "https://aistudio.google.com/app/apikey"
 }
