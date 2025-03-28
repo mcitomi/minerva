@@ -41,6 +41,17 @@ export const handleRequest = async (req: Request, db: Database) => {
             const modelTune = await import(requestedModel.path) as ModelJson;
             tune = modelTune.tune;
             identity = modelTune.identity;
+
+            if(!tune.length) {
+                history.unshift({
+                    "role": "user",
+                    "parts": [
+                        {
+                            "text": "Üdvözöld a tanulót, mutasd be magad illetve kezdeményezz beszélgetést!"
+                        }
+                    ]
+                },
+            )}
             
             const chatSession = model.startChat({
                 generationConfig,
