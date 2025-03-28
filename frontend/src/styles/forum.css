@@ -39,6 +39,16 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.forumAnotherUser p {
+    padding-left: 10px;
+    text-align: left;
+}
+
+.forumUser p {
+    padding-left: 10px;
+    text-align: left;
+}
+
 .pfp {
     border-radius: 50%;
 }
