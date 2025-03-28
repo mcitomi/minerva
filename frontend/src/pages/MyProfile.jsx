@@ -153,6 +153,7 @@ export default ({ handleLogout, isLogged }) => {
 
     const savePfp = async () => {
         try {
+            setImageSaved(true);
             const response = await fetch(`${CONFIG.API_URL}/user/pfp`, {
                 method: "post",
                 headers: {
@@ -167,10 +168,10 @@ export default ({ handleLogout, isLogged }) => {
             if (!response.ok) {
                 setErrorMessage("Hiba a profilkép feltöltése közben.");
                 setShowErrorAlert(true);
+                setImageSaved(false);
             } else {
                 setSuccessMessage("Sikeres feltöltés.");
                 setShowSuccessAlert(true);
-                setImageSaved(true);
             }
         } catch (err) {
             setError(err.message);
