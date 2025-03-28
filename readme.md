@@ -19,7 +19,6 @@ __Globális leírás a projektről, megjegyzések:__
 ## ToDo:
 ### Egy-két plusz ami még jó lenne ha működne: 
 Frontend:
-- !! -> Amikor megnyitunk egy AI chatet, az küldjön valami üdvöző üzenetet (egy fetch kérés a backedn felé egyből oldal betöltődés után valami szöveggel pl "szia")
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
 
