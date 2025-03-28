@@ -21,9 +21,9 @@ export default ({ toggleMode, isDarkMode }) => {
                 <Navbar.Brand as={Link} to="/" className="mainLink" style={{fontSize: "25px"}}>Főoldal</Navbar.Brand>
                 <Navbar.Collapse id="basic-navbar-nav" in={isOpen}>
                     <Nav className="me-auto">
-                        <Nav.Link as={Link} to="/about" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Rólunk</Nav.Link>
                         <Nav.Link as={Link} to="/registration" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Regisztráció</Nav.Link>
                         <Nav.Link as={Link} to="/login"  className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Bejelentkezés</Nav.Link>
+                        <Nav.Link as={Link} to="/about" className="link" style={{fontSize: "20px"}} onClick={handleLinkClick}>Rólunk</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Image 
