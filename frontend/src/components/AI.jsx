@@ -249,6 +249,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                                     id="question"
                                     ref={inputRef}
                                     autoComplete="off"
+                                    maxLength={2000}
                                     onInput={handleInputChange}
                                     onKeyDown={handleKeyDown}
                                     style={{ overflow: "hidden" }} />

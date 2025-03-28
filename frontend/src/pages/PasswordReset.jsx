@@ -2,13 +2,16 @@ import { Container, Row, Col, Button, FloatingLabel, Form, Image } from "react-b
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import SuccessAlert from "../components/SuccessAlert.jsx";
+import ErrorAlert from "../components/ErrorAlert.jsx";
+
 import CONFIG from "../config.json";
 
 // PEM kulcs => ArrayBuffer
 function pemToArrayBuffer(pem) {
     const b64 = pem.replace(/-----BEGIN PUBLIC KEY-----/, "")
-                   .replace(/-----END PUBLIC KEY-----/, "")
-                   .replace(/\s+/g, "");
+        .replace(/-----END PUBLIC KEY-----/, "")
+        .replace(/\s+/g, "");
     return Uint8Array.from(atob(b64), (char) => char.charCodeAt(0)).buffer;
 }
 
@@ -19,6 +22,11 @@ export default () => {
         password: '',
         confirmPassword: ''
     });
+
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [showErrorAlert, setShowErrorAlert] = useState(false);
+    const [successMessage, setSuccessMessage] = useState(null);
+    const [showSuccessAlert, setShowSuccessAlert] = useState(false);
 
     // lekéri a publikus kulcsot
     async function fetchPublicKey() {
@@ -55,7 +63,8 @@ export default () => {
         }
 
         if (formData.password !== formData.confirmPassword) {
-            alert("A jelszavak nem egyeznek!"); // alertesiteni
+            setErrorMessage("A jelszó nem egyezik!");
+            setShowErrorAlert(true);
             return;
         }
 
@@ -93,41 +102,63 @@ export default () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ "password" : encryptedPasswordBase64, "code" : new URLSearchParams(window.location.search).get("code") }),
+                body: JSON.stringify({ "password": encryptedPasswordBase64, "code": new URLSearchParams(window.location.search).get("code") }),
             });
-    
+
             const result = await response.json();
 
-            alert(result.message);
+            if (response.ok) {
+                setSuccessMessage("Jelszó módosítva! Átirányítjuk 5 másodperc múlva...");
+                setShowSuccessAlert(true);
+                setTimeout(() => {
+                    navigate("/login");
+                }, 5000);
+            } else {
+                if (result.message[0].includes("invalid")) {
+                    setErrorMessage("Ez a visszaállítási kérelem lejárt! Kérjen új emailt.");
+                    setShowErrorAlert(true);
+                    return;
+                }
 
-            if(response.ok) {
-                navigate("/login");
+                if (result.message[0].includes("Weak")) {
+                    setErrorMessage("A jelszónak legalább 8 karakter hosszúnak kell lennie, és tartalmaznia kell legalább egy nagybetűt, egy kisbetűt, egy számot és egy speciális karaktert (@$!%?&).");
+                    setShowErrorAlert(true);
+                    return;
+                }
+
+                setErrorMessage("Nem sikerült megváltoztatni a jelszót!");
+                setShowErrorAlert(true);
+                return;
             }
         } catch (error) {
+            setErrorMessage("Nem sikerült megváltoztatni a jelszót!");
+            setShowErrorAlert(true);
             console.error("Error saving password: ", error);
         }
     };
 
     return (
         <Container fluid>
-            <Row style={{ paddingRight: "20px", paddingLeft: "20px"}}>
+            <Row style={{ paddingRight: "20px", paddingLeft: "20px" }}>
                 <Col xs={12} md={6} style={{ paddingTop: 20 }}>
-                    <Image src="./assets/images/resetpassword.gif" alt="Dekor kép" style={{borderRadius:"30px"}} fluid></Image>
+                    <Image src="./assets/images/resetpassword.gif" alt="Dekor kép" style={{ borderRadius: "30px" }} fluid></Image>
                 </Col>
-                <Col xs={12} md={6} style={{backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", marginTop: "20px", borderRadius:"30px"}}>
+                <Col xs={12} md={6} style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", marginTop: "20px", borderRadius: "30px" }}>
                     <h2 className="mt-5 mb-5 pt-5">Jelszó módosítás</h2>
                     <Form onSubmit={handleSubmit}>
                         <FloatingLabel label="Jelszó" className="mb-3 floating-label">
                             <Form.Control type="password" placeholder="Jelszó" name="password" value={formData.password} onChange={handleChange}></Form.Control>
                         </FloatingLabel>
                         <FloatingLabel label="Jelszó újra" className="mb-3 floating-label">
-                            <Form.Control type="password" placeholder="Jelszó újra" name="password" value={formData.confirmPassword} onChange={handleChange}></Form.Control>
+                            <Form.Control type="password" placeholder="Jelszó újra" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange}></Form.Control>
                         </FloatingLabel>
                         <div className="text-center">
                             <Button variant="warning" type="submit" style={{ marginLeft: 10, fontFamily: 'Pacifico', fontSize: "20px" }} className="mt-2">
                                 Jelszó mentése
                             </Button>
                         </div>
+                        {showErrorAlert && <ErrorAlert title={"Sikertelen mentés!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
+                        {showSuccessAlert && <SuccessAlert title={"Sikeres mentés!"} text={successMessage} setOriginStatus={setShowSuccessAlert} />}
                     </Form>
                 </Col>
             </Row>
