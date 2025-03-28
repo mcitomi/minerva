@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form, Image, InputGroup, FloatingLabel } from "react-bootstrap";
+import ReactMarkdown from "react-markdown";
 import { useNavigate } from "react-router-dom";
 import CONFIG from "../config.json";
 import ErrorAlert from "./ErrorAlert";
@@ -30,24 +31,75 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
         }
     }, [token, navigate]);
 
-    async function fetchPersonPost(e) {
-        /*
-        function updateHistory(question, answer) {
-            const newHistory = [...history];
-            newHistory.push({
-                "role": "user", 
-                "parts" : [{"text" : question}]
-            });
-            newHistory.push({
-                "role": "model", 
-                "parts" : [{"text" : answer}]
-            });
-            console.log(newHistory);
-                
-            setHistory(newHistory);
-        }
-        */
+    async function fetchWelcomeMessage() {
+        try {
+            const response = await fetch(
+                `${CONFIG.API_URL}/gemini-models/chat`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    },
+                    body: JSON.stringify({
+                        message: "Üdvözöld a tanulót, mutasd be magad illetve kezdeményezz beszélgetést!",
+                        person: personName,
+                        history: history
+                    })
+                }
+            );
 
+            if (!response.ok) {
+                switch (response.status) {
+                    case 400:
+                        setErrorMessage("Probáld újra később!");
+                        setShowErrorAlert(true);
+                        break;
+                    case 404:  
+                        setErrorMessage("Ez a modell jelenleg nem működik!");
+                        setShowErrorAlert(true); 
+                        break;
+                    case 401:
+                    case 403:
+                        if(isLogged) {
+                            handleLogout();
+                        }
+                        navigate("/login");
+                        break;
+                    case 429:
+                        setErrorMessage("Rendszerünk jelenleg túlterhelt, próbálja újra később!");
+                        setShowErrorAlert(true);
+                        break;
+                    case 500:
+                        setErrorMessage("Szerver oldali hiba történt!");
+                        setShowErrorAlert(true);
+                        break;
+                }
+                return;
+            }
+
+            const resData = await response.json();
+
+            if(resData.model) {
+                setHistory(prevHistory => [
+                    ...prevHistory,
+                    {
+                        "role": "model",
+                        "parts": [
+                            {
+                                "text": resData.model
+                            }
+                        ]
+                    }
+                ]);
+            }
+        }
+        catch (err) {
+            setError(err.message)
+        }
+    }
+
+    async function fetchPersonPost(e) {
         e.preventDefault();
 
         const question = inputRef.current.value;
@@ -93,45 +145,43 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                         setShowErrorAlert(true);
                         break;
                     case 404:  
-                        setErrorMessage("Ez a modell nem működik!");
+                        setErrorMessage("Ez a modell jelenleg nem működik!");
                         setShowErrorAlert(true); 
                         break;
-                    case 401: // ezekkel nem kell semmi
-                    case 403: // ezekkel nem kell semmi
+                    case 401:
+                    case 403:
                         if(isLogged) {
                             handleLogout();
                         }
                         navigate("/login");
                         break;
                     case 429:   // 
-                        setErrorMessage("Túl sok kérés, próbálja újra később!");
+                        setErrorMessage("Rendszerünk jelenleg túlterhelt, próbálja újra később!");
                         setShowErrorAlert(true);
                         break;
                     case 500:
-                        setErrorMessage("Szerveroldali hiba!");
+                        setErrorMessage("Szerver oldali hiba történt!");
                         setShowErrorAlert(true);
                         break;
                 }
+                return;
             }
 
             const resData = await response.json();
 
-            setHistory(prevHistory => [
-                ...prevHistory,
-                {
-                    "role": "model",
-                    "parts": [
-                        {
-                            "text": resData.model
-                        }
-                    ]
-                }
-            ]);
-
-            //updateHistory(question, resData.model);
-            //inputRef.current.value = "";
-            // nem csak egy választ raksz be, hanem
-            // lemásolod, belerakod az új kérdést ÉS választ is, utána cserélsz
+            if(resData.model) {
+                setHistory(prevHistory => [
+                    ...prevHistory,
+                    {
+                        "role": "model",
+                        "parts": [
+                            {
+                                "text": resData.model
+                            }
+                        ]
+                    }
+                ]);
+            }
         }
         catch (err) {
             setError(err.message)
@@ -159,11 +209,10 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
         }
     }, [history]);
 
-    // useState: előző kérdéseknek, válaszok [{"question": ..., "answer": ...}, ....]
-    // kiírás: messages.map((msg) => {
-    //  - kiírod a kérdést (msg.question)
-    //  - válasz (msg.answer)
-    // });
+    useEffect(() => {
+        fetchWelcomeMessage();
+    }, []);
+
     return (
         <Container fluid>
             <Row>
@@ -184,7 +233,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                                 } else {
                                     return (
                                         <>
-                                            <div className="ai">{elem.parts[0].text}</div>
+                                            <div className="ai"><ReactMarkdown>{elem.parts[0].text}</ReactMarkdown></div>
                                         </>
                                     );
                                 }
