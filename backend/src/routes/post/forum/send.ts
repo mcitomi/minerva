@@ -27,7 +27,8 @@ async function webhook(db: Database, body: { message: string }, usrQuery: { user
 
         if(res.ok) {
             const message = await res.json();
-            db.run("UPDATE forumMessages SET messageIdDiscord ? WHERE timeSent = ?;", [message.id, timeSent]);
+            
+            db.run("UPDATE forumMessages SET messageIdDiscord = ? WHERE timeSent = ?;", [message.id, timeSent]);
         }
     } catch (error) {
         console.error("Discord link error", error);
@@ -82,7 +83,7 @@ export const handleRequest = async (req: Request, db: Database) => {
         const timeSent = Math.floor(Date.now() / 1000);
         db.run("INSERT INTO forumMessages (message, timeSent, credentialsId) VALUES (?, ?, ?);", [body.message, timeSent, jwtPayload._id]);
 
-        messageTriggers.forEach(callback => callback(jwtPayload._id, body.message, timeSent));
+        messageTriggers.forEach(callback => callback(jwtPayload._id, body.message, timeSent, null));
         
         messageTriggers.length = 0; // töröljük a tömb elemeit, triggereket
 
