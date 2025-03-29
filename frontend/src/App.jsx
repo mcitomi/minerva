@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Ady, Arany, Babits, Jozsef, Kosztolanyi, Kolcsey, Madach, Petofi, BolyaiFarkas, BolyaiJanos, Eotvos, Erdos, Klein, Neumann, Polya, Turan, Horthy, Hunyadi, Kossuth, Matyas, Rakoczi, Szechenyi, Saint, Zrinyi, VerifyPage, Forum, Privacy } from "./pages/router.js";
+import { Home, About, Login, Registration, NotFound, MyProfile, MInerva, Ady, Arany, Babits, Jozsef, Kosztolanyi, Kolcsey, Madach, Petofi, BolyaiFarkas, BolyaiJanos, Eotvos, Erdos, Konig, Neumann, Polya, Turan, Horthy, Hunyadi, Kossuth, Matyas, Rakoczi, Szechenyi, Saint, Zrinyi, VerifyPage, Forum, Privacy } from "./pages/router.js";
 import { useLocation } from 'react-router-dom';
 
 import MainNavbar from "./components/MainNavbar.jsx";
@@ -102,7 +102,7 @@ export default () => {
                 <Route path="/bolyai-janos" element={<BolyaiJanos handleLogout={handleLogout} isLogged={isLogged}></BolyaiJanos>}></Route>
                 <Route path="/eotvos-lorand" element={<Eotvos handleLogout={handleLogout} isLogged={isLogged}></Eotvos>}></Route>
                 <Route path="/erdos-pal" element={<Erdos handleLogout={handleLogout} isLogged={isLogged}></Erdos>}></Route>
-                <Route path="/klein-gyula" element={<Klein handleLogout={handleLogout} isLogged={isLogged}></Klein>}></Route>
+                <Route path="/konig-gyula" element={<Konig handleLogout={handleLogout} isLogged={isLogged}></Konig>}></Route>
                 <Route path="/neumann-janos" element={<Neumann handleLogout={handleLogout} isLogged={isLogged}></Neumann>}></Route>
                 <Route path="/polya-gyorgy" element={<Polya handleLogout={handleLogout} isLogged={isLogged}></Polya>}></Route>
                 <Route path="/turan-pal" element={<Turan handleLogout={handleLogout} isLogged={isLogged}></Turan>}></Route>

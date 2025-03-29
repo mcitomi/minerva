@@ -17,7 +17,7 @@ export { default as BolyaiFarkas } from "./AI/BolyaiFarkas.jsx";
 export { default as BolyaiJanos } from "./AI/BolyaiJanos.jsx";
 export { default as Eotvos } from "./AI/Eotvos.jsx";
 export { default as Erdos } from "./AI/Erdos.jsx";
-export { default as Klein } from "./AI/Klein.jsx";
+export { default as Konig } from "./AI/Konig.jsx";
 export { default as Neumann } from "./AI/Neumann.jsx";
 export { default as Polya } from "./AI/Polya.jsx";
 export { default as Turan } from "./AI/Turan.jsx";

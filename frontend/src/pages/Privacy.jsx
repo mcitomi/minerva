@@ -47,11 +47,11 @@ export default () => {
                     <Row className="mt-5 mb-5">
                         <Col xs={12} md={4}>
                             <h3>Az információk megosztása</h3>
-                            <p style={{textAlign: "justify"}}>Személyes adatait nem adjuk ki harmadik feleknek. Minden adatot saját, Oracle Cloud VPS-en tárolunk, és kizárólag a MInerva belső működéséhez használjuk fel. A fórumon közzétett üzenetek azonban elérhetőek a Minerva Discord szerverén a "fórum" csatornában.</p>
+                            <p style={{textAlign: "justify"}}>Személyes adatait nem adjuk ki harmadik feleknek. Minden adatot saját, Oracle Cloud VPS-en tárolunk, és kizárólag a MInerva belső működéséhez használjuk fel. A fórumon közzétett üzenetek azonban elérhetőek a Minerva Discord szerverén a "fórum" csatornában. A mesterséges intelligencia alapú chatben történő beszélgetések a Google Gemini API-ján keresztül zajlanak. Ez azt jelenti, hogy a beszélgetések során megosztott adatok a Google és a Discord szolgáltatásaihoz is eljuthatnak.</p>
                         </Col>
                         <Col xs={12} md={4}>
                             <h3>Adatmegőrzés és inaktiválás</h3>
-                            <p style={{textAlign: "justify"}}>Személyes adatait mindaddig megőrizzük, amíg fiókja aktív. Lehetősége van fiókja inaktiválására, melynek során adatai elérhetetlenné válnak más felhasználók számára, kivéve a fórumon közzétett publikus üzeneteit, amelyek továbbra is láthatóak maradnak a weboldalon és a Minerva Discord szerverén az ön nevével együtt.</p>
+                            <p style={{textAlign: "justify"}}>Személyes adatait mindaddig megőrizzük, amíg fiókja aktív. Lehetősége van fiókja inaktiválására, melynek során adatai elérhetetlenné válnak más felhasználók számára, kivéve a fórumon közzétett publikus üzeneteit, amelyek továbbra is láthatóak maradnak a weboldalon és a Minerva Discord szerverén az ön nevével és profilképével együtt.</p>
                         </Col>
                         <Col xs={12} md={4}>
                             <h3>Adatbiztonság</h3>
@@ -61,7 +61,7 @@ export default () => {
                 </Col>
                 <Col xs={12} md={12}>
                     <h3>Gyermekek adatainak védelme</h3>
-                    <p style={{textAlign: "justify"}}>Szolgáltatásaink gyermekek számára is elérhetőek. Kiemelten fontos számunkra a fiatal felhasználók adatainak védelme, ezért különös figyelmet fordítunk adatkezelési gyakorlataink során a gyermekek személyes adatainak biztonságára.</p>
+                    <p style={{textAlign: "justify"}}>Szolgáltatásaink gyermekek számára is elérhetőek, azonban az AI (Mesterséges intelligencia) alapú szolgáltatásaink csak 18 éven felüli felhasználók, vagy szülői illetve törvényes képviselői beleegyezéssel használható. Az oldal üzemeltetője nem vállal felelősséget a szolgáltatás helytelen vagy jogosulatlan használatából eredő következményekért. Kiemelten fontos számunkra a fiatal felhasználók adatainak védelme, ezért különös figyelmet fordítunk adatkezelési gyakorlataink során a gyermekek személyes adatainak biztonságára.</p>
                 </Col>
                 <Col xs={12} md={12}>
                     <h3 className="mt-3">Az Ön jogai</h3>
@@ -82,7 +82,7 @@ export default () => {
                         <Col xs={12} md={6}>
                             <h3>A szabályzat módosításai</h3>
                             <p style={{textAlign: "justify"}}>Fenntartjuk a jogot jelen Adatvédelmi Szabályzat módosítására. A változásokról megfelelő időben értesítjük felhasználóinkat.</p>
-                            <p style={{textAlign: "justify"}}><strong>Utolsó frissítés:</strong> 2025. március 28.</p>
+                            <p style={{textAlign: "justify"}}><strong>Utolsó frissítés:</strong> 2025. március 29.</p>
                         </Col>
                     </Row>
                 </Col>
