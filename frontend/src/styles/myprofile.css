@@ -1,7 +1,0 @@
-body.dark .profileCard {
-    background-color: rgba(211, 238, 253, 0.78);
-}
-
-body.light .profileCard {
-    background-color: #a7d5fb !important;
-}
