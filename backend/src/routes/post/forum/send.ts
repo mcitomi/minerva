@@ -11,6 +11,30 @@ import { dirtywords } from "../../../blacklist.json";
 // webhhook link
 import { discord_webhook_link } from "../../../../config.json";
 
+async function webhook(db: Database, body: { message: string }, usrQuery: { username: string }, jwtPayload: Payload, timeSent: number) {
+    try {
+        const res = await fetch(discord_webhook_link + "?wait=true", {
+            method: "post",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify({
+                "content" : body.message,
+                "username" : decryptRSA(usrQuery.username),
+                "avatar_url" : `https://api.edu-minerva.hu/user/pfp?u=${jwtPayload._id}`
+            })
+        });
+
+        if(res.ok) {
+            const message = await res.json();
+            
+            db.run("UPDATE forumMessages SET messageIdDiscord = ? WHERE timeSent = ?;", [message.id, timeSent]);
+        }
+    } catch (error) {
+        console.error("Discord link error", error);
+    }
+}
+
 export const handleRequest = async (req: Request, db: Database) => {
     try {
         const authHeader = req.headers.get("authorization");
@@ -59,27 +83,13 @@ export const handleRequest = async (req: Request, db: Database) => {
         const timeSent = Math.floor(Date.now() / 1000);
         db.run("INSERT INTO forumMessages (message, timeSent, credentialsId) VALUES (?, ?, ?);", [body.message, timeSent, jwtPayload._id]);
 
-        messageTriggers.forEach(callback => callback(jwtPayload._id, body.message, timeSent));
-
+        messageTriggers.forEach(callback => callback(jwtPayload._id, body.message, timeSent, null));
+        
         messageTriggers.length = 0; // töröljük a tömb elemeit, triggereket
 
         const usrQuery = db.query("SELECT username FROM credentials WHERE id = ?;").get(jwtPayload._id) as { username: string };
 
-        try {
-            fetch(discord_webhook_link, {
-                method: "post",
-                headers: {
-                    "Content-Type" : "application/json"
-                },
-                body: JSON.stringify({
-                    "content" : body.message,
-                    "username" : decryptRSA(usrQuery.username),
-                    "avatar_url" : `https://api.edu-minerva.hu/user/pfp?u=${jwtPayload._id}`
-                })
-            });
-        } catch (error) {
-            console.error("Discord link error");
-        }
+        webhook(db, body, usrQuery, jwtPayload, timeSent);
 
         return Response.json({
             "message" : ["Sent!"]

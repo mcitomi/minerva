@@ -44,14 +44,15 @@ db.run(`CREATE TABLE IF NOT EXISTS forumMessages (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     message TEXT,
     timeSent INTEGER,
+    messageIdDiscord TEXT
     credentialsId INTEGER,
     FOREIGN KEY (credentialsId) REFERENCES credentials(id)
 );`);
 
-db.run(`CREATE TABLE IF NOT EXISTS discordCache (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    messageId TEXT
-);`);
+// db.run(`CREATE TABLE IF NOT EXISTS discordCache (
+//     id INTEGER PRIMARY KEY AUTOINCREMENT,
+//     messageId TEXT
+// );`);
 
 // db.run(`CREATE TABLE IF NOT EXISTS sessions (    // továbbfejlesztési lehetőség: session kezelés
 //     id TEXT PRIMARY KEY,

@@ -193,10 +193,16 @@ export default ({ handleLogout, isLogged }) => {
             });
 
             if (!response.ok) {
-
                 setErrorMessage("Nem sikerült üzenetet fogadni!");
                 setShowErrorAlert(true);
                 return;
+            }
+
+            if(response.status == 202) {
+                const data = await response.json();
+                setMessages((messages) =>
+                    messages.filter((message) => message.timeSent !== data.deletableTimestamp)
+                );
             }
 
             if (response.status == 200) {

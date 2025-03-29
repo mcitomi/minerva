@@ -22,14 +22,25 @@ export const handleRequest = async (req: Request, db: Database) => {
 
         const jwtPayload: Payload = verifyToken(jwToken);
 
-        return new Promise((resolve) => {   // "Ígéret" átadása, varkozás hogy legyen új msg.
-            const callback = (userId: number, message: string, timeSent: number) => {
-                resolve(Response.json({
-                    "userId": userId,
-                    "message": message,
-                    "timeSent": timeSent,
-                    "yourMessage": jwtPayload._id === userId
-                }));
+        return new Promise((resolve) => {   // "Ígéret" átadása, varkozás a követekző válaszig.
+            const callback = (userId: number | null, message: string | null, timeSent: number | null, deletableTimestamp: number | null) => {
+                if(!deletableTimestamp) {
+                    resolve(Response.json({
+                        "userId": userId,
+                        "message": message,
+                        "timeSent": timeSent,
+                        "yourMessage": jwtPayload._id === userId,
+                        "deletableTimestamp" : deletableTimestamp
+                    }));
+                } else {
+                    resolve(Response.json({
+                        "userId": userId,
+                        "message": message,
+                        "timeSent": timeSent,
+                        "yourMessage": jwtPayload._id === userId,
+                        "deletableTimestamp" : deletableTimestamp
+                    }, { status: 202 }));
+                }
             };
 
             messageTriggers.push(callback); // hozzáadjuk a kliens "kérelmét" a várolistához
