@@ -29,8 +29,7 @@ Backend:
 - o.O
 
 AI:
-- RÁKÓCZI FERENCBŐL A MÁSODIK KELL!!! (II. Rákóczi Ferenc)
-- új emberek megírása: József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Horthy Miklós, Eötvös Lóránd, Hunyadi János, Kossuth Lajos, Mátyás király, Rákóczi Ferenc, Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
+- új emberek megírása: József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Horthy Miklós, Kossuth Lajos, Mátyás király,  Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
