@@ -65,7 +65,7 @@ export const handleRequest = async (req: Request, db: Database) => {
             }, {status: 406});
         }
 
-        if(/[@:#%=+!$&*()?<>\s]/.test(body.name)) {
+        if(/[@:#%=+!$&*()?<>]/.test(body.name)) {
             return Response.json({
                 "message": ["Do not use illagal name!"]
             }, {status: 406});

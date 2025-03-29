@@ -306,6 +306,7 @@ export default ({ handleLogout, isLogged }) => {
             });
 
             if (!response.ok) {
+                setIsEdit(true);
                 if(response.status == 406) {
                     setErrorMessage("Ne használj ilyen szavakat vagy karaktereket a nevedben!")
                     setShowErrorAlert(true);
