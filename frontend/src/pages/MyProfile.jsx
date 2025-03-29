@@ -306,6 +306,11 @@ export default ({ handleLogout, isLogged }) => {
             });
 
             if (!response.ok) {
+                if(response.status == 406) {
+                    setErrorMessage("Ne használj ilyen szavakat vagy karaktereket a nevedben!")
+                    setShowErrorAlert(true);
+                    return;
+                }
                 setErrorMessage("Hiba az adatok mentése közben.")
                 setShowErrorAlert(true);
             } else {
@@ -315,7 +320,6 @@ export default ({ handleLogout, isLogged }) => {
         } catch (err) {
             setError(err.message);
         }
-
     }
     return (
         <Container fluid>

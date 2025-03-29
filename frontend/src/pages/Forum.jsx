@@ -9,6 +9,7 @@ import ForumAlert from "../components/ForumAlert";
 import ErrorAlert from "../components/ErrorAlert";
 
 var profileIdsInChat = [];
+var yourName;
 
 export default ({ handleLogout, isLogged }) => {
     const navigate = useNavigate();
@@ -48,7 +49,7 @@ export default ({ handleLogout, isLogged }) => {
             e.preventDefault();
 
             if (!chatRef.current.value || chatRef.current.value == "" || sendBtnRef.current.disabled) return;
-            
+
             sendBtnRef.current.disabled = true;
 
             const response = await fetch(`${CONFIG.API_URL}/forum/send`, {
@@ -135,9 +136,9 @@ export default ({ handleLogout, isLogged }) => {
             }));
 
         } catch (err) {
-            
+
             setErrorMessage("Hiba történt az üzenetek lekérése közben!");
-             setShowErrorAlert(true);
+            setShowErrorAlert(true);
         }
     }
 
@@ -176,6 +177,11 @@ export default ({ handleLogout, isLogged }) => {
         }
     }
 
+    const writeReply = (name) =>{
+        chatRef.current.value = `@${name}: `;
+        chatRef.current.focus();
+    }
+
     const waitNewMessage = async () => {
         try {
             const response = await fetch(`${CONFIG.API_URL}/forum/new`, {
@@ -187,7 +193,7 @@ export default ({ handleLogout, isLogged }) => {
             });
 
             if (!response.ok) {
-               
+
                 setErrorMessage("Nem sikerült üzenetet fogadni!");
                 setShowErrorAlert(true);
                 return;
@@ -236,6 +242,12 @@ export default ({ handleLogout, isLogged }) => {
         }
     };
 
+    function setYourName(name) {
+        if(name && name !== "") {
+            yourName = name;
+        }
+    }
+
     return (
         <Container fluid>
             <Row>
@@ -245,16 +257,30 @@ export default ({ handleLogout, isLogged }) => {
                         <div className="forumChat" ref={forumChatRef}>
                             {
                                 messages.map((message, i) => {
-                                    return <div key={i} className={message.yourMessage ? "forumUser" : "forumAnotherUser"}>
+                                    {
+                                        setYourName(profiles.find(profile => profile.userId == message.userId && message.yourMessage)?.name)
+                                    }
+                                    return <div key={i} className={(message.yourMessage ? "forumUser" : "forumAnotherUser")}>
                                         <Row>
-                                            <Col xs={2} style={{maxWidth: "50px"}}>
+                                            <Col xs={2} style={{ maxWidth: "50px" }}>
                                                 <Image style={{ width: "5vh", height: "5vh", marginRight: "10px" }} src={profiles.find(profile => profile.userId == message.userId)?.pfp ? profiles.find(profile => profile.userId == message.userId)?.pfp : defaultPfpUrl} className="pfp"></Image>
                                             </Col>
                                             <Col xs={10}>
-                                                <small style={{ paddingLeft: 10 }}>{profiles.find(profile => profile.userId == message.userId) ? profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"}</small>
+                                                <small style={{ paddingLeft: 10 }}>
+                                                    {
+                                                        profiles.find(profile => profile.userId == message.userId) ? 
+                                                        profiles.find(profile => profile.userId == message.userId)?.name : "[Inactive user]"
+                                                    }
+                                                </small>
+                                                <span style={{textAlign: "right", float: "inline-end"}}>{(!message.yourMessage && profiles.find(profile => profile.userId == message.userId)?.name) && <div onClick={() => writeReply(profiles.find(profile => profile.userId == message.userId)?.name)} id="replyImg"></div>}</span>
+                                                {/* 
+                                                <span style={{textAlign: "right", float: "inline-end"}}>{(!message.yourMessage && profiles.find(profile => profile.userId == message.userId)?.name) && <div onClick={() => writeReply(`<@${profiles.find(profile => profile.userId == message.userId)?.userId}>`)} id="replyImg"></div>}</span> 
+                                                Amennyiben megvalósulna egy teljes cross-platform discord integráció, az a fentebb látható módon valósulna meg, user azonosító alapján. 
+                                                */}
                                                 <br />
                                                 <p style={{ paddingLeft: 10, fontSize: "10px" }}>[{new Date(message.timeSent * 1000).toLocaleString("hu-HU")}]</p>
-                                                <p style={{ minWidth: "200px" }}>{message.message}</p>
+        
+                                                <p className={message.message.trim()?.split('@')[1]?.split(':')[0] == yourName && "tagged"} style={{ minWidth: "200px" }}>{message.message}</p>
                                             </Col>
                                         </Row>
                                     </div>

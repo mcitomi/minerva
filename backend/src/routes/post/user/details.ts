@@ -8,6 +8,9 @@ import { encryptRSA } from "../../../modules/crypt";
 import { verifyToken } from "../../../modules/auth/jwt";
 import { type Payload } from "../../../types/jwt";
 
+// tiltott szavak listája
+import { dirtywords } from "../../../blacklist.json";
+
 export const handleRequest = async (req: Request, db: Database) => {
     const allowedFields = ["name", "email", "institution", "country", "language", "classroom"];
     try {
@@ -54,6 +57,18 @@ export const handleRequest = async (req: Request, db: Database) => {
             return Response.json({
                 "message": errorMessages
             }, { status: 400 });
+        }
+
+        if(dirtywords.some(word => body.name.toLowerCase().includes(word.toLowerCase()))) {
+            return Response.json({
+                "message": ["Do not use dirty name!"]
+            }, {status: 406});
+        }
+
+        if(/[@:#%=+!$&*()?<>\s]/.test(body.name)) {
+            return Response.json({
+                "message": ["Do not use illagal name!"]
+            }, {status: 406});
         }
 
         db.run(`

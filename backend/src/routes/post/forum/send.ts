@@ -7,7 +7,7 @@ import { decryptRSA } from "../../../modules/crypt";
 // long polling-hoz "event" meghívó
 import { messageTriggers } from "../../get/forum/new";
 // DirtyWords
-import { dirtywords } from "./blacklist.json";
+import { dirtywords } from "../../../blacklist.json";
 // webhhook link
 import { discord_webhook_link } from "../../../../config.json";
 

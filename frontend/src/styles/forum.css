@@ -7,13 +7,39 @@
 }
 
 body.dark .forumBox {
-    background-color: #46789a;
+    background-color: rgba(211, 238, 253, 0.78);
 }
 
 body.light .forumBox {
     background-color: #a7d5fb;
 }
 
+body.light #replyImg {
+    background-image: url("../../public/assets/images/forum/reply-white.svg");
+}
+
+body.dark #replyImg {
+    background-image: url("../../public/assets/images/forum/reply-w.png");
+}
+ 
+#replyImg {
+    width: 2vh;
+    height: 2vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#replyImg:hover {
+    cursor: pointer;
+}
+
+.tagged {
+    border: solid yellow 3px;
+    border-radius: 15px;
+    background-color: yellow;
+    color: black;
+}
+ 
 .forumChat {
     display: flex;
     flex-direction: column;
