@@ -6,6 +6,7 @@ import { port } from "../config.json";
 
 import { RequestHandler } from "./router";
 import { modelLoader } from "./modules/model-tuning/loader";
+import { DiscordClient } from "./modules/discord";
 
 // Modulok, Adatbázis deklarálás
 const db: Database = new Database("database.sqlite", { create: true });
@@ -47,6 +48,11 @@ db.run(`CREATE TABLE IF NOT EXISTS forumMessages (
     FOREIGN KEY (credentialsId) REFERENCES credentials(id)
 );`);
 
+db.run(`CREATE TABLE IF NOT EXISTS discordCache (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    messageId TEXT
+);`);
+
 // db.run(`CREATE TABLE IF NOT EXISTS sessions (    // továbbfejlesztési lehetőség: session kezelés
 //     id TEXT PRIMARY KEY,
 //     userId INTEGER NOT NULL,
@@ -57,6 +63,7 @@ db.run(`CREATE TABLE IF NOT EXISTS forumMessages (
 // Modulok futtatása, elemek betöltése
 requesthandler.register();
 modelLoader();
+DiscordClient(db);
 
 // Bun szerver létrehozása
 Bun.serve({
