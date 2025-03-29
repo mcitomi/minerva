@@ -55,10 +55,10 @@ export default () => {
                 </Row>
 
                 <Row className="mt-3">
-                    <Col sx={12} md={6} className="text-center">
+                    <Col xs={12} md={6} className="text-center">
                         <Image src="./assets/images/earth.gif" alt="Gif" fluid />
                     </Col>
-                    <Col sx={12} md={6} className="d-flex justify-content-center align-items-center">
+                    <Col xs={12} md={6} className="d-flex justify-content-center align-items-center">
                         <div>
                             <h2 style={{ marginBottom: 30 }}>Célunk</h2>
                             <ul id="ikon">

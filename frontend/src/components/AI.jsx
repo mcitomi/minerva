@@ -216,10 +216,10 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
     return (
         <Container fluid>
             <Row>
-                <Col sx={12} md={6}>
+                <Col xs={12} md={6}>
                     <Image src={img} alt={altText} fluid></Image>
                 </Col>
-                <Col sx={12} md={6}>
+                <Col xs={12} md={6}>
                     <h2 className="mt-3 mb-3">{title}</h2>
                     <div className="box">
                         <div className="chat" ref={chatRef}>
