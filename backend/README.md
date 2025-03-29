@@ -54,16 +54,12 @@ Pl.: az src/routes/get/test/ping.ts endpont az interneten egy get kéréssel les
 A két tábla között ON DELETE CASCADE kapcsolat van, a profileDetails.credentialsId kapcsolódik a credentials.id-hez.
 
 ### `forumMessages` tábla
-| **id** | **message** | **timeSent** | **credentialsId** |
-|--------|----------|------------|-------------|
-| INTEGER AUTOINCREMENT | TEXT | INTEGER | INTEGER UNIQUE |
+| **id** | **message** | **timeSent** | **messageIdDiscord** | **credentialsId** |
+|--------|----------|------------|-------------| --- |
+| INTEGER AUTOINCREMENT | TEXT | INTEGER | TEXT | INTEGER UNIQUE |
 
 A forumMessages.credentialsId kapcsolódik a credentials.id-hez.
 
-### `discordCache` tábla
-| **id** | **messageId** | 
-|---|---|
-| INTEGER AUTOINCREMENT | TEXT | 
 
 ## Tiktoksítás:
 

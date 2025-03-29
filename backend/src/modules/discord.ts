@@ -22,35 +22,28 @@ export async function DiscordClient(db: Database) {
     
             client.user.setActivity({name: "www.edu-minerva.hu", type: ActivityType.Competing });
     
-            const messageIds = db.query("SELECT messageId FROM discordCache;").all() as {messageId: string}[];
+            const messageIds = db.query("SELECT messageIdDiscord FROM forumMessages;").all() as {messageIdDiscord: string}[];
     
             try {
                 const discordForumChannel = await client.channels.fetch(discord_bot_settings.forum_channel_id) as TextChannel;
     
                 for (const message of messageIds) {
-                    discordForumChannel.messages.fetch(message.messageId).catch((e) => { 
-                        db.run("DELETE FROM discordCache WHERE messageId = ?;", [message.messageId]);
-                        return; 
-                    });
+                    // ez azért szükséges mert a discord bot indítása előtti üzenetek nincsenek alapból betöltve
+                    discordForumChannel.messages.fetch(message.messageIdDiscord).catch((e) => { return; });
                 }
             } catch (e) {
                 console.log("Discord fetch error:", e);
             }
         });
     
-        client.on("messageCreate", (msg) => {
-            db.run("INSERT INTO discordCache (messageId) VALUES (?);", [msg.id]);
-        });
-    
         client.on("messageDelete", async (msg) => {
-            const deleteResult = db.run("DELETE FROM forumMessages WHERE message = ?;", [msg.content]);
+            const deleteResult = db.run("DELETE FROM forumMessages WHERE messageIdDiscord = ?;", [msg.id]);
             const discordLogChannel = await client.channels.fetch(discord_bot_settings.log_channel_id) as TextChannel;
             
             if(deleteResult.changes > 0) {
-                discordLogChannel.send({content: `Az összes \`${msg.content}\` tartalmú üzenet törölve!`});
-                db.run("DELETE FROM discordCache WHERE messageId = ?;", [msg.id]);
+                discordLogChannel.send({content: `A(z) \`${msg.content}\` tartalmú üzenet törölve!`});
             } else {
-                discordLogChannel.send({content: `Az \`${msg.content}\` üzenetet nem sikerült törölni! Valószínűleg nem található az adatbázisban.`});
+                discordLogChannel.send({content: `A(z) \`${msg.content}\` tartalmú üzenetet nem sikerült törölni! Valószínűleg nem található az adatbázisban.`});
             }
         }); 
 

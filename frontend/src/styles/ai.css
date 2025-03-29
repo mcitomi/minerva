@@ -7,7 +7,7 @@
 }
 
 body.dark .box {
-    background-color: #46789a !important;
+    background-color: rgba(211, 238, 253, 0.78) !important;
 }
 
 body.light .box {
