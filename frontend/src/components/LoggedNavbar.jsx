@@ -37,7 +37,7 @@ export default ({ toggleMode, isDarkMode, handleLogout }) => {
                                 <NavDropdown.Item as={Link} to="/bolyai-janos" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Bolyai János</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/eotvos-lorand" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Eötvös Lóránd</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/erdos-pal" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Erdős Pál</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/klein-gyula" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Klein Gyula</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/konig-gyula" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Kőnig Gyula</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/neumann-janos" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Neumann János</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/polya-gyorgy" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Pólya György</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/turan-pal" className="link" style={{ fontSize: "20px" }} onClick={handleLinkClick}>Turán Pál</NavDropdown.Item>
