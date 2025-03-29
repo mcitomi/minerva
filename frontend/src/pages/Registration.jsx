@@ -158,7 +158,7 @@ export default () => {
                 <Col xs={12} md={6} style={{ paddingTop: 20}}>
                     <Image src="./assets/images/registration.gif" alt="Dekor kép" style={{borderRadius:"30px"}} fluid></Image>
                 </Col>
-                <Col xs={12} md={6} style={{backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", marginTop: "20px", borderRadius:"30px"}}>
+                <Col xs={12} md={6} className="inputForm" style={{ paddingTop: 30, paddingBottom: 30, color: "#212529", marginTop: "20px", borderRadius:"30px"}}>
                     <h2 className="mt-5 mb-5 pt-5">Regisztráció</h2>
                     <Form onSubmit={handleSubmit}>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">

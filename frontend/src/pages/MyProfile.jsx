@@ -8,7 +8,6 @@ import ErrorAlert from "../components/ErrorAlert.jsx";
 import CONFIG from "../config.json";
 
 import "../styles/main.css";
-import "../styles/myprofile.css";
 
 export default ({ handleLogout, isLogged }) => {
     const fileInputRef = useRef(null);
@@ -327,7 +326,7 @@ export default ({ handleLogout, isLogged }) => {
             {showDeactivateModal && <DeactivateModalAlert />}
             {showPasschangeModal && <PasschangeModalAlert/>}
             <Row style={{padding: 20}}>
-                <Col xs={12} md={8} className="profileCard" style={{ backgroundColor: "#d3eefdc7", paddingTop: 30, paddingBottom: 30, color: "#212529", borderRadius:"30px"}}>
+                <Col xs={12} md={8} className="inputForm" style={{ paddingTop: 30, paddingBottom: 30, color: "#212529", borderRadius:"30px"}}>
                     <h3 style={{ marginBottom: 30 }}>Adataim</h3>
                     <Form style={{borderRadius:"30px"}}>
                         <FloatingLabel controlId="floatingInput" label="Név" className="mb-3 floating-label">

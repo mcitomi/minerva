@@ -43,3 +43,12 @@ body {
 .floating-label .form-control {
     font-family: 'Lora', serif;
 }
+
+body.dark .inputForm {
+    background-color: rgba(211, 238, 253, 0.78);
+}
+
+body.light .inputForm {
+    background-color: #a7d5fb;
+}
+
