@@ -3,5 +3,5 @@ body.dark .profileCard {
 }
 
 body.light .profileCard {
-    background-color: #a7d5fb;
+    background-color: #a7d5fb !important;
 }

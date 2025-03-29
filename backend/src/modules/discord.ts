@@ -45,13 +45,13 @@ export async function DiscordClient(db: Database) {
             const discordLogChannel = await client.channels.fetch(discord_bot_settings.log_channel_id) as TextChannel;
             
             if(deleteResult.changes > 0) {
-                discordLogChannel.send({content: `A(z) \`${msg.content}\` tartalmú üzenet törölve!`});
+                discordLogChannel.send({content: `✅ A(z) \`${msg.content}\` tartalmú üzenet törölve!`});
 
                 messageTriggers.forEach(callback => callback(null, null, null, forumMessage.timeSent));
         
                 messageTriggers.length = 0; // töröljük a tömb elemeit, triggereket
             } else {
-                discordLogChannel.send({content: `A(z) \`${msg.content}\` tartalmú üzenetet nem sikerült törölni! Valószínűleg nem található az adatbázisban.`});
+                discordLogChannel.send({content: `❌ A(z) \`${msg.content}\` tartalmú üzenetet nem sikerült törölni! Valószínűleg nem található az adatbázisban.`});
             }
         }); 
 
