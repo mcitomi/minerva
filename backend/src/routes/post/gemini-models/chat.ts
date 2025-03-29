@@ -17,9 +17,9 @@ export const handleRequest = async (req: Request, db: Database) => {
         const genAI = new GoogleGenerativeAI(gemini_api_key);
 
         const generationConfig = {
-            temperature: 0.5,
-            topP: 0.95,
-            topK: 40,
+            temperature: 0.15,
+            topP: 0.85,
+            topK: 20,
             maxOutputTokens: 8192,
             responseMimeType: "text/plain",
         };
