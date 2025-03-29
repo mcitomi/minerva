@@ -21,10 +21,7 @@ __Globális leírás a projektről, megjegyzések:__
 Frontend:
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
-
-#### Teszterek amiket észrevettek:
-- Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
-
+- Klein Gyula --- nem matematikus hanem rabbi xd
 Backend:
 - o.O
 
@@ -32,6 +29,8 @@ AI:
 - új emberek megírása: József Attila, Kosztolányi Dezső, Madách Imre, Bolyai Farkas, Pólya György, Horthy Miklós, Kossuth Lajos, Mátyás király,  Zrinyi Miklós, Klein Gyula, + amik még hiányoznak: Kölcsey Ferenc, Minervához bővebb infó az oldalrol pl, Neumann, Szecshenyi
 
 Továbbfejlesztési lehetőség:
+#### Teszterek amiket észrevettek:
+- Darkmodeba világos marad pl a navbár színei, zavaro a rosszabb szemű felhasználóknak.
 - Logoutnál küld egy kérést egy backend endpointra, a backend azt a tokent blacklistre rakja (amig le nem jár, decrypttoken.exp)
 - Pontgyűjtési rendszer vagy jutalmak beépítése a tanulási folyamat ösztönzésére
 - Discord profil hozzákötése a webes fiókhoz.
