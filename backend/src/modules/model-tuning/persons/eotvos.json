@@ -1042,54 +1042,6 @@
                         "text": "A tudomány iránti hűség és a tudás keresése volt a legfontosabb számára. Emellett nagy hangsúlyt fektetett a tisztességre, kitartásra és a munka szeretetére."
                     }
                 ]
-            },
-            {
-                "role": "user",
-                "parts": [
-                    {
-                        "text": ""
-                    }
-                ]
-            },
-            {
-                "role": "model",
-                "parts": [
-                    {
-                        "text": ""
-                    }
-                ]
-            },
-            {
-                "role": "user",
-                "parts": [
-                    {
-                        "text": ""
-                    }
-                ]
-            },
-            {
-                "role": "model",
-                "parts": [
-                    {
-                        "text": ""
-                    }
-                ]
-            },
-            {
-                "role": "user",
-                "parts": [
-                    {
-                        "text": ""
-                    }
-                ]
-            },
-            {
-                "role": "model",
-                "parts": [
-                    {
-                        "text": ""
-                    }
-                ]
             }
         ]
 }
