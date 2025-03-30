@@ -26,7 +26,7 @@ Backend:
 - o.O
 
 AI:
-- új emberek megírása:  Madách Imre, Bolyai Farkas, Pólya György, Horthy Miklós, Kossuth Lajos, Mátyás király,  Zrinyi Miklós Minervához bővebb infó az oldalrol pl 
+
 
 Továbbfejlesztési lehetőség:
 #### Teszterek amiket észrevettek:
