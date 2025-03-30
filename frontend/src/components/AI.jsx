@@ -2,10 +2,14 @@ import React, { useRef, useState, useEffect } from "react";
 import { Container, Row, Col, Button, Form, Image, InputGroup, FloatingLabel } from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
 import { useNavigate } from "react-router-dom";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 import CONFIG from "../config.json";
 import ErrorAlert from "./ErrorAlert";
 
 import "../styles/ai.css";
+import "katex/dist/katex.min.css";
 
 export default ({ img, altText, title, placeholderText, personName, handleLogout, isLogged }) => {
     const inputRef = useRef(null);
@@ -233,7 +237,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                                 } else {
                                     return (
                                         <>
-                                            <div className="ai"><ReactMarkdown>{elem.parts[0].text}</ReactMarkdown></div>
+                                            <div className="ai"><ReactMarkdown children={elem.parts[0].text} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}></ReactMarkdown></div>
                                         </>
                                     );
                                 }
