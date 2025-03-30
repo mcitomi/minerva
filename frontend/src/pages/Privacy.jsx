@@ -11,7 +11,7 @@ export default () => {
                 <Col xs={12} md={12} className="text-center">
                     <h3>Bevezetés</h3>
                     <p style={{textAlign: "justify"}}>Üdvözöljük a Minerva "Bátor? Okos? Bölcs?" adatvédelmi oldalán! Elkötelezettek vagyunk az Ön személyes adatainak védelme iránt. Ez az Adatvédelmi Szabályzat részletesen ismerteti, hogyan gyűjtjük, használjuk fel, osztjuk meg és védjük az Ön személyes adatait, amikor igénybe veszi szolgáltatásainkat. Szolgáltatásaink használatával Ön elfogadja az Adatvédelmi Szabályzat feltételeit.</p>
-                    <Image src="./assets/images/privacy.png" alt="Dekor kép" fluid className="mb-4" style={{borderRadius:"30px", maxWidth: "1000px"}}></Image>
+                    <Image src="./assets/images/privacy.png" alt="Dekor kép" fluid className="mb-4" style={{borderRadius:"30px", maxWidth: "1000px", width: "100%"}}></Image>
                 </Col>
                 <Col xs={12} md={12}>
                     <h3>Az általunk gyűjtött információk</h3>
