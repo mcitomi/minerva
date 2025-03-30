@@ -74,7 +74,7 @@ export default (username: string, link: string) => {
         <div class="container">
             <h1>Elfelejtett jelszó</h1>
             <h3>Kedves ${username}!</h3>
-            <p>Az új jelszó generálásáért kérjük, kattintson az alábbi gombra:</p>
+            <p>Jelszava helyreállításáért kérjük, kattintson az alábbi gombra:</p>
             <a href="${link}" class="button">Új jelszó</a>
             <p>Kérjük, hogy a bejelentkezés után ne felejtse el megváltoztatni a jelszavát!</p>
             <p class="us">Üdvözlettel,<br>A MInerva csapata</p>
