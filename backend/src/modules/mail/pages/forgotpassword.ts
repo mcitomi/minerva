@@ -76,7 +76,7 @@ export default (username: string, link: string) => {
             <h3>Kedves ${username}!</h3>
             <p>Jelszava helyreállításáért kérjük, kattintson az alábbi gombra:</p>
             <a href="${link}" class="button">Új jelszó</a>
-            <p>Kérjük, hogy a bejelentkezés után ne felejtse el megváltoztatni a jelszavát!</p>
+            <p>A rendszer ezután elnavigálja önt a jelszó visszaállító felületünkre, ahol megadhatja az új jelszavát.</p>
             <p class="us">Üdvözlettel,<br>A MInerva csapata</p>
             <div class="footer">
                 <p>Ez az e-mail egy automatikus üzenet, ezért kérjük, ne válaszoljon rá! Kérdéseivel keressen minket a weboldalon feltüntetett e-mail címen!</p>
