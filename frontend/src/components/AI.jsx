@@ -17,6 +17,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
 
     const [history, setHistory] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [isChatable, setChatable] = useState(false);
     const [error, setError] = useState(null);
     const [errorMessage, setErrorMessage] = useState(null);
     const [showErrorAlert, setShowErrorAlert] = useState(false);
@@ -27,7 +28,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
 
     useEffect(() => {
         if (!token) {
-            if(isLogged) {
+            if (isLogged) {
                 handleLogout();
             }
             navigate("/login");
@@ -59,13 +60,13 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                         setErrorMessage("Probáld újra később!");
                         setShowErrorAlert(true);
                         break;
-                    case 404:  
+                    case 404:
                         setErrorMessage("Ez a modell jelenleg nem működik!");
-                        setShowErrorAlert(true); 
+                        setShowErrorAlert(true);
                         break;
                     case 401:
                     case 403:
-                        if(isLogged) {
+                        if (isLogged) {
                             handleLogout();
                         }
                         navigate("/login");
@@ -84,7 +85,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
 
             const resData = await response.json();
 
-            if(resData.model) {
+            if (resData.model) {
                 setHistory(prevHistory => [
                     ...prevHistory,
                     {
@@ -97,6 +98,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                     }
                 ]);
             }
+            setChatable(true);
         }
         catch (err) {
             setError(err.message)
@@ -105,6 +107,8 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
 
     async function fetchPersonPost(e) {
         e.preventDefault();
+
+        setChatable(false);
 
         const question = inputRef.current.value;
 
@@ -119,6 +123,9 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                 ]
             }
         ];
+
+        console.log(newHistory);
+
 
         setHistory(newHistory);
         inputRef.current.value = "";
@@ -148,18 +155,26 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                         setErrorMessage("Probáld újra később!");
                         setShowErrorAlert(true);
                         break;
-                    case 404:  
+                    case 404:
                         setErrorMessage("Ez a modell jelenleg nem működik!");
-                        setShowErrorAlert(true); 
+                        setShowErrorAlert(true);
+                        break;
+                    case 406:
+                        setErrorMessage("Ne használj ilyen szavakat!");
+                        setShowErrorAlert(true);
+                        setHistory(prevHistory => [
+                            ...prevHistory.slice(0, -1)
+                        ]);
+                        setChatable(true);
                         break;
                     case 401:
                     case 403:
-                        if(isLogged) {
+                        if (isLogged) {
                             handleLogout();
                         }
                         navigate("/login");
                         break;
-                    case 429:   // 
+                    case 429:
                         setErrorMessage("Rendszerünk jelenleg túlterhelt, próbálja újra később!");
                         setShowErrorAlert(true);
                         break;
@@ -173,7 +188,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
 
             const resData = await response.json();
 
-            if(resData.model) {
+            if (resData.model) {
                 setHistory(prevHistory => [
                     ...prevHistory,
                     {
@@ -186,6 +201,8 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                     }
                 ]);
             }
+
+            setChatable(true);
         }
         catch (err) {
             setError(err.message)
@@ -200,7 +217,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
     };
 
     function handleKeyDown(e) {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.key === 'Enter' && !e.shiftKey && isChatable) {
             e.preventDefault();
             fetchPersonPost(e);
             inputRef.current.style.height = "20px";
@@ -220,25 +237,21 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
     return (
         <Container fluid>
             <Row>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={6} lg={4}>
                     <Image src={img} alt={altText} fluid></Image>
                 </Col>
-                <Col xs={12} md={6}>
+                <Col xs={12} md={6} lg={8}>
                     <h2 className="mt-3 mb-3">{title}</h2>
                     <div className="box">
                         <div className="chat" ref={chatRef}>
-                            {history.map((elem) => {
+                            {history.map((elem, i) => {
                                 if (elem.role == "user") {
                                     return (
-                                        <>
-                                            <div className="user">{elem.parts[0].text}</div>
-                                        </>
+                                        <div key={i} className="user">{elem.parts[0].text}</div>
                                     );
                                 } else {
                                     return (
-                                        <>
-                                            <div className="ai"><ReactMarkdown children={elem.parts[0].text} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}></ReactMarkdown></div>
-                                        </>
+                                        <div key={i} className="ai"><ReactMarkdown children={elem.parts[0].text} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}></ReactMarkdown></div>
                                     );
                                 }
                             })}
@@ -246,7 +259,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                     </div>
                     <Form className="mt-3" onSubmit={fetchPersonPost}>
                         <InputGroup>
-                            <FloatingLabel controlId="floatingInput" label={placeholderText} className="floating-label">
+                            <FloatingLabel label={placeholderText} className="floating-label">
                                 <Form.Control
                                     as="textarea"
                                     placeholder={placeholderText}
@@ -258,11 +271,11 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                                     onKeyDown={handleKeyDown}
                                     style={{ overflow: "hidden" }} />
                             </FloatingLabel>
-                            <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit">Küldés</Button>
+                            <Button variant="warning" style={{ fontFamily: 'Pacifico', fontSize: "20px" }} type="submit" active={isChatable}>Küldés</Button>
                         </InputGroup>
                     </Form>
                     {showErrorAlert && <ErrorAlert title={"Sikertelen művelet!"} text={errorMessage} setOriginStatus={setShowErrorAlert} />}
-                    {title === "MInerva" ? <p className="mt-2" style={{opacity: "0.5", fontStyle: "italic"}}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} egy fiktív karakter.</p> : <p className="mt-2" style={{opacity: "0.5", fontStyle: "italic"}}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} már elhunyt, így a jelenkorral kapcsolatos információi nem pontosak, illetve kitaláltak.</p>}
+                    {title === "MInerva" ? <p className="mt-2" style={{ opacity: "0.5", fontStyle: "italic" }}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} egy fiktív karakter.</p> : <p className="mt-2" style={{ opacity: "0.5", fontStyle: "italic" }}>Figyelem! A mesterséges intelligenciák hibázhatnak! {title} már elhunyt, így a jelenkorral kapcsolatos információi nem pontosak, illetve kitaláltak.</p>}
                 </Col>
             </Row>
         </Container>

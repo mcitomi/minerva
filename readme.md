@@ -21,7 +21,7 @@ __Globális leírás a projektről, megjegyzések:__
 Frontend:
 - Betti: Dc szerver, insta, fb csoport kép feltöltése, bio megírása, discordon csatornák.
 - Videó, amikor jó az idő!!!
-- Klein Gyula --- nem matematikus hanem rabbi xd
+
 Backend:
 - o.O
 

@@ -12,6 +12,9 @@ import { systeminstructions } from "./system-instructions.json";
 import { modelTunings } from "../../../modules/model-tuning/loader";
 import { type ModelJson } from "../../../types/model";
 
+// DirtyWords szűrő
+import { dirtywords } from "../../../blacklist.json";
+
 export const handleRequest = async (req: Request, db: Database) => {
     try {
         const genAI = new GoogleGenerativeAI(gemini_api_key);
@@ -111,6 +114,12 @@ export const handleRequest = async (req: Request, db: Database) => {
             return Response.json({
                 "message": errorMessages
             }, { status: 400 })
+        }
+
+        if(dirtywords.some(word => body.message.toLowerCase().includes(word.toLowerCase()))) {
+            return Response.json({
+                "message": "Do not use dirty words!"
+            }, {status: 406});
         }
 
         const geminiResponse = await callGemini(body.message, body.history, body.person);
