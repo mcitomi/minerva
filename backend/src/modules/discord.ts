@@ -55,7 +55,10 @@ export async function DiscordClient(db: Database) {
             }
         }); 
 
-        client.login(discord_bot_settings.token);
+        client.login(discord_bot_settings.token).catch((e) => { 
+            console.error("Invalid Discord bot token!");
+            return; 
+        });
 
     } catch (error) {
         console.log("Discord module error: ", error);
