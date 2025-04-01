@@ -1,4 +1,4 @@
-export default (username: string, ip: string, time: number) => {
+export default (username: string, ip: string, time: number, device: string) => {
     return `
     <!DOCTYPE html>
     <html lang="hu">
@@ -76,7 +76,8 @@ export default (username: string, ip: string, time: number) => {
             <h3>Kedves ${username}!</h3>
             <h4>Rendszerünk új bejelentkezést érzékelt az Ön fiókjába!</h4>
             <p>- Bejelentkezés időpontja: ${new Date(time * 1000).toLocaleString("hu-HU", {timeZone: 'Europe/Budapest'})}</p>
-            <p>- Eszköz IP címe: ${ip}</p>
+            <p>- Eszköz: ${device} böngésző.</p>
+            <p>- IP címe: ${ip}</p>
             <p>Amennyiben nem Ön jelentkezett be a fiókjába, vegye fel velünk a kapcsolatot emailben vagy a hivatalos Discord szerverünkön!</p>
             <p class="us">Üdvözlettel,<br>A MInerva csapata</p>
             <div class="footer">
