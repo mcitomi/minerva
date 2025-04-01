@@ -4,6 +4,7 @@ import { generateToken } from "../../../modules/auth/jwt";
 import { type Body, type RawBody, type AccountQuery } from "../../../types/login";
 import { sendMail } from "../../../modules/mail/sender";
 import emailReactivate from "../../../modules/mail/pages/reactivate";
+import emailNewLogin from "../../../modules/mail/pages/newlogin";
 
 export const handleRequest = async (req: Request, db: Database) => {
     try {
@@ -67,7 +68,11 @@ export const handleRequest = async (req: Request, db: Database) => {
             }, {status: 403});
         }
 
-        db.run("UPDATE credentials SET failedAttempts = 0, lastLogin = ?, mgmtToken = null WHERE id = ?;", [Math.floor(Date.now() / 1000), accountInfo.id]);
+        const loginTime = Math.floor(Date.now() / 1000);
+
+        sendMail([body.email], "Bejelentkezés új eszközről", `Rendszerünk új bejelentkezést érzékelt!`, emailNewLogin(decryptRSA(accountInfo.username), req.headers.get("CF-Connecting-IP"), loginTime));
+
+        db.run("UPDATE credentials SET failedAttempts = 0, lastLogin = ?, mgmtToken = null WHERE id = ?;", [loginTime, accountInfo.id]);
 
         const token = generateToken({ _id: accountInfo.id }, 7776000);   // 172800 mp. = 2 nap, 7776000 mp. = 90 nap
 
@@ -77,8 +82,6 @@ export const handleRequest = async (req: Request, db: Database) => {
         }, {status: 200});
         
     } catch (error) {
-        // console.log(error);
-        
         return Response.json({
             "message": ["Something went wrong!"]
         }, {status: 500})
