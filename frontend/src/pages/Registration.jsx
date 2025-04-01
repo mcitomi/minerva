@@ -124,7 +124,7 @@ export default () => {
                         setErrorMessage("A jelszavak nem egyeznek!");
                         setShowErrorAlert(true);
                     } else if (result.message[0].includes("format")) {
-                        setErrorMessage("Hibás email adat!");
+                        setErrorMessage("A megadott email cím hibás!");
                         setShowErrorAlert(true);
                     } else {
                         setErrorMessage("Hibás bemeneti adat!");
@@ -134,10 +134,10 @@ export default () => {
                     setErrorMessage("Ezzel az email címmel már regisztráltak!");
                     setShowErrorAlert(true);
                 } else if (response.status == 500) {
-                    setErrorMessage("Szerverhiba történt!");
+                    setErrorMessage("Szerverhiba történt, próbálja újra később!!");
                     setShowErrorAlert(true);
                 } else {
-                    setErrorMessage("Hiba történt!");
+                    setErrorMessage("Hiba történt, próbálja újra később!!");
                     setShowErrorAlert(true);
                 }
             } else {

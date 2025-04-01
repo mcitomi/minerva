@@ -109,23 +109,21 @@ export default ({ onLoginSuccess }) => {
 
             const result = await response.json();
 
-            // alert(...result.message);
-
             if(!response.ok) {
                 if(response.status == 400) {
-                    setErrorMessage("Hiba történt.");
+                    setErrorMessage("Ismeretlen hiba történt, próbálja újra később!");
                     setShowErrorAlert(true);
                 } else if(response.status == 401) {
                     setErrorMessage("Hibás email vagy jelszó!");
                      setShowErrorAlert(true);
                 } else if (response.status == 403) {
-                    setErrorMessage("Erősítse meg az emailt!");
+                    setErrorMessage("Email címére elküldtük a megerősítő üzenetet, belépés előtt ellenőrizze!");
                     setShowErrorAlert(true);
                 } else if (response.status == 500) {
-                    setErrorMessage("Szerverhiba történt.");
+                    setErrorMessage("Szerverhiba történt, próbálja újra később!");
                     setShowErrorAlert(true);
                 } else {
-                    setErrorMessage("Hiba történt!");
+                    setErrorMessage("Ismeretlen hiba történt, próbálja újra később!");
                     setShowErrorAlert(true);
                 }
                 return;
@@ -136,9 +134,8 @@ export default ({ onLoginSuccess }) => {
                 navigate('/');
             }
             else {
-                setErrorMessage(result.message || "Sikertelen bejelentkezés!");
+                setErrorMessage("Sikertelen bejelentkezés!");
                 setShowErrorAlert(true);
-                //alert(result.message || "Sikertelen bejelentkezés!");
             }
 
         } catch (error) {
