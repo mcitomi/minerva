@@ -38,6 +38,20 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
 
     async function fetchWelcomeMessage() {
         try {
+            const newHistory = [
+                {
+                    "role": "model",
+                    "parts": [
+                        {
+                            "text": "Éppen gépel..."
+                        }
+                    ],
+                    "typing": true
+                }
+            ];
+    
+            setHistory(newHistory);
+
             const response = await fetch(
                 `${CONFIG.API_URL}/gemini-models/chat`,
                 {
@@ -86,8 +100,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
             const resData = await response.json();
 
             if (resData.model) {
-                setHistory(prevHistory => [
-                    ...prevHistory,
+                setHistory([
                     {
                         "role": "model",
                         "parts": [
@@ -121,11 +134,17 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                         "text": question
                     }
                 ]
+            },
+            {
+                "role": "model",
+                "parts": [
+                    {
+                        "text": "Éppen gépel..."
+                    }
+                ],
+                "typing": true
             }
         ];
-
-        console.log(newHistory);
-
 
         setHistory(newHistory);
         inputRef.current.value = "";
@@ -144,7 +163,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                     body: JSON.stringify({
                         message: question,
                         person: personName,
-                        history: newHistory
+                        history: newHistory.filter(msg => !msg.typing)
                     })
                 }
             );
@@ -190,7 +209,7 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
 
             if (resData.model) {
                 setHistory(prevHistory => [
-                    ...prevHistory,
+                    ...prevHistory.filter(msg => !msg.typing),
                     {
                         "role": "model",
                         "parts": [
@@ -251,7 +270,16 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                                     );
                                 } else {
                                     return (
-                                        <div key={i} className="ai"><ReactMarkdown children={elem.parts[0].text} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}></ReactMarkdown></div>
+                                        <div key={i} className="ai">
+                                            {
+                                                elem.typing ?
+                                                    <div className="typing">
+                                                        <span>•</span><span>•</span><span>•</span>
+                                                    </div>
+                                                    :
+                                                    <ReactMarkdown children={elem.parts[0].text} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} />
+                                            }
+                                        </div>
                                     );
                                 }
                             })}
