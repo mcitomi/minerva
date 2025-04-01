@@ -121,6 +121,10 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
     async function fetchPersonPost(e) {
         e.preventDefault();
 
+        if(inputRef.current.value == "" || !isChatable) {
+            return;
+        }
+
         setChatable(false);
 
         const question = inputRef.current.value;
@@ -196,6 +200,11 @@ export default ({ img, altText, title, placeholderText, personName, handleLogout
                     case 429:
                         setErrorMessage("Rendszerünk jelenleg túlterhelt, próbálja újra később!");
                         setShowErrorAlert(true);
+                        inputRef.current.value = question;
+                        setHistory(prevHistory => [
+                            ...prevHistory.filter(msg => !msg.typing).slice(0, -1)
+                        ]);
+                        setChatable(true);
                         break;
                     case 500:
                         setErrorMessage("Szerver oldali hiba történt!");

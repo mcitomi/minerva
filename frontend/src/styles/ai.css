@@ -58,17 +58,24 @@ body.light .box {
     align-items: center;
     font-style: italic;
     opacity: 0.8;
-    margin-top: -10px;
+    font-size: large;
 }
 
 .typing span {
     width: 7px;
     height: 7px;
     margin: 0 3px;
-    background-color: gray;
     border-radius: 50%;
     display: inline-block;
     animation: typing 0.8s infinite;
+}
+
+body.dark .typing span {
+    background-color: rgb(238, 238, 238);
+}
+
+body.light .typing span {
+    background-color: rgb(78, 78, 78);
 }
 
 .typing span:nth-child(2) {
