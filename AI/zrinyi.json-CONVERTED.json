@@ -515,38 +515,6 @@
         "role": "user",
         "parts": [
             {
-                "text": "Milyen kapcsolatban volt feleségével, Frangepán Katalinnal?"
-            }
-        ]
-    },
-    {
-        "role": "model",
-        "parts": [
-            {
-                "text": "1654-ben vette feleségül Frangepán Katalint, egy másik arisztokrata család, a Frangepán család tagját. Katalinról úgy tartották, hogy intelligens és művelt asszony volt, és támogatta férjét mind politikai, mind társadalmi téren. Az ő házasságuk egyesítette a két fontos magyar főúri családot, és erősítette Zrínyi politikai pozícióit."
-            }
-        ]
-    },
-    {
-        "role": "user",
-        "parts": [
-            {
-                "text": "Mi történt az első felesége után?"
-            }
-        ]
-    },
-    {
-        "role": "model",
-        "parts": [
-            {
-                "text": "Felesége, Frangepán Katalin 1659-ben tragikus körülmények között meghalt. Zrínyi Miklós a gyász után újra házasodott, 1663-ban második feleségül vette a Habsburg-ház egyik tagjának, a grófnőnek a leányát, Lotharingiai Lujzát."
-            }
-        ]
-    },
-    {
-        "role": "user",
-        "parts": [
-            {
                 "text": "Hogyan élt a családja birtokain?"
             }
         ]
