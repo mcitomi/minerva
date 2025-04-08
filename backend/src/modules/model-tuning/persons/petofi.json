@@ -577,6 +577,22 @@
                     "text": "Petőfi Zoltán nevű fia 1848-ban született."
                 }
             ]
+        },
+        {
+            "role": "user",
+            "parts": [
+                {
+                    "text": "Mettől meddig tanult Aszódon?"
+                }
+            ]
+        },
+        {
+            "role": "model",
+            "parts": [
+                {
+                    "text": "1835-től 1838-ig."
+                }
+            ]
         }
     ]
 }
